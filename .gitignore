@@ -1,5 +1,6 @@
 
-$GIT_DIR/um/cdn.php
+um/cdn.php
+prop/css/um-reset.php
 
 #################
 ## Eclipse
