@@ -1,9 +1,4 @@
 
-um\cdn.php
-cdn.php
-um-reset.php
-.htaccess
-
 #################
 ## Eclipse
 #################
@@ -219,3 +214,8 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+
+um/cdn.php
+prop/css/um-reset.php
+.htaccess
+um/cdn.php

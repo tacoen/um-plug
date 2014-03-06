@@ -81,7 +81,7 @@ function um_file_putcontents($filename,$txt) {
 	global $wp_filesystem;
 	filesystem_init();
 	$wp_filesystem->put_contents($filename,$txt,FS_CHMOD_FILE);
-	#file_put_contents($filename,$txt); 	
+	#file_put_contents($filename,$txt);	
 }
 
 function um_file_getcontents($filename,$nonce="") {
@@ -101,7 +101,7 @@ function um_add_pagetemplate($n,$f) {
 }
 
 function um_new_umguijs() {
-	um_file_putcontents( get_stylesheet_directory()."/um-gui.js", "(function($) {\n\n})(jQuery);" );
+	um_file_putcontents(get_stylesheet_directory()."/um-gui.js", "(function($) {\n\n})(jQuery);");
 	return get_stylesheet_directory()."/um-gui.js";
 }
 
@@ -111,5 +111,5 @@ function um_new_umschemecss() {
 }
 
 function um_new_layoutdir() {
-	mkdir( get_stylesheet_directory()."/layouts");
+	mkdir(get_stylesheet_directory()."/layouts");
 }

@@ -8,7 +8,7 @@ function umo_args() {
 	return array(
 		'opt'=> array(
 			'text'=> 'Custom Options',
-			'note' 	=> 'Options that featuring you.',
+			'note'	=> 'Options that featuring you.',
 			'field'	=> array(
 				'nodash'=> array ('check','Dashboard','Remove NewsFeed from Dashboard',''),
 				'umcss'	=> array ('check','CSS','Use um-reset.css',''),
@@ -18,7 +18,7 @@ function umo_args() {
 		),
 		'ttag'=> array(
 			'text'=> 'Templates',
-			'note' 	=> 'Templates Options',
+			'note'	=> 'Templates Options',
 			'field'	=> array(
 				'umtag'	=> array ('check','Template Tag','Enable dynamic UM Template Tags',''),
 				'nowphead'=> array ('check','WP Header','Remove unnecessary code from header',''),
@@ -28,7 +28,7 @@ function umo_args() {
 		),
 		'feat'=> array(
 			'text'=> 'JS/CSS',
-			'note' 	=> 'Javascript & Cascading Style Sheet',
+			'note'	=> 'Javascript & Cascading Style Sheet',
 			'field'	=> array(
 				'layout'=> array ('selectfile','Layout','Layout Selections',get_stylesheet_directory()."/layouts"),
 				'cssrd'	=> array ('check','Edit CSS Reset','Still Evaluate um-reset.css<small> &mdash; um-reset.php</small>',''),
@@ -38,7 +38,7 @@ function umo_args() {
 		),
 		'umrw'=> array(
 			'text'=> 'URL Rewrites',
-			'note' 	=> 'Please <a href="options-permalink.php">revise your permalink</a> after you make changes',
+			'note'	=> 'Please <a href="options-permalink.php">revise your permalink</a> after you make changes',
 			'field'	=> array(
 				'wpinc'	=> array ('text','Use',' for WP-Includes URL','8'),
 				'wplug'	=> array ('text','Use',' for Plugins URL','8'),
@@ -49,10 +49,18 @@ function umo_args() {
 		)
 	);
 }
-
+function um_rwvar_default() {
+	return array(
+		'wpinc' => 'i',
+		'wplug' => 'g',
+		'style' => 'c',
+		'templ' => 'p',
+	);
+}
+	
 function um_urlrewrite_is() {
-	return array ( 
-		0 => array ( 
+	return array (
+		0 => array (
 			'tag' => str_replace(home_url()."/",'',includes_url()),
 			'mod' => um_getoption('wpinc')."/"
 		),
@@ -72,7 +80,7 @@ function um_urlrewrite_is() {
 	);
 }
 
-function  um_postformat_args() {
+function um_postformat_args() {
 	$a = array('aside','gallery','link','image','quote','status','video','audio','chat');
 	sort($a); return $a;
 

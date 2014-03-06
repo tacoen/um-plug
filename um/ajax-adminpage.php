@@ -42,9 +42,9 @@ function um_foda_callback() {
 		}
 	} else if ($foda['a']== 'dtouch') {
 		$txt = "dtouch!";
-		if ($foda['f'] == "um-gui.js")     { $txt .= um_new_umguijs(); }
+		if ($foda['f'] == "um-gui.js") { $txt .= um_new_umguijs(); }
 		if ($foda['f'] == "um-scheme.css") { $txt .= um_new_umschemecss(); }
-		if ($foda['f'] == "layouts")       { $txt .= um_new_layoutdir(); }
+		if ($foda['f'] == "layouts") { $txt .= um_new_layoutdir(); }
 		
 	} else { $txt=''; }
 

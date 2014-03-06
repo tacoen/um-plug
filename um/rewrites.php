@@ -1,8 +1,8 @@
 <?php
 /*
 if (get_option('permalink_structure') == '') {
-    global $wp_rewrite;
-    $wp_rewrite->set_permalink_structure('/%postname%/');
+ global $wp_rewrite;
+ $wp_rewrite->set_permalink_structure('/%postname%/');
 }
 */
 
@@ -11,12 +11,12 @@ function is_inc($a) {
 
 	if (preg_match("#".admin_url()."#",$a)) {
 		return $a; 
-	}  else {
+	} else {
 		if (preg_match("#".home_url()."#",$a)) { 
 			for ($n; $n < $count; $n++) {
-				if (strpos($a, $um_url[$n]['tag']) > 0) { return str_replace( $um_url[$n]['tag'] ,$um_url[$n]['mod'], $a);  }
+				if (strpos($a, $um_url[$n]['tag']) > 0) { return str_replace($um_url[$n]['tag'] ,$um_url[$n]['mod'], $a); }
 			}
-		} else { return $a;  }
+		} else { return $a; }
 	}	
 
 }

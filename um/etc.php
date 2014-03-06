@@ -78,13 +78,13 @@ function um_readme_html() {?>
 	} else {
 		echo "Well, child theme readme.txt is missing or there is no activated child theme.";
 	} ?></div></div>
-	<?php 	if (file_exists(UMPLUG_DIR."prop/doc/feat.html")) {
+	<?php	if (file_exists(UMPLUG_DIR."prop/doc/feat.html")) {
 		echo um_file_getcontents(UMPLUG_DIR."prop/doc/feat.html");
 	} else {
 		echo "Well, Undress me /prop/doc/feat.html is missing.";
 	}?></div>
 	<div id="toucher"><?php
-	if( get_stylesheet_directory() == UMPLUG_DIR) {
+	if(get_stylesheet_directory() == UMPLUG_DIR) {
 		echo "<strong class='warn'>Do not use Undress Me as active theme!</strong> Please create a child theme then activate it, till then some options were disable.";		
 	}?>
 	</div><?php
@@ -111,7 +111,7 @@ function um_debug_html($div="",$js=0) {
 	<div class="um-debug"><?php
 	echo "<p><label>Plugins Dir:</label><code>". UMPLUG_DIR ."</code><br/>".UMPLUG_URL."</p>";
 	if (get_stylesheet_directory()==get_template_directory()) {
-		echo "<p><label>Template Dir:</label><code>".get_template_directory()  ."</code><br/>".get_template_directory_uri() ."</p>";
+		echo "<p><label>Template Dir:</label><code>".get_template_directory() ."</code><br/>".get_template_directory_uri() ."</p>";
 	} else {
 		echo "<p><label>Theme Dir(child):</label><code>".get_stylesheet_directory() ."</code><br/>".get_stylesheet_uri()."</p>";
 	}?>
@@ -140,8 +140,8 @@ function umplug_checklist() {
 		$item = $checklist[$i];
 		$mc ="";
 		if ($item[0]=="dir") {
-			if ((file_exists( get_stylesheet_directory()."/".$item[1] )) 
-				&& (is_dir(get_stylesheet_directory()."/".$item[1] )) ) { 
+			if ((file_exists(get_stylesheet_directory()."/".$item[1])) 
+				&& (is_dir(get_stylesheet_directory()."/".$item[1]))) { 
 					$ce = "Exist"; $di="yes"; 
 			} else { 
 					$di="no"; $ce="Not Found (".um_toucher_link($item[0],$item[1]) .")"; 
@@ -149,8 +149,8 @@ function umplug_checklist() {
 			
 			if ($item[1]=="template-tags") {
 
-			if ((file_exists( get_template_directory()."/".$item[1] )) 
-				&& (is_dir(get_template_directory()."/".$item[1] )) ) { 
+			if ((file_exists(get_template_directory()."/".$item[1])) 
+				&& (is_dir(get_template_directory()."/".$item[1]))) { 
 					$ce = "Exist (in Parent directory) "; $di="yes"; 
 			} else { 
 					$di="no"; $ce="Not Found(in Parent directory) (".um_toucher_link($item[0],$item[1]."-parent") .")"; 
@@ -158,7 +158,7 @@ function umplug_checklist() {
 			}
 			
 		} else {
-			if (file_exists( get_stylesheet_directory()."/".$item[1] )) { 
+			if (file_exists(get_stylesheet_directory()."/".$item[1])) { 
 				$ce = "Exist"; $di="yes"; 
 			} else { 
 				$di="no"; $ce="Not Found (".um_toucher_link($item[0],$item[1]) .")"; 
@@ -168,7 +168,7 @@ function umplug_checklist() {
 		echo "<li class='noicon' data-file='$item[1]'><i class='dashicons dashicons-$di'></i> <b>$item[1]</b> &mdash; $item[0]: $ce</li>";
 	}
 
-	if ( get_template_directory() != get_stylesheet_directory() ) {
+	if (get_template_directory() != get_stylesheet_directory()) {
 		echo "<li class='noicon' data-file='$item[1]'><i class='dashicons dashicons-yes'></i> <b>Child Theme</b></li>";
 	}
 	
@@ -176,6 +176,6 @@ function umplug_checklist() {
 
 // Why I delete readme.html and license.txt? 
 
-if (file_exists( ABSPATH."readme.html")) { unlink (ABSPATH."readme.html"); }
-if (file_exists( ABSPATH."license.txt")) { unlink (ABSPATH."license.txt"); }
+if (file_exists(ABSPATH."readme.html")) { unlink (ABSPATH."readme.html"); }
+if (file_exists(ABSPATH."license.txt")) { unlink (ABSPATH."license.txt"); }
 

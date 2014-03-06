@@ -69,7 +69,7 @@ class um_is_undressme {
 		}
 	}
 
-	public function umo_option_print_section (array $args) { $umo=umo_args(); 	print $umo[$args['id']]['note']; }
+	public function umo_option_print_section (array $args) { $umo=umo_args();	print $umo[$args['id']]['note']; }
 
 	public function umo_option_print(array $args) {
 
@@ -85,13 +85,12 @@ class um_is_undressme {
 				$this->options[$args['id']],$args['id'],$args['note']
 			);
 		} else if ($args['type']== "text") {
-			$def['wpinc'] = 'i';
-			$def['wplug'] = 'g';
-			$def['style'] = 'c';
-			$def['templ'] = 'p';
+		
+			$def = um_rwvar_default();
+
 			printf(
 				'<input type="text" name="umo[%2$s]" size="%4$s" value="%1$s" /> %3$s',
-				isset( $this->options[$args['id']] ) ? $this->options[$args['id']] : $def[$args['id']],
+				isset($this->options[$args['id']]) ? $this->options[$args['id']] : $def[$args['id']],
 				$args['id'],$args['note'],$args['var']
 			);
 		} else if ($args['type']== "selectfile") {
@@ -136,4 +135,4 @@ class um_is_undressme {
 	}	
 }
 
-if(is_admin()) { 	$my_settings_page=new um_is_undressme(); }
+if(is_admin()) { $my_settings_page=new um_is_undressme(); }
