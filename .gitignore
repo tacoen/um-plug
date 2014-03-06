@@ -1,6 +1,8 @@
 
-um/cdn.php
-prop/css/um-reset.php
+um\cdn.php
+cdn.php
+um-reset.php
+.htaccess
 
 #################
 ## Eclipse
