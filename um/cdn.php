@@ -13,9 +13,9 @@ function um_register_cdn_styles() {
 
 	/* > Replace wp-includes styles link with your CDN,watch the ID
 	 */
-	//wp_deregister_style('open-sans');
-	//wp_register_style('open-sans',"your-cdn-url",false,'3.8.1','all');
-	//wp_enqueue_style('open-sans');
+	wp_deregister_style('open-sans');
+	wp_register_style('open-sans',"your-cdn-url",false,'3.8.1','all');
+	wp_enqueue_style('open-sans');
 }
 
 
@@ -25,9 +25,9 @@ function um_register_cdn_scripts() {
 	/* > Replace wp-includes scripts link with your CDN,watch the ID
 	 */
 
-	//wp_deregister_script('jquery');
-	//wp_register_script('jquery',"your-cdn-url",false,'2.0.3');
-	//wp_enqueue_script('jquery');
+	wp_deregister_script('jquery');
+	wp_register_script('jquery',"your-cdn-url",false,'2.0.3');
+	wp_enqueue_script('jquery');
 
 }
 

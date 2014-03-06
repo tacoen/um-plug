@@ -12,8 +12,7 @@ Text Domain: um
 DEFINE ('UMPLUG_DIR',  plugin_dir_path( __FILE__ ) );
 DEFINE ('UMPLUG_URL',  plugin_dir_url(__FILE__) );
 
-//require UMPLUG_DIR . 'um/cdn.php';
-
+require UMPLUG_DIR . 'um/cdn.php';
 require UMPLUG_DIR . 'um/_common.php';
 require UMPLUG_DIR . 'um/options.php';
 require UMPLUG_DIR . 'um/chunks.php';
