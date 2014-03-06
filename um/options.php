@@ -8,30 +8,38 @@ function umo_args() {
 	return array(
 		'opt'=> array(
 			'text'=> 'Custom Options',
-			'note' 	=> 'Several Customize Options',
+			'note' 	=> 'Options that featuring you.',
 			'field'	=> array(
 				'nodash'=> array ('check','Dashboard','Remove NewsFeed from Dashboard',''),
-				'nowphead'=> array ('check','WP Header','Remove unnecessary code from header',''),
-				'wdtma'	=> array ('number','Widget','How Many Dynamic Widget',''),
-				'layout'=> array ('selectfile','Layout','Layout Selections',get_stylesheet_directory()."/layouts"),
-				'pback'	=> array ('check','Pingback','Allow Pingback',''),
+				'umcss'	=> array ('check','CSS','Use um-reset.css',''),
+				'umgui'	=> array ('check','JS','Load um-gui JS Libraries <small> &mdash; um-gui-lib.js</small>',''),
+				'urlrw'	=> array ('check','URL Rewrite','Use ShortURL for resources',''),
 			),
 		),
-		'feat'=> array(
-			'text'=> 'Features',
-			'note' 	=> 'Several Features',
+		'ttag'=> array(
+			'text'=> 'Templates',
+			'note' 	=> 'Templates Options',
 			'field'	=> array(
-				'umgui'	=> array ('check','JS','Load um-gui JS Libraries <small> &mdash; um-gui-lib.js</small>',''),
-				'cssrd'	=> array ('check','CSS','Still Evaluate Normalize <small> &mdash; um-reset.css</small>',''),
-				'ajaxwpl'=> array ('check','WP-Login','Use Ajax WP-Login <small> &mdash; require: um-gui-lib.js</small>',''),
 				'umtag'	=> array ('check','Template Tag','Enable dynamic UM Template Tags',''),
+				'nowphead'=> array ('check','WP Header','Remove unnecessary code from header',''),
+				'wdtma'	=> array ('number','Widget','How Many Dynamic Widget',''),
+				'pback'	=> array ('check','Pingback','Allow Pingback',''),
+			)
+		),
+		'feat'=> array(
+			'text'=> 'JS/CSS',
+			'note' 	=> 'Javascript & Cascading Style Sheet',
+			'field'	=> array(
+				'layout'=> array ('selectfile','Layout','Layout Selections',get_stylesheet_directory()."/layouts"),
+				'cssrd'	=> array ('check','Edit CSS Reset','Still Evaluate um-reset.css<small> &mdash; um-reset.php</small>',''),
+				'ajaxwpl'=> array ('check','WP-Login','Use Ajax WP-Login <small> &mdash; require: um-gui-lib.js</small>',''),
+				'ajredir'=> array ('text','WP-Login Redirect','','30'),
 			)
 		),
 		'umrw'=> array(
 			'text'=> 'URL Rewrites',
-			'note' 	=> 'Please revise your permalink after you make changes',
+			'note' 	=> 'Please <a href="options-permalink.php">revise your permalink</a> after you make changes',
 			'field'	=> array(
-				'urlrw'	=> array ('check','URL Rewrite','Use ShortURL for resources',''),
 				'wpinc'	=> array ('text','Use',' for WP-Includes URL','8'),
 				'wplug'	=> array ('text','Use',' for Plugins URL','8'),
 				'style'	=> array ('text','Use',' for Style sheet/Child URL','8'),

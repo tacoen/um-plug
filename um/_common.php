@@ -8,7 +8,7 @@
 function umtag($func,$args=array()) {
 	if (um_getoption('umtag')) {
 		if (! function_exists($func)) {
-			$ttdir=get_template_directory()."/inc/um/template-tags/";
+			$ttdir=get_template_directory()."/template-tags/";
 			if (file_exists($ttdir.$func.".php")) {
 				require $ttdir.$func.".php"; call_user_func_array($func,array($args));
 			} else {

@@ -34,8 +34,11 @@ html #toplevel_page_undressme a:hover.menu-top .dashicons:before {
 div.umtab { border: 1px solid #ddd; background:#fff; padding: 0 1em 1em 1em; min-height: 400px}
 #umtab { line-height: 30px; height: 30px; font-size: 13px; margin:0; padding: 0}
 #umtab li { float: left; margin:0  }
-#umtab li a { text-decoration: none; display: block; min-width: 120px; text-align: center;
+#umtab li a { text-decoration: none; display: block; min-width: 80px; text-align: center;
 padding: 0 5px; background: #eee; border: 1px solid #ccc; border-bottom: none; margin: 0  10px 0 0; }
 #umtab li a.active { background: #fff; }
 #umtab li.span { min-width: 40%; }
 .umtab.hide { display: none; }
+
+#wp-admin-bar-dsn  span.dsn-icon { width:20px; height: 22px; margin: 8px 2px 0 0; 
+background: url(http://us.dibiakcom.net/wp/wp-content/themes/um-bp/prop/dsn-logo.png) top left no-repeat; display: block; float: left;}

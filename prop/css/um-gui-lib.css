@@ -5,10 +5,14 @@
 
 .um-dark-overlay{ height: 100%; width: 100%; background-color: rgba(0,0,0,.9); position: fixed; top:0; z-index: 990; }
 .um-overlay-fx { color: #fff; font-size: 1.5em; }
+
 .um-off-canvas-left { position: fixed; top: 0; left: -24.75%; width: 25%; }
 .pined-left, .um-off-canvas-left:hover { position: fixed; top: 0; left: 0; width: 25%; }
 .canvas-adjust-left  { transition: .5s; -webkit-transition: .5s; margin-left: 26% !important; overflow: hidden; }
-.canvas-adjust-right { transition: .5s; -webkit-transition: .5s; margin-right: 26% !important; overflow: hidden; }
+
+.um-off-canvas-right { position: fixed; top: 0; left: 99%; width: 25%; }
+.pined-right, .um-off-canvas-right:hover { position: fixed; top: 0; left: 100%; width: 25%; margin-left: -25%; }
+.canvas-adjust-right { transition: .5s; -webkit-transition: .5s; overflow: hidden; }
 
 
 /* ajax um-login */

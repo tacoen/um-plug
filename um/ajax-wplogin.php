@@ -38,7 +38,7 @@ function um_ajaxlogin_scripts() {
 	wp_enqueue_script('um-login',UMPLUG_URL . 'prop/js/um-login.js',array('um-gui-lib'),um_ver(),true);
 	wp_localize_script('um-login','um_login_object',array(
 			'ajaxurl'=> admin_url('admin-ajax.php'),
-			'redirecturl'=> home_url(),
+			'redirecturl'=> um_getoption('ajredir'),
 			'loadingmessage'=> __('Please wait...','um')
 	));
 }

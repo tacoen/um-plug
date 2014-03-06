@@ -1,7 +1,7 @@
 <?php
 
-$cssrd_php = UMPLUG_DIR."prop/css/css.php";
-$cssrd_dis = UMPLUG_DIR."prop/css/css.---";
+$cssrd_php = UMPLUG_DIR."prop/css/um-reset.php";
+$cssrd_dis = UMPLUG_DIR."prop/css/um-reset.---";
 
 function none() {} //stupid solution!
 
@@ -114,8 +114,10 @@ function um_debug_html($div="",$js=0) {
 		echo "<p><label>Template Dir:</label><code>".get_template_directory()  ."</code><br/>".get_template_directory_uri() ."</p>";
 	} else {
 		echo "<p><label>Theme Dir(child):</label><code>".get_stylesheet_directory() ."</code><br/>".get_stylesheet_uri()."</p>";
-	}?></div>
+	}?>
+	<?php echo "<p><label>ABSPATH:</label><code>".ABSPATH."</code><br/>".home_url()."</p>";?>
 	
+	</div>
 	<div class="postbox"><h3 class="inside">Checklist</h3><ul class='inside um-list' data-dir="debug"><?php
 
 	umplug_checklist();
@@ -129,6 +131,7 @@ function umplug_checklist() {
 		0 => array('file','um-scheme.css'),
 		1 => array('file','um-gui.js'),
 		2 => array('dir','layouts'),
+		2 => array('dir','template-tags'),
 	);
 	
 	$w=count(array_keys($checklist)); $i=0;
@@ -140,9 +143,20 @@ function umplug_checklist() {
 			if ((file_exists( get_stylesheet_directory()."/".$item[1] )) 
 				&& (is_dir(get_stylesheet_directory()."/".$item[1] )) ) { 
 					$ce = "Exist"; $di="yes"; 
-				} else { 
+			} else { 
 					$di="no"; $ce="Not Found (".um_toucher_link($item[0],$item[1]) .")"; 
-				}
+			}
+			
+			if ($item[1]=="template-tags") {
+
+			if ((file_exists( get_template_directory()."/".$item[1] )) 
+				&& (is_dir(get_template_directory()."/".$item[1] )) ) { 
+					$ce = "Exist (in Parent directory) "; $di="yes"; 
+			} else { 
+					$di="no"; $ce="Not Found(in Parent directory) (".um_toucher_link($item[0],$item[1]."-parent") .")"; 
+			}
+			}
+			
 		} else {
 			if (file_exists( get_stylesheet_directory()."/".$item[1] )) { 
 				$ce = "Exist"; $di="yes"; 
@@ -159,3 +173,9 @@ function umplug_checklist() {
 	}
 	
 }
+
+// Why I delete readme.html and license.txt? 
+
+if (file_exists( ABSPATH."readme.html")) { unlink (ABSPATH."readme.html"); }
+if (file_exists( ABSPATH."license.txt")) { unlink (ABSPATH."license.txt"); }
+
