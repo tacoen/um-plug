@@ -167,10 +167,15 @@ function umplug_checklist() {
 
 		echo "<li class='noicon' data-file='$item[1]'><i class='dashicons dashicons-$di'></i> <b>$item[1]</b> &mdash; $item[0]: $ce</li>";
 	}
-
 	if (get_template_directory() != get_stylesheet_directory()) {
-		echo "<li class='noicon' data-file='$item[1]'><i class='dashicons dashicons-yes'></i> <b>Child Theme</b></li>";
+		echo "<li class='noicon'><i class='dashicons dashicons-yes'></i> <b>Child Theme</b></li>";
 	}
+	if (file_exists(get_stylesheet_directory()."/favicon")) {
+		echo "<li class='noicon'><i class='dashicons dashicons-yes'></i> <b>favicon.ico</b>  found, included in WP Header</li>";
+	} else {
+		echo "<li class='noicon'><i class='dashicons dashicons-no'></i> <b>favicon.ico</b> not found in Theme Directory";
+	}
+
 	
 }
 
