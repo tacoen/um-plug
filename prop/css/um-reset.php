@@ -1,23 +1,26 @@
 <?php 
-
 require("build/heredoc.php");
 header("content-type: text/css; charset: UTF-8");
-$css = "/**\n * undressme - reset.css\n * Rev. ".date('Ymd.H')."\n *\n */\n";
+$css = "/**\n * um - reset.css\n * Rev. ".date('Ymd.H')."\n *\n */\n";
 $css .= css_include("build/necolas-normalize.css",1);
+$css .= css_include("build/tacoen-reset-ui.css",1);
 $css .= css_include("build/wp-reset.css",1);
-$css .= css_include("build/underscore.css",1);
-$css .="/* heredoc method */\n";
+$css .= "/* heredoc */\n";
 $css .= css_compress( heredocs(),1)."\n";
 $css .= css_include("build/style.css",1);
+$css .= css_include("build/underscore.css",1);
 
 file_put_contents("um-reset.css",$css); 
+
 
 echo $css;
 
 exit;
 
 function css_include($f,$c=1) {
-	return "\n/* $f */\n".css_compress(file_get_contents($f),$c)."\n";
+	if (file_exists($f)) {
+		return "\n/* $f */\n".css_compress(file_get_contents($f),$c)."\n";
+	}
 }
 
 function css_compress($buffer,$readable=0) {

@@ -6,6 +6,8 @@ function um_getlogout() {
 
 jQuery(document).ready(function($) {
 
+	var autologin = document.URL.split('#')[1]
+	
     $('a#show_login').on('click', function(e){ e.preventDefault(); um_loginoverlay($('form#um-login')); });
 
 	var logout_url = $('div.um_login_div a.logout').attr('href');
@@ -21,6 +23,8 @@ jQuery(document).ready(function($) {
 		//console.log(logout_url);
 		$('.menu-item a[href="#logout"]').on('click', function(e) { e.preventDefault(); document.location.href = logout_url; });
 	}
+
+	if ( autologin == "wplogin") { um_loginoverlay($('form#um-login')); }
 
 	//console.log(um_login_object.redirecturl);	
     $('form#um-login').on('submit', function(e){

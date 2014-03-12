@@ -49,8 +49,8 @@ function um_foda_callback() {
 	} else { $txt=''; }
 
 	if ($foda['d']== 'chunk') { um_chunks_html($txt,1); }
-	if ($foda['d']== 'debug') { um_debug_html($txt,1); }
-						 else { um_toucher_html($txt,1); }
+	else if ($foda['d']== 'debug') { um_debug_html($txt,1); }
+	else { um_toucher_html($txt,1); }
 	
 	die(); // ajax call ended
 	

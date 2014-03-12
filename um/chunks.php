@@ -67,8 +67,9 @@ function um_textedit($title,$file) {?>
 	</script>
 <?php }
 
-function um_chunk_insert($file) {
-	$file=get_stylesheet_directory()."/chunks/".$file.".txt";
+function um_chunk_insert($f) {
+
+	$file=get_stylesheet_directory()."/chunks/".$f.".txt";
 	return join ("",file($file,FILE_SKIP_EMPTY_LINES));
 }
 
@@ -105,7 +106,7 @@ function um_chunks_html($div="",$js=0) {
 			echo "<strong><a href='#' data-act='edit'>$fn[0]</a></strong>";
 			echo "<span class='last'><a href='#' class='del' data-act='del'><i class='dashicons-no um-dashicons'></i></a></span>";
 			echo "<span><small>".date('d-m-Y H:i',filemtime($c))."</small></span>";
-			echo "<span class='shortcode'>[chunk file:$fn[0]]</span>";
+			echo "<span class='shortcode'>[chunk file=$fn[0]]</span>";
 			echo "<span class='shortcode php'>um_chunk(\"$fn[0]\"); </span>";
 			echo "<div class='view'><small>$sniff</small></div>";
 		echo "</li>";

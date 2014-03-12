@@ -20,8 +20,8 @@
 div.um_login_div {
 	position: fixed; top: 100%; margin-top: -25px; left: 100%; margin-left: -100px;
 	height: 24px; line-height: 24px;
-	background: #333;
-	width: 60px; text-align: center;
+	background: #333; z-index: 9999;
+	width: 80px; text-align: center;
 }
 
 div.um_login_div a { display: block; color: #fff; height: 24px; line-height: 24px; font-size: 12px; }

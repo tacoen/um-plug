@@ -80,7 +80,7 @@ function filesystem_init($key='um_textedit') {
 function um_file_putcontents($filename,$txt) {
 	global $wp_filesystem;
 	filesystem_init();
-	$wp_filesystem->put_contents($filename,$txt,FS_CHMOD_FILE);
+	$wp_filesystem->put_contents($filename,stripslashes($txt),FS_CHMOD_FILE);
 	#file_put_contents($filename,$txt);	
 }
 
@@ -92,7 +92,8 @@ function um_file_getcontents($filename,$nonce="") {
 	#filesystem_init();
 	#return $wp_filesystem->get_contents($filename);
 	#return file_get_contents($filename);
-	return join("",file($filename));
+	$txt = join("",file($filename));
+	return stripslashes($txt);
 }
 
 function um_add_pagetemplate($n,$f) {
