@@ -23,7 +23,6 @@ function is_inc($a) {
 
 }
 
-
 function um_rewrites() {
 
 	global $wp_rewrite;
