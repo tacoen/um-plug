@@ -22,7 +22,7 @@ function umtag($func,$args=array()) {
 	}
 }
 
-function um_ver() { return "1.1-nr"; }
+function um_ver() { return "1.2-nr"; }
 
 function um_tool_which($file) {
 	if (file_exists(get_stylesheet_directory()."/".$file)) {
