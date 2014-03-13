@@ -3,7 +3,7 @@ function safephpNameof(name) { name.replace(/\.php/g, ''); name.replace(/\W/g, '
 function safetxtNameof(name) { name.replace(/\.txt/g, ''); name.replace(/\W/g, ''); return name+".txt"; }
 
 function umtab () {
-	jQuery('.maketab h3').each( function(i) {
+	jQuery('.maketab h3').each(function(i) {
 		$this = jQuery(this);
 		$tab = jQuery('#umtab'); act = '';
 		title = $this.text(); safeid = title.replace(/[\s|\W]/g,''); 
@@ -16,7 +16,7 @@ function umtab () {
 }
 
 function umtab_init() {
-	jQuery('#umtab a').click( function(e) {
+	jQuery('#umtab a').click(function(e) {
 		e.preventDefault(); $this = jQuery(this); $this.addClass('active');
 		target = $this.attr('href'); tab = jQuery(target)
 		tab.show();
@@ -29,10 +29,10 @@ function umtab_init() {
 function umeditor_init(obj) {
 //	console.log('umeditor_init');
 
-	var $umdiv   = jQuery(obj);
-	jQuery('.um-editor textarea').height ( jQuery(window).innerHeight()-300 );
+	var $umdiv = jQuery(obj);
+	jQuery('.um-editor textarea').height (jQuery(window).innerHeight()-300);
 
-	jQuery('.um-editor #submit').click( function(e) {
+	jQuery('.um-editor #submit').click(function(e) {
 		e.preventDefault();
 		var fodavar = {
 		'f':jQuery('.um-editor textarea').data('file'),
@@ -47,9 +47,9 @@ function umeditor_init(obj) {
 
 function umlist_function_init(obj) {
 
-	var $umdiv   = jQuery(obj);
+	var $umdiv = jQuery(obj);
 
-	jQuery('.um-list li a').click( function(e) {
+	jQuery('.um-list li a').click(function(e) {
 		e.preventDefault();
 		var fodavar = {
 		'f':jQuery(this).parents('li').data('file'),
@@ -63,18 +63,18 @@ function umlist_function_init(obj) {
 		jQuery.post(ajaxurl, { action: 'foda', v: fodavar }, function(res) { $umdiv.html(res); });
 	})
 
-	jQuery('button.nchunk').click ( function(e) {
+	jQuery('button.nchunk').click (function(e) {
 		e.preventDefault();
 		var fodavar = {
-			'f': safetxtNameof ( jQuery('#new_chunk').val() ),
+			'f': safetxtNameof (jQuery('#new_chunk').val()),
 			'a': 'touch',
 			'd': 'chunk',
 		}
-		console.log( fodavar['a'], fodavar['d'], fodavar['f'] );
-		jQuery.post( ajaxurl, { action: 'foda', v: fodavar }, function(res) { $umdiv.html(res); });
+		console.log(fodavar['a'], fodavar['d'], fodavar['f']);
+		jQuery.post(ajaxurl, { action: 'foda', v: fodavar }, function(res) { $umdiv.html(res); });
 	});
 
-	jQuery('button.touch').click ( function(e) {
+	jQuery('button.touch').click (function(e) {
 		e.preventDefault();
 		var fodavar = {
 			'f': jQuery('div.udtmd #undressme-tm-file').val(),
@@ -82,10 +82,10 @@ function umlist_function_init(obj) {
 			'd': jQuery('div.udtmd #undressme-tm-file').data('d')
 		}
 
-		jQuery.post( ajaxurl, { action: 'foda', v: fodavar }, function(res) { $umdiv.html(res); });
+		jQuery.post(ajaxurl, { action: 'foda', v: fodavar }, function(res) { $umdiv.html(res); });
 	});
 
-	jQuery('button.ptouch').click ( function(e) {
+	jQuery('button.ptouch').click (function(e) {
 		e.preventDefault();
 		var fodavar = {
 			'f': safephpNameof(jQuery('div.udptf input[type=text]').val()),
@@ -93,7 +93,7 @@ function umlist_function_init(obj) {
 			'd': jQuery('div.udptf input[type=text]').data('d')
 		}
 		//console.log (fodavar['f'],fodavar['a'],fodavar['d']);
-		jQuery.post( ajaxurl, { action: 'foda', v: fodavar }, function(res) { $umdiv.html(res); });
+		jQuery.post(ajaxurl, { action: 'foda', v: fodavar }, function(res) { $umdiv.html(res); });
 	});
 }
 

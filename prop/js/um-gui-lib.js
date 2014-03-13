@@ -1,10 +1,10 @@
 function um_overlay_badge_fx() {
-	jQuery('.um-badge').each( function(e) {
+	jQuery('.um-badge').each(function(e) {
 		w = jQuery(this).width(); if (w<40) { w = 40;jQuery(this).width(w) }
 		x = jQuery(this).parent().outerWidth()-w-5;
 		y = -42;
 
-		jQuery(this).css( {
+		jQuery(this).css({
 			'margin' : 0,
 			'padding' : 0,
 			'top' : y,
@@ -15,17 +15,17 @@ function um_overlay_badge_fx() {
 }
 
 function um_loginoverlay(obj) {
-        jQuery('body').prepend('<div class="um-dark-overlay"></div>');
+ jQuery('body').prepend('<div class="um-dark-overlay"></div>');
 		um_overlay_badge_fx();
-        obj.fadeIn(250);
-        jQuery('div.login_overlay, form#um-login a.close').on('click', function(){
-            jQuery('div.login_overlay').remove(); obj.hide();
-        });
+ obj.fadeIn(250);
+ jQuery('div.login_overlay, form#um-login a.close').on('click', function(){
+ jQuery('div.login_overlay').remove(); obj.hide();
+ });
 		
 		title = obj.children('h1'); $title = title.html(); 
 		//title.remove();
 		title.toggleClass("um-overlay-fx");
-		title.css( { 
+		title.css({ 
 			'margin' : 0,
 			'padding' : 0,
 			'top' : -42,
@@ -35,21 +35,21 @@ function um_loginoverlay(obj) {
 }
 
 function um_hexToRgb(hex) {
-    var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
-    hex = hex.replace(shorthandRegex, function(m, r, g, b) {
-        return r + r + g + g + b + b;
-    });
+ var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+ hex = hex.replace(shorthandRegex, function(m, r, g, b) {
+ return r + r + g + g + b + b;
+ });
 
-    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-    return result ? {
-        r: parseInt(result[1], 16),
-        g: parseInt(result[2], 16),
-        b: parseInt(result[3], 16)
-    } : null;
+ var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+ return result ? {
+ r: parseInt(result[1], 16),
+ g: parseInt(result[2], 16),
+ b: parseInt(result[3], 16)
+ } : null;
 }
 
 function um_rgbToHex(rgb) {
-    return "#" + ((1 << 24) + (rgb['r'] << 16) + (rgb['g'] << 8) + rgb['b']).toString(16).slice(1);
+ return "#" + ((1 << 24) + (rgb['r'] << 16) + (rgb['g'] << 8) + rgb['b']).toString(16).slice(1);
 }
 
 function um_modcolor(rgb,n) {
@@ -62,7 +62,7 @@ function um_modcolor(rgb,n) {
 function get_elementColor(id,what) {
 	var rgba = id.css(what); 
 	if((typeof rgba != 'undefined') && (rgba != "rgba(0, 0, 0, 0)")) {
-		if ( rgba.split("(")[0] == "rgba") {
+		if (rgba.split("(")[0] == "rgba") {
 			//console.log("rgba="+rgba+"//");
 			rgba = rgba.match(/^rgba\((\d+),\s*(\d+),\s*(\d+),\s*(.+)\)$/);
 			//console.log(rgba);

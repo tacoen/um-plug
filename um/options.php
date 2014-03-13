@@ -14,6 +14,7 @@ function umo_args() {
 				'umcss'	=> array ('check','CSS','Use um-reset.css',''),
 				'umgui'	=> array ('check','JS','Load um-gui JS Libraries <small> &mdash; um-gui-lib.js</small>',''),
 				'urlrw'	=> array ('check','URL Rewrite','Use ShortURL for resources',''),
+				'owncdn'=> array ('check','Alter CDN','Use your own CDN resources (cdn.php)',''),
 			),
 		),
 		'ttag'=> array(

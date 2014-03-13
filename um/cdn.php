@@ -3,13 +3,15 @@
  * @package um
  */
 
-add_action('wp_enqueue_scripts','um_register_cdn_scripts');
-add_action('wp_enqueue_scripts','um_register_cdn_styles');
-add_action('admin_print_styles','um_register_cdn_styles');
-add_action('login_enqueue_scripts','um_register_cdn_styles'); //not working
-add_action('customize_controls_print_styles','um_register_cdn_styles');
-
-add_action('after_setup_theme','cdn_takeover');
+if (um_getoption('owncdn')) {
+ 	add_action('wp_enqueue_scripts','um_register_cdn_scripts');
+	add_action('wp_enqueue_scripts','um_register_cdn_styles');
+	add_action('admin_print_styles','um_register_cdn_styles');
+	add_action('login_enqueue_scripts','um_register_cdn_styles'); //not working?
+	add_action('customize_controls_print_styles','um_register_cdn_styles');
+	// if you copies the stucture of google cdn
+	add_action('after_setup_theme','cdn_takeover');
+}
 
 /* there is no options for this in wp-admin, you might need to edit it manually */
 
@@ -21,8 +23,6 @@ function um_register_cdn_styles() {
 	wp_register_style('open-sans',"http://cdn.dibiakcom.net/font/opensans/style.css",false,'3.8.1','all');
 	wp_enqueue_style('open-sans');
 }
-
-
 
 function um_register_cdn_scripts() {
 
@@ -45,6 +45,6 @@ function cdn_takeover() {
 
 function cdn_replace($a) { 
 	if (preg_match("#ajax\.googleapis\.com#",$a)) { return str_replace("ajax.googleapis.com","cdn.dibiakcom.net",$a);} 
-	else { return $a;  }	
+	else { return $a; }	
 }
 

@@ -22,7 +22,7 @@ function umtag($func,$args=array()) {
 	}
 }
 
-function um_ver() { return "1.2-nr"; }
+function um_ver() { return "0.1.2"; }
 
 function um_tool_which($file) {
 	if (file_exists(get_stylesheet_directory()."/".$file)) {
@@ -81,17 +81,16 @@ function um_file_putcontents($filename,$txt) {
 	global $wp_filesystem;
 	filesystem_init();
 	$wp_filesystem->put_contents($filename,stripslashes($txt),FS_CHMOD_FILE);
-	#file_put_contents($filename,$txt);	
+	// file_put_contents($filename,$txt);	
 }
 
 function um_file_getcontents($filename,$nonce="") {
-	#
-	# how wp_filesystem work????
-	#
-	#global $wp_filesystem;
-	#filesystem_init();
-	#return $wp_filesystem->get_contents($filename);
-	#return file_get_contents($filename);
+	/*
+	 * global $wp_filesystem;
+	 * filesystem_init();
+	 * return $wp_filesystem->get_contents($filename);
+	 * return file_get_contents($filename);
+	 */
 	$txt = join("",file($filename));
 	return stripslashes($txt);
 }

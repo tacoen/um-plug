@@ -1,18 +1,18 @@
 <?php
 
+function none() {} //stupid solution!
+
 $cssrd_php = UMPLUG_DIR."prop/css/um-reset.php";
 $cssrd_dis = UMPLUG_DIR."prop/css/um-reset.---";
 
-function none() {} //stupid solution!
-
 if (um_getoption('cssrd')) {
-	if (!file_exists($cssrd_php)) { rename ($cssrd_dis, $cssrd_php); }
+	if (!file_exists($cssrd_php)) { rename($cssrd_dis, $cssrd_php); }
 } else {
 	if (!file_exists($cssrd_dis)) { rename($cssrd_php, $cssrd_dis); }
 }
 
 if (um_getoption('nodash')) { add_action('wp_dashboard_setup','um_nodashboard_widgets'); }
-if (um_getoption('nowphead')) { add_action('after_setup_theme' ,'um_wpheadtrim'		); }
+if (um_getoption('nowphead')) { add_action('after_setup_theme' ,'um_wpheadtrim'); }
 if (um_getoption('wdtma')) { add_action('widgets_init','um_elwidgets_init'); }
 if (um_getoption('pback')) { add_action('wp_head','um_pingback'); }
 
@@ -171,7 +171,7 @@ function umplug_checklist() {
 		echo "<li class='noicon'><i class='dashicons dashicons-yes'></i> <b>Child Theme</b></li>";
 	}
 	if (file_exists(get_stylesheet_directory()."/favicon")) {
-		echo "<li class='noicon'><i class='dashicons dashicons-yes'></i> <b>favicon.ico</b>  found, included in WP Header</li>";
+		echo "<li class='noicon'><i class='dashicons dashicons-yes'></i> <b>favicon.ico</b> found, included in WP Header</li>";
 	} else {
 		echo "<li class='noicon'><i class='dashicons dashicons-no'></i> <b>favicon.ico</b> not found in Theme Directory";
 	}
