@@ -1,7 +1,6 @@
 UM-Plug
 =======
-
-UM Plug, Functions of UM Theme
+UM Themes core and tool kits, a Wordpress developer Toolkit for creating/ maintaining/ optimizing a theme.
 
 
 Log-Note

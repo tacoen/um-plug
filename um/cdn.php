@@ -44,7 +44,8 @@ function cdn_takeover() {
 }
 
 function cdn_replace($a) { 
-	if (preg_match("#ajax\.googleapis\.com#",$a)) { return str_replace("ajax.googleapis.com","cdn.dibiakcom.net",$a);} 
+	$mycdn = "cdn.dibiakcom.net";
+	if (preg_match("#ajax\.googleapis\.com#",$a)) { return str_replace("ajax.googleapis.com",$mycdn,$a);} 
 	else { return $a; }	
 }
 

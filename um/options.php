@@ -10,11 +10,11 @@ function umo_args() {
 			'text'=> 'Custom Options',
 			'note'	=> 'Options that featuring you.',
 			'field'	=> array(
-				'nodash'=> array ('check','Dashboard','Remove NewsFeed from Dashboard',''),
-				'umcss'	=> array ('check','CSS','Use um-reset.css',''),
-				'umgui'	=> array ('check','JS','Load um-gui JS Libraries <small> &mdash; um-gui-lib.js</small>',''),
-				'urlrw'	=> array ('check','URL Rewrite','Use ShortURL for resources',''),
 				'owncdn'=> array ('check','Alter CDN','Use your own CDN resources (cdn.php)',''),
+				'umcss'	=> array ('check','UM-reset','Makes browsers render all elements more consistently and in line with modern standards.<br/><small>Warning! might render your working theme differently.</small>',''),
+				'umgui'	=> array ('check','UM-gui-lib','Load um-gui jQuery Libraries for FX and layout fix.',''),
+				'urlrw'	=> array ('check','URL Rewrite','Use ShortURL for resources <small>You need to revise permalink after toggling this options</small>',''),
+				'nodash'=> array ('check','Minimize Dashboard Load','Remove NewsFeed and other stuff from WP-Admin Dashboard',''),
 			),
 		),
 		'ttag'=> array(
@@ -22,7 +22,7 @@ function umo_args() {
 			'note'	=> 'Templates Options',
 			'field'	=> array(
 				'umtag'	=> array ('check','Template Tag','Enable dynamic UM Template Tags',''),
-				'nowphead'=> array ('check','WP Header','Remove unnecessary code from header',''),
+				'nowphead'=> array ('check','Minimize WP Header','Remove unnecessary code from header',''),
 				'wdtma'	=> array ('number','Widget','How Many Dynamic Widget',''),
 				'pback'	=> array ('check','Pingback','Allow Pingback',''),
 			)
@@ -32,9 +32,10 @@ function umo_args() {
 			'note'	=> 'Javascript & Cascading Style Sheet',
 			'field'	=> array(
 				'layout'=> array ('selectfile','Layout','Layout Selections',get_stylesheet_directory()."/layouts"),
-				'cssrd'	=> array ('check','Edit CSS Reset','Still Evaluate um-reset.css<small> &mdash; um-reset.php</small>',''),
-				'ajaxwpl'=> array ('check','WP-Login','Use Ajax WP-Login <small> &mdash; require: um-gui-lib.js</small>',''),
-				'ajredir'=> array ('text','WP-Login Redirect','','30'),
+				'cssrd'	=> array ('check','UM-reset.php','Evaluate um-reset.css <small>(Regenerate um-reset.css)</small>',''),
+				'schcss'=> array ('check','UM-scheme.css','Use customable colour schemes',''),
+				'ajaxwpl'=> array ('check','UM-login.js','Use Ajax WP-Login <small> &mdash; require: um-gui-lib.js</small>',''),
+				'ajredir'=> array ('text','UM Login Redirect','<br><small>Relative Path will be nice<small>','30'),
 			)
 		),
 		'umrw'=> array(

@@ -22,7 +22,7 @@ function umtag($func,$args=array()) {
 	}
 }
 
-function um_ver() { return "0.1.2"; }
+function um_ver() { return "0.1.3"; }
 
 function um_tool_which($file) {
 	if (file_exists(get_stylesheet_directory()."/".$file)) {
@@ -106,7 +106,9 @@ function um_new_umguijs() {
 }
 
 function um_new_umschemecss() {
-	um_file_putcontents(get_stylesheet_directory()."/um-scheme.css","h1,h2,.um-title { color: #2D3E50/*um-title*/ ; }\n\rbody,.um-text { color: #5d6d7d/*um-text*/ ; }\n\r.um-page { color: #fcfcfc/*um-page*/ ; }\n\r#um-crumbs a, #um-crumbs,.um-line { color: #95a5a6/*um-line*/ ; }\n\r.um-hot { color: #C54134/*um-hot*/ ; }\n\r.um-confirm { color: #16A086/*um-confirm*/ ; }\n\r.um-cool { color: #5DADE2/*um-cool*/ ; }\n\r.um-prompt { color: #F39C11/*um-prompt*/ ; }\n\ra,.um-link { color: #111111/*um-link*/ ; }\n\r\n\r");
+	$scheme_css = um_file_getcontents(UMPLUG_DIR."/prop/css/um-scheme-default.css");
+	/* format it?*/
+	um_file_putcontents(get_stylesheet_directory()."/um-scheme.css",$scheme_css);
 	return get_stylesheet_directory()."/um-scheme.css";
 }
 

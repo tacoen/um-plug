@@ -55,10 +55,15 @@ function um_register_styles() {
 	if (um_getoption('umgui')) {
 		wp_enqueue_style('um-gui', UMPLUG_URL . 'prop/css/um-gui-lib.css',$dep,um_ver(),'all');
 	}
+
 	
 	if (!is_admin()) { // not avaliable in customize
-		wp_enqueue_style(get_template().'-scheme',um_tool_which('um-scheme.css'),$dep,um_ver(),'all');
-		wp_register_style(get_template().'-style',get_stylesheet_uri(),array(get_template().'-scheme',),um_ver(),'all');
+		if (um_getoption('schcss')) {
+			wp_enqueue_style(get_template().'-scheme',um_tool_which('um-scheme.css'),$dep,um_ver(),'all');
+			wp_register_style(get_template().'-style',get_stylesheet_uri(),array(get_template().'-scheme',),um_ver(),'all');
+		} else {
+			wp_register_style(get_template().'-style',get_stylesheet_uri(),$dep,um_ver(),'all');
+		}
 	} else {
 		wp_register_style(get_template().'-style',get_stylesheet_uri(),$dep,um_ver(),'all');
 	}
