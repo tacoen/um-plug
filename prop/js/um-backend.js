@@ -3,7 +3,7 @@ function safephpNameof(name) { name.replace(/\.php/g, ''); name.replace(/\W/g, '
 function safetxtNameof(name) { name.replace(/\.txt/g, ''); name.replace(/\W/g, ''); return name+".txt"; }
 
 function umtab () {
-	jQuery('.maketab h3').each(function(i) {
+	jQuery('.maketab > div > h3').each(function(i) {
 		$this = jQuery(this);
 		$tab = jQuery('#umtab'); act = '';
 		title = $this.text(); safeid = title.replace(/[\s|\W]/g,'');

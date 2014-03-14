@@ -8,14 +8,10 @@ $css .= css_include("build/wp-reset.css",1);
 $css .= "/* heredoc */\n";
 $css .= css_compress( heredocs(),1)."\n";
 $css .= css_include("build/style.css",1);
-$css .= css_include("build/underscore.css",1);
-$css .= css_include("build/wp-device.css",1);
+$css .= css_include("build/navmenus.css",1);
 
 file_put_contents("um-reset.css",css_compress($css,0)); 
-
-
 echo $css;
-
 exit;
 
 function css_include($f,$c=1) {

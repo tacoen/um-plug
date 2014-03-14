@@ -10,8 +10,6 @@ function is_inc($a) {
 	$um_url = um_urlrewrite_is(); $count = count(array_keys($um_url));$n=0;
 	if (preg_match("#".admin_url()."#",$a)) {
 		return $a; 
-	} else if (preg_match("#ajax\.googleapis\.com#",$a)) {
-		return str_replace("ajax.googleapis.com","cdn.dibiakcom.net",$a);
 	} else {
 		if (preg_match("#".home_url()."#",$a)) { 
 			for ($n; $n < $count; $n++) {
@@ -20,6 +18,7 @@ function is_inc($a) {
 		} else { return $a; }
 	}	
 }
+
 function um_rewrites() {
 	global $wp_rewrite;
 	$um_url = um_urlrewrite_is(); $count = count(array_keys($um_url));$n=0;

@@ -21,7 +21,7 @@ function umtag($func,$args=array()) {
 		echo "<!-- umtag: disable --->";
 	}
 }
-function um_ver() { return "0.1.3"; }
+function um_ver() { return "0.1.5"; }
 function um_tool_which($file) {
 	if (file_exists(get_stylesheet_directory()."/".$file)) {
 		return get_stylesheet_directory_uri()."/".$file;

@@ -10,6 +10,7 @@ html .um-dashicons { font: 400 20px/1 dashicons!important; height: 20px; width: 
 .um-list li span.last { padding: 0; margin:0}
 .um-list li:last-child { border-bottom: none; padding-bottom: 0 }
 .um-col2 { width: 48%; float: left; margin-right: 2% }
+.um-readme-section pre,
 .um-col2 pre { white-space:normal !important}
 .um-list a.del { color: #c33; }
 .um-list .icons { color: #ccc; position: absolute; left: 0px; }
@@ -20,7 +21,7 @@ html .um-dashicons { font: 400 20px/1 dashicons!important; height: 20px; width: 
 .um-list span.php:after { color: #f90; content: " ?>"; }
 .um-list span.shortcode { width: 20%; text-align: center; }
 html #toplevel_page_undressme a.menu-top .dashicons:before { color: #fc3; !important;
- -webkit-transform: scale(1.2); transform: scale(1.2); }
+-webkit-transform: scale(1.2); transform: scale(1.2); }
 html #toplevel_page_undressme a:hover.menu-top .dashicons:before { 
 -webkit-transform: scale(1.3); transform: scale(1.3); -webkit-transition: width 2s; transition: width 2s; }
 
@@ -39,10 +40,9 @@ padding: 0 5px; background: #eee; border: 1px solid #ccc; border-bottom: none; m
 #umtab li.span { min-width: 40%; }
 .umtab.hide { display: none; }
 
-.picto { background: url('../doc/um-picto.png') top left no-repeat; width: 470px; height: 358px; }
+.picto { background: url('../doc/um-picto.png') top left no-repeat; width: 470px; height: 358px;  margin-left: 20px; }
 
+.um-readme-section { line-height: 1.2em; }
+.um-readme h4 { color: #c11}
 /* You might not need this: */
-
-#wp-admin-bar-dsn  span.dsn-icon { width:20px; height: 22px; margin: 8px 2px 0 0; 
-background: url(http://us.dibiakcom.net/wp/wp-content/themes/um-bp/prop/dsn-logo.png) top left no-repeat; display: block; float: left;}
 

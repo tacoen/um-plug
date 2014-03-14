@@ -13,7 +13,6 @@ function umo_args() {
 				'owncdn'=> array ('check','Alter CDN','Use your own CDN resources (cdn.php)',''),
 				'umcss'	=> array ('check','UM-reset','Makes browsers render all elements more consistently and in line with modern standards.<br/><small>Warning! might render your working theme differently.</small>',''),
 				'umgui'	=> array ('check','UM-gui-lib','Load um-gui jQuery Libraries for FX and layout fix.',''),
-				'urlrw'	=> array ('check','URL Rewrite','Use ShortURL for resources <small>You need to revise permalink after toggling this options</small>',''),
 				'nodash'=> array ('check','Minimize Dashboard Load','Remove NewsFeed and other stuff from WP-Admin Dashboard',''),
 			),
 		),
@@ -42,10 +41,11 @@ function umo_args() {
 			'text'=> 'URL Rewrites',
 			'note'	=> 'Please <a href="options-permalink.php">revise your permalink</a> after you make changes',
 			'field'	=> array(
-				'wpinc'	=> array ('text','Use',' for WP-Includes URL','8'),
-				'wplug'	=> array ('text','Use',' for Plugins URL','8'),
-				'style'	=> array ('text','Use',' for Style sheet/Child URL','8'),
-				'templ'	=> array ('text','Use',' for Template/Parent URL','8'),
+				'urlrw'	=> array ('check','URL Rewrite','Use ShortURL for resources',''),
+				'wpinc'	=> array ('text','WP Includes','','8'),
+				'wplug'	=> array ('text','Plugins','','8'),
+				'templ'	=> array ('text','Template(Parent)','','8'),
+				'style'	=> array ('text','Stylesheet(Child)','','8'),
 			)
 		)
 	);

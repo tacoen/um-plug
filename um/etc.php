@@ -14,6 +14,7 @@ if (um_getoption('wdtma')) { add_action('widgets_init','um_elwidgets_init'); }
 if (um_getoption('pback')) { add_action('wp_head','um_pingback'); }
 if (file_exists(get_stylesheet_directory()."/favicon.ico")) { add_action('wp_head','um_favicon'); }
 add_filter('admin_footer_text','um_footeradmin');
+
 function um_nodashboard_widgets() {
 	global $wp_meta_boxes;
 	unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_incoming_links']);
@@ -28,7 +29,7 @@ function um_nodashboard_widgets() {
 	//unset($wp_meta_boxes['dashboard']['side']['high']['dashboard_browsernag']);
 }
 function um_favicon() { echo '<link rel="shortcut icon" type="image/x-icon" href="' .get_stylesheet_directory_uri(). '/favicon.ico" />' . "\n"; }
-function um_pingback() { echo '<link rel="pingback" href="http://wp.s.dibiakcom.net/xmlrpc.php">' . "\n"; }
+function um_pingback() { echo '<link rel="pingback" href="'.site_url().'/xmlrpc.php">' . "\n"; }
 function um_wpheadtrim() {
 	remove_action('wp_head','wlwmanifest_link');
 	remove_action('wp_head','rsd_link');
@@ -53,30 +54,37 @@ function um_elwidgets_init() {
 	}
 }
 function um_readme_html() {?>
-	<div class="um-col2"><?php
+	<div class="um-readme">
+	<ul id="umtab"><li class="span">&nbsp;</li></ul>
+	<div class="maketab">
+	<div><h3 class="tab">About UM-PLUG</h3><?php
 	if (file_exists(UMPLUG_DIR."prop/doc/readme.html")) {
 		echo um_file_getcontents(UMPLUG_DIR."prop/doc/readme.html");
 	} else {
-		echo "Well, Undress me /prop/doc/readme.html is missing. It suppose to tell that you can <a href='/wp-admin/customize.php'>customize your theme</a>.";
-	}?>
-	</div>
-	<div class="um-col2"><div class="postbox"><div class="inside"><?php
+		echo "Well, UM /prop/doc/readme.html is missing. It suppose to tell that you can <a href='/wp-admin/customize.php'>customize your theme</a>.";
+	}?></div>
+
+	<div><h3 class="tab">Readme</h3><?php
 	if (file_exists(get_stylesheet_directory()."/readme.txt")) {
 		echo "<pre><h3>".wp_get_theme()." - readme.txt</h3>".um_file_getcontents(get_stylesheet_directory()."/readme.txt")."</pre>";
 	} else {
 		echo "Well, child theme readme.txt is missing or there is no activated child theme.";
-	} ?></div></div>
-	<?php	if (file_exists(UMPLUG_DIR."prop/doc/feat.html")) {
+	} ?></div>
+
+	<div><h3 class="tab">Credits</h3><?php
+	if (file_exists(UMPLUG_DIR."prop/doc/feat.html")) {
 		echo um_file_getcontents(UMPLUG_DIR."prop/doc/feat.html");
 	} else {
-		echo "Well, Undress me /prop/doc/feat.html is missing.";
+		echo "Well, UM /prop/doc/feat.html is missing.";
 	}?></div>
-	<div id="toucher"><?php
-	if(get_stylesheet_directory() == UMPLUG_DIR) {
-		echo "<strong class='warn'>Do not use Undress Me as active theme!</strong> Please create a child theme then activate it, till then some options were disable.";		
-	}?>
-	</div><?php
+
+	</div>
+	
+	<h5>UM-Plug Ver. <?php echo um_ver(); ?></h5>
+	
+	<?php
 }
+
 function um_footeradmin () { 
 	$credit = array(
 		'Actualy <a href="http://www.wordpress.org">WordPress</a>, instead <a href="http://tacoen.github.io/UndressMe">UM</a>',
@@ -114,18 +122,23 @@ function umplug_checklist() {
 		0 => array('file','um-scheme.css'),
 		1 => array('file','um-gui.js'),
 		2 => array('dir','layouts'),
-		2 => array('dir','template-tags'),
+		3 => array('dir','template-tags'),
 	);
 	$w=count(array_keys($checklist)); $i=0;
+
+	if (get_template_directory() != get_stylesheet_directory()) {
+		echo "<li class='noicon'><i class='dashicons dashicons-yes'></i> <b>Child Theme</b></li>";
+	}
+
 	for ($i; $i<$w; $i++) {
 		$item = $checklist[$i];
-		$mc ="";
+		$mc =""; 
 		if ($item[0]=="dir") {
 			if ((file_exists(get_stylesheet_directory()."/".$item[1])) 
 				&& (is_dir(get_stylesheet_directory()."/".$item[1]))) { 
 					$ce = "Exist"; $di="yes"; 
 			} else { 
-					$di="no"; $ce="Not Found (".um_toucher_link($item[0],$item[1]) .")"; 
+					$di="no"; $ce="Not Found (".um_toucher_link($item[0],$item[1]) .") "; 
 			}
 			if ($item[1]=="template-tags") {
 			if ((file_exists(get_template_directory()."/".$item[1])) 
@@ -139,13 +152,10 @@ function umplug_checklist() {
 			if (file_exists(get_stylesheet_directory()."/".$item[1])) { 
 				$ce = "Exist"; $di="yes"; 
 			} else { 
-				$di="no"; $ce="Not Found (".um_toucher_link($item[0],$item[1]) .")"; 
+				$di="no"; $ce="Not Found (".um_toucher_link($item[0],$item[1]) ."  or fall-back to parent)"; 
 			}
 		}
 		echo "<li class='noicon' data-file='$item[1]'><i class='dashicons dashicons-$di'></i> <b>$item[1]</b> &mdash; $item[0]: $ce</li>";
-	}
-	if (get_template_directory() != get_stylesheet_directory()) {
-		echo "<li class='noicon'><i class='dashicons dashicons-yes'></i> <b>Child Theme</b></li>";
 	}
 	if (file_exists(get_stylesheet_directory()."/favicon")) {
 		echo "<li class='noicon'><i class='dashicons dashicons-yes'></i> <b>favicon.ico</b> found, included in WP Header</li>";
@@ -153,6 +163,7 @@ function umplug_checklist() {
 		echo "<li class='noicon'><i class='dashicons dashicons-no'></i> <b>favicon.ico</b> not found in Theme Directory";
 	}
 }
+
 // Why I delete readme.html and license.txt? 
 if (file_exists(ABSPATH."readme.html")) { unlink (ABSPATH."readme.html"); }
 if (file_exists(ABSPATH."license.txt")) { unlink (ABSPATH."license.txt"); }
