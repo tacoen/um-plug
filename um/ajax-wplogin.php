@@ -1,14 +1,13 @@
 <?php
+defined('ABSPATH') or die('Huh?');
 /*=ajax-wplogin
 *
 */
-
 if (um_getoption('umgui')) {
 	add_action('wp_footer','um_loginbox');
 	add_action('wp_ajax_nopriv_um_ajaxlogin','um_ajaxlogin');
 	add_action('wp_enqueue_scripts','um_ajaxlogin_scripts');
 }
-
 function um_loginbox() {
 	if (! is_user_logged_in()) { ?>
 	<form id="um-login" action="login" method="post">
@@ -33,7 +32,6 @@ var UM_GUI_WPUSER=1;
 /* ]]> */</script>
 <?php }
 }
-
 function um_ajaxlogin_scripts() {
 	wp_enqueue_script('um-login',UMPLUG_URL . 'prop/js/um-login.js',array('um-gui-lib'),um_ver(),true);
 	wp_localize_script('um-login','um_login_object',array(
@@ -42,23 +40,17 @@ function um_ajaxlogin_scripts() {
 			'loadingmessage'=> __('Please wait...','um')
 	));
 }
-
 function um_ajaxlogin() {
-
 	check_ajax_referer('um_ajaxlogin-nonce','security');
 	$info=array();
 	$info['user_login']=$_POST['username'];
 	$info['user_password']=$_POST['password'];
 	$info['remember']=true;
-
 	$user_signon=wp_signon($info,false);
-
 	if (is_wp_error($user_signon)) {
 		echo json_encode(array('loggedin'=>false,'message'=>__('Wrong username or password.')));
 	} else {
 		echo json_encode(array('loggedin'=>true,'message'=>__('Login successful,redirecting...')));
 	}
-
 	die();
 }
-

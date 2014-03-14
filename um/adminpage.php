@@ -1,6 +1,6 @@
-<?php	
+<?php
+defined('ABSPATH') or die('Huh?');
 class um_is_undressme {
-
 	private $options;
 		public function __construct() {
 		add_action('admin_menu',array($this,'um_add_pages'));
@@ -14,18 +14,14 @@ class um_is_undressme {
 		add_submenu_page('undressme','UM Chunks','Chunks','edit_theme_options','um-chunks',array($this,'um_chunks'));
 		add_submenu_page('undressme','UM Debug and Test','Checklist','edit_theme_options','um-debug',array($this,'um_debug'));
 	}
-
 	public function um_debug() { um_admin_header("Checklist","um_debug_html",array()); }
 	public function um_readme() { um_admin_header("Readme","um_readme_html",array()); }
 	public function um_chunks() { um_admin_header("Chunks","um_chunks_html",array()); }
 	public function um_toucher() { um_admin_header("Template Tools","um_toucher_html",array()); }
 	public function um_themeoption() {
-
 		umplug_role_check();
-		
 		$umo=umo_args();
 		$this->options=get_option('umo');
-
 		echo '<div class="wrap"><div class="um-head-set"><h2>UM: Options</h2></div>';
 		echo '<ul id="umtab" class=""><li class="span">Hi, use tabs!</li></ul><div class="um-frame-box dress">';
 		echo '<form method="post" class="maketab" action="options.php">'."\n";
@@ -39,18 +35,12 @@ class um_is_undressme {
 			submit_button('Change');
 		echo "\n".'</form></div></div><!--warp-->';
 	}				
-
 	public function um_page_init() {
-
 		$umo=umo_args();
 		register_setting("umo_group","umo",array($this,'umo_sanitize'));
-
 		$S=array_keys($umo);
-		
 		foreach($S as $se) {
-
 			$n=0; add_settings_section("$se",$umo[$se]['text'],array($this,'umo_option_print_section'),"umo-$se");
-			
 			foreach ($umo[$se]['field'] as $fi) {
 				$F=array_keys($umo[$se]['field']); $m=count($F);
 				if ($n < $m) {
@@ -60,19 +50,14 @@ class um_is_undressme {
 						'note'=> $umo[$se]['field'][$F[$n]][2],
 						'var'=> $umo[$se]['field'][$F[$n]][3]
 					);
-
 					add_settings_field($F[$n],$umo[$se]['field'][$F[$n]][1],array($this,'umo_option_print'),"umo-$se","$se",$args);
-
 					$n++;
 				}
 			}
 		}
 	}
-
 	public function umo_option_print_section (array $args) { $umo=umo_args();	print $umo[$args['id']]['note']; }
-
 	public function umo_option_print(array $args) {
-
 		if ($args['type']== "check") {
 			printf(
 				'<input type="checkbox" name="umo[%2$s]" %1$s value="1" /> %3$s',
@@ -85,9 +70,7 @@ class um_is_undressme {
 				$this->options[$args['id']],$args['id'],$args['note']
 			);
 		} else if ($args['type']== "text") {
-		
 			$def = um_rwvar_default();
-
 			printf(
 				'<input type="text" name="umo[%2$s]" size="%4$s" value="%1$s" /> %3$s',
 				isset($this->options[$args['id']]) ? $this->options[$args['id']] : $def[$args['id']],
@@ -106,9 +89,7 @@ class um_is_undressme {
 			);
 		}
 	}	
-	
 	public function umo_sanitize($input) {
-
 		$new_input=array();
 		$umo=umo_args();
 		$S=array_keys($umo);
@@ -129,10 +110,7 @@ class um_is_undressme {
 				}
 			}
 		}
-
 	return $new_input;
-	
 	}	
 }
-
 if(is_admin()) { $my_settings_page=new um_is_undressme(); }

@@ -1,9 +1,9 @@
 <?php
+defined('ABSPATH') or die('Huh?');
 /*
  * nothing but hardcore hash array
  *
  */
-
 function umo_args() {
 	return array(
 		'opt'=> array(
@@ -46,7 +46,6 @@ function umo_args() {
 				'wplug'	=> array ('text','Use',' for Plugins URL','8'),
 				'style'	=> array ('text','Use',' for Style sheet/Child URL','8'),
 				'templ'	=> array ('text','Use',' for Template/Parent URL','8'),
-
 			)
 		)
 	);
@@ -59,7 +58,6 @@ function um_rwvar_default() {
 		'templ' => 'p',
 	);
 }
-	
 function um_urlrewrite_is() {
 	return array (
 		0 => array (
@@ -78,18 +76,13 @@ function um_urlrewrite_is() {
 			'tag' => str_replace(home_url()."/",'',plugins_url()."/"),
 			'mod' => um_getoption('wplug')."/"
 		)
-
 	);
 }
-
 function um_postformat_args() {
 	$a = array('aside','gallery','link','image','quote','status','video','audio','chat');
 	sort($a); return $a;
-
 }
-
 function um_templatepart_args() {
 	$a = array("post-header","post-footer","single-header","single-footer","archive","content");
 	sort($a); return $a;
 }
-

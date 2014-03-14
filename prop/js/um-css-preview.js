@@ -12,7 +12,7 @@ function replaceAll(find, replace, str) {
 
 function css_change(name,from,to) {
 	$obj = $('head #um_color_css_preview');
-	$css = $obj.text(); 
+	$css = $obj.text();
 	var nto = to+"/*"+name+"*/" /* fokus pokus */
 	$from = escapeRegExp(from);
 	$new = $css.replace(new RegExp($from,'gi'),nto);

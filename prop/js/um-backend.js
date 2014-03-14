@@ -6,12 +6,12 @@ function umtab () {
 	jQuery('.maketab h3').each(function(i) {
 		$this = jQuery(this);
 		$tab = jQuery('#umtab'); act = '';
-		title = $this.text(); safeid = title.replace(/[\s|\W]/g,''); 
+		title = $this.text(); safeid = title.replace(/[\s|\W]/g,'');
 		$this.parent().wrap("<div class='umtab hide' id='tab-"+safeid+"'></div>");
 		if (i === 0) { jQuery('#tab-'+safeid).show(); act=' class="active" ';}
 		$tab.append("<li><a "+act+" href='#tab-"+safeid+"'>"+title+"</a></li>");
 	});
-	
+
 	umtab_init();
 }
 
@@ -22,7 +22,7 @@ function umtab_init() {
 		tab.show();
 		tab.siblings('.umtab').hide();
 		$this.parent().siblings().children('a').removeClass('active');
-		
+
 	})
 }
 
@@ -56,7 +56,7 @@ function umlist_function_init(obj) {
 		'd':jQuery(this).closest('ul').data('dir'),
 		'a':jQuery(this).data('act'),
 		}
-		
+
 		//fallback
 		if (!fodavar['d']) { fodavar['d'] = jQuery(this).data('dir'); }
 		if (fodavar['a']=="wpedit") { window.location = jQuery(this).attr('href'); }
@@ -99,7 +99,7 @@ function umlist_function_init(obj) {
 
 
 
-jQuery(document).ready(function($) { 
+jQuery(document).ready(function($) {
 
 	umlist_function_init('.um-frame-box');
 	umtab();

@@ -1,25 +1,19 @@
 <?php
-
+defined('ABSPATH') or die('Huh?');
 function none() {} //stupid solution!
-
 $cssrd_php = UMPLUG_DIR."prop/css/um-reset.php";
 $cssrd_dis = UMPLUG_DIR."prop/css/um-reset.---";
-
 if (um_getoption('cssrd')) {
 	if (!file_exists($cssrd_php)) { rename($cssrd_dis, $cssrd_php); }
 } else {
 	if (!file_exists($cssrd_dis)) { rename($cssrd_php, $cssrd_dis); }
 }
-
 if (um_getoption('nodash')) { add_action('wp_dashboard_setup','um_nodashboard_widgets'); }
 if (um_getoption('nowphead')) { add_action('after_setup_theme' ,'um_wpheadtrim'); }
 if (um_getoption('wdtma')) { add_action('widgets_init','um_elwidgets_init'); }
 if (um_getoption('pback')) { add_action('wp_head','um_pingback'); }
-
 if (file_exists(get_stylesheet_directory()."/favicon.ico")) { add_action('wp_head','um_favicon'); }
-
 add_filter('admin_footer_text','um_footeradmin');
-
 function um_nodashboard_widgets() {
 	global $wp_meta_boxes;
 	unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_incoming_links']);
@@ -32,12 +26,9 @@ function um_nodashboard_widgets() {
 	//unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_quick_press']);
 	//unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_right_now']);
 	//unset($wp_meta_boxes['dashboard']['side']['high']['dashboard_browsernag']);
-	
 }
-
 function um_favicon() { echo '<link rel="shortcut icon" type="image/x-icon" href="' .get_stylesheet_directory_uri(). '/favicon.ico" />' . "\n"; }
 function um_pingback() { echo '<link rel="pingback" href="http://wp.s.dibiakcom.net/xmlrpc.php">' . "\n"; }
-
 function um_wpheadtrim() {
 	remove_action('wp_head','wlwmanifest_link');
 	remove_action('wp_head','rsd_link');
@@ -48,7 +39,6 @@ function um_wpheadtrim() {
 	remove_action('wp_head','index_rel_link');
 	remove_action('wp_head','adjacent_posts_rel_link');
 }
-
 function um_elwidgets_init() {
 		$m=um_getoption('wdtma');
 		for ($i=1; $i <=$m; $i++) {
@@ -61,9 +51,7 @@ function um_elwidgets_init() {
 			'after_title'=> '</h1>',
 		));
 	}
-	
 }
-
 function um_readme_html() {?>
 	<div class="um-col2"><?php
 	if (file_exists(UMPLUG_DIR."prop/doc/readme.html")) {
@@ -89,7 +77,6 @@ function um_readme_html() {?>
 	}?>
 	</div><?php
 }
-
 function um_footeradmin () { 
 	$credit = array(
 		'Actualy <a href="http://www.wordpress.org">WordPress</a>, instead <a href="http://tacoen.github.io/UndressMe">UM</a>',
@@ -101,11 +88,8 @@ function um_footeradmin () {
 		'This <a href="http://www.wordpress.org">WordPress</a> with <a href="http://tacoen.github.io/UndressMe">UM</a>',
 		'There were <a href="http://www.wordpress.org">WordPress</a> programmer whom <a href="http://tacoen.github.io/UndressMe">UM</a>',
 	);
-
 	shuffle($credit); echo $credit[0];
-
 }
-
 function um_debug_html($div="",$js=0) {
 	$nonce=wp_create_nonce('um_textedit'); ?>
 	<div class="um-debug"><?php
@@ -113,19 +97,18 @@ function um_debug_html($div="",$js=0) {
 	if (get_stylesheet_directory()==get_template_directory()) {
 		echo "<p><label>Template Dir:</label><code>".get_template_directory() ."</code><br/>".get_template_directory_uri() ."</p>";
 	} else {
-		echo "<p><label>Theme Dir(child):</label><code>".get_stylesheet_directory() ."</code><br/>".get_stylesheet_uri()."</p>";
+		if (file_exists(get_template_directory()."/um-core.txt")) {
+			echo "<p><label>Template Dir(Parent):</label><code>".get_template_directory() ."</code><br/>".get_template_directory_uri() ." &mdash; its has um-core tag</p>";
+		}
+		echo "<p><label>Theme Dir(Child):</label><code>".get_stylesheet_directory() ."</code><br/>".get_stylesheet_uri()."</p>";
 	}?>
 	<?php echo "<p><label>ABSPATH:</label><code>".ABSPATH."</code><br/>".home_url()."</p>";?>
-	
 	</div>
 	<div class="postbox"><h3 class="inside">Checklist</h3><ul class='inside um-list' data-dir="debug"><?php
-
 	umplug_checklist();
-	
 	?></ul></div><div id="toucher"><?php echo $div; ?>&nbsp; </div><?php
 	if ($js== 1) { ?><script type="text/javascript">umlist_function_init('.um-frame-box')</script><?php }
 }
-
 function umplug_checklist() {
 	$checklist = array (
 		0 => array('file','um-scheme.css'),
@@ -133,9 +116,7 @@ function umplug_checklist() {
 		2 => array('dir','layouts'),
 		2 => array('dir','template-tags'),
 	);
-	
 	$w=count(array_keys($checklist)); $i=0;
-
 	for ($i; $i<$w; $i++) {
 		$item = $checklist[$i];
 		$mc ="";
@@ -146,9 +127,7 @@ function umplug_checklist() {
 			} else { 
 					$di="no"; $ce="Not Found (".um_toucher_link($item[0],$item[1]) .")"; 
 			}
-			
 			if ($item[1]=="template-tags") {
-
 			if ((file_exists(get_template_directory()."/".$item[1])) 
 				&& (is_dir(get_template_directory()."/".$item[1]))) { 
 					$ce = "Exist (in Parent directory) "; $di="yes"; 
@@ -156,7 +135,6 @@ function umplug_checklist() {
 					$di="no"; $ce="Not Found(in Parent directory) (".um_toucher_link($item[0],$item[1]."-parent") .")"; 
 			}
 			}
-			
 		} else {
 			if (file_exists(get_stylesheet_directory()."/".$item[1])) { 
 				$ce = "Exist"; $di="yes"; 
@@ -164,7 +142,6 @@ function umplug_checklist() {
 				$di="no"; $ce="Not Found (".um_toucher_link($item[0],$item[1]) .")"; 
 			}
 		}
-
 		echo "<li class='noicon' data-file='$item[1]'><i class='dashicons dashicons-$di'></i> <b>$item[1]</b> &mdash; $item[0]: $ce</li>";
 	}
 	if (get_template_directory() != get_stylesheet_directory()) {
@@ -175,12 +152,7 @@ function umplug_checklist() {
 	} else {
 		echo "<li class='noicon'><i class='dashicons dashicons-no'></i> <b>favicon.ico</b> not found in Theme Directory";
 	}
-
-	
 }
-
 // Why I delete readme.html and license.txt? 
-
 if (file_exists(ABSPATH."readme.html")) { unlink (ABSPATH."readme.html"); }
 if (file_exists(ABSPATH."license.txt")) { unlink (ABSPATH."license.txt"); }
-

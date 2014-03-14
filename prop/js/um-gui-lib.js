@@ -11,7 +11,7 @@ function um_overlay_badge_fx() {
 			'left': x,
 			'position':'absolute'
 		})
-	});	
+	});
 }
 
 function um_loginoverlay(obj) {
@@ -21,11 +21,11 @@ function um_loginoverlay(obj) {
  jQuery('div.login_overlay, form#um-login a.close').on('click', function(){
  jQuery('div.login_overlay').remove(); obj.hide();
  });
-		
-		title = obj.children('h1'); $title = title.html(); 
+
+		title = obj.children('h1'); $title = title.html();
 		//title.remove();
 		title.toggleClass("um-overlay-fx");
-		title.css({ 
+		title.css({
 			'margin' : 0,
 			'padding' : 0,
 			'top' : -42,
@@ -60,19 +60,19 @@ function um_modcolor(rgb,n) {
 }
 
 function get_elementColor(id,what) {
-	var rgba = id.css(what); 
+	var rgba = id.css(what);
 	if((typeof rgba != 'undefined') && (rgba != "rgba(0, 0, 0, 0)")) {
 		if (rgba.split("(")[0] == "rgba") {
 			//console.log("rgba="+rgba+"//");
 			rgba = rgba.match(/^rgba\((\d+),\s*(\d+),\s*(\d+),\s*(.+)\)$/);
 			//console.log(rgba);
 			return {r: parseInt(rgba[1]),g: parseInt(rgba[2]),b: parseInt(rgba[3]),a: parseInt(rgba[4]) }
-		
+
 		} else {
 			rgba = rgba.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
 			return {r: parseInt(rgba[1]),g: parseInt(rgba[2]),b: parseInt(rgba[3]) }
-		} 
-	
+		}
+
 	} else {
 		return {r:192,g:192,b:192}
 	}

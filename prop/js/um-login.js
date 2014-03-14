@@ -7,14 +7,14 @@ function um_getlogout() {
 jQuery(document).ready(function($) {
 
 	var autologin = document.URL.split('#')[1]
-	
+
  $('a#show_login').on('click', function(e){ e.preventDefault(); um_loginoverlay($('form#um-login')); });
 
 	var logout_url = $('div.um_login_div a.logout').attr('href');
 	if ($('.menu-item a[href="/wp-login"]').length>0) { $('div.um_login_div').remove(); }
 
-	if((typeof UM_GUI_WPUSER == 'undefined')) { return; } 
-	
+	if((typeof UM_GUI_WPUSER == 'undefined')) { return; }
+
  if (UM_GUI_WPUSER<1) {
 		$('.menu-item a[href="/wp-login"]').on('click', function(e){ e.preventDefault(); um_loginoverlay($('form#um-login')); });
 	} else {
@@ -26,7 +26,7 @@ jQuery(document).ready(function($) {
 
 	if (autologin == "wplogin") { um_loginoverlay($('form#um-login')); }
 
-	//console.log(um_login_object.redirecturl);	
+	//console.log(um_login_object.redirecturl);
  $('form#um-login').on('submit', function(e){
  $('form#um-login p.status').show().text(um_login_object.loadingmessage);
 		//console.log(um_login_object.ajaxurl);
@@ -34,10 +34,10 @@ jQuery(document).ready(function($) {
  type: 'POST',
  dataType: 'json',
  url: um_login_object.ajaxurl,
- data: { 
+ data: {
  'action': 'um_ajaxlogin', //calls wp_ajax_nopriv_ajaxlogin
- 'username': $('form#um-login #username').val(), 
- 'password': $('form#um-login #password').val(), 
+ 'username': $('form#um-login #username').val(),
+ 'password': $('form#um-login #password').val(),
  'security': $('form#um-login #security').val() },
  success: function(data){
  $('form#um-login p.status').text(data.message);
@@ -49,5 +49,5 @@ jQuery(document).ready(function($) {
  e.preventDefault();
  });
 
-	
+
 });
