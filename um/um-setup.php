@@ -24,21 +24,39 @@ function um_register_scripts() {
 	}
 }
 function um_register_styles() {
+
+	if ((file_exists(get_stylesheet_directory()."/static.css")) && (um_getoption('cssstatic'))) {
+		$dep = array();
+		if (um_getoption('cssrd')) {
+			$dep = array('um-reset');
+			if (file_exists(UMPLUG_DIR."prop/css/um-reset.php")) { wp_enqueue_style('um-reset',UMPLUG_URL. 'prop/css/um-reset.php' ,false,time(),'all'); }
+		}
+		
+		wp_register_style(get_template().'-style',get_stylesheet_directory_uri()."/static.css",$dep,um_ver(),'all');
+		wp_enqueue_style(get_template().'-style');
+
+	} else {
+	
+	$css_static = array();
 	if (um_getoption('umcss')) {
 		$dep = array('um-reset');
 		if (um_getoption('cssrd')) {
 			if (file_exists(UMPLUG_DIR."prop/css/um-reset.php")) { wp_enqueue_style('um-reset',UMPLUG_URL. 'prop/css/um-reset.php' ,false,time(),'all'); }
 		} else {
+			array_push($css_static,UMPLUG_URL. 'prop/css/um-reset.css');
 			wp_enqueue_style('um-reset',UMPLUG_URL. 'prop/css/um-reset.css' ,false,um_ver(),'all');
 		}
 	} else {
 		$dep = false;
 	}
 	if (um_getoption('umgui')) {
+		array_push($css_static,UMPLUG_URL. 'prop/css/um-gui-lib.css');
 		wp_enqueue_style('um-gui', UMPLUG_URL . 'prop/css/um-gui-lib.css',$dep,um_ver(),'all');
 	}
+	
 	if (!is_admin()) { // not avaliable in customize
 		if (um_getoption('schcss')) {
+			array_push($css_static,um_tool_which('um-scheme.css'));
 			wp_enqueue_style(get_template().'-scheme',um_tool_which('um-scheme.css'),$dep,um_ver(),'all');
 			wp_register_style(get_template().'-style',get_stylesheet_uri(),array(get_template().'-scheme',),um_ver(),'all');
 		} else {
@@ -47,8 +65,22 @@ function um_register_styles() {
 	} else {
 		wp_register_style(get_template().'-style',get_stylesheet_uri(),$dep,um_ver(),'all');
 	}
+
+	if (um_getoption('navcss')) {
+		array_push($css_static,um_tool_which('um-navui.css'));
+		wp_enqueue_style(get_template().'-ui',um_tool_which('um-navui.css'),$dep,um_ver(),'all');
+	}
+
+	array_push($css_static,get_stylesheet_uri());
+	
 	wp_enqueue_style(get_template().'-style');
+
 	$layout=um_getoption('layout'); if ($layout !="none") {
+		array_push($css_static,get_stylesheet_directory_uri()."/layouts/$layout");
 		wp_enqueue_style(get_template().'-layout', get_stylesheet_directory_uri()."/layouts/$layout", array(get_template().'-style'),um_ver(),'all'); 
 	}
+	
+	um_makestatic($css_static);
+	
+	} /*static? */
 }

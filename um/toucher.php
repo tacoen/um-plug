@@ -1,5 +1,8 @@
 <?php
 defined('ABSPATH') or die('Huh?');
+array_push($undressme, array('title' => "UM Template Tools",'stitle' => "Template Tools",'slug' => "um_toucher"));
+function um_toucher() { um_admin_header("Template Tools","um_toucher_html",array()); }
+	
 function um_toucher_link($t,$f) {
 	$link = '<a href="#" data-act="dtouch">create</a>';
 	return $link;

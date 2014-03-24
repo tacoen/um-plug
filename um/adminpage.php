@@ -1,29 +1,55 @@
 <?php
 defined('ABSPATH') or die('Huh?');
+
+function dome($i) { 
+		global $undressme;
+		um_admin_header($undressme[$i]['stitle'],$undressme[$i]['function'],array()); 
+		echo "see dome?\n\n";
+		print_r($undressme[$i]);
+
+}
+
 class um_is_undressme {
+
+	public $undressme;
+
 	private $options;
 		public function __construct() {
+		add_action('admin_menu',array($this,'um_add_menu_slug'));
 		add_action('admin_menu',array($this,'um_add_pages'));
 		add_action('admin_init',array($this,'um_page_init'));
 	}
-	public function um_add_pages() {
+	public function um_add_menu_slug() {
 		add_menu_page("Undress Me","UM Tools",'edit_theme_options','undressme',array($this,'um_readme'),'dashicons-editor-underline',61);
 		add_submenu_page('undressme','UM Readme','Readme','edit_theme_options','undressme',array($this,'um_readme'));
-		add_submenu_page('undressme','UM Theme Options','Theme Options','edit_theme_options','um-options',array($this,'um_themeoption'));
-		add_submenu_page('undressme','UM Template Tools','Template Tools','edit_theme_options','um-toucher',array($this,'um_toucher'));
-		add_submenu_page('undressme','UM Chunks','Chunks','edit_theme_options','um-chunks',array($this,'um_chunks'));
-		add_submenu_page('undressme','UM Debug and Test','Checklist','edit_theme_options','um-debug',array($this,'um_debug'));
 	}
-	public function um_debug() { um_admin_header("Checklist","um_debug_html",array()); }
+
+	public function um_add_pages() {
+
+		global $undressme; $m = 0;
+		$M = count( array_keys($undressme));
+		for ($m; $m<$M; $m++) {
+			$this->dome[$m] = array($undressme[$m]['function'],$undressme[$m]['stitle']);
+			add_submenu_page('undressme',
+				$undressme[$m]['title'],
+				$undressme[$m]['stitle'],
+				'edit_theme_options',
+				$undressme[$m]['slug'],
+				$undressme[$m]['slug'] 
+			);
+		}
+
+		add_submenu_page('undressme','UM Options','Options','edit_theme_options','um-options',array($this,'um_themeoption'));
+
+	}
+
 	public function um_readme() { um_admin_header("Readme","um_readme_html",array()); }
-	public function um_chunks() { um_admin_header("Chunks","um_chunks_html",array()); }
-	public function um_toucher() { um_admin_header("Template Tools","um_toucher_html",array()); }
 	public function um_themeoption() {
 		umplug_role_check();
 		$umo=umo_args();
 		$this->options=get_option('umo');
 		echo '<div class="wrap"><div class="um-head-set"><h2>UM: Options</h2></div>';
-		echo '<ul id="umtab" class=""><li class="span">Hi, use tabs!</li></ul><div class="um-frame-box dress">';
+		echo '<ul id="umtab" class=""><li class="span">&nbsp;</li></ul><div class="um-frame-box dress">';
 		echo '<form method="post" class="maketab" action="options.php">'."\n";
 			settings_fields("umo_group");
 			$S=array_keys($umo); foreach($S as $section) {
@@ -114,3 +140,35 @@ class um_is_undressme {
 	}	
 }
 if(is_admin()) { $my_settings_page=new um_is_undressme(); }
+
+function um_readme_html() {?>
+	<div class="um-readme">
+	<ul id="umtab"><li class="span">&nbsp;</li></ul>
+	<div class="maketab">
+	<div><h3 class="tab">About UM-PLUG</h3><?php
+	if (file_exists(UMPLUG_DIR."prop/doc/readme.html")) {
+		echo um_file_getcontents(UMPLUG_DIR."prop/doc/readme.html");
+	} else {
+		echo "Well, UM /prop/doc/readme.html is missing. It suppose to tell that you can <a href='/wp-admin/customize.php'>customize your theme</a>.";
+	}?></div>
+
+	<div><h3 class="tab">Readme</h3><?php
+	if (file_exists(get_stylesheet_directory()."/readme.txt")) {
+		echo "<pre><h3>".wp_get_theme()." - readme.txt</h3>".um_file_getcontents(get_stylesheet_directory()."/readme.txt")."</pre>";
+	} else {
+		echo "Well, child theme readme.txt is missing or there is no activated child theme.";
+	} ?></div>
+
+	<div><h3 class="tab">Credits</h3><?php
+	if (file_exists(UMPLUG_DIR."prop/doc/feat.html")) {
+		echo um_file_getcontents(UMPLUG_DIR."prop/doc/feat.html");
+	} else {
+		echo "Well, UM /prop/doc/feat.html is missing.";
+	}?></div>
+
+	</div>
+	
+	<h5>UM-Plug Ver. <?php echo um_ver(); ?></h5>
+	
+	<?php
+}

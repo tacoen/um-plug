@@ -1,5 +1,11 @@
 <?php
 defined('ABSPATH') or die('Huh?');
+
+array_push($undressme,array('title' => "UM Chunks",'stitle' => "Chunks",'slug' => "um_chunks"));
+function um_chunks() { um_admin_header("Chunks","um_chunks_html",array()); }
+
+/* --------------------------------------------------------------------- */
+
 Class um_chunks_widget extends WP_Widget {
 	function __construct() {
 		parent::__construct('um_chunks_widget',__('Chunks','um'),array('description'=> __('Chunks Widget','um'),));
@@ -37,6 +43,7 @@ Class um_chunks_widget extends WP_Widget {
 		return $instance;
 	}
 } // class um_chunks_Widget
+
 function register_um_chunks_widget() {
 	register_widget('um_chunks_widget');
 }

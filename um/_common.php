@@ -1,10 +1,5 @@
 <?php
-defined('ABSPATH') or die('Huh?');
-/**
- * um functions libraries
- *
- * @package um
- */
+
 function umtag($func,$args=array()) {
 	if (um_getoption('umtag')) {
 		if (! function_exists($func)) {
@@ -21,7 +16,7 @@ function umtag($func,$args=array()) {
 		echo "<!-- umtag: disable --->";
 	}
 }
-function um_ver() { return "0.1.5"; }
+function um_ver() { return "0.1.6"; }
 function um_tool_which($file) {
 	if (file_exists(get_stylesheet_directory()."/".$file)) {
 		return get_stylesheet_directory_uri()."/".$file;
@@ -97,4 +92,27 @@ function um_new_umschemecss() {
 }
 function um_new_layoutdir() {
 	mkdir(get_stylesheet_directory()."/layouts");
+}
+function css_include($f,$c=1) {
+	if (file_exists($f)) {
+		return "\n/* $f */\n".css_compress(join("",file($f)),$c)."\n";
+	}
+}
+function css_compress($buffer,$readable=0) {
+	if ($readable != 1) { $readable = 0; }
+	$buffer = preg_replace('!/\*[^*]*\*+([^/][^*]*\*+)*/!', '', $buffer);
+	$buffer = preg_replace('#\s\s+#',' ', $buffer);
+	$buffer = preg_replace('#^\s+#','', $buffer);
+	$buffer = preg_replace('#(\s+>\s+)|(\s?>\s?)#', '>', $buffer);
+	$buffer = preg_replace('#(\s+;\s+)|(\s?;\s?)#', ';', $buffer);
+	$buffer = preg_replace('#(\s+:\s+)|(\s?:\s?)#', ':', $buffer);
+	$buffer = preg_replace('#(\s+{\s+)|(\s?{\s?)#', '{', $buffer);
+	$buffer = preg_replace('#(\s+}\s+)|(\s?}\s?)#', '}', $buffer);
+	$buffer = preg_replace('#(\s+,\s+)|(\s?,\s?)#', ',', $buffer);
+	$buffer = preg_replace('#;}#','}', $buffer);
+	$buffer = preg_replace('#\"#','\'', $buffer);
+	$buffer = preg_replace('#,{#','{', $buffer);
+	$buffer = preg_replace('#[\r|\n|\t]#i', '', $buffer);
+	if ($readable==1) $buffer = preg_replace('/}/', "}\n", $buffer);
+	return $buffer;
 }
