@@ -1,0 +1,148 @@
+.blog article,
+.search article,
+.archive article {
+	margin: 1em 0 1em 0;
+	padding-bottom: 1em;
+}
+
+.blog h1.entry-title,
+.search h1.entry-title,
+.archive h1.entry-title {
+	font-size: 1.2em
+}
+
+.comment-author cite.fn {
+	font-style: normal;
+}
+
+.comment-author img.avatar {
+	float: left;
+	margin-right: 10px;
+}
+
+.comment-author {
+	line-height: 16px;
+}
+
+.comment-content {
+	margin-left:42px
+}
+
+.comment-form label {
+	display:block
+}
+
+.comment-form p.form-allowed-tags {
+	font-size:.85em
+}
+
+.comment-form {
+	width:100%
+}
+
+.comment-list .children li.comment .reply {
+	top: 0;
+	 margin-right: 0
+}
+
+.comment-list .children {
+	margin-left: 42px;
+	border-top: 1px solid rgba(0,0,0,.05);
+	padding-top: .5em;
+}
+
+.comment-list .depth-1 {
+	padding: .3em;
+	margin:.5em 0;
+	border:1px solid rgba(0,0,0,.05);
+	border-radius:3px
+}
+
+.comment-list .parent article {
+	margin-bottom: .5em
+}
+
+.comment-list > li.comment:hover {
+	background: rgba(0,0,0,0.02)
+}
+
+.comment-list li.comment .reply {
+	position: absolute;
+	top: .3em;
+	right: 0;
+	margin-right: .3em;
+}
+
+.comment-metadata {
+	font-size: .8em
+}
+
+.comment-meta {
+	font-size: .9em
+}
+
+.comments-area .comments-title {
+	margin-bottom: 1em;
+}
+
+.comments-area div:not(.comment-content) dd,
+.comments-area div:not(.comment-content) ul,
+.comments-area div:not(.comment-content) ol {
+	margin-left:2em
+}
+
+.comments-area div:not(.comment-content) p {
+	margin:1em 0
+}
+
+.comments-area ol {
+	margin-left:0em
+}
+
+.edit-link {
+	float: right;
+}
+
+.page h1.entry-title,
+.single h1.entry-title {
+	font-size: 2em;
+	 line-height: 1em;
+}
+
+.site-content {
+	display: table;
+	 clear: both
+}
+
+.widget .search-field {
+	min-width: 90%
+}
+
+a.comment-reply-link,
+a.post-edit-link {
+	 -webkit-appearance: button;
+	 padding: 0 1em;
+	 text-decoration: none;
+	 color: #111;
+}
+
+article .entry-meta,
+.comments-area .reply,
+div.nav-links {
+	font-size: .9em;
+}
+
+div.nav-links,
+div.comments-area {
+	margin:1em 0;
+	 display: table;
+	 width: 100%
+}
+
+footer {
+	margin-top: 1em;
+}
+
+li.comment {
+	position: relative;
+}
