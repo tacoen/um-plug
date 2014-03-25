@@ -1,3 +1,7 @@
+/*--------------------------------------------------------------
+commonly use wordpress element
+--------------------------------------------------------------*/
+
 .blog article,
 .search article,
 .archive article {
@@ -163,6 +167,10 @@ li.comment {
 	margin: 0 auto;
 }
 
+/*--------------------------------------------------------------
+align and clearing
+--------------------------------------------------------------*/
+
 .clear:before,
 .clear:after,
 .entry-content:before,
@@ -226,11 +234,12 @@ li.comment {
 .comment-content a {
 	word-wrap: break-word;
 }
+
 .bypostauthor {
 }
 
 /*--------------------------------------------------------------
-11.0 Infinite scroll
+Infinite scroll
 --------------------------------------------------------------*/
 /* Globally hidden elements when Infinite Scroll is supported and in use. */
 .infinite-scroll .paging-navigation, /* Older / Newer Posts Navigation (always hidden) */
@@ -243,7 +252,7 @@ li.comment {
 }
 
 /*--------------------------------------------------------------
-12.0 Media
+Media
 --------------------------------------------------------------*/
 .page-content img.wp-smiley,
 .entry-content img.wp-smiley,
@@ -289,3 +298,90 @@ li.comment {
 
 /* the famouse inline hardcode recentcomment css */
 .recentcomments a{ display:inline !important;padding:0 !important;margin:0 !important;}
+
+/* from _s, the main-navigation bones */
+
+.main-navigation {
+	clear: both;display: block;float: left;width: 100%;z-index: 99980;
+}
+
+.main-navigation a:hover { text-decoration: none; }
+
+.main-navigation ul {
+	list-style: none;margin: 0;padding-left: 0;
+}
+
+.main-navigation a {
+	display: block;text-decoration: none;
+}
+
+.main-navigation li ul { 
+	display: none; left: 0; position: absolute;z-index: 99981;
+}
+
+.main-navigation ul  li { float: left; position: relative; }
+.main-navigation ul  li:hover > ul { display: block }
+
+.main-navigation ul ul ul {
+	left: 100%; top: 0;
+}
+
+/* Small menu */
+
+.menu-toggle {
+	cursor: pointer;
+	display: none;
+}
+
+.site-main [class*="navigation"] {
+	margin: 0 0 1.5em;
+	overflow: hidden;
+}
+[class*="navigation"] .nav-previous {
+	float: left;
+	width: 50%;
+}
+[class*="navigation"] .nav-next {
+	float: right;
+	text-align: right;
+	width: 50%;
+}
+
+/* Text meant only for screen readers */
+.screen-reader-text {
+	clip: rect(1px, 1px, 1px, 1px);
+	position: absolute !important;
+}
+
+.screen-reader-text:hover,
+.screen-reader-text:active,
+.screen-reader-text:focus {
+	background-color: #f1f1f1;
+	border-radius: 3px;
+	box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+	clip: auto !important;
+	color: #21759b;
+	display: block;
+	font-size: 14px;
+	font-weight: bold;
+	height: auto;
+	left: 5px;
+	line-height: normal;
+	padding: 15px 23px 14px;
+	text-decoration: none;
+	top: 5px;
+	width: auto;
+	z-index: 100000; /* Above WP toolbar */
+}
+
+@media screen and (max-width: 600px) {
+	.menu-toggle,
+	.main-navigation.toggled .nav-menu {
+		display: block;
+	}
+
+	.main-navigation ul {
+		display: none;
+	}
+}
+

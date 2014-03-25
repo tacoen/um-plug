@@ -1,3 +1,50 @@
+function um_content_height(target,min) {
+	// Make target fit its windows
+	var h = $(window).innerHeight()-$('#colophon').outerHeight()-$('#masthead').outerHeight();
+	if (h < 0 ) { h = min }
+	target.css('min-height',h+'px');
+}
+function um_fit_img(target) {
+	// Make images fit it's ratio
+	target.each( function(e) {
+		var iw = $(this).attr('width'); var ih = $(this).attr('height');
+		var w = $(this).width(); $(this).height(h = (ih/iw)*w);
+	});
+}
+
+function um_onscroll_fixed(target,dockto,adjustment) {
+	// Make target stop scoll at its dock position
+	var w = $(window);
+	var offset = target.offset();
+	var top = offset.top; target.data('original-y',top);
+	var margin = $('.site-header').outerHeight();
+
+	if (dockto) {
+		var docktoY = dockto.outerHeight();
+	} else {
+		var docktoY = $('.main-navigation').outerHeight();
+	}
+	
+	w.on( "scroll", function(e) {
+		var scroll = w.scrollTop();
+		if (scroll > margin) { 
+			var fix = adjustment+docktoY;
+			target.css('position','fixed'); 
+			target.css('top',fix+"px"); 
+			target.css('z-index',99970);
+		} else {
+			target.css('position','static');
+			target.css('top',target.data('original-y')+"px");
+		}
+	});
+
+}
+
+/* ---------------------------------------------------------------------------- 
+ * css colours manipulations 
+ *
+ */
+
 function um_overlay_badge_fx() {
 	jQuery('.um-badge').each(function(e) {
 		w = jQuery(this).width(); if (w<40) { w = 40;jQuery(this).width(w) }
@@ -15,41 +62,45 @@ function um_overlay_badge_fx() {
 }
 
 function um_loginoverlay(obj) {
- jQuery('body').prepend('<div class="um-dark-overlay"></div>');
-		um_overlay_badge_fx();
- obj.fadeIn(250);
- jQuery('div.login_overlay, form#um-login a.close').on('click', function(){
- jQuery('div.login_overlay').remove(); obj.hide();
- });
+	jQuery('body').prepend('<div class="um-dark-overlay"></div>');
+	um_overlay_badge_fx();
+	obj.fadeIn(250);
+	jQuery('div.login_overlay, form#um-login a.close').on('click', function(){
+		jQuery('div.login_overlay').remove(); obj.hide();
+	});
 
-		title = obj.children('h1'); $title = title.html();
-		//title.remove();
-		title.toggleClass("um-overlay-fx");
-		title.css({
-			'margin' : 0,
-			'padding' : 0,
-			'top' : -42,
-			'left': 0,
-			'position':'absolute'
-		});
+	title = obj.children('h1'); $title = title.html();
+	//title.remove();
+	title.toggleClass("um-overlay-fx");
+	title.css({
+		'margin' : 0,
+		'padding' : 0,
+		'top' : -42,
+		'left': 0,
+		'position':'absolute'
+	});
 }
 
-function um_hexToRgb(hex) {
- var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
- hex = hex.replace(shorthandRegex, function(m, r, g, b) {
- return r + r + g + g + b + b;
- });
+/* ---------------------------------------------------------------------------- 
+ * css colours manipulations 
+ *
+ */
 
- var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
- return result ? {
- r: parseInt(result[1], 16),
- g: parseInt(result[2], 16),
- b: parseInt(result[3], 16)
- } : null;
+function um_hexToRgb(hex) {
+	var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+	hex = hex.replace(shorthandRegex, function(m, r, g, b) {
+		return r + r + g + g + b + b;
+	});
+	var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+	return result ? {
+		r: parseInt(result[1], 16),
+		g: parseInt(result[2], 16),
+		b: parseInt(result[3], 16)
+	} : null;
 }
 
 function um_rgbToHex(rgb) {
- return "#" + ((1 << 24) + (rgb['r'] << 16) + (rgb['g'] << 8) + rgb['b']).toString(16).slice(1);
+	return "#" + ((1 << 24) + (rgb['r'] << 16) + (rgb['g'] << 8) + rgb['b']).toString(16).slice(1);
 }
 
 function um_modcolor(rgb,n) {
@@ -63,9 +114,7 @@ function get_elementColor(id,what) {
 	var rgba = id.css(what);
 	if((typeof rgba != 'undefined') && (rgba != "rgba(0, 0, 0, 0)")) {
 		if (rgba.split("(")[0] == "rgba") {
-			//console.log("rgba="+rgba+"//");
 			rgba = rgba.match(/^rgba\((\d+),\s*(\d+),\s*(\d+),\s*(.+)\)$/);
-			//console.log(rgba);
 			return {r: parseInt(rgba[1]),g: parseInt(rgba[2]),b: parseInt(rgba[3]),a: parseInt(rgba[4]) }
 
 		} else {

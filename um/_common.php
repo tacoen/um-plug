@@ -66,6 +66,14 @@ function um_file_putcontents($filename,$txt) {
 	$wp_filesystem->put_contents($filename,stripslashes($txt),FS_CHMOD_FILE);
 	// file_put_contents($filename,$txt);	
 }
+
+function um_file_putcontents_nos($filename,$txt) {
+	global $wp_filesystem;
+	filesystem_init();
+	$wp_filesystem->put_contents($filename,$txt,FS_CHMOD_FILE);
+	// file_put_contents($filename,$txt);	
+}
+
 function um_file_getcontents($filename,$nonce="") {
 	/*
 	 * global $wp_filesystem;
@@ -100,6 +108,8 @@ function css_include($f,$c=1) {
 }
 function css_compress($buffer,$readable=0) {
 	if ($readable != 1) { $readable = 0; }
+	$buffer = str_replace("\\", 'UM_TT', $buffer);
+	$buffer = preg_replace('#\"#','\'', $buffer);
 	$buffer = preg_replace('!/\*[^*]*\*+([^/][^*]*\*+)*/!', '', $buffer);
 	$buffer = preg_replace('#\s\s+#',' ', $buffer);
 	$buffer = preg_replace('#^\s+#','', $buffer);
@@ -110,9 +120,9 @@ function css_compress($buffer,$readable=0) {
 	$buffer = preg_replace('#(\s+}\s+)|(\s?}\s?)#', '}', $buffer);
 	$buffer = preg_replace('#(\s+,\s+)|(\s?,\s?)#', ',', $buffer);
 	$buffer = preg_replace('#;}#','}', $buffer);
-	$buffer = preg_replace('#\"#','\'', $buffer);
 	$buffer = preg_replace('#,{#','{', $buffer);
 	$buffer = preg_replace('#[\r|\n|\t]#i', '', $buffer);
 	if ($readable==1) $buffer = preg_replace('/}/', "}\n", $buffer);
+	$buffer = str_replace("UM_TT", "\\", $buffer);
 	return $buffer;
 }

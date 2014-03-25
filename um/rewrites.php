@@ -6,6 +6,10 @@ if (get_option('permalink_structure') == '') {
  $wp_rewrite->set_permalink_structure('/%postname%/');
 }
 */
+
+function um_flush_rewrite_rules() { flush_rewrite_rules(); }
+add_action( 'after_switch_theme', 'um_flush_rewrite_rules' );
+
 function is_inc($a) { 
 	$um_url = um_urlrewrite_is(); $count = count(array_keys($um_url));$n=0;
 	if (preg_match("#".admin_url()."#",$a)) {

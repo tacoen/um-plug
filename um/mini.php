@@ -12,6 +12,6 @@ function um_makestatic($csses) {
 		array_push($ncss,$css_file);
 	}
 
-	um_file_putcontents(get_stylesheet_directory()."/static.css",css_compress($static,0)); 	
+	um_file_putcontents_nos(get_stylesheet_directory()."/static.css",css_compress($static,0)); 	
 	
 }
