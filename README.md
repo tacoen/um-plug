@@ -4,6 +4,10 @@ UM Themes core and tool kits, a Wordpress developer Toolkit for creating/ mainta
 
 ##Features
 
+###0.1.0
+
+  * Forked from Undressme Theme as UM-Plug
+
 ###0.1.5
 
   * Minimize: Option to Dashboard Load, WP Header,
