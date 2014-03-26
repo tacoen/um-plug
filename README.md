@@ -18,6 +18,7 @@ UM Themes core and tool kits, a Wordpress developer Toolkit for creating/ mainta
   * Pluggable template part
   * Come with Handy jQuery Function for more controls on user view
   * Ajax Login
+  * Child Theme Checklist
 
 ###0.1.6
 
