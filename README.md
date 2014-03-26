@@ -4,9 +4,11 @@ UM Themes core and tool kits, a Wordpress developer Toolkit for creating/ mainta
 
 ##Features
 
-###0.1.0
+###0.1.6
 
-  * Forked from Undressme Theme as UM-Plug
+  * Option to disable:  WP Toolbar, Gravatar Loads, 
+  * Reduce load by use static generated-minimized stylesheet
+  * Facebook, Twitter contact method
 
 ###0.1.5
 
@@ -20,19 +22,16 @@ UM Themes core and tool kits, a Wordpress developer Toolkit for creating/ mainta
   * Ajax Login
   * Child Theme Checklist
 
-###0.1.6
+###0.1.0
 
-  * Option to disable:  WP Toolbar, Gravatar Loads, 
-  * Reduce load by use static generated-minimized stylesheet
-  * Facebook, Twitter contact method
+  * Forked from Undressme Theme as UM-Plug
+
 
 ##Log
 
-5 Mar 2014 -- Plugin-Check: Running 5132 tests against All Plugins using Theme-check Guidelines Version: 20131213 Plugin revision: 1
-
-15 Maret 2014 -- 0.1.5 Release
-
-25 Maret 2014 -- 0.1.6a -- Submited to Wordpress.org 
+  - 5 Mar 2014 -- Plugin-Check: Running 5132 tests against All Plugins using Theme-check Guidelines Version: 20131213 Plugin revision: 1
+  - 15 Maret 2014 -- 0.1.5 Release
+  - 25 Maret 2014 -- 0.1.6a -- Submited to Wordpress.org 
 
 ##Helo World!
 
