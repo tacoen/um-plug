@@ -27,11 +27,8 @@ function umtab_init() {
 }
 
 function umeditor_init(obj) {
-//	console.log('umeditor_init');
-
 	var $umdiv = jQuery(obj);
 	jQuery('.um-editor textarea').height (jQuery(window).innerHeight()-300);
-
 	jQuery('.um-editor #submit').click(function(e) {
 		e.preventDefault();
 		var fodavar = {
@@ -74,17 +71,28 @@ function umlist_function_init(obj) {
 		jQuery.post(ajaxurl, { action: 'foda', v: fodavar }, function(res) { $umdiv.html(res); });
 	});
 
-	jQuery('button.touch').click (function(e) {
+	jQuery('button.touch_tp').click (function(e) {
 		e.preventDefault();
 		var fodavar = {
-			'f': jQuery('div.udtmd #undressme-tm-file').val(),
+			'f': jQuery('div.udtmd #undressme-tp-file').val(),
 			'a': 'touch',
-			'd': jQuery('div.udtmd #undressme-tm-file').data('d')
+			'd': jQuery('div.udtmd #undressme-tp-file').data('d')
 		}
 
 		jQuery.post(ajaxurl, { action: 'foda', v: fodavar }, function(res) { $umdiv.html(res); });
 	});
 
+	jQuery('button.touch_tf').click (function(e) {
+		e.preventDefault();
+		var fodavar = {
+			'f': jQuery('div.udtmd #undressme-tf-file').val(),
+			'a': 'touch',
+			'd': jQuery('div.udtmd #undressme-tf-file').data('d')
+		}
+
+		jQuery.post(ajaxurl, { action: 'foda', v: fodavar }, function(res) { $umdiv.html(res); });
+	});
+	
 	jQuery('button.ptouch').click (function(e) {
 		e.preventDefault();
 		var fodavar = {

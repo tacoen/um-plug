@@ -3,7 +3,7 @@ defined('ABSPATH') or die('Huh?');
 function um_foda_callback() {
 	global $wpdb;
 	//check_admin_referer('um_textedit');
-	$foda=$_POST['v']; $rdir=get_theme_root(); $txt="";
+	$foda=$_POST['v']; $txt="";
 	if ($foda['d']== 'chunk') {
 		$file=get_stylesheet_directory()."/chunks/".$foda['f'];
 	} else if ($foda['d']== 'page') {

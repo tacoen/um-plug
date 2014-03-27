@@ -1,3 +1,36 @@
+function um_toc(obj,ele) {
+	obj.prepend("<ol id='um_toc'></ul>");
+	$toc = obj.children('#um_toc');
+	obj.find(ele).each(function(i) {
+		title = $(this).text(); safeid = title.replace(/[\s|\W]/g,'');
+		$(this).prepend("<a id='"+safeid+"'></a>");
+		$toc.append("<li><a href='#"+safeid+"'>"+title+"</a></li>");
+	});
+}
+
+function um_tab_init(obj) {
+		obj.find('a.tabmenu').click(function(e) {
+			e.preventDefault();
+			$(this).addClass('active');
+			target = $(this).attr('href'); 
+			tab = $(target); tab.show();
+			tab.siblings('.um_tab_content').hide();
+			$(this).parent().siblings().children('a').removeClass('active');
+	})
+}
+
+function um_tab(obj) {
+	obj.prepend("<ul id='um_tab'></ul>");
+	$tab = obj.children('#um_tab');
+	obj.find('h3').each(function(i) {
+		act = ''; title = $(this).text(); safeid = title.replace(/[\s|\W]/g,'');
+		$(this).parent().wrap("<div class='um_tab_content hide' id='tab-"+safeid+"'></div>");
+		if (i === 0) { $('#tab-'+safeid).show(); act=' active'; }
+		$tab.append("<li><a class='tabmenu "+act+"' href='#tab-"+safeid+"'>"+title+"</a></li>");
+	});
+	um_tab_init( $tab  );
+}
+
 function um_content_height(target,min) {
 	// Make target fit its windows
 	var h = $(window).innerHeight()-$('#colophon').outerHeight()-$('#masthead').outerHeight();

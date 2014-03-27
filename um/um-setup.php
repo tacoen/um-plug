@@ -14,7 +14,19 @@ function um_register_admin_scripts() {
 }
 add_action('wp_enqueue_scripts','um_register_scripts');
 add_action('wp_enqueue_scripts','um_register_styles');
+
+if (um_getoption('skejs')) { add_action('wp_head','um_iehtml5'); }
+
+function um_iehtml5() {
+	$output = '<!--[if lte IE 9]><link rel="stylesheet" href="' . UMPLUG_URL . 'prop/css/ie9.css" /><![endif]-->'."\n";
+	$output .= '<!--[if lte IE 8]><script src="' . UMPLUG_URL . 'prop/js/html5shiv.js"></script><![endif]-->'."\n";
+	echo $output;
+}
 function um_register_scripts() {
+	if (um_getoption('skejs')) {
+		wp_enqueue_script('um-skel-init',um_tool_which('skel-init.js'),array('jquery'),um_ver(),false);
+		wp_enqueue_script('um-skel-lib',UMPLUG_URL . 'prop/js/skel.min.js',array('um-skel-init'),um_ver(),false);
+	}
 	if (um_getoption('umgui')) {
 		wp_enqueue_script('um-gui-lib',UMPLUG_URL . 'prop/js/um-gui-lib.js',array(),um_ver(),true);
 		wp_enqueue_script('um-gui',um_tool_which('um-gui.js'),array('um-gui-lib'),um_ver(),true);
@@ -23,6 +35,7 @@ function um_register_scripts() {
 		wp_enqueue_script('comment-reply');
 	}
 }
+
 function um_register_styles() {
 
 	if ((file_exists(get_stylesheet_directory()."/static.css")) && (um_getoption('cssstatic'))) {
@@ -68,7 +81,7 @@ function um_register_styles() {
 
 	if (um_getoption('navcss')) {
 		array_push($css_static,um_tool_which('um-navui.css'));
-		wp_enqueue_style(get_template().'-ui',um_tool_which('um-navui.css'),$dep,um_ver(),'all');
+		wp_enqueue_style(get_template().'-navi',um_tool_which('um-navui.css'),$dep,um_ver(),'all');
 	}
 
 	array_push($css_static,get_stylesheet_uri());

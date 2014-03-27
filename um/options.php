@@ -42,6 +42,7 @@ function umo_args() {
 				'umgui'	=> array ('check','UM-gui-lib','Load um-gui jQuery Libraries for FX and layout fix.',''),
 				'ajaxwpl'=> array ('check','UM-login.js','Use Ajax WP-Login <small> &mdash; require: um-gui-lib.js</small>',''),
 				'ajredir'=> array ('text','UM Login Redirect','<br><small>Relative Path will be nice<small>','30'),
+				'skejs'=> array ('check','skel.js','a lightweight frontend framework for building responsive sites and apps','')
 			)
 		),
 		'umrw'=> array(
@@ -101,7 +102,12 @@ function um_postformat_args() {
 	sort($a); return $a;
 }
 function um_templatepart_args() {
-	$a = array("post-header","post-footer","single-header","single-footer","archive","content");
+	$a = array("post-header","post-footer","single-header","single-footer");
+	sort($a); return $a;
+}
+
+function um_template_args() {
+	$a = array("archive","content");
 	sort($a); return $a;
 }
 

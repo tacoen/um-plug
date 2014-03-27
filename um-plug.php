@@ -28,6 +28,7 @@ require UMPLUG_DIR . 'um/ajax-adminpage.php';
 require UMPLUG_DIR . 'um/adminpage.php';
 require UMPLUG_DIR . 'um/customizer-scheme.php';
 require UMPLUG_DIR . 'um/mini.php';
+require UMPLUG_DIR . 'um/users.php';
 require UMPLUG_DIR . 'um/um-setup.php';
 
 add_action( 'admin_init', 'tc_i18n' );

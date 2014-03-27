@@ -55,3 +55,14 @@ div.um_login_div a { display: block; color: #fff; height: 24px; line-height: 24p
 
 #um-login a.um-badge:hover { color: #fff; text-decoration: none !important; }
 
+/* um-tab */
+
+#um_tab { display: table; width: 99%; border-bottom: 1px solid #ccc; height: 30px; padding-left: 1%;}
+#um_tab li { float: left; min-width: 120px; border: 1px solid #ccc; border-bottom: none; line-height: 30px; margin-right: 2px; }
+#um_tab li a { display: block; background: #eee; color: #333; text-align: center; text-decoration: none !important }
+#um_tab li a:hover { background: #f0f0f0; color: #111; }
+#um_tab li a.active { background: #fff; color: #111; }
+.um_tab_content { padding: .5em; background: #fff; border: 1px solid #ccc; border-top: none; }
+.um_tab_content.hide { display: none; }
+
+
