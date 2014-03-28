@@ -16,7 +16,7 @@ function umtag($func,$args=array()) {
 		echo "<!-- umtag: disable --->";
 	}
 }
-function um_ver() { return "0.1.6"; }
+function um_ver() { return "1.0.0"; }
 function um_tool_which($file) {
 	if (file_exists(get_stylesheet_directory()."/".$file)) {
 		return get_stylesheet_directory_uri()."/".$file;
@@ -37,6 +37,12 @@ function um_getoption($w) {
 		$umo->options=get_option('umo');
 		if (in_array($w,array_keys($umo->options))) {
 			return $umo->options[$w];
+		}
+}
+function um_get_themeoption($w) {
+		$umt->options=get_option('umt');
+		if (in_array($w,array_keys($umt->options))) {
+			return $umt->options[$w];
 		}
 }
 function um_admin_header($title,$func="",$arny=array()) {
@@ -125,4 +131,14 @@ function css_compress($buffer,$readable=0) {
 	if ($readable==1) $buffer = preg_replace('/}/', "}\n", $buffer);
 	$buffer = str_replace("UM_TT", "\\", $buffer);
 	return $buffer;
+}
+if ( ! function_exists('glob_recursive')) {
+    // Does not support flag GLOB_BRACE
+    function glob_recursive($pattern, $flags = 0)    {
+        $files = glob($pattern, $flags);
+        foreach (glob(dirname($pattern).'/*', GLOB_ONLYDIR|GLOB_NOSORT) as $dir)        {
+            $files = array_merge($files, glob_recursive($dir.'/'.basename($pattern), $flags));
+        }
+        return $files;
+    }
 }

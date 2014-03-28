@@ -22,11 +22,11 @@ require UMPLUG_DIR . 'um/cdn.php';
 
 require UMPLUG_DIR . 'um/chunks.php';
 require UMPLUG_DIR . 'um/toucher.php';
+require UMPLUG_DIR . 'um/addons.php';
 require UMPLUG_DIR . 'um/checker.php';
 
 require UMPLUG_DIR . 'um/ajax-adminpage.php';
 require UMPLUG_DIR . 'um/adminpage.php';
-require UMPLUG_DIR . 'um/customizer-scheme.php';
 require UMPLUG_DIR . 'um/mini.php';
 require UMPLUG_DIR . 'um/users.php';
 require UMPLUG_DIR . 'um/um-setup.php';

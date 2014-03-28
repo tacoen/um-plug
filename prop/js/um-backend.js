@@ -42,10 +42,46 @@ function umeditor_init(obj) {
 	})
 }
 
+function fodavar_check(foda) {
+	if (foda['f'] =="") return false;
+	if (foda['f'] ==".php") return false;
+	if (foda['a'] =="") return false;
+	return true
+}
+
 function umlist_function_init(obj) {
 
 	var $umdiv = jQuery(obj);
 
+	jQuery('button.set').click (function(e) {
+		e.preventDefault();
+		var obj = jQuery(this).parent();
+		var fodavar = {
+			'f': obj.children('select').val(),
+			'a': jQuery(this).data('act'),
+			'd': obj.data('d')
+		}
+		if (fodavar_check(fodavar)===true) {
+			//console.log(fodavar['a'], fodavar['d'], fodavar['f']);
+			jQuery.post(ajaxurl, { action: 'foda', v: fodavar }, function(res) { $umdiv.html(res); });
+		}
+	});
+
+	
+	jQuery('button.input-touch').click (function(e) {
+		e.preventDefault();
+		var obj = jQuery(this).parent();
+		var fodavar = {
+			'f': safephpNameof( obj.children('input[type=text]').val() ),
+			'a': jQuery(this).data('act'),
+			'd': obj.children('input[type=text]').data('d')
+		}
+		if (fodavar_check(fodavar)===true) {
+			//console.log(fodavar['a'], fodavar['d'], fodavar['f']);
+			jQuery.post(ajaxurl, { action: 'foda', v: fodavar }, function(res) { $umdiv.html(res); });
+		}
+	});	
+	
 	jQuery('.um-list li a').click(function(e) {
 		e.preventDefault();
 		var fodavar = {
@@ -57,9 +93,15 @@ function umlist_function_init(obj) {
 		//fallback
 		if (!fodavar['d']) { fodavar['d'] = jQuery(this).data('dir'); }
 		if (fodavar['a']=="wpedit") { window.location = jQuery(this).attr('href'); }
-		jQuery.post(ajaxurl, { action: 'foda', v: fodavar }, function(res) { $umdiv.html(res); });
+
+		if (fodavar_check(fodavar)===true) {
+			//console.log(fodavar['a'], fodavar['d'], fodavar['f']);
+			jQuery.post(ajaxurl, { action: 'foda', v: fodavar }, function(res) { $umdiv.html(res); });
+		}
 	})
 
+
+/*	
 	jQuery('button.nchunk').click (function(e) {
 		e.preventDefault();
 		var fodavar = {
@@ -93,16 +135,8 @@ function umlist_function_init(obj) {
 		jQuery.post(ajaxurl, { action: 'foda', v: fodavar }, function(res) { $umdiv.html(res); });
 	});
 	
-	jQuery('button.ptouch').click (function(e) {
-		e.preventDefault();
-		var fodavar = {
-			'f': safephpNameof(jQuery('div.udptf input[type=text]').val()),
-			'a': 'ptouch',
-			'd': jQuery('div.udptf input[type=text]').data('d')
-		}
-		//console.log (fodavar['f'],fodavar['a'],fodavar['d']);
-		jQuery.post(ajaxurl, { action: 'foda', v: fodavar }, function(res) { $umdiv.html(res); });
-	});
+
+*/
 }
 
 

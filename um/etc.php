@@ -1,13 +1,6 @@
 <?php
 defined('ABSPATH') or die('Huh?');
 function none() {} //stupid solution!
-$cssrd_php = UMPLUG_DIR."prop/css/um-reset.php";
-$cssrd_dis = UMPLUG_DIR."prop/css/um-reset.---";
-if (um_getoption('cssrd')) {
-	if (!file_exists($cssrd_php)) { rename($cssrd_dis, $cssrd_php); }
-} else {
-	if (!file_exists($cssrd_dis)) { rename($cssrd_php, $cssrd_dis); }
-}
 if (um_getoption('nodash')) { add_action('wp_dashboard_setup','um_nodashboard_widgets'); }
 if (um_getoption('nowphead')) { add_action('after_setup_theme' ,'um_wpheadtrim'); }
 if (um_getoption('wdtma')) { add_action('widgets_init','um_elwidgets_init'); }

@@ -6,7 +6,6 @@ function dome($i) {
 		um_admin_header($undressme[$i]['stitle'],$undressme[$i]['function'],array()); 
 		echo "see dome?\n\n";
 		print_r($undressme[$i]);
-
 }
 
 class um_is_undressme {
