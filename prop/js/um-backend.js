@@ -71,17 +71,25 @@ function umlist_function_init(obj) {
 	jQuery('button.input-touch').click (function(e) {
 		e.preventDefault();
 		var obj = jQuery(this).parent();
+		var d = obj.children('input[type=text]').data('d');
+
+		if (d =="chunk") {
+			var f = safetxtNameof( obj.children('input[type=text]').val() )
+		} else {
+			var f = safephpNameof( obj.children('input[type=text]').val() )
+		}
+		
 		var fodavar = {
-			'f': safephpNameof( obj.children('input[type=text]').val() ),
+			'f': f,
 			'a': jQuery(this).data('act'),
-			'd': obj.children('input[type=text]').data('d')
+			'd': d
 		}
 		if (fodavar_check(fodavar)===true) {
 			//console.log(fodavar['a'], fodavar['d'], fodavar['f']);
 			jQuery.post(ajaxurl, { action: 'foda', v: fodavar }, function(res) { $umdiv.html(res); });
 		}
 	});	
-	
+
 	jQuery('.um-list li a').click(function(e) {
 		e.preventDefault();
 		var fodavar = {

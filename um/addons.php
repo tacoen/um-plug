@@ -31,7 +31,31 @@ function um_pagetemplate_html($div="",$js=0) {
 	}
 	echo "</div>";
 	
+	um_addon_list(); 
+	
 }
+
+function um_addon_list() {
+	global $um_addons; $select ="";
+	echo "<h2>Add ons</h2>\n";
+	echo "<ul class='feat'>\n";
+	$A = array_keys($um_addons);
+	foreach ($A as $a) {
+		echo "<li><div class='meta'><h3>$a</h3>";
+
+		echo "<div class='feat'>";
+			if ( $um_addons[$a]['js'] ) { echo "<span class='js'>JS</span> "; }
+			if ( $um_addons[$a]['css'] ) { echo "<span class='css'>CSS</span> "; }
+		echo "</div></div>";
+
+		if (file_exists ($um_addons[$a]['dir']."readme.txt")) { echo "<p>".um_file_getcontents($um_addons[$a]['dir']."readme.txt")."</p>"; }
+		echo "<p><strong>Info:</strong> <a href='".$um_addons[$a]['url']."'>".$um_addons[$a]['url']."</a></p>";
+		echo "</li>\n";
+		
+	}
+	echo "</ul>\n";
+}
+
 function um_addonselect($sel) {
 	global $um_addons; $select ="";
 	$A = array_keys($um_addons);

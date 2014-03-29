@@ -6,7 +6,8 @@ html #toplevel_page_undressme a:hover.menu-top .dashicons:before {
 
 .um-head-set,.um-frame-box {  clear: both; display: table; width: 100%; position: relative; }
 .um-head-set h2 { float: left; width: 49%}
-.um-head-set h3 { float: right; font-size: 1em; border: 1px solid #ccc; background:#fcfcfc; padding: 2px 100px 2px 8px; 
+.um-head-set h3 { float: right; font-size: 1em; border: 1px solid #ccc; 
+background:#fcfcfc; padding: 2px 20px 2px 20px; 
 text-align: center; border-radius: 3px; }
 
 .um-frame-box { border-bottom: 1px solid #ddd; margin-bottom: .5em; padding-bottom: .5em; }
@@ -23,10 +24,11 @@ text-align: center; border-radius: 3px; }
 .um-list li span.last { padding: 0; margin:0}
 .um-list li:last-child { border-bottom: none; padding-bottom: 0 }
 .um-col2 { width: 48%; float: left; margin-right: 2% }
+.um-col2.right { margin-right: 0; width: 50% }
 .um-readme-section pre,
 .um-col2 pre { white-space:normal !important}
 
-.um-list a.del { color: #c33; }
+.um-list a.del,.err { color: #c33; }
 .um-list .icons { color: #ccc; position: absolute; left: 0px; }
 .um-list .view { line-height: 13px; font-size: 11px; }
 
@@ -63,3 +65,13 @@ padding: 0 5px; background: #eee; border: 1px solid #ccc; border-bottom: none; m
 
 .um-frame-box label,
 .um-list  label { width: 15%; float: left; font-weight: 700; }
+
+ul.feat .meta h3 { float: left; width: 70%; margin: 0 }
+ul.feat .meta div.feat { float: right; width: 30%; margin: 0 }
+ul.feat .meta { margin: 1em 0; display: table; width: 100% }
+ul.feat p { clear: both }
+ul.feat .feat span { border-radius: 3px; padding: 0 8px; display: inline-block; float: right; margin-left: 8px; 
+font-weight: 700; background: #999; }
+ul.feat .feat .js { background: #090; color: #fff; }
+ul.feat .feat .css { background: #369; color: #fff; }
+ul.feat li { border-top: 1px solid #ccc; }

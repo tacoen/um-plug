@@ -77,8 +77,7 @@ function get_sniff($f) {
 }
 function um_chunks_html($div="",$js=0) {
 	$chunk_dir=get_stylesheet_directory()."/chunks";
-	if (!file_exists($chunk_dir) and !is_dir($chunk_dir)) { mkdir($chunk_dir); }?>
-	<div id="toucher" style="margin-bottom: .5em"><?php echo $div; ?>&nbsp; </div><?php
+	if (!file_exists($chunk_dir) and !is_dir($chunk_dir)) { mkdir($chunk_dir); }
 	echo "<div class='postbox'><h3 class='inside'>Chunks</h3><ul data-dir='chunk' class='um-list inside'>\n";
 	$chunks=glob($chunk_dir."/*.txt");
 	foreach ($chunks as $c) {
@@ -96,9 +95,10 @@ function um_chunks_html($div="",$js=0) {
 	}
 	echo "</ul></div>"; ?>
 	<h4>Create New Chunks</h4>
-	<p><input type="text" name="new_chunk_name" id='new_chunk'
-	value="" size="18" /><button class='nchunk button'>touch</button>
+	<p><input type="text" name="new_chunk_name" id='new_chunk' data-d="chunk"
+	value="" size="18" /><button class='input-touch button' data-act="newchunk">touch</button>
 	<br><small>.txt extension will be added to file</small></p>
 	</div>
+	<div id="toucher" style="margin-bottom: .5em"><?php echo $div; ?>&nbsp; </div>
 	<?php if ($js== 1) { ?><script type="text/javascript">umlist_function_init('.um-frame-box')</script><?php }
 }

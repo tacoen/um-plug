@@ -74,7 +74,7 @@ function um_toucher_html($div="",$js=0) {
 		
 		</div>
 
-		<div class="um-col2">
+		<div class="um-col2 right">
 		
 		<div class="postbox">
 		<h3 class="inside">Existed in "<?php echo $safe_tdir; ?>"</h3><ul class="um-list inside"><?php

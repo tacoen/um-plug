@@ -4,7 +4,9 @@ array_push($undressme,array('title' => "UM Debug and Test",'stitle' => "Checklis
 function um_debug() { um_admin_header("Checklist","um_debug_html",array()); }
 
 function um_debug_html($div="",$js=0) {?>
-	<div class="postbox"><h3 class="inside">Checklist</h3><ul class='inside um-list' data-dir="debug"><?php
+	<p>Check Themes compability againts UM-PLUG</p>
+	<div class="postbox"><h3 class="inside">Checklist</h3>
+	<ul class='inside um-list' data-dir="debug"><?php
 
 	$checklist = array (
 		1 => array('dir','template-tags','core','back',''),
@@ -16,17 +18,36 @@ function um_debug_html($div="",$js=0) {?>
 		7 => array('file','um-navui.css','child','',''),
 		8 => array('file','um-gui.js','child','',''),
 		9 => array('dir','layouts','child','',''),
-		10 => array('file','static.css','child','nocreate'),
+		10 => array('file','static.css','child','back','nocreate'),
 		0 => array('file','favicon.ico','child','back','nocreate'),
 
 	);
-
+	
+	if ( get_stylesheet_directory() == get_template_directory() ) {
+		echo "<li class='noicon'><em class='err'>Warning!</em> &mdash; You are using parent theme";
+		if ( ! file_exists(get_template_directory()."/um-core.txt")) {
+			echo " and has no um-core tag on it";
+		}
+		echo ". </li>\n";
+	}
+	
 	$w=count(array_keys($checklist)); $i=0;
 	for ($i; $i<$w; $i++) {
 		$item = $checklist[$i];
-			if ($item[2]!="core") { $res = um_childcheck( $item[1], $item[0], $item[4] ); } else { $res = um_corecheck( $item[1], $item[0], $item[4] ); }
-			echo "<li class='noicon'><label class='".$item[0]."'>".$item[1]."</label> <span class='res'>$res</span> <span class='res'>$item[2]</span>";
+			if ($item[2]!="core") { 
+				$res = um_childcheck( $item[1], $item[0], $item[4] ); 
+			} else { 
+				$res = um_corecheck( $item[1], $item[0], $item[4] ); 
+			}
+
+			if ( get_stylesheet_directory() == get_template_directory() ) { $item[2] = "core"; }
+			
+			echo "<li class='noicon'><label class='".$item[0]."'>".$item[1]."</label> <span class='res'>$res</span> 
+			<span class='res'>$item[2]</span>";
+			
+
 			if ($item[3]!="back") { echo "<span class='uri'><code>". um_tool_which($item[1]) ."</code></span>"; }
+
 			echo "</li>\n";
 	}
 
@@ -70,54 +91,6 @@ function um_corecheck($item,$type,$check) {
 		}
 	}
 	return $res;
-}
-
-
-function umplug_checklist() {
-	$checklist = array (
-		0 => array('file','um-scheme.css'),
-		1 => array('file','um-gui.js'),
-		2 => array('dir','layouts'),
-		3 => array('dir','template-tags'),
-	);
-	$w=count(array_keys($checklist)); $i=0;
-
-	if (get_template_directory() != get_stylesheet_directory()) {
-		echo "<li class='noicon'><i class='dashicons dashicons-yes'></i> <b>Child Theme</b></li>";
-	}
-
-	for ($i; $i<$w; $i++) {
-		$item = $checklist[$i];
-		$mc =""; 
-		if ($item[0]=="dir") {
-			if ((file_exists(get_stylesheet_directory()."/".$item[1])) 
-				&& (is_dir(get_stylesheet_directory()."/".$item[1]))) { 
-					$ce = "Exist"; $di="yes"; 
-			} else { 
-					$di="no"; $ce="Not Found (".um_toucher_link($item[0],$item[1]) .") "; 
-			}
-			if ($item[1]=="template-tags") {
-			if ((file_exists(get_template_directory()."/".$item[1])) 
-				&& (is_dir(get_template_directory()."/".$item[1]))) { 
-					$ce = "Exist (in Parent directory) "; $di="yes"; 
-			} else { 
-					$di="no"; $ce="Not Found(in Parent directory) (".um_toucher_link($item[0],$item[1]."-parent") .")"; 
-			}
-			}
-		} else {
-			if (file_exists(get_stylesheet_directory()."/".$item[1])) { 
-				$ce = "Exist"; $di="yes"; 
-			} else { 
-				$di="no"; $ce="Not Found (".um_toucher_link($item[0],$item[1]) ."  or fall-back to parent)"; 
-			}
-		}
-		echo "<li class='noicon' data-file='$item[1]'><i class='dashicons dashicons-$di'></i> <b>$item[1]</b> &mdash; $item[0]: $ce</li>";
-	}
-	if (file_exists(get_stylesheet_directory()."/favicon")) {
-		echo "<li class='noicon'><i class='dashicons dashicons-yes'></i> <b>favicon.ico</b> found, included in WP Header</li>";
-	} else {
-		echo "<li class='noicon'><i class='dashicons dashicons-no'></i> <b>favicon.ico</b> not found in Theme Directory";
-	}
 }
 
 /*	
