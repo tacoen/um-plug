@@ -1,0 +1,38 @@
+#um-crumbs li { float: left; }
+#um-crumbs li:before { content: "\203A"; padding: 0 .5em }
+#um-crumbs li:first-child:before { content: ""; padding: 0 0; }
+
+.main-navigation {
+	font-size: .9em; position: fixed; top: 0; left: 0; background: #fff;
+}
+
+#page.site { margin-top: 32px; }
+
+.main-navigation .menu { height: 32px; }
+
+.main-navigation a {
+	min-width: 100px;
+}
+
+.main-navigation a,
+.main-navigation li ul { 
+	min-width: 100px;
+}
+
+.main-navigation a { padding: .3em .5em }
+
+.main-navigation li ul,
+.main-navigation  {
+	box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);	
+}
+
+.main-navigation ul { background: #fff; }
+
+.page_item_has_children > a:after { 
+	float:right; content: "\21D3";
+}
+
+.page_item_has_children .page_item_has_children > a:after { 
+	float:right; content: "\21D2";
+}
+

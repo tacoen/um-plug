@@ -42,6 +42,9 @@ text-align: center; border-radius: 3px; }
 .um-frame-box i.dashicons-yes { color: #39d; }
 .um-frame-box i.dashicons-no { color: #c11; }
 .um-frame-box i.dashicons-info { color: #393; }
+.um-frame-box i.dashicons-editor-help { color: #c11; }
+.um-frame-box i.dim { color: rgba(0,0,0,0.2); }
+
 
 .um-frame-box .postbox h3 { cursor: default; }
 
@@ -70,7 +73,7 @@ ul.feat .meta h3 { float: left; width: 70%; margin: 0 }
 ul.feat .meta div.feat { float: right; width: 30%; margin: 0 }
 ul.feat .meta { margin: 1em 0; display: table; width: 100% }
 ul.feat p { clear: both }
-ul.feat .feat span { border-radius: 3px; padding: 0 8px; display: inline-block; float: right; margin-left: 8px; 
+ul.feat .feat span { border-radius: 3px; padding: 3px 8px; display: inline-block; float: right; margin-left: 8px; 
 font-weight: 700; background: #999; }
 ul.feat .feat .js { background: #090; color: #fff; }
 ul.feat .feat .css { background: #369; color: #fff; }

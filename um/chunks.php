@@ -54,7 +54,7 @@ function um_textedit($title,$file) {?>
 	<h3>Chunk: <?php echo $title; ?></h3>
 	<?php wp_nonce_field('um_textedit'); ?>
 	<textarea data-file="<?php echo $title; ?>" data-dir="chunk" ><?php echo join("",file($file,FILE_SKIP_EMPTY_LINES)); ?></textarea>
-	<p><input type="submit" name="submit" id="submit" data-act="save" class="button button-primary" value="Save">
+	<p><input type="submit" name="submit" id="submit" data-act="save-chunk" class="button button-primary" value="Save">
 	</form>
 	<script>
 	umeditor_init('.um-frame-box')

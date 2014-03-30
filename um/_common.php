@@ -90,23 +90,7 @@ function um_file_getcontents($filename,$nonce="") {
 	$txt = join("",file($filename));
 	return stripslashes($txt);
 }
-function um_add_pagetemplate($n,$f) {
-	$n=preg_replace("#.php#",'',$n); $n=ucfirst($n);
-	um_file_putcontents($f,"/*\n* Template "."Name: $n\n*/\n");
-}
-function um_new_umguijs() {
-	um_file_putcontents(get_stylesheet_directory()."/um-gui.js", "(function($) {\n\n})(jQuery);");
-	return get_stylesheet_directory()."/um-gui.js";
-}
-function um_new_umschemecss() {
-	$scheme_css = um_file_getcontents(UMPLUG_DIR."/prop/css/um-scheme-default.css");
-	/* format it?*/
-	um_file_putcontents(get_stylesheet_directory()."/um-scheme.css",$scheme_css);
-	return get_stylesheet_directory()."/um-scheme.css";
-}
-function um_new_layoutdir() {
-	mkdir(get_stylesheet_directory()."/layouts");
-}
+
 function css_include($f,$c=1) {
 	if (file_exists($f)) {
 		return "\n/* $f */\n".css_compress(join("",file($f)),$c)."\n";

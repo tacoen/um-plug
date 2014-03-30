@@ -37,6 +37,8 @@ function umeditor_init(obj) {
 		'a':jQuery(this).data('act'),
 		}
 		fodavar['text'] = jQuery('.um-editor textarea').val();
+
+		//console.log(fodavar['a'], fodavar['d'], fodavar['f']);
 		jQuery.post(ajaxurl, { action: 'foda', v: fodavar }, function(res) { $umdiv.html(res); });
 
 	})
@@ -67,6 +69,19 @@ function umlist_function_init(obj) {
 		}
 	});
 
+	jQuery('button.select-touch').click (function(e) {
+		e.preventDefault();
+		var obj = jQuery(this).parent();
+		var fodavar = {
+			'f': obj.children('select').val(),
+			'a': jQuery(this).data('act'),
+			'd': obj.children('select').data('d')
+		}
+		if (fodavar_check(fodavar)===true) {
+			//console.log(fodavar['a'], fodavar['d'], fodavar['f']);
+			jQuery.post(ajaxurl, { action: 'foda', v: fodavar }, function(res) { $umdiv.html(res); });
+		}
+	});
 	
 	jQuery('button.input-touch').click (function(e) {
 		e.preventDefault();
@@ -99,9 +114,10 @@ function umlist_function_init(obj) {
 		}
 
 		//fallback
-		if (!fodavar['d']) { fodavar['d'] = jQuery(this).data('dir'); }
+		if (!fodavar['d']) { fodavar['d'] = jQuery(this).data('d'); }
 		if (fodavar['a']=="wpedit") { window.location = jQuery(this).attr('href'); }
-
+		if (!fodavar['f']) { fodavar['f'] = jQuery(this).data('f'); }
+		
 		if (fodavar_check(fodavar)===true) {
 			//console.log(fodavar['a'], fodavar['d'], fodavar['f']);
 			jQuery.post(ajaxurl, { action: 'foda', v: fodavar }, function(res) { $umdiv.html(res); });

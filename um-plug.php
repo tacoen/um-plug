@@ -17,13 +17,14 @@ DEFINE ('UMPLUG_URL',  plugin_dir_url(__FILE__) );
 require UMPLUG_DIR . 'um/_common.php';
 require UMPLUG_DIR . 'um/options.php';
 require UMPLUG_DIR . 'um/etc.php';
+require UMPLUG_DIR . 'um/contemplating.php';
 
 require UMPLUG_DIR . 'um/cdn.php';
 
-require UMPLUG_DIR . 'um/chunks.php';
-require UMPLUG_DIR . 'um/toucher.php';
-require UMPLUG_DIR . 'um/addons.php';
 require UMPLUG_DIR . 'um/checker.php';
+require UMPLUG_DIR . 'um/toucher.php';
+require UMPLUG_DIR . 'um/chunks.php';
+require UMPLUG_DIR . 'um/addons.php';
 
 require UMPLUG_DIR . 'um/ajax-adminpage.php';
 require UMPLUG_DIR . 'um/adminpage.php';

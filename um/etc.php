@@ -59,14 +59,6 @@ function um_footeradmin () {
 	shuffle($credit); echo $credit[0];
 }
 
-function remove_gravatar ($avatar, $id_or_email, $size, $default, $alt) {
-	$default = get_template_directory_uri() .'/noavatar.png?junk=';
-	return "<img alt='{$alt}' src='{$default}' class='avatar avatar-{$size} photo avatar-default' height='{$size}' width='{$size}' />";
-}
-if (um_getoption('noavatar')) { add_filter('get_avatar', 'remove_gravatar', 1, 5); }
-
-if (um_getoption('nowpabar')) { show_admin_bar(false); }
-
 /* recent comment hardcode are move into wp-reset.css (um-reset.css) */
 
 function my_remove_recent_comments_style() {
