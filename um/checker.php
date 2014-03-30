@@ -25,7 +25,7 @@ function um_debug_html($div="",$js=0) {?>
 	);
 	
 	if ( get_stylesheet_directory() == get_template_directory() ) {
-		echo "<li class='noicon'><em class='err'>Warning!</em> &mdash; You are using parent theme";
+		echo "<li class='noicon'><em class='err'>Notice!</em> &mdash; You are using parent theme";
 		if ( ! file_exists(get_template_directory()."/um-core.txt")) {
 			echo " and the parents wasn't UM-Core.";
 		}

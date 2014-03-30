@@ -17,7 +17,7 @@ function remove_gravatar ($avatar, $id_or_email, $size, $default, $alt) {
 	if ( file_exists( get_template_directory_uri() .'/noavatar.png')) {
 		$default = get_template_directory_uri() .'/noavatar.png?junk=';
 	} else {
-		$default = UMPLUG_DIR .'/prop/noavatar.png?junk=';
+		$default = UMPLUG_URL .'prop/noavatar.png?junk=';
 	}
 	
 	return "<img alt='{$alt}' src='{$default}' class='avatar avatar-{$size} photo avatar-default' height='{$size}' width='{$size}' />";

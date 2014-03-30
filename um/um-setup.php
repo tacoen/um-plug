@@ -27,3 +27,7 @@ if ( is_page_template('custom-page.php') ) {
 	add_action('wp_enqueue_scripts','umadd_fullpagejs');
 }
 */
+
+if (function_exists('um_addon_setup')) {
+	add_action('wp_enqueue_scripts','um_addon_setup');
+}

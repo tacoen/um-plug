@@ -96,6 +96,5 @@ function um_addon_setup() {
 add_action('after_setup_theme', 'um_addon_setup');
 */
 
-add_action('wp_enqueue_scripts','um_addon_setup');
 
 ?>
