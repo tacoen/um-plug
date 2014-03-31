@@ -5,7 +5,7 @@ UM Themes core and tool kits, a Wordpress developer Toolkit for creating/ mainta
 ## UM-Themes
 
 UM stand for Undress ME, a "starter themes" and (less commonly) "naked themes" eventually "bones".
-You could use UM-Plug for almost(almost!) every themes, but it would be so much better if you use [UM-Core|https://github.com/tacoen/um-theme] as parent themes (since 1.0.0).
+You could use UM-Plug for almost(almost!) every themes, but it would be so much better if you use []UM-Core|https://github.com/tacoen/um-theme]] as parent themes (since 1.0.0).
 
 
 
