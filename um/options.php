@@ -40,7 +40,7 @@ function umo_args() {
 			'text'=> 'Developer',
 			'note'	=> 'Developer candies until productions state',
 			'field'	=> array(
-				'owncdn'=> array ('check','Alter CDN','Use your own CDN resources (<a href="/wp-admin/plugin-editor.php?file=um-plug%2Fum%2Fcdn.php&plugin=um-plug%2Fum-plug.php">cdn.php</a>)',''),
+				'owncdn'=> array ('check','Alter CDN','Use your own CDN resources (<a href="'.admin_url().'plugin-editor.php?file=um-plug%2Fum%2Fcdn.php&plugin=um-plug%2Fum-plug.php">cdn.php</a>)',''),
 				'umtag'	=> array ('check','UM-Tag','Enable dynamic UM Template Tags',''),
 				'cssrd'	=> array ('check','UM-reset.php','Evaluate um-reset.css <small>(Regenerate um-reset.css)</small>',''),
 				'noavatar'=> array ('check','No Gravatar','Disable Gravatar for faster development process',''),

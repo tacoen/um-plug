@@ -77,7 +77,7 @@ function um_toucher_html($div="",$js=0) {
 		foreach ($existed as $g) {
 			$dl="<span class='last'><a class='del' href='#' data-act='del' data-dir='part'><i class='dashicons-no um-dashicons'></i></a><span>".
 				 "<span>".round(filesize("$tdir/$g")/1000)."k</span>";
-			echo "<li class='noicon' data-file='$g'><a data-act='wpedit' href='/wp-admin/theme-editor.php?file=$g&theme=".$safe_tdir,"'>$g</a>$dl</li>\n";
+			echo "<li class='noicon' data-file='$g'><a data-act='wpedit' href='".admin_url()."theme-editor.php?file=$g&theme=".$safe_tdir,"'>$g</a>$dl</li>\n";
 		}
 		?></ul></div></div>
 		<div id="toucher"><?php echo $div; ?>&nbsp; </div><?php		
