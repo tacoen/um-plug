@@ -28,6 +28,7 @@ UM is base on **_s** [Underscores.me](http://underscores.me)
   * Move color scheme to theme (um-core) as Theme options
   * Move um-reset to theme (um-core) as Theme options
   * Move um-gui-lib to theme (um-core) as Theme options
+  * Move um-ajaxlogin to theme (um-core) as Theme options
   
 ###0.1.5
 
