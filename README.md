@@ -2,6 +2,12 @@
 
 UM Themes core and tool kits, a Wordpress developer Toolkit for creating/ maintaining/ optimizing a theme.
 
+## UM-Themes
+
+UM stand for Undress ME, a "starter themes" and (less commonly) "naked themes" eventually "bones".
+You could use UM-Plug for almost(almost!) every themes, but it would be so much better if you use UM-Core as
+parent themes (since 1.0.0).
+
 ##Features
 
 ###1.0.2
@@ -12,6 +18,7 @@ UM Themes core and tool kits, a Wordpress developer Toolkit for creating/ mainta
 
 ###1.0.1
   * Add Page Template addons
+  * Neater theme checklist
 
 ###1.0.0
 
