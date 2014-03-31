@@ -5,17 +5,18 @@ UM Themes core and tool kits, a Wordpress developer Toolkit for creating/ mainta
 ## UM-Themes
 
 UM stand for Undress ME, a "starter themes" and (less commonly) "naked themes" eventually "bones".
-You could use UM-Plug for almost(almost!) every themes, but it would be so much better if you use [[UM-Core|https://github.com/tacoen/um-theme]] as parent themes (since 1.0.0).
+You could use UM-Plug for almost(almost!) every themes, but it would be so much better if you use [UM-Core](https://github.com/tacoen/um-theme) as parent themes (since 1.0.0).
 
+UM is base on **_s** [Underscores.me](http://underscores.me) 
 
 
 ##Features
 
 ###1.0.2
-  * Page Template Addons: impress.js
-  * Page Template Addons: fullpage.js
-  * Page Template Addons: OnePageScroll.js
-  * Page Template Addons: Freewall.js
+  * Page Template Addons: [impress.js](http://bartaz.github.io/impress.js/)
+  * Page Template Addons: [fullpage.js](http://alvarotrigo.com/fullPage/)
+  * Page Template Addons: [OnePageScroll.js](http://www.thepetedesign.com/demos/onepage_scroll_demo.html)
+  * Page Template Addons: [Freewall.js](http://vnjs.net/www/project/freewall/)
 
 ###1.0.1
   * Add Page Template addons
