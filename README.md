@@ -4,6 +4,22 @@ UM Themes core and tool kits, a Wordpress developer Toolkit for creating/ mainta
 
 ##Features
 
+###1.0.2
+  * Page Template Addons: impress.js
+  * Page Template Addons: fullpage.js
+  * Page Template Addons: OnePageScroll.js
+  * Page Template Addons: Freewall.js
+
+###1.0.1
+  * Add Page Template addons
+
+###1.0.0
+
+  * Avaliable in Wordpress.org
+  * Move color scheme to theme (um-core) as Theme options
+  * Move um-reset to theme (um-core) as Theme options
+  * Move um-gui-lib to theme (um-core) as Theme options
+  
 ###0.1.5
 
   * Minimize: Option to Dashboard Load, WP Header,
