@@ -21,7 +21,7 @@ function umo_args() {
 				'nowphead'=> array ('check','Minimize WP Header','Remove unnecessary code from header',''),
 				'nowpabar' => array('check','WP Toolbar',"Disable WP Toolbar for all",''),
 				'pback'	=> array ('check','Pingback','Allow Pingback',''),
-				'wdtma'	=> array ('number','Widget','How Many Dynamic Widget',''),
+				'wdtma'	=> array ('number','Widget','How Many additional Dynamic Widget <small>(Element-x)</small>',''),
 			),
 		),
 
@@ -36,17 +36,27 @@ function umo_args() {
 				'style'	=> array ('text','Stylesheet(Child)','','8'),
 			)
 		),
+		'cdnopt'=> array(
+			'text'=> 'CDN',
+			'note'	=> 'Use your prefered cdn',
+			'field'	=> array(
+				'owncdn'=> array ('check','Alter CDN','Use your own CDN resources (<a href="'.admin_url().'plugin-editor.php?file=um-plug%2Fum%2Fcdn.php&plugin=um-plug%2Fum-plug.php">cdn.php</a>)',''),
+				'opsfcdn' => array ('text','Open Sans','<br/><small>Webfont used by Wordpress 3.8.1<br>Blank it to use Wordpress default</small>','60'),
+				'jqcdn'	=> array ('text','Jquery','<br/><small>um-gui-lib using Jquery 2.0</small>','60'),
+				'gamirr'=> array ('text','Google','<br/><small>ajax.googleapis.com mirror, address only do not add http://,<br/>Blank it to disable</small>','60'),
+			)
+		),
 		'devopt'=> array(
 			'text'=> 'Developer',
 			'note'	=> 'Developer candies until productions state',
 			'field'	=> array(
-				'owncdn'=> array ('check','Alter CDN','Use your own CDN resources (<a href="'.admin_url().'plugin-editor.php?file=um-plug%2Fum%2Fcdn.php&plugin=um-plug%2Fum-plug.php">cdn.php</a>)',''),
 				'umtag'	=> array ('check','UM-Tag','Enable dynamic UM Template Tags',''),
 				'cssrd'	=> array ('check','UM-reset.php','Evaluate um-reset.css <small>(Regenerate um-reset.css)</small>',''),
 				'noavatar'=> array ('check','No Gravatar','Disable Gravatar for faster development process',''),
 				'cssstatic'	=> array ('check','Static','Reduce load by use static generated stylesheet <small>(Last Generated:'.$static_mtime.')</small>',''),
 			)
 		),
+		
 	);
 }
 
@@ -57,6 +67,8 @@ function um_rwvar_default() {
 		'wplug' => 'g',
 		'style' => 'c',
 		'templ' => 'p',
+		'jqcdn' => 'http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js',
+		'opsfcdn' => 'http://cdn.dibiakcom.net/font/opensans/style.css',
 	);
 }
 function um_urlrewrite_is() {

@@ -73,7 +73,7 @@ class um_is_undressme {
 						'type'=> $umo[$se]['field'][$F[$n]][0],
 						'id'=> $F[$n],
 						'note'=> $umo[$se]['field'][$F[$n]][2],
-						'var'=> $umo[$se]['field'][$F[$n]][3]
+						'var'=> $umo[$se]['field'][$F[$n]][3],
 					);
 					add_settings_field($F[$n],$umo[$se]['field'][$F[$n]][1],array($this,'umo_option_print'),"umo-$se","$se",$args);
 					$n++;
