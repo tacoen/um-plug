@@ -51,9 +51,9 @@ function umo_args() {
 			'note'	=> 'Developer candies until productions state',
 			'field'	=> array(
 				'umtag'	=> array ('check','UM-Tag','Enable dynamic UM Template Tags',''),
-				'cssrd'	=> array ('check','UM-reset.php','Evaluate um-reset.css <small>(Regenerate um-reset.css)</small>',''),
+				'cssrd'	=> array ('check','Use um-reset.php','Evaluate um-reset.css <small>(Regenerate um-reset.css, require um-core theme)</small>',''),
 				'noavatar'=> array ('check','No Gravatar','Disable Gravatar for faster development process',''),
-				'cssstatic'	=> array ('check','Static','Reduce load by use static generated stylesheet <small>(Last Generated:'.$static_mtime.')</small>',''),
+				'cssstatic'	=> array ('check','Static','Reduce load by use static generated stylesheet <small>(Last Generated:'.$static_mtime.', require um-core theme)</small>',''),
 			)
 		),
 		
