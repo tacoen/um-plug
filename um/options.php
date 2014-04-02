@@ -43,7 +43,7 @@ function umo_args() {
 				'owncdn'=> array ('check','Alter CDN','Use your own CDN resources (<a href="'.admin_url().'plugin-editor.php?file=um-plug%2Fum%2Fcdn.php&plugin=um-plug%2Fum-plug.php">cdn.php</a>)',''),
 				'opsfcdn' => array ('text','Open Sans','<br/><small>Webfont used by Wordpress 3.8.1<br>Blank it to use Wordpress default</small>','60'),
 				'jqcdn'	=> array ('text','Jquery','<br/><small>um-gui-lib using Jquery 2.0</small>','60'),
-				'gamirr'=> array ('text','Google','<br/><small>ajax.googleapis.com mirror, address only do not add http://,<br/>Blank it to disable</small>','60'),
+				'gamirr'=> array ('text','Google Apis Mirror','<br/><small>ajax.googleapis.com mirror, address only do not add http://,<br/>Blank it to disable</small>','60'),
 			)
 		),
 		'devopt'=> array(

@@ -9,7 +9,7 @@ foreach($addons as $addon){
 	include $addon;
 }
 
-array_push($undressme, array('title' => "UM Page Addons",'stitle' => "Page Addons",'slug' => "um_pagetemplate"));
+array_push($undressme, array('title' => "UM Page Addons",'stitle' => "OnePage Addons",'slug' => "um_pagetemplate"));
 function um_pagetemplate() { um_admin_header("Page Template Addons","um_pagetemplate_html",array()); }
 
 function um_pagetemplate_html($div="",$js=0) {

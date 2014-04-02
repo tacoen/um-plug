@@ -4,8 +4,8 @@ Plugin Name: UM-Plug
 Plugin URI: http://tacoen.github.io/um-plug/
 Description: Themes core and tool kits, a Wordpress developer Toolkit for creating/ maintaining/ optimizing a theme. 
 Author: tacoen
-Author URI: http://tacoen.github.com/
-Version: 0.1
+Author URI: http://github.com/tacoen
+Version: 1.0.3
 Text Domain: um
 */
 
