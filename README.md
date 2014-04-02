@@ -12,6 +12,10 @@ UM is base on **_s** [Underscores.me](http://underscores.me)
 
 ##Features
 
+###1.0.3
+  * Page Template Addons: [wow.js](http://mynameismatthieu.com/WOW/) and animate.css
+  * um-reset.php now only for heredoc's (.entry-content and .comment-content ), normalizer, um-reset-ui.css, wp-reset.css are now enqueue into header, all still concatenate as um-reset.css
+  
 ###1.0.2
   * Page Template Addons: [impress.js](http://bartaz.github.io/impress.js/)
   * Page Template Addons: [fullpage.js](http://alvarotrigo.com/fullPage/)
@@ -19,7 +23,7 @@ UM is base on **_s** [Underscores.me](http://underscores.me)
   * Page Template Addons: [Freewall.js](http://vnjs.net/www/project/freewall/)
 
 ###1.0.1
-  * Add Page Template addons
+  * Add OnePage (Page Template) addons
   * Neater theme checklist
 
 ###1.0.0
