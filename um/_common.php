@@ -1,29 +1,5 @@
 <?php
 
-function umtag($func,$args=array()) {
-	if (um_getoption('umtag')) {
-		if (! function_exists($func)) {
-			$ttdir=get_template_directory()."/template-tags/";
-			if (file_exists($ttdir.$func.".php")) {
-				require $ttdir.$func.".php"; call_user_func_array($func,array($args));
-			} else {
-				echo "<!-- umtag: $func not exist --->";
-			}
-		} else {
-			call_user_func_array($func,array($args));
-		}
-	} else {
-		echo "<!-- umtag: disable --->";
-	}
-}
-function um_ver() { return "1.0.3"; }
-function um_tool_which($file) {
-	if (file_exists(get_stylesheet_directory()."/".$file)) {
-		return get_stylesheet_directory_uri()."/".$file;
-	} else {
-		return get_template_directory_uri()."/".$file;
-	}
-}
 function um_get_layout_option($where) {
 	$layout_options['none']="none";
 	$layout_css=glob($where."/*.css");
@@ -33,18 +9,52 @@ function um_get_layout_option($where) {
 	}
 	return $layout_options;
 }
-function um_getoption($w) {
+
+if (!function_exists(um_getoption)) { /* um-compat.php */
+
+	function um_getoption($w) {
 		$umo->options=get_option('umo');
 		if (in_array($w,array_keys($umo->options))) {
 			return $umo->options[$w];
 		}
-}
-function um_get_themeoption($w) {
+	}
+
+	function um_get_themeoption($w) {
 		$umt->options=get_option('umt');
 		if (in_array($w,array_keys($umt->options))) {
 			return $umt->options[$w];
 		}
+	}
+
+	function um_ver() { return "1.0.3"; }
+
+	function umtag($func,$args=array()) {
+		if (um_getoption('umtag')) {
+			if (! function_exists($func)) {
+				$ttdir=get_template_directory()."/template-tags/";
+				if (file_exists($ttdir.$func.".php")) {
+					require $ttdir.$func.".php"; call_user_func_array($func,array($args));
+				} else {
+					echo "<!-- umtag: $func not exist --->";
+				}
+			} else {
+				call_user_func_array($func,array($args));
+			}
+		} else {
+			echo "<!-- umtag: disable --->";
+		}
+	}
+
+	function um_tool_which($file) {
+		if (file_exists(get_stylesheet_directory()."/".$file)) {
+			return get_stylesheet_directory_uri()."/".$file;
+		} else {
+			return get_template_directory_uri()."/".$file;
+		}
+	}
+
 }
+
 function um_admin_header($title,$func="",$arny=array()) {
 		echo '<div class="wrap"><div class="um-head-set"><h2>UM: '.$title.'</h2><h3>Theme: '. wp_get_theme() .'</h3></div>';
 		echo '<div class="um-frame-box dress">';

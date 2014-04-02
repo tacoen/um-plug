@@ -32,11 +32,12 @@ require UMPLUG_DIR . 'um/mini.php';
 require UMPLUG_DIR . 'um/users.php';
 require UMPLUG_DIR . 'um/um-setup.php';
 
-add_action( 'admin_init', 'tc_i18n' );
+add_action( 'admin_init', 'um_i18n' );
 
-function tc_i18n() {
+function um_i18n() {
 	load_plugin_textdomain( 'um', false, 'lang' );
 }
+
 function umplug_role_check() {
 	if ( !current_user_can( 'edit_theme_options' ) )  {
 	wp_die( __( 'You do not have sufficient permissions to access this page.', 'um' ) );
