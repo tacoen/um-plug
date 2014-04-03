@@ -1,5 +1,9 @@
 #UM-Plug
 
+[![endorse](https://api.coderwall.com/tacoen/endorsecount.png)](https://coderwall.com/tacoen)
+
+[![Analytics](https://ga-beacon.appspot.com/UA-49656775-1/um-plug/readme)](https://github.com/igrigorik/ga-beacon)
+
 UM Themes core and tool kits, a Wordpress developer Toolkit for creating/ maintaining/ optimizing a theme.
 
 ## UM-Themes
@@ -54,8 +58,3 @@ Thank your qSandbox.com! Demo avaliable at http://7htw4u3p0l.qsandbox.com/ -- Ac
   * Reduce load by use static generated-minimized stylesheet
   * Facebook, Twitter contact method
 
-##Helo World!
-
-[![endorse](https://api.coderwall.com/tacoen/endorsecount.png)](https://coderwall.com/tacoen)
-
-[![Analytics](https://ga-beacon.appspot.com/UA-49656775-1/um-plug/readme)](https://github.com/igrigorik/ga-beacon)
