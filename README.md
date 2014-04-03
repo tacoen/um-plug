@@ -57,3 +57,5 @@ Thank your qSandbox.com! Demo avaliable at http://7htw4u3p0l.qsandbox.com/ -- Ac
 ##Helo World!
 
 [![endorse](https://api.coderwall.com/tacoen/endorsecount.png)](https://coderwall.com/tacoen)
+
+[![Analytics](https://ga-beacon.appspot.com/UA-49656775-1/um-plug/readme)](https://github.com/igrigorik/ga-beacon)
