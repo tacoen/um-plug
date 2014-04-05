@@ -11,6 +11,12 @@ function umo_args() {
 	} else {
 		$static_mtime = "n/a";
 	}
+
+	if (file_exists(get_stylesheet_directory()."/static.js")) {
+		$jsstatic_mtime = date("Y-m-d H:i P",filemtime( get_stylesheet_directory()."/static.js"));
+	} else {
+		$jsstatic_mtime = "n/a";
+	}
 	
 	return array(
 		'opt'=> array(
@@ -53,7 +59,8 @@ function umo_args() {
 				'umtag'	=> array ('check','UM-Tag','Enable dynamic UM Template Tags',''),
 				'cssrd'	=> array ('check','Use um-reset.php','Evaluate um-reset.css <small>(Regenerate um-reset.css, require um-core theme)</small>',''),
 				'noavatar'=> array ('check','No Gravatar','Disable Gravatar for faster development process',''),
-				'cssstatic'	=> array ('check','Static','Reduce load by use static generated stylesheet <small>(Last Generated:'.$static_mtime.', require um-core theme)</small>',''),
+				'cssstatic'	=> array ('check','Static CSS','Reduce load by use static generated stylesheet <small>(Last Generated:'.$static_mtime.', require um-core theme,<br/>only check this when your done with css)</small>',''),
+				'jsstatic'	=> array ('check','Static JS','Reduce load by use static generated javascripts <small>(Last Generated:'.$jsstatic_mtime.', require um-core theme,<br/>only check this when your done with js)</small>',''),
 			)
 		),
 		
