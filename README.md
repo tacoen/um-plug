@@ -19,6 +19,12 @@ Thank your qSandbox.com! Demo avaliable at http://7htw4u3p0l.qsandbox.com/ -- Ac
 
 ##Features
 
+###1.0.5
+  * Added fontastic.me generated font style.css as umui(umi)
+
+###1.0.4
+  * Minified Theme related Javascripts (um-gui-lib.js)
+  
 ###1.0.3
   * Page Template Addons: [wow.js](http://mynameismatthieu.com/WOW/) and animate.css
   * um-reset.php now only for heredoc's (.entry-content and .comment-content ), normalizer, um-reset-ui.css, wp-reset.css are now enqueue into header, all still concatenate as um-reset.css
@@ -47,6 +53,7 @@ Thank your qSandbox.com! Demo avaliable at http://7htw4u3p0l.qsandbox.com/ -- Ac
   * Alter CDN, if you don't like Google CDN or behind firewall
   * Shorten WP resources URI (URL Rewrites)
   * Develop your own reset.css, reset your own Wordpress style  
+  * Chunks for static content, Chunks avaliable as shortcode and widgets
   * Pluggable template tag
   * Pluggable template part
   * Come with Handy jQuery Function for more controls on user view

@@ -26,7 +26,7 @@ if (!function_exists(um_getoption)) { /* um-compat.php */
 		}
 	}
 
-	function um_ver() { return "1.0.3"; }
+	function um_ver() { return "1.0.5"; }
 
 	function umtag($func,$args=array()) {
 		if (um_getoption('umtag')) {

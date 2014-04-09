@@ -20,14 +20,30 @@ UM Themes core and tool kits, a Wordpress developer Toolkit for creating/ mainta
   * Option to disable:  WP Toolbar, Gravatar Loads, 
   * Alter CDN, if you don't like Google CDN or behind firewall
   * Shorten WP resources URI (URL Rewrites)
-  * Develop your own reset.css, reset your own Wordpress style (Moved to themes, since 1.0.0)
-  * Come with Handy jQuery Function for more controls on user view
+  * Come with Handy jQuery Function for more controls on user view.
   * Ajax Login
   * Reduce load by use static generated-minimized stylesheet
+  * Reduce load by Minified UM-Theme related Javascripts (1.0.4)
+  * Develop your own reset.css, reset your own Wordpress style (Moved to themes, since 1.0.0)
+  * Chunks for static contents, Chunks will avaliable as shortcode or widgets 
   * Facebook, Twitter contact method
   * Pluggable template tag
   * Pluggable template part
   * Pluggable JS/CSS Addon for Page Template (since 1.0.0)
+
+= Links = 
+
+  * Demo avaliable at http://7htw4u3p0l.qsandbox.com/ -- Access-code: 0000 
+  * [UM-Plug GitHub Repository](https://github.com/tacoen/um-plug)
+  * [UM-Themes GitHub Repository](https://github.com/tacoen/um-theme)
+  
+= Onepage/Page templates Add ons = 
+
+  * [wow.js](http://mynameismatthieu.com/WOW/) and animate.css
+  * [impress.js](http://bartaz.github.io/impress.js/)
+  * [fullpage.js](http://alvarotrigo.com/fullPage/)
+  * [OnePageScroll.js](http://www.thepetedesign.com/demos/onepage_scroll_demo.html)
+  * [Freewall.js](http://vnjs.net/www/project/freewall/)
 
 == Installation ==
 
@@ -54,6 +70,10 @@ directory take precedence. For example, `/assets/screenshot-1.png` would win ove
 2. This is the second screen shot
 
 == Changelog ==
+
+= 1.0.5 =
+
+ * Onepage/Page Template Addons
 
 = 1.0.0 =
 
