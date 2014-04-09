@@ -52,3 +52,4 @@ ul.feat .meta h3 { float:left;width:70%;margin:0 }
 ul.feat .meta { margin:1em 0;display:table;width:100% }
 ul.feat li { border-top:1px solid #ccc;}
 ul.feat p { clear:both }
+.iframe_full { width: 100%; min-height: 560px; }
