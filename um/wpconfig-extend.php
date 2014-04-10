@@ -3,7 +3,7 @@ defined('ABSPATH') or die('Huh?');
 // Read: http://codex.wordpress.org/Editing_wp-config.php
 /* You can: wp-admin/maint/repair.php */
 
-define('WP_ALLOW_REPAIR',true);
+//define('WP_ALLOW_REPAIR',true);
 
 //define('WP_DEBUG',true);
 //define('WP_DEBUG_DISPLAY',true);

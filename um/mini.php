@@ -49,28 +49,6 @@ function js_compress($buffer,$cl=0) {
 		$buffer = preg_replace('/^\s+$/', '', $buffer);
 		$buffer = preg_replace('#\s\s+#', '', $buffer);
 		$buffer = preg_replace("/(\s+)?(=|:|;|,|\}|\{|\)|\(|\+)(\s+)?/m", '\\2', $buffer);
-
-/*	if ($cl == 0) {
-		$buffer = preg_replace('#//#', "\n//", $buffer);
-		$buffer = preg_replace('#//(.+)\n#', "", $buffer);
-		$buffer = preg_replace('#//#', "", $buffer);
-		$buffer = preg_replace('#(\s+|\s)?(;|\+|,|=|\)|\(|\.|\&)(^\s+|\s)?#', "\\2", $buffer);
-		$buffer = preg_replace('#(\s+|\s)?(;|\+|,|=|\)|\(|\.|\&)(^\s+|\s)?#', "\\2", $buffer);
-		$buffer = preg_replace('#\}\n#',"}",$buffer);
-		$buffer = preg_replace('#\{\n#',"{",$buffer);
-		$buffer = preg_replace('#\{(\s|\s+)#',"{ ",$buffer);
-		$buffer = preg_replace('#\,\n#',",",$buffer);
-		$buffer = preg_replace('#\%#',"% ",$buffer);
-		$buffer = preg_replace('#(\s|\s+)\}\);(\s|\s+)?#',"}); ",$buffer);
-		$buffer = preg_replace('#(\s|\s+)\}\);(\s|\s+)?#',"}); ",$buffer);
-		$buffer = preg_replace('#(\s|\s+|\n)?:(\s|\s+|\n)#'," : ",$buffer);
-		$buffer = preg_replace('#;(\s|\n|\s+|\r)#',"; ",$buffer);
-		$buffer = preg_replace('#\s{2}#'," ",$buffer);
-		$buffer = preg_replace('#\n{2}#',"\n",$buffer);
-		$buffer = preg_replace('#\n{2}#',"\n",$buffer);
-		$buffer = preg_replace('#\n{2}#',"\n",$buffer);
-	}
-*/
 	return $buffer;
 }
 
