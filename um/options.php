@@ -67,17 +67,19 @@ function umo_args() {
 	);
 }
 
-
-function um_rwvar_default() {
-	return array(
-		'wpinc' => 'i',
-		'wplug' => 'g',
-		'style' => 'c',
-		'templ' => 'p',
-		'jqcdn' => 'http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js',
-		'opsfcdn' => 'http://cdn.dibiakcom.net/font/opensans/style.css',
-	);
+if (!function_exists('um_rwvar_default')) { 
+	function um_rwvar_default() {
+		return array(
+			'wpinc' => 'i',
+			'wplug' => 'g',
+			'style' => 'c',
+			'templ' => 'p',
+			'jqcdn' => 'http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js',
+			'opsfcdn' => 'http://cdn.dibiakcom.net/font/opensans/style.css',
+		);
+	}
 }
+
 function um_urlrewrite_is() {
 	return array (
 		0 => array (

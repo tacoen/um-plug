@@ -1,13 +1,6 @@
 <?php
 defined('ABSPATH') or die('Huh?');
 
-function dome($i) { 
-		global $undressme;
-		um_admin_header($undressme[$i]['stitle'],$undressme[$i]['function'],array()); 
-		echo "see dome?\n\n";
-		print_r($undressme[$i]);
-}
-
 class um_is_undressme {
 
 	public $undressme;
@@ -26,9 +19,8 @@ class um_is_undressme {
 	public function um_add_pages() {
 
 		global $undressme; $m = 0;
-		$M = count( array_keys($undressme));
+		$M = count( array_keys($undressme) );
 		for ($m; $m<$M; $m++) {
-			$this->dome[$m] = array($undressme[$m]['function'],$undressme[$m]['stitle']);
 			add_submenu_page('undressme',
 				$undressme[$m]['title'],
 				$undressme[$m]['stitle'],

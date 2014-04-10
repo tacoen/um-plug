@@ -1,16 +1,16 @@
 <?php
 
-function um_get_layout_option($where) {
-	$layout_options['none']="none";
-	$layout_css=glob($where."/*.css");
-	foreach ($layout_css as $lf) {
-		$f=basename($lf); $F=explode(".",$f); $n++;
-		$layout_options[$F[0]]=$f;
-	}
-	return $layout_options;
-}
+if (!function_exists('um_getoption')) { /* um-compat.php */
 
-if (!function_exists(um_getoption)) { /* um-compat.php */
+	function um_get_layout_option($where) {
+		$layout_options['none']="none";
+		$layout_css=glob($where."/*.css");
+		foreach ($layout_css as $lf) {
+			$f=basename($lf); $F=explode(".",$f); $n++;
+			$layout_options[$F[0]]=$f;
+		}
+		return $layout_options;
+	}
 
 	function um_getoption($w) {
 		$umo->options=get_option('umo');
