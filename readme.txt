@@ -77,6 +77,11 @@ directory take precedence. For example, `/assets/screenshot-1.png` would win ove
 
 = 1.0.0 =
 
+
+
+See: http://generatewp.com/plugin-readme/
+
+
 Initial Wordpress.org Release
 
 = 0.1.5 =

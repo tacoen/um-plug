@@ -10,17 +10,30 @@ if (get_option('permalink_structure') == '') {
 function um_flush_rewrite_rules() { flush_rewrite_rules(); }
 add_action( 'after_switch_theme', 'um_flush_rewrite_rules' );
 
-function is_inc($a) { 
-	$um_url = um_urlrewrite_is(); $count = count(array_keys($um_url));$n=0;
-	if (preg_match("#".admin_url()."#",$a)) {
-		return $a; 
-	} else {
-		if (preg_match("#".home_url()."#",$a)) { 
-			for ($n; $n < $count; $n++) {
-				if (strpos($a, $um_url[$n]['tag']) > 0) { return str_replace($um_url[$n]['tag'] ,$um_url[$n]['mod'], $a); }
-			}
-		} else { return $a; }
-	}	
+function um_urlrewrite_is() {
+	return array (
+		0 => array (
+			'tag' => str_replace(home_url()."/",'',plugins_url()."/um-plug/prop/"),
+			'mod' => um_getoption('umplug')."/"
+		),
+		1 => array (
+			'tag' => str_replace(home_url()."/",'',includes_url()),
+			'mod' => um_getoption('wpinc')."/"
+		),
+		2 => array (
+			'tag' => str_replace(home_url()."/",'',get_stylesheet_directory_uri()."/"),
+			'mod' => um_getoption('style')."/"
+		),
+		3 => array (
+			'tag' => str_replace(home_url()."/",'',get_template_directory_uri()."/"),
+			'mod' => um_getoption('templ')."/"
+		),
+		4 => array (
+			'tag' => str_replace(home_url()."/",'',plugins_url()."/"),
+			'mod' => um_getoption('wplug')."/"
+		),
+
+	);
 }
 
 function um_rewrites() {
@@ -30,12 +43,46 @@ function um_rewrites() {
 	for ($n; $n < $count; $n++) {
 		$um_rwrule[ $um_url[$n]['mod'].'(.*)' ] = $um_url[$n]['tag']."$1";
 	}
+	
 	$wp_rewrite->non_wp_rules=array_merge($wp_rewrite->non_wp_rules,$um_rwrule);
+
 	if (!is_admin()) {
-		add_filter('script_loader_src','is_inc');
-		add_filter('style_loader_src','is_inc');		
+		add_filter('print_styles_array', 'um_short_styles');
+		add_filter('print_scripts_array', 'um_short_scripts');
 	}
 }
+
+function um_short_styles($handles) {
+	global $wp_styles; $styles= array();
+	$um_url = um_urlrewrite_is(); 
+	foreach ($handles as $handle) {
+		$src = $wp_styles->registered[$handle]->src; 
+		if (preg_match("#".home_url()."#",$src)) { 	
+			foreach (array_keys($um_url) as $n) {
+				$src = str_replace($um_url[$n]['tag'] ,$um_url[$n]['mod'], $src); 
+			}		
+		}
+		$wp_styles->registered[$handle]->src = $src;
+	}
+
+	return $handles;
+}
+
+function um_short_scripts($handles) {
+	global $wp_scripts; $styles= array();
+	$um_url = um_urlrewrite_is(); 
+	foreach ($handles as $handle) {
+		$src = $wp_scripts->registered[$handle]->src; 
+		if (preg_match("#".home_url()."#",$src)) { 	
+			foreach (array_keys($um_url) as $n) {
+				$src = str_replace($um_url[$n]['tag'] ,$um_url[$n]['mod'], $src); 
+			}		
+		}
+		$wp_scripts->registered[$handle]->src = $src;
+	}
+	return $handles;
+}
+
 if (get_option('permalink_structure')) {
 	add_action('after_setup_theme','um_rewrites');
 }

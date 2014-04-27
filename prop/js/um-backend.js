@@ -15,6 +15,19 @@ function umtab () {
 	umtab_init();
 }
 
+function um_datacheck(cstr) {
+	jQuery('.umplugs *[data-check]').each(function(i) {
+		$this = jQuery(this); what = cstr+"["+$this.data('check')+"]";
+		//console.log($this.attr('name'), what);
+		if ( what != cstr+"[]" ) {
+			if (!jQuery('.umplugs input[name="'+what+'"]').attr('checked')) { 
+				$this.attr('disabled','disabled')
+				$this.closest('tr').css('opacity','.5');
+			} 
+		}
+	});
+}
+
 function umtab_init() {
 	jQuery('#umtab a').click(function(e) {
 		e.preventDefault(); $this = jQuery(this); $this.addClass('active');
@@ -105,7 +118,7 @@ function umlist_function_init(obj) {
 		}
 	});	
 
-	jQuery('.um-list li a').click(function(e) {
+	jQuery('.um-list a').click(function(e) {
 		e.preventDefault();
 		var fodavar = {
 		'f':jQuery(this).parents('li').data('file'),
@@ -124,50 +137,8 @@ function umlist_function_init(obj) {
 		}
 	})
 
-
-/*	
-	jQuery('button.nchunk').click (function(e) {
-		e.preventDefault();
-		var fodavar = {
-			'f': safetxtNameof (jQuery('#new_chunk').val()),
-			'a': 'touch',
-			'd': 'chunk',
-		}
-		console.log(fodavar['a'], fodavar['d'], fodavar['f']);
-		jQuery.post(ajaxurl, { action: 'foda', v: fodavar }, function(res) { $umdiv.html(res); });
-	});
-
-	jQuery('button.touch_tp').click (function(e) {
-		e.preventDefault();
-		var fodavar = {
-			'f': jQuery('div.udtmd #undressme-tp-file').val(),
-			'a': 'touch',
-			'd': jQuery('div.udtmd #undressme-tp-file').data('d')
-		}
-
-		jQuery.post(ajaxurl, { action: 'foda', v: fodavar }, function(res) { $umdiv.html(res); });
-	});
-
-	jQuery('button.touch_tf').click (function(e) {
-		e.preventDefault();
-		var fodavar = {
-			'f': jQuery('div.udtmd #undressme-tf-file').val(),
-			'a': 'touch',
-			'd': jQuery('div.udtmd #undressme-tf-file').data('d')
-		}
-
-		jQuery.post(ajaxurl, { action: 'foda', v: fodavar }, function(res) { $umdiv.html(res); });
-	});
-	
-
-*/
 }
-
-
-
 jQuery(document).ready(function($) {
-
-	umlist_function_init('.um-frame-box');
+	umlist_function_init('.umplugs');
 	umtab();
-
 });

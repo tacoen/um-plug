@@ -1,0 +1,23 @@
+/* 
+ * um-scheme.css default 
+ */
+
+.um-confirm { color: #16A086/*um-confirm*/ ; }
+.um-cool { color: #5DADE2/*um-cool*/ ; }
+.um-hot { color: #C54134/*um-hot*/ ; }
+.um-line { color: #95a5a6/*um-line*/ ; }
+.um-link { color: #111111/*um-link*/ ; }
+.um-page { color: #fcfcfc/*um-page*/ ; }
+.um-prompt { color: #F39C11/*um-prompt*/ ; }
+.um-text { color: #5D6D7D/*um-text*/ ; }
+.um-title { color: #2D3E50/*um-title*/ ; }
+.um-bgr_confirm { background-color: #16A086/*um-confirm*/ ; }
+.um-bgr_cool { background-color: #5DADE2/*um-cool*/ ; }
+.um-bgr_hot { background-color: #C54134/*um-hot*/ ; }
+.um-bgr_line { background-color: #95a5a6/*um-line*/ ; }
+.um-bgr_link { background-color: #111111/*um-link*/ ; }
+.um-bgr_page { background-color: #fcfcfc/*um-page*/ ; }
+.um-bgr_prompt { background-color: #F39C11/*um-prompt*/ ; }
+.um-bgr_text { background-color: #5D6D7D/*um-text*/ ; }
+.um-bgr_title { background-color: #2D3E50/*um-title*/ ; }
+
