@@ -41,10 +41,12 @@ function um_make_customize_scripts($add='') {
 	}
 	um_file_putcontents(get_stylesheet_directory()."/um-scheme.css",$um_css);
 }
+
 function um_css_bind() {
 	$nonce=wp_create_nonce('um_textedit');
 	?><style type="text/css" id="um_color_css_preview"><?php echo um_file_getcontents(get_stylesheet_directory()."/um-scheme.css",$nonce); ?></style><?php
 }
+
 function um_js_bind() {
 	$um_scheme=um_scheme_binding();
 	$um_custome=get_theme_mod('umto');
@@ -67,6 +69,7 @@ function um_make_schemecss($um_scheme) {
 	}
 	um_file_putcontents(get_stylesheet_directory()."/um-scheme.css",$css);
 }
+
 function um_scheme_register($wp_customize) {
 	$wp_customize->add_section('um_scheme',array(
 		'title'	=> __('Scheme','um'),
@@ -77,12 +80,13 @@ function um_scheme_register($wp_customize) {
 	// create if not exist
 	if (! file_exists(get_stylesheet_directory()."/um-scheme.css")) { um_make_schemecss($um_scheme); }
 	foreach (array_keys($um_scheme) as $color) {
-	$wp_customize->add_setting('umto['.$color.']',array('default'=>$um_scheme[$color]['value'],'sanitize_callback'=> 'sanitize_hex_color','capability'=> 'edit_theme_options','transport'=> 'postMessage'));
-	$wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,$color,array('label'=>ucfirst($um_scheme[$color]['name']),'section'=> 'um_scheme','settings'=> 'umto['.$color.']')));
+		$wp_customize->add_setting('umto['.$color.']',array('default'=>$um_scheme[$color]['value'],'sanitize_callback'=> 'sanitize_hex_color','capability'=> 'edit_theme_options','transport'=> 'postMessage'));
+		$wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,$color,array('label'=>ucfirst($um_scheme[$color]['name']),'section'=> 'um_scheme','settings'=> 'umto['.$color.']')));
 	}
 	//remove default colour sections
 	$wp_customize->remove_section('colors');
 }
+
 function um_scheme_init() {
 	/* Binds JS handlers to make Theme Customizer preview reload changes asynchronously. Live Preview*/
 	wp_enqueue_script('um-cssjs-view',UMPLUG_URL . 'prop/js/um-css-preview.js',array('customize-preview'),'20140301',true);

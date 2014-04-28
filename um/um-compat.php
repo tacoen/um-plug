@@ -37,7 +37,6 @@ if ( ! function_exists('um_getoption')) {
 	function um_getoption($w,$o="umo") {
 		$umo->options=get_option($o);
 		if (isset($umo->options[$w])) {
-		//if (in_array($w,array_keys($umo->options))) {
 			return $umo->options[$w];
 		}
 	}

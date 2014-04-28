@@ -27,6 +27,10 @@ if ( (um_getoption('schcss','umt')) && (file_exists(get_stylesheet_directory()."
 	require UMPLUG_DIR . 'um/customizer-scheme.php';
 }
 
+if ( file_exists(get_stylesheet_directory()."/layouts"))  {
+	require UMPLUG_DIR . 'um/customizer-layout.php';
+}
+
 if (!is_admin()) {
 	//remove duplicated script and styles, cause themes and plugins.
 	$UM=array();$UM['css']=array();$UM['js']=array();
@@ -35,3 +39,11 @@ if (!is_admin()) {
 }
 
 add_filter('user_contactmethods', 'um_user_contactmethods'); // echo get_user_meta(1, 'twitter', true);
+
+
+/*
+	$opt =  wp_load_alloptions();
+	print_r($opt);
+*/	
+
+

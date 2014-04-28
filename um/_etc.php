@@ -2,18 +2,20 @@
 defined('ABSPATH') or die('Huh?');
 
 function um_readme() {
-	um_adminpage_wrap("UM-Plug ".um_ver(),"umplug_readme",array()); 
+	um_adminpage_wrap("UM-Plug - ".um_ver(),"umplug_readme",array()); 
 }
 
 function umplug_readme() {
 	echo join('',file(UMPLUG_DIR."prop/doc/readme.html"));
 	$htmlfile = glob_recursive(	UMPLUG_DIR."prop/doc/help/*.html");
+	$readme = get_stylesheet_directory()."/readme.txt";
 	arsort($htmlfile);
 	foreach ($htmlfile as $html) { echo "<div>".join('',file($html))."</div>"; }
-	echo '<div><h3>Theme Readme</h3><div class="postbox inside"><pre>';
-	echo join('',file(get_stylesheet_directory()."/readme.txt"));
-	echo '</pre></div></div>';
-	
+	if (file_exists($readme)) { 
+		echo '<div><h3>Theme Readme</h3><div class="postbox inside"><pre>';
+		echo join('',file($readme)); 
+		echo '</div></div>';
+	}
 }
 
 function um_help($contextual_help, $screen_id) {
@@ -21,44 +23,45 @@ function um_help($contextual_help, $screen_id) {
 	$um_help = UMPLUG_DIR."prop/doc/help/".$screen_id.".html";
 	echo "<!--- $screen_id --->";
 
-	if ( file_exists($um_help) ) {
-
+	if (file_exists($um_help) ){
 		$debugres =
-			"<h3>Site Information</h3>".
+			"<h3>Site Information</h3><div class='um-debug'>".
 			"<p><label>Site Root:</label>".ABSPATH."</p>".
 			"<p><label>Theme:</label>".wp_get_theme()."</p>".
 			"<p><label>Template Directory:</label><span title='URL:".get_template_directory_uri()."'>".get_template_directory()."</span></p>";
 		if (get_template_directory() != get_stylesheet_directory()) {
 			$debugres .="<p><label>Style Sheet Directory (child):</label><span title='URL:".get_stylesheet_directory_uri()."'>".get_stylesheet_directory()."</span></p>";
 		}
+		$debugres .=
+			"<p><label>UM-Plug Directory</label>".UMPLUG_DIR."</p>".
+			"";
 
+		$debugres .="</div>";
+		
 		$umch_credit = "<h4>UM PLUG - ".um_ver()."</h4>".
 			"<p><a href=''>Plugins Site</a></p>".
 			"<p><a href=''>UM Themes</a></p>".
 			"<p><a href=''>Wiki</a></p><p>&nbsp;</p>";
 
-		$umch_debug = array('id'=> 'umch-debug','title'=> __('Site Info' ),'content'=> __($debugres));
+		$icontextual_help = '<p>';
+		$icontextual_help .= __( umch_overview($screen_id) );
+		$icontextual_help .= '</p>';
 
-		$contextual_help .= '<p>';
-		$contextual_help = __( umch_overview($screen_id) );
-		$contextual_help .= '</p>';
-		get_current_screen()->add_help_tab($umch_debug);
+		$umch_debug = array('id'=> 'umch-debug','title'=> __('Site Info' ),'content'=> __($debugres));
+		$umch_help  = array('id'=> 'umch-help','title'=> __('Help' ),'content'=> __($icontextual_help));
+		
 		get_current_screen()->set_help_sidebar(__($umch_credit));
+		get_current_screen()->add_help_tab($umch_help);
+		get_current_screen()->add_help_tab($umch_debug);
 		return $contextual_help;
 	}
 }
 
 function umch_overview($id) {
-	$text = "No Overview"; $str = ""; $title = array();
-	$title['inc/umplug-setup.php'] = "UM Setup";
-
+	$text = "--N/A--"; $str = "";
 	$um_help = UMPLUG_DIR."prop/doc/help/".$id.".html";
-	
 	$text = join('',file($um_help));
-
-	if (isset($title[$id])) { $str .= "<h3>".$title[$id]."</h3>"; }
 	$str .="<div>$text</div>";
-	
 	return $str;
 }
 
@@ -77,6 +80,7 @@ function um_nodashboard_widgets() {
 	//unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_right_now']);
 	//unset($wp_meta_boxes['dashboard']['side']['high']['dashboard_browsernag']);
 }
+
 function um_favicon() { echo '<link rel="shortcut icon" type="image/x-icon" href="' .get_stylesheet_directory_uri(). '/favicon.ico" />' . "\n"; }
 function um_pingback() { echo '<link rel="pingback" href="'.site_url().'/xmlrpc.php">' . "\n"; }
 function um_wpheadtrim() {
@@ -185,7 +189,6 @@ function um_script_unique($u) {
 		} else { return $u; }
 	}
 }
-
 
 function um_style_makestatic($handles) {
 
