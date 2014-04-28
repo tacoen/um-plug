@@ -1,6 +1,21 @@
 <?php
 defined('ABSPATH') or die('Huh?');
 
+function um_readme() {
+	um_adminpage_wrap("UM-Plug ".um_ver(),"umplug_readme",array()); 
+}
+
+function umplug_readme() {
+	echo join('',file(UMPLUG_DIR."prop/doc/readme.html"));
+	$htmlfile = glob_recursive(	UMPLUG_DIR."prop/doc/help/*.html");
+	arsort($htmlfile);
+	foreach ($htmlfile as $html) { echo "<div>".join('',file($html))."</div>"; }
+	echo '<div><h3>Theme Readme</h3><div class="postbox inside"><pre>';
+	echo join('',file(get_stylesheet_directory()."/readme.txt"));
+	echo '</pre></div></div>';
+	
+}
+
 function um_help($contextual_help, $screen_id) {
 
 	$um_help = UMPLUG_DIR."prop/doc/help/".$screen_id.".html";
@@ -112,7 +127,7 @@ function um_register_admin_scripts() {
 }
 
 function umplug_init_slug() {
-	add_menu_page("Undress Me","UM Tools",'edit_theme_options','undressme','um_readme','dashicons-editor-underline',61);
+	add_menu_page("Undress Me","UM Plug",'edit_theme_options','undressme','um_readme','dashicons-editor-underline',61);
 	add_submenu_page('undressme','UM Readme','Readme','edit_theme_options','undressme','um_readme');
 }
 

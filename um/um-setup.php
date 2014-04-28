@@ -11,12 +11,6 @@ umo_register(
 
 if(is_admin() && (isset( $umo["um_setup"])) ) { $my_settings_page=new um_set( "um_setup", $umo["um_setup"] ); }
 
-function um_readme() {
-	echo "<div class='wrap'>";
-	umplug_headers("What is UM-Plug?", "<strong>Theme: </strong>". wp_get_theme());
-	echo "</div>";
-}
-
 function um_themesetup() {
 	um_adminpage_wrap("UM Theme Setup","umplug_theme_checklist",array()); 
 }
