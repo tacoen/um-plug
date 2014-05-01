@@ -15,7 +15,7 @@ umo_register(
 					// id => array (type,label,text,defaults,mods,required);
 					'noopsf' => array ('check','OpenSans','Unload Open-Sans Webfont.','','',''),
 					'umcss'	=> array ('check','reset.css','Use reset.css (normalize)','','',''),
-					'sfunc' => array ('check','_s.css','Load Wordpress Default-styles (base on _s)','','',''),
+					'sfunc' => array ('check','default.css','Load Wordpress Default-styles (base on _s)','','',''),
 					'layout'=> array ('selectfile','Layout','.css as layout',get_stylesheet_directory()."/layouts",'','sfunc'),
 					'schcss'=> array ('check','Colour Schemes','Enable/Load customable colour schemes','','',''),
 					'iehtml5'=> array ('check','IE html5','Include html5 hack for IE9 and IE8','','',''),
@@ -25,9 +25,9 @@ umo_register(
 				'text'=> 'um-gui',
 				'note'	=> 'um-gui Framework for Wordpress, Require um-gui',
 				'field'	=> array(
-					'umgui'	=> array ('check','um-gui','load um-gui-framework for WP(js + css)','','',''),
+					'umgui'	=> array ('check','um-gui','load UM-GUI-framework for WP(js + css)','','',''),
 					'ajaxwpl'=> array ('check','um-login.js','Use Ajax WP-Login','','','umgui'),
-					'ajredir'=> array ('text','Login Redirect','<br><small>Relative Path will be nice<small>','','30','ajaxwpl'),
+					'ajredir'=> array ('text','Login Redirect','<br><small>Relative Path will be nice<small>','wp-admin/','30','ajaxwpl'),
 				)
 			),
 			'devel'=> array(
@@ -86,7 +86,10 @@ function umplug_register_styles() {
 	
 	if ( (!is_admin()) && (um_getoption('noopsf','umt')) ) { wp_deregister_style('open-sans'); }
 
-	if ((file_exists(get_stylesheet_directory()."/static.css")) && (um_getoption('cssstatic','umt'))) {
+	if ( (!is_admin()) && 
+	     (file_exists(get_stylesheet_directory()."/static.css")) && 
+		 (um_getoption('cssstatic','umt'))
+		) {
 
 		$um_static_css_already = true;
 
@@ -100,19 +103,13 @@ function umplug_register_styles() {
 			wp_register_style('um-reset', um_tool_which('reset.css'),false,um_ver(),'all');
 			wp_enqueue_style('um-reset');
 		}
-		/*
-		else {
-			um_enqueue_style($deps); $theme_style_enqueue=true;
-			$deps = array(get_template().'-style');
-		}
-		*/
 
 		if (um_getoption('sfunc','umt')) {
-			wp_enqueue_style("_s",um_tool_which('css/_s.css'),$deps,um_ver(),'all');
+			wp_enqueue_style("_s",um_tool_which('css/default.css'),$deps,um_ver(),'all');
 		}
 
 		if (um_getoption('umgui','umt')) {
-			wp_enqueue_style('um-font', um_tool_which('css/font/styles.css'),$deps,um_ver(),'all');
+			wp_enqueue_style('um-font', um_tool_which('css/webfont.css'),$deps,um_ver(),'all');
 			wp_enqueue_style('um-gui', um_tool_which('css/um-gui-lib.css'),$deps,um_ver(),'all');
 		}
 
@@ -153,7 +150,7 @@ function umplug_register_scripts() {
 		}
 
 		if (um_getoption('sfunc','umt')) {
-			wp_enqueue_script( '_s', um_tool_which('js/_s.js'), array(), um_ver(), true );
+			wp_enqueue_script( '_s', um_tool_which('js/default.js'), array(), um_ver(), true );
 		}
 
 		if (is_singular() && comments_open() && get_option('thread_comments')) {

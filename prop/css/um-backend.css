@@ -53,3 +53,22 @@ ul.feat .meta h4 { float:left;width:70%;margin:0 }
 ul.feat .meta { margin:1em 0;display:table;width:100% }
 ul.feat li { border-top:1px solid #ccc;}
 ul.feat p { clear:both }
+.um-debug p { margin: 0; }
+.um-debug label { width: 160px; }
+
+#customize-preview { background: #222; }
+#customize-preview  iframe { background: #fff; }
+
+#um_layout_pane { 
+-webkit-transition: all .2s;
+transition: all .2s;
+background: rgba(0,0,0,0.3);
+width: 200px; position: fixed; bottom: -3px; right: 64px; padding-left: 8px; height: 30px; z-index: 1000; border-radius: 3px;}
+#um_layout_pane div  { float: left; padding: 5px}
+#um_layout_pane .label { padding: 4px 5px; line-height: 20px; color: #666; }
+#um_layout_pane a { color: #666 }
+#um_layout_pane:hover { background: rgba(0,0,0,0.7); }
+#um_layout_pane:hover  .label,
+#um_layout_pane:hover  a { color: #fff; }
+#um_layout_pane:hover  a:hover { color: #0074a2; }
+

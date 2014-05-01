@@ -1,6 +1,6 @@
 (function($) {
 
-console.log('scheme customize ready');
+//console.log('scheme customize ready');
 
 function escapeRegExp(str) {
  return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");

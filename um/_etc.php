@@ -46,13 +46,21 @@ function um_help($contextual_help, $screen_id) {
 		$icontextual_help = '<p>';
 		$icontextual_help .= __( umch_overview($screen_id) );
 		$icontextual_help .= '</p>';
+		
+		$webfont_ref = "<p><label>UM-GUI Icons</label><a href='".UMPLUG_URL."prop/css/icons-reference.html"."'>Icons References</a></p>";
+		$umref = "<h3>Links</h3><div class='um-debug'>" . 
+			join('',file( 	UMPLUG_DIR."prop/doc/feat.html" )) . 
+			$webfont_ref .
+			"</div>";
 
+		$umch_help  = array('id'=> 'umch-help','title'=> __('Overview' ),'content'=> __($icontextual_help));
 		$umch_debug = array('id'=> 'umch-debug','title'=> __('Site Info' ),'content'=> __($debugres));
-		$umch_help  = array('id'=> 'umch-help','title'=> __('Help' ),'content'=> __($icontextual_help));
+		$umch_ref   = array('id'=> 'umch-ref','title'=> __('Links' ),'content'=> __($umref));
 		
 		get_current_screen()->set_help_sidebar(__($umch_credit));
 		get_current_screen()->add_help_tab($umch_help);
 		get_current_screen()->add_help_tab($umch_debug);
+		get_current_screen()->add_help_tab($umch_ref);
 		return $contextual_help;
 	}
 }

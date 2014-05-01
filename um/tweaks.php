@@ -17,7 +17,7 @@ umo_register(
 					'pback'	 => array ('check','Pingback','Allow Pingback','','',''),
 					'noavatar'=> array ('check','No Gravatar','Disable Gravatar for faster development process','','',''),
 					'wdtma'	 => array ('number','Widget','','1','',''),
-					'umtag'	=> array ('check','um-tag','Enable dynamic UM Template-Tags','yes','',''),
+					'umtag'	=> array ('check','um-tag','Enable dynamic UM Template-Tags for your themes','yes','',''),
 
 				)
 			),

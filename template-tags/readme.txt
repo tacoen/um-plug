@@ -1,0 +1,1 @@
+Only exists in template_directory aka Parent Theme aka Core

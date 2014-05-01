@@ -7,7 +7,7 @@ umo_register(
 	array( 'um_paddon'
 		=> array(
 		'func' => 'um_pagetemplate',
-		'title' => 'Onepage Addons',
+		'title' => 'OnePage Addons',
 		),
 ));
 

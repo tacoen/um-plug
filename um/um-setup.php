@@ -21,9 +21,9 @@ function td_create($file,$dir,$type) {
 
 function td_checktype($file,$type) {
 	if ($type == "dir") { 
-		if (is_dir($file)) { return "<td>USE</td>"; } else { return td_create($c_item,$type); } 
-	} else { 
-		return "<td>USE</td>"; 
+		if (is_dir($file)) { return "<td>Exist</td>"; } else { return td_create($c_item,$type); } 
+	} else {
+		if (file_exists($file)) { return "<td>Exist</td>"; }
 	}
 }
 
@@ -51,7 +51,7 @@ function td_which_theme($item,$method,$type='file') {
 	
 		$td .= "<td>&nbsp;</td>";
 		if ($p) { $td .= td_checktype($p_item ,$type); } else { $td .= td_create($item,"parent",$type); }	
-		$td .= "<td>N/A</td>";
+		$td .= "<td>&nbsp;</td>";
 		
 	} else {
 		if ($parent==0) {
@@ -60,7 +60,7 @@ function td_which_theme($item,$method,$type='file') {
 			$td = "<td>---</td>";
 		}
 		if ($p) { $td .= td_checktype($p_item,$type); } else { $td .= td_create($item,"parent",$type); }	
-		$td .="<td>N/A</td>";
+		$td .="<td>&nbsp;</td>";
 	}
 	
 	return $td;
@@ -81,13 +81,13 @@ $checklist = array(
 		'note' => 'Reset/normalize css',
 		'method' => 'fallback'
 	),
-	'css/_s.css' => array(
+	'css/default.css' => array(
 		'type' => 'style',
 		'check' => 'file',
 		'note' => 'Wordpress Standard Styles',
 		'method' => 'fallback'
 	),
-	'js/_s.js' => array(
+	'js/default.js' => array(
 		'type' => 'style',
 		'check' => 'file',
 		'note' => 'Wordpress Standard Scripts',
@@ -99,16 +99,22 @@ $checklist = array(
 		'method' => 'theme',
 		'note' => 'CSS Layout Directory'
 	),
+	'um-gui.js' => array(
+		'type' => 'script',
+		'check' => 'file',
+		'note' => 'files that call um-gui-lib',
+		'method' => 'fallback'
+	),
 	'css/um-gui-lib.css' => array(
 		'type' => 'script',
 		'check' => 'file',
 		'note' => '',
 		'method' => 'fallback'
 	),
-	'um-gui.js' => array(
+	'js/um-gui-lib.js' => array(
 		'type' => 'script',
 		'check' => 'file',
-		'note' => 'files that call um-gui-lib',
+		'note' => '',
 		'method' => 'fallback'
 	),
 	'um-scheme.css' => array(
@@ -126,7 +132,7 @@ $checklist = array(
 	'template-part' => array(
 		'type' => 'dir',
 		'check' => 'dir',
-		'method' => 'parent',
+		'method' => 'theme',
 		'note' => 'Template part breakdown (post-header.php, etc)'
 	),
 	'template-tags' => array(
@@ -183,7 +189,7 @@ if ( get_stylesheet_directory() != get_template_directory() ) {
 	<?php echo $tr_script; ?>
 	<tr class='sep'><th colspan="5"><strong>Directories</strong></th></tr>
 	<?php echo $tr_dir; ?>
-	<tr class='sep'><th colspan="5"><strong>Wordpress _s defaults</strong></th></tr>
+	<tr class='sep'><th colspan="5"><strong>Wordpress defaults</strong></th></tr>
 	<?php echo $tr_style; ?>
 	
 </tbody>

@@ -21,3 +21,28 @@
 .um-bgr_text { background-color: #5D6D7D/*um-text*/ ; }
 .um-bgr_title { background-color: #2D3E50/*um-title*/ ; }
 
+* { 
+	border-color: #95a5a6/*um-line*/ ; 
+}
+
+body { 
+	background-color: #fcfcfc/*um-page*/ ; 
+	color: #5D6D7D/*um-text*/ ; 
+}
+
+a { color: #111111/*um-link*/ }
+
+input[type=submit],
+.button { 
+	background-color: #16A086/*um-confirm*/ ; 
+}
+
+h1,h2,h3
+h1 a,h2 a,h3 a {
+	color: #2D3E50/*um-title*/ ; 
+}
+
+.widget-title {
+	color: #C54134/*um-hot*/ ; 
+}
+

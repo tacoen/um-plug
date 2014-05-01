@@ -12,21 +12,24 @@ function um_propcopy($f) {
 	return "$f copied from UM-PLUG";
 }
 
+/*
 function um_new_umguijs() {
-	/* always to child lah*/
 	um_file_putcontents(get_stylesheet_directory()."/um-gui.js", "(function($) {\n\n})(jQuery);");
 	return get_stylesheet_directory()."/um-gui.js";
 }
 
 function um_blankcss($w) {
 	$css = um_file_getcontents(UMPLUG_DIR."prop/$w");
-	/* always to child lah*/
 	um_file_putcontents(get_stylesheet_directory()."/$w",$css);
 	return get_stylesheet_directory()."/$w.css";
 }
+*/
 
-function um_newdir($dir,$path) {
-	mkdir($path."/layouts");
+function um_newdir($d,$path) {
+	if ($d == "parent") { $dir = get_template_directory(); }
+	else { $dir = get_stylesheet_directory(); }
+	mkdir($dir."/$path");
+	return "$path created on $d";
 }
 
 function um_checktarget() {
@@ -74,17 +77,20 @@ function um_foda_callback() {
 	if ($foda['a'] == 'ums-file') {
 		
 		
-		if ($foda['f'] == "um-gui.js") { $txt .= um_new_umguijs(); }
-		if ($foda['f'] == "um-scheme.css") { $txt .= um_blankcss('um-scheme.css'); }
+		if ($foda['f'] == "um-gui.js") { $txt .= um_propcopy('um-gui.js'); }
+		if ($foda['f'] == "um-scheme.css") { $txt .= um_propcopy('um-scheme.css'); }
 		if ($foda['f'] == "reset.css") { $txt .= um_propcopy('reset.css'); }
-		if ($foda['f'] == "_s.css") { $txt .= um_propcopy('css/_s.css'); }
-		if ($foda['f'] == "um-gui-lib.css"){ $txt .= um_propcopy('css/um-gui-lib.css'); }
-		if ($foda['f'] == "_s.js") { $txt .= um_propcopy('js/_s.js'); }
+		if ($foda['f'] == "css/default.css") { $txt .= um_propcopy('css/default.css'); }
+		if ($foda['f'] == "css/um-gui-lib.css"){ $txt .= um_propcopy('css/um-gui-lib.css'); }
+		if ($foda['f'] == "js/um-gui-lib.js"){ $txt .= um_propcopy('js/um-gui-lib.js'); }
+		if ($foda['f'] == "js/default.js") { $txt .= um_propcopy('js/default.js'); }
 
 	} else if ($foda['a']== 'ums-dir') {
 
-		if ($foda['f'] == "layouts") { $txt .= um_new_layoutdir(); }
-		if ($foda['f'] == "layouts") { $txt .= um_new_layoutdir(); }
+		if ($foda['f'] == "layouts")        { $txt .= um_newdir($foda['d'],"layouts"); }
+		if ($foda['f'] == "page-templates") { $txt .= um_newdir($foda['d'],"page-templates"); }
+		if ($foda['f'] == "template-part")  { $txt .= um_newdir($foda['d'],"template-part"); }
+		if ($foda['f'] == "template-tags")  { $txt .= um_newdir($foda['d'],"template-tags"); }
 
 	} else if ($foda['a']== 'del') {
 		unlink($file); $txt="$file &mdash; Deleted";
