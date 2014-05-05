@@ -1,6 +1,9 @@
+
+var fluid_width = "100%";
+var tablet_width = "800px";
+var hand_width = "540px";
+
 (function($) {
-
-
 
 function set_preview_frame(w) {
 	//console.log(w);
@@ -11,10 +14,12 @@ function set_preview_frame(w) {
 function um_layout_pane() {
 	var d  = $(window.parent.document).find('#customize-controls');
 	var $pane = "<div id='um_layout_pane'>" 
-		+"<div><a href='#' data-width='100%' title='fluid-width'><i class='dashicons dashicons-desktop'></i></a></div>"
-		+"<div><a href='#' data-width='800px' title='Max: 800px'><i class='dashicons dashicons-tablet'></i></a></div>"
-		+"<div><a href='#' data-width='540px' title='Max: 540px'><i class='dashicons dashicons-smartphone'></i></a></div>"
-		+"<div class='label'>Media Queries</div>";
+		+"<div><a href='#' data-width='"+fluid_width+"'  title='Max: "+fluid_width+"'>"
+			+ "<i class='dashicons dashicons-desktop'></i></a></div>"
+		+"<div><a href='#' data-width='"+tablet_width+"' title='Max: "+tablet_width+"'>"
+			+ "<i class='dashicons dashicons-tablet'></i></a></div>"
+		+"<div><a href='#' data-width='"+hand_width+"'   title='"+hand_width+"'>"
+			+"<i class='dashicons dashicons-smartphone'></i></a></div>"
 		+"</div>";
 	d.append($pane);
 	//console.log('um-layout ready');

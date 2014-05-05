@@ -1,20 +1,4 @@
-#um-crumbs  { left:0; margin:0; padding: 0; }
-#um-crumbs li { float: left; list-style-type:none;  }
-#um-crumbs li:before { content: "\203A"; padding: 0 .5em }
-#um-crumbs li:first-child:before { content: ""; padding: 0 0; }
 
-nav .menu-item-has-children > a:after,
-nav .page_item_has_children > a:after {
-	font-family: "umui-fonts";
-	float:right; content: "k";
-	font-size: 80%;
-}
-nav .menu-item-has-children .menu-item-has-children > a:after,
-nav .page_item_has_children .page_item_has_children > a:after { 
-	font-family: "umui-fonts";
-	float:right; content: "a";
-	font-size: 80%;
-}
 
 /*
 * UM FX CSS
@@ -54,9 +38,7 @@ div.um_login_div a { display: block; color: #fff; height: 24px; line-height: 24p
 #um-login p.submit  { text-align: right }
 #um-login p.submit  .label { float: left }
 
-#um-login p.status{
-	display: none; font-size: .9em;
-}
+#um-login p.status{ display: none; font-size: .9em; }
 
 #um-login h1 { font-weight: 700; font-size: 1.5em; margin-bottom: 1.5em; }
 #um-login p label { display: block }
@@ -83,16 +65,27 @@ div.um_login_div a { display: block; color: #fff; height: 24px; line-height: 24p
 .um_tab_content { padding: .5em; background: #fff; border: 1px solid #ccc; border-top: none;  margin:0}
 .um_tab_content.hide { display: none; }
 
+/* um-toc */
+
 .um_toc  { float: right; width: 300px; border: 1px solid #ccc; background: #fff; color: #999 }
 .um_toc h5 { padding: .5em; margin:0; border-bottom: 1px solid #ccc; margin: 0 0 .5em; color: #999 }
 .um_toc ol { margin-left: 1.5em; font-size: .8em; line-height: 1.5em; padding: .5em .5em 2em .5em; }
 .um_toc a { text-decoration: none; color: #333; }
 
-/* fluid cols */
+/* utilities */
 
-.row:before, .row:after { content: " "; display: table; }
+.box { border-width: 1px; border-style:solid; }
+.rounded { border-radius: 5px;  }
+.small { font-size: .8em; line-height: 1.2em; }
+.rounded.inside { padding: 8px }
+
+.um-msg { padding: .5% 1%; font-size: .8em; color: #fff; cursor: pointer; margin-bottom: .5em; width: 96% }
+.um-msg i.close { color: #fff; float: right; }
+
+.row:before, .row:after { content: ""; display: table; }
 .row:after  { clear: both; }
-
+.full-width { width: 100%; }
+.full { width: 100%; text-align: center; }
 .col2 div { width: 48%; margin-right: 2%; float: left; }
 .col2 div.last { width: 50%; margin-right: 0 }
 
@@ -105,8 +98,43 @@ div.um_login_div a { display: block; color: #fff; height: 24px; line-height: 24p
 .col5 div { width: 19%; margin-right: 1%; float: left; }
 .col5 div.last { width: 20%; margin-right: 0 }
 
-.box { border: 1px solid rgba(0,0,0,0.3) }
+.grid > div { float:left; }
+.grid > .g12 { width: 50%; }
+.grid > .g13 { width: 34%; }
+.grid > .g23 { width: 66%; }
+.grid > .g14 { width: 25%; }
+.grid > .g34 { width: 75%; }
+.grid > .g15 { width: 20%; }
+.grid > .g25 { width: 40%; }
+.grid > .g35 { width: 60%; }
+.grid > .g45 { width: 80%; }
 
-.um-msg { padding: .5em 1em; font-size: .8em; color: #fff; cursor: pointer; }
-.um-msg i.close { color: #fff; float: right; }
+.um-form label { text-transform: capitalize; }
+.um-form .compact label { display:block;  }
+.um-form .compact select,
+.um-form .compact input { width:98%;  }
+.um-form .line { display: table; width:99% }
+.um-form .line  label { width: 20%; float: left; display: block; min-height: 2em; }
+.um-form .line select,
+.um-form .line input { width: 78% }
+.um-form .submit label { display: none; }
+.um-form .option { margin: 0 1%; font-size: .8em }
 
+@media screen and (max-width: 640px) {
+
+	.col2 div,
+	.col2 div.last { 
+		width: 100%; margin: 0; float: left; 
+	}
+	 
+	.col3 div,
+	.col3 div.last { 
+		width: 100%; margin-right: 0; float: left; 
+	}
+	 
+	.col5 div,
+	.col4 div { width: 48%; margin-right: 2%; float: left; }
+	.col5 div.last,
+	.col4 div.last { width: 50%; margin-right: 0 }
+
+}

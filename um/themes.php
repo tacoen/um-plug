@@ -105,7 +105,8 @@ function umplug_register_styles() {
 		}
 
 		if (um_getoption('sfunc','umt')) {
-			wp_enqueue_style("_s",um_tool_which('css/default.css'),$deps,um_ver(),'all');
+			wp_enqueue_style("default",um_tool_which('css/default.css'),$deps,um_ver(),'all');
+			wp_enqueue_style("default-nav",um_tool_which('css/default-nav.css'),$deps,um_ver(),'all');
 		}
 
 		if (um_getoption('umgui','umt')) {

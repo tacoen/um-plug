@@ -1,6 +1,9 @@
 /* 
- * um-scheme.css default 
- */
+ * um-scheme.css 
+ * -------------
+ * the comment next to color are to bind WP-admin Customization option to this file. 
+ *
+**/
 
 .um-confirm { color: #16A086/*um-confirm*/ ; }
 .um-cool { color: #5DADE2/*um-cool*/ ; }
@@ -11,6 +14,7 @@
 .um-prompt { color: #F39C11/*um-prompt*/ ; }
 .um-text { color: #5D6D7D/*um-text*/ ; }
 .um-title { color: #2D3E50/*um-title*/ ; }
+
 .um-bgr_confirm { background-color: #16A086/*um-confirm*/ ; }
 .um-bgr_cool { background-color: #5DADE2/*um-cool*/ ; }
 .um-bgr_hot { background-color: #C54134/*um-hot*/ ; }
@@ -34,7 +38,7 @@ a { color: #111111/*um-link*/ }
 
 input[type=submit],
 .button { 
-	background-color: #16A086/*um-confirm*/ ; 
+	background-color: #F39C11/*um-prompt*/ ; 
 }
 
 h1,h2,h3
