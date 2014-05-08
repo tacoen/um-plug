@@ -158,17 +158,6 @@ function um_get_layout_option($where) {
 	return $layout_options;
 }
 
-function um_tool_which($file) {
-	if (file_exists(get_stylesheet_directory()."/".$file)) {
-		return get_stylesheet_directory_uri()."/".$file;
-	} else if (file_exists(get_template_directory()."/".$file)) {
-		return get_template_directory_uri()."/".$file;
-	} else {
-		return UMPLUG_URL."prop/".$file;
-	}
-}
-
-
 /* ---------------------------------------------------- umoos args: --------------
  *
  * 0 - id,type,label,text,defaults,mods - 5

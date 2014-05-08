@@ -1,9 +1,6 @@
-
-
 /*
-* UM FX CSS
-* ---------
-*/
+ * UM FX CSS
+ */
 
 .um-dark-overlay{ height: 100%; width: 100%; background-color: rgba(0,0,0,.9); position: fixed; top:0; z-index: 990; }
 .um-overlay-fx { color: #fff; font-size: 1.5em; }
@@ -120,7 +117,12 @@ div.um_login_div a { display: block; color: #fff; height: 24px; line-height: 24p
 .um-form .submit label { display: none; }
 .um-form .option { margin: 0 1%; font-size: .8em }
 
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 800px) {
+
+
+}
+
+@media screen and (max-width: 540px) {
 
 	.col2 div,
 	.col2 div.last { 

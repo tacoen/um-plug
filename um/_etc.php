@@ -39,9 +39,11 @@ function um_help($contextual_help, $screen_id) {
 		$debugres .="</div>";
 		
 		$umch_credit = "<h4>UM PLUG - ".um_ver()."</h4>".
-			"<p><a href=''>Plugins Site</a></p>".
-			"<p><a href=''>UM Themes</a></p>".
-			"<p><a href=''>Wiki</a></p><p>&nbsp;</p>";
+			"<p><a href='//github.com/tacoen/um-plug'>Plugins Site</a></p>".
+			"<p><a href='//github.com/tacoen/um-theme/'>UM Themes</a></p>".
+			"<p><a href='//github.com/tacoen/um-plug/wiki'>Wiki</a></p>".
+			"<p><a href='//github.com/tacoen/um-plug/issues'>Issues</a></p>".
+			"<p>&nbsp;</p>";
 
 		$icontextual_help = '<p>';
 		$icontextual_help .= __( umch_overview($screen_id) );
@@ -145,10 +147,10 @@ function umplug_init_slug() {
 
 function print_them_globals() {
 
- ksort( $GLOBALS );
- echo '<ol>';
- echo '<li>'. implode( '</li><li>', array_keys( $GLOBALS ) ) . '</li>';
- echo '</ol>';
+	ksort( $GLOBALS );
+	echo '<ol>';
+	echo '<li>'. implode( '</li><li>', array_keys( $GLOBALS ) ) . '</li>';
+	echo '</ol>';
 }
 
 function stylesheet_directory_shorten_url() {

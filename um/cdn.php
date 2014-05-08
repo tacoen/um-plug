@@ -14,22 +14,24 @@ add_action('after_setup_theme','cdn_takeover');
 function um_register_cdn_styles() {
 /* > Replace wp-includes styles link with your CDN,watch the ID
 */
-$cdn = um_getoption('opsfcdn');
-if ($cdn!='') {
-wp_deregister_style('open-sans');
-wp_register_style('open-sans',$cdn,false,'3.8.1','all');
-wp_enqueue_style('open-sans');
-}
+	$cdn = um_getoption('opsfcdn');
+	if (($cdn!='') || (isset($cdn))) {
+		wp_deregister_style('open-sans');
+		wp_register_style('open-sans',$cdn,false,'3.8.1','all');
+		wp_enqueue_style('open-sans');
+	}
 }
 
 function um_register_cdn_scripts() {
 /* > Replace wp-includes scripts link with your CDN,watch the ID
 */
-$cdn = um_getoption('jqcdn');
-if ($cdn=='') { $cdn = um_rwvar_default('jqcdn'); }
-wp_deregister_script('jquery');
-wp_register_script('jquery',$cdn,false,'2.0.3');
-wp_enqueue_script('jquery');
+	$cdn = um_getoption('jqcdn');
+	if ($cdn=='') { $cdn = um_rwvar_default('jqcdn'); }
+
+	wp_deregister_script('jquery');
+	wp_register_script('jquery',$cdn,false,'2.0.3');
+	wp_enqueue_script('jquery');
+	
 }
 
 function cdn_takeover() {

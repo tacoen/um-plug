@@ -40,7 +40,7 @@ Class um_chunks_widget extends WP_Widget {
 		<?php
 		$chunks=glob(get_stylesheet_directory()."/chunks/*.txt");
 		foreach ($chunks as $c) {
-			if ($c== $chunk_selected) { $str=" selected"; } else { $str=''; }
+			if (( isset($chunk_selected)) && ($c==$chunk_selected)) { $str=" selected"; } else { $str=''; }
 			$fn=explode("/",$c); $fnc=$fn[count($fn)-1]; $fn=explode(".",$fnc);
 			echo "<option $str value='".$fn[0]."'>$fn[0]</option>\n";
 		}?>

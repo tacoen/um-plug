@@ -14,7 +14,7 @@ defined('ABSPATH') or die('um?');
 DEFINE ('UMPLUG_DIR', plugin_dir_path( __FILE__ ) );
 DEFINE ('UMPLUG_URL', plugin_dir_url(__FILE__) );
 
-function um_ver() { return '1.1.0'; }
+function um_ver() { return '1.1.1'; }
 
 $umo = array();
 

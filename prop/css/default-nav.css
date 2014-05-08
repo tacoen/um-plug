@@ -4,13 +4,18 @@
 **/
 
 .main-navigation,
-.main-navigation ul { background: #fc3; }
+.main-navigation ul { background: #f0f0f0; }
 
 .main-navigation { 
 	position: fixed; top: 0; left; 0; width:100%;
 	font-size: 16px; box-shadow:0 3px 3px rgba(0,0,0,0.2); 
 	font-weight: 300;
 	padding: 0 1%; z-index:9990; 
+}
+
+body.admin-bar .main-navigation  {
+	position: fixed; top: 32px; left; 0; width:100%;
+
 }
 
 .main-navigation  > ul,

@@ -17,10 +17,18 @@ umo_register(
 					'pback'	 => array ('check','Pingback','Allow Pingback','','',''),
 					'noavatar'=> array ('check','No Gravatar','Disable Gravatar for faster development process','','',''),
 					'wdtma'	 => array ('number','Widget','','1','',''),
-					'umtag'	=> array ('check','um-tag','Enable dynamic UM Template-Tags for your themes','yes','',''),
 
 				)
 			),
+/*
+			'tagopt'=> array(
+				'text'=> 'Tag',
+				'note'	=> 'UM Template Tag',
+				'field'	=> array(
+					'umtag'	=> array ('check','um-tag','Enable dynamic UM Template-Tags for your themes','yes','',''),
+				)
+			),
+*/
 			'cdnopt'=> array(
 				'text'=> 'CDN',
 				'note'	=> 'Use your prefered cdn',

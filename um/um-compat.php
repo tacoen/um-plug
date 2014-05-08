@@ -30,6 +30,13 @@ if ( ! function_exists('umtag')) {
 		}
 	}
 
+	// [umtag func="bar"], umtag as shortcode
+	function umtag_func( $atts ) {
+		umtag( $atts['func'], $atts['args'] );
+	}
+
+	add_shortcode('umtag', 'umtag_func');
+
 }
 
 if ( ! function_exists('um_getoption')) {
@@ -40,4 +47,18 @@ if ( ! function_exists('um_getoption')) {
 			return $umo->options[$w];
 		}
 	}
+}
+
+if ( ! function_exists('um_tool_which')) {
+
+function um_tool_which($file) {
+	if (file_exists(get_stylesheet_directory()."/".$file)) {
+		return get_stylesheet_directory_uri()."/".$file;
+	} else if (file_exists(get_template_directory()."/".$file)) {
+		return get_template_directory_uri()."/".$file;
+	} else {
+		return UMPLUG_URL."prop/".$file;
+	}
+}
+
 }
