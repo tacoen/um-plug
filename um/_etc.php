@@ -1,6 +1,15 @@
 <?php
 defined('ABSPATH') or die('Huh?');
 
+function um_option_update($where="umo",$what="key",$val) {
+	if (isset($val)) { 
+		$my_options = get_option($where);
+		$my_options[$what] = $val;
+		update_option($where, $my_options);
+	}
+}
+
+
 function um_readme() {
 	um_adminpage_wrap("UM-Plug - ".um_ver(),"umplug_readme",array()); 
 }

@@ -14,19 +14,15 @@ if ( ! function_exists('glob_recursive')) {
 if ( ! function_exists('umtag')) {
 
 	function umtag($func,$args=array()) {
-		if (um_getoption('umtag')) {
-			if (! function_exists($func)) {
-				$ttdir=get_template_directory()."/template-tags/";
-				if (file_exists($ttdir.$func.".php")) {
-					require $ttdir.$func.".php"; call_user_func_array("umtag_".$func,array($args));
-				} else {
-					echo "<!-- umtag: $func not exist --->";
-				}
+		if (! function_exists($func)) {
+			$ttdir=get_template_directory()."/template-tags/";
+			if (file_exists($ttdir.$func.".php")) {
+				require $ttdir.$func.".php"; call_user_func_array("umtag_".$func,array($args));
 			} else {
-				call_user_func_array("umtag_".$func,array($args));
+				echo "<!-- umtag: $func not exist --->";
 			}
 		} else {
-			echo "<!-- umtag: disable --->";
+			call_user_func_array("umtag_".$func,array($args));
 		}
 	}
 

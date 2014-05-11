@@ -53,6 +53,17 @@ umo_register(
 
 if(is_admin() && (isset( $umo["umt"])) ) { $my_settings_page=new um_set( "umt", $umo["umt"] ); }
 
+function um_instant() {
+	if (file_exists(get_stylesheet_directory().'/reset.css')) { um_option_update('umt','umcss',1); }
+	if (file_exists(get_stylesheet_directory().'/css/default.css')) { um_option_update('umt','sfunc',1);}
+	if (file_exists(get_stylesheet_directory().'/um-scheme.css')) {um_option_update('umt','schcss',1); }
+	if (file_exists(get_stylesheet_directory().'/um-gui.js')) { um_option_update('umt','umgui',1); }
+	unlink( get_stylesheet_directory().'/no-umplug.txt'); // needed for run-once
+}
+
+if (file_exists(get_stylesheet_directory().'/no-umplug.txt')) { um_instant(); 	}
+
+
 function um_remove_recent_comments_style() {
 	global $wp_widget_factory;
 	remove_action( 'wp_head', array( $wp_widget_factory->widgets['WP_Widget_Recent_Comments'], 'recent_comments_style' ) );
@@ -62,12 +73,6 @@ function um_iehtml5() {
 	$output = '<!--[if lte IE 9]><link rel="stylesheet" href="' . um_tool_which('css/ie9.css').'" /><![endif]-->'."\n";
 	$output .= '<!--[if lte IE 8]><script src="' . um_tool_which('js/html5shiv.js').'"></script><![endif]-->'."\n";
 	echo $output;
-}
-
-function css_url_care($txt,$f) {
-	$url = preg_replace('/(.+\/).+/','\\1',$f);
-	$txt = preg_replace('/(\s|,|:)url(\W+)/','\\1url\\2'.$url,$txt);
-	return $txt;
 }
 
 function um_enqueue_style($deps) {
@@ -137,7 +142,7 @@ function umplug_register_scripts() {
 
 	global $um_static_js_already;
 	
-	if ((file_exists(get_stylesheet_directory()."/static.js")) && (um_getoption('jsstatic','umt'))) {
+	if ((um_getoption('jsstatic','umt')) && (file_exists(get_stylesheet_directory()."/static.js"))) {
 
 		wp_enqueue_script(get_template().'-js',get_stylesheet_directory_uri()."/static.js",false,um_ver(),false );
 		wp_enqueue_script(get_template().'-foot-js',get_stylesheet_directory_uri()."/static-foot.js",false,um_ver(),true );

@@ -84,6 +84,7 @@ function um_foda_callback() {
 		if ($foda['f'] == "css/um-gui-lib.css"){ $txt .= um_propcopy('css/um-gui-lib.css'); }
 		if ($foda['f'] == "js/um-gui-lib.js"){ $txt .= um_propcopy('js/um-gui-lib.js'); }
 		if ($foda['f'] == "js/default.js") { $txt .= um_propcopy('js/default.js'); }
+		if ($foda['f'] == "inc/umplug-setup.php") { $txt .= um_propcopy('inc/umplug-setup.php'); }
 
 	} else if ($foda['a']== 'ums-dir') {
 

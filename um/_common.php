@@ -199,6 +199,16 @@ function umoos_text($args,$saved) {
 	);
 }
 
+function css_url_care($txt,$f) {
+	$txt = preg_replace('/(\s|,|:)url/',"\n".'\\1url',$txt);
+	$url = preg_replace('/(.+\/).+/','\\1',$f);
+	$dot_url = preg_replace('/(.+\/).+/','\\1',$url);
+	$txt = preg_replace('/\.\.\//',$dot_url,$txt);
+	$txt = preg_replace('/(\s|,|:)url(.+)http/','\\1--void--url\\2http',$txt);
+	$txt = preg_replace('/(\s|,|:)url(\W+)/','\\1url\\2'.$url,$txt);
+	$txt = preg_replace('/--void--/','',$txt);
+	return $txt;
+}
 
 /* ---------------------------------------- um_set ------------------ */
 
