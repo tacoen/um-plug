@@ -189,7 +189,7 @@ if ( get_stylesheet_directory() != get_template_directory() ) {
 	<?php echo $tr_script; ?>
 	<tr class='sep'><th colspan="5"><strong>Directories</strong></th></tr>
 	<?php echo $tr_dir; ?>
-	<tr class='sep'><th colspan="5"><strong>Wordpress defaults</strong></th></tr>
+	<tr class='sep'><th colspan="5"><strong>Wordpress defaults (Base)</strong></th></tr>
 	<?php echo $tr_style; ?>
 	
 </tbody>

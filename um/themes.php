@@ -51,7 +51,11 @@ umo_register(
 		))
 ));
 
-if(is_admin() && (isset( $umo["umt"])) ) { $my_settings_page=new um_set( "umt", $umo["umt"] ); }
+if(is_admin() && (isset( $umo["umt"])) ) { 
+
+	$my_settings_page=new um_set( "umt", $umo["umt"] ); 
+
+}
 
 function um_instant() {
 	if (file_exists(get_stylesheet_directory().'/reset.css')) { um_option_update('umt','umcss',1); }
@@ -60,9 +64,6 @@ function um_instant() {
 	if (file_exists(get_stylesheet_directory().'/um-gui.js')) { um_option_update('umt','umgui',1); }
 	unlink( get_stylesheet_directory().'/no-umplug.txt'); // needed for run-once
 }
-
-if (file_exists(get_stylesheet_directory().'/no-umplug.txt')) { um_instant(); 	}
-
 
 function um_remove_recent_comments_style() {
 	global $wp_widget_factory;

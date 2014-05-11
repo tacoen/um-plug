@@ -103,14 +103,6 @@ function js_compress_def($buffer,$cl=0) {
 	$buffer = preg_replace('#;;#', ';', $buffer);
 	$buffer = preg_replace('#\{;#','{', $buffer);
 	$buffer = preg_replace('#;\}#','}', $buffer);
-	//$buffer = preg_replace("/(\s+)?(=|:|,|\}|\{|\)|\(|\+)(\s+)?/", '\\2', $buffer);
-	/*
-	$buffer = preg_replace('/\t/', '', $buffer);
-	$buffer = preg_replace('/\s\s+/', '', $buffer);
-	$buffer = preg_replace('/function/', "\nfunction", $buffer);
-	$buffer = preg_replace("/(\s+)?(=|:|;|,|\}|\{|\)|\(|\+)(\s+)?/", '\\2', $buffer);
-	*/
-
 	return $buffer;
 }
 

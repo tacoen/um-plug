@@ -15,16 +15,21 @@ function um_readme() {
 }
 
 function umplug_readme() {
+	echo '<div class="um-feat">';
 	echo join('',file(UMPLUG_DIR."prop/doc/readme.html"));
-	$htmlfile = glob_recursive(	UMPLUG_DIR."prop/doc/help/*.html");
 	$readme = get_stylesheet_directory()."/readme.txt";
+/*
+	$htmlfile = glob_recursive(	UMPLUG_DIR."prop/doc/help/*.html");
 	arsort($htmlfile);
+	
 	foreach ($htmlfile as $html) { echo "<div>".join('',file($html))."</div>"; }
 	if (file_exists($readme)) { 
 		echo '<div><h3>Theme Readme</h3><div class="postbox inside"><pre>';
 		echo join('',file($readme)); 
 		echo '</div></div>';
 	}
+	*/
+	echo "</div>\n";
 }
 
 function um_help($contextual_help, $screen_id) {

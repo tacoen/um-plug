@@ -33,6 +33,7 @@ function um_newdir($d,$path) {
 }
 
 function um_checktarget() {
+	/* Always on child */
 	if (!is_dir(get_stylesheet_directory()."/css")) { mkdir (get_stylesheet_directory()."/css"); }
 	if (!is_dir(get_stylesheet_directory()."/js")) { mkdir (get_stylesheet_directory()."/js"); }
 	if (!is_dir(get_stylesheet_directory()."/layouts")) { mkdir (get_stylesheet_directory()."/layouts"); }
