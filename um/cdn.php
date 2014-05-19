@@ -15,9 +15,9 @@ function um_register_cdn_styles() {
 /* > Replace wp-includes styles link with your CDN,watch the ID
 */
 	$cdn = um_getoption('opsfcdn');
-	if (($cdn!='') || (isset($cdn))) {
+	if (isset($cdn)) {
 		wp_deregister_style('open-sans');
-		wp_register_style('open-sans',$cdn,false,'3.8.1','all');
+		wp_register_style('open-sans',$cdn,false,false);
 		wp_enqueue_style('open-sans');
 	}
 }
@@ -35,17 +35,17 @@ function um_register_cdn_scripts() {
 }
 
 function cdn_takeover() {
-if ( (!is_admin()) && (um_getoption('qamirr')!='') ) {
-add_filter('script_loader_src','cdn_replace');
-add_filter('style_loader_src','cdn_replace');
-}
+	if ( (!is_admin()) && (um_getoption('qamirr')!='') ) {
+		add_filter('script_loader_src','cdn_replace');
+		add_filter('style_loader_src','cdn_replace');
+	}
 }
 
 function cdn_replace($a) {
 /* > Replace all ajax.googleapis.com with your own cdn ($mycdn) as googleapis mirror
 */
-$cdn = um_getoption('qamirr');
-if (preg_match("#ajax\.googleapis\.com#",$a)) { return str_replace("ajax.googleapis.com",$cdn,$a);}
-else { return $a; }
+	$cdn = um_getoption('qamirr');
+	if (preg_match("#ajax\.googleapis\.com#",$a)) { return str_replace("ajax.googleapis.com",$cdn,$a);}
+	else { return $a; }
 }
 ?>
