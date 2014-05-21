@@ -15,8 +15,8 @@ umo_register(
 					// id => array (type,label,text,defaults,mods,required);
 					'noopsf' => array ('check','OpenSans','Unload Open-Sans Webfont.','','',''),
 					'umcss'	=> array ('check','reset.css','Use reset.css (normalize)','','',''),
-					'sfunc' => array ('check','default.css','Load Wordpress Default-styles (base on _s)','','',''),
-					'layout'=> array ('selectfile','Layout','.css as layout',get_stylesheet_directory()."/layouts",'','sfunc'),
+					'sfunc' => array ('check','base.css','Load Wordpress Default-styles (base on _s)','','',''),
+					'layout'=> array ('selectfile','Layout','.css as layout',get_stylesheet_directory()."/layouts",'default','sfunc'),
 					'schcss'=> array ('check','Colour Schemes','Enable/Load customable colour schemes','','',''),
 					'iehtml5'=> array ('check','IE html5','Include html5 hack for IE9 and IE8','','',''),
 				)
@@ -28,6 +28,14 @@ umo_register(
 					'umgui'	=> array ('check','um-gui','load UM-GUI-framework for WP(js + css)','','',''),
 					'ajaxwpl'=> array ('check','um-login.js','Use Ajax WP-Login','','','umgui'),
 					'ajredir'=> array ('text','Login Redirect','<br><small>Relative Path will be nice<small>','wp-admin/','30','ajaxwpl'),
+				)
+			),
+			'wpcus'=> array(
+				'text'=> 'Custom',
+				'note'	=> '',
+				'field'	=> array(
+					'umchiw'=> array ('text','Width','Custom Header Image Width','1000','5',''),
+					'umchih'=> array ('text','Height','Custom Header Image Height','250','5',''),
 				)
 			),
 			'devel'=> array(
@@ -58,8 +66,8 @@ if(is_admin() && (isset( $umo["umt"])) ) {
 }
 
 function um_instant() {
-	if (file_exists(get_stylesheet_directory().'/reset.css')) { um_option_update('umt','umcss',1); }
-	if (file_exists(get_stylesheet_directory().'/css/default.css')) { um_option_update('umt','sfunc',1);}
+	if (file_exists(get_stylesheet_directory().'/css/reset.css')) { um_option_update('umt','umcss',1); }
+	if (file_exists(get_stylesheet_directory().'/css/base.css')) { um_option_update('umt','sfunc',1);}
 	if (file_exists(get_stylesheet_directory().'/um-scheme.css')) {um_option_update('umt','schcss',1); }
 	if (file_exists(get_stylesheet_directory().'/um-gui.js')) { um_option_update('umt','umgui',1); }
 	unlink( get_stylesheet_directory().'/no-umplug.txt'); // needed for run-once
@@ -105,14 +113,14 @@ function umplug_register_styles() {
 	} else {
 
 		if (um_getoption('umcss','umt')) {
-			$deps = array('um-reset');
-			wp_register_style('um-reset', um_tool_which('reset.css'),false,um_ver(),'all');
-			wp_enqueue_style('um-reset');
+			$deps = array('reset');
+			wp_register_style('reset', um_tool_which('css/reset.css'),false,um_ver(),'all');
+			wp_enqueue_style('reset');
 		}
 
 		if (um_getoption('sfunc','umt')) {
-			wp_enqueue_style("default",um_tool_which('css/default.css'),$deps,um_ver(),'all');
-			wp_enqueue_style("default-nav",um_tool_which('css/default-nav.css'),$deps,um_ver(),'all');
+			wp_enqueue_style("base",um_tool_which('css/base.css'),$deps,um_ver(),'all');
+			wp_enqueue_style("base-nav",um_tool_which('css/nav.css'),$deps,um_ver(),'all');
 		}
 
 		if (um_getoption('umgui','umt')) {

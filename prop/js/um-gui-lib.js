@@ -44,7 +44,6 @@ function um_content_height(target,min) {
 function um_fx_init() {
 	jQuery('.um-msg').each( function(e) {
 		$this = jQuery(this);
-		console.log($this.html());
 		$this.append('<i class="close umi-no"></i>');
 		$this.click(function(e) { jQuery(this).remove(); });
 	});
@@ -65,6 +64,7 @@ function um_onscroll_fixed(target,dockto,adjustment) {
 		console.log('ready');
 		var offset = target.offset();
 		var top = offset.top; target.data('original-y',top);
+		var o_width = target.width();
 		var margin = jQuery('.site-header').outerHeight();
 		if (dockto) {
 			var docktoY = dockto.outerHeight();
@@ -77,7 +77,8 @@ function um_onscroll_fixed(target,dockto,adjustment) {
 				var fix = adjustment+docktoY;
 				target.css('position','fixed'); 
 				target.css('top',fix+"px"); 
-				target.css('z-index',99970);
+				target.css('z-index',9900);
+				target.css('width',o_width);
 			} else {
 				target.css('position','static');
 				target.css('top',target.data('original-y')+"px");

@@ -80,8 +80,8 @@ function um_foda_callback() {
 		
 		if ($foda['f'] == "um-gui.js") { $txt .= um_propcopy('um-gui.js'); }
 		if ($foda['f'] == "um-scheme.css") { $txt .= um_propcopy('um-scheme.css'); }
-		if ($foda['f'] == "reset.css") { $txt .= um_propcopy('reset.css'); }
-		if ($foda['f'] == "css/default.css") { $txt .= um_propcopy('css/default.css'); $txt .="<br/>". um_propcopy('css/default-nav.css'); }
+		if ($foda['f'] == "css/reset.css") { $txt .= um_propcopy('css/reset.css'); }
+		if ($foda['f'] == "css/base.css") { $txt .= um_propcopy('css/base.css'); $txt .="<br/>". um_propcopy('css/nav.css'); }
 		if ($foda['f'] == "css/um-gui-lib.css"){ $txt .= um_propcopy('css/um-gui-lib.css'); }
 		if ($foda['f'] == "js/um-gui-lib.js"){ $txt .= um_propcopy('js/um-gui-lib.js'); }
 		if ($foda['f'] == "js/default.js") { $txt .= um_propcopy('js/default.js'); }

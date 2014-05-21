@@ -81,10 +81,16 @@ $checklist = array(
 		'note' => 'Reset/normalize css',
 		'method' => 'fallback'
 	),
-	'css/default.css' => array(
+	'css/base.css' => array(
 		'type' => 'style',
 		'check' => 'file',
 		'note' => 'Wordpress Standard Styles',
+		'method' => 'fallback'
+	),
+	'css/nav.css' => array(
+		'type' => 'style',
+		'check' => 'file',
+		'note' => 'Wordpress Basic Navigation',
 		'method' => 'fallback'
 	),
 	'js/default.js' => array(

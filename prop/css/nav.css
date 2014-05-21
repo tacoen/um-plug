@@ -35,14 +35,14 @@ body.admin-bar .main-navigation  {
 .main-navigation .current_page_item a,
 .main-navigation .current-menu-item a { }
 
-.menu-item-has-children > a:after,
-.page_item_has_children > a:after {
+.main-navigation .menu-item-has-children > a:after,
+.main-navigation .page_item_has_children > a:after {
 	font-family: "umui-fonts";
 	float:right; content: "k";
 	font-size: 80%; opacity: .9;
 }
-.menu-item-has-children .menu-item-has-children > a:after,
-.page_item_has_children .page_item_has_children > a:after { 
+.main-navigation .menu-item-has-children .menu-item-has-children > a:after,
+.main-navigation .page_item_has_children .page_item_has_children > a:after { 
 	font-family: "umui-fonts";
 	float:right; content: "a";
 	font-size: 80%; opacity: .9;

@@ -175,7 +175,7 @@ function stylesheet_directory_shorten_url() {
 
 function um_style_unique($u) {
 	global $UM; global $um_static_css_already;
-	$u = preg_replace("/(.+)\?ver(.+)$/","\\1",$u); // versioning remover
+	$u = preg_replace("/(.+)\?ver=(.+)$/","\\1",$u); // versioning remover
 	
 	if (!$um_static_css_already) {
 		if (array_search($u,$UM['css'])<1) {
@@ -193,11 +193,11 @@ function um_style_unique($u) {
 
 function um_script_unique($u) {
 	global $UM; global $um_static_js_already;
-	$u = preg_replace("/(.+)\?ver(.+)$/","\\1",$u); // versioning remover
+	$u = preg_replace("/(.+)\?ver=(.+)$/","\\1",$u); // versioning remover
 	
 	if (!$um_static_js_already) {
 		if (array_search($u,$UM['js'])<1) {
-			array_push($UM['js'],$u); return "$u?ver=".um_ver();
+			array_push($UM['js'],$u); return "$u"; // ?ver=".um_ver();
 		} else { return;}
 	} else {
 		if (preg_match("#".home_url()."#",$u)) {
