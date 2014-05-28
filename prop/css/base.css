@@ -1,8 +1,14 @@
 body { font-size: 16px; line-height: 1.5em; -webkit-font-smoothing:subpixel-antialiased; -webkit-text-size-adjust:none; }
 
-header ul,
+nav *,
+header *,
 aside *,
-footer ul { margin:0; padding: 0 }
+footer * { margin:0; padding: 0; text-decoration: none; font-size: 1em; list-style-type:none;}
+
+table,th,td {border-width:1px; border-style:solid; }
+th,td {padding: .1rem .2rem;  }
+
+i, cite, em, var, address, dfn { font-style:normal; }
 
 select,
 input[type="text"], input[type="email"], input[type="url"], input[type="password"], input[type="search"],
@@ -19,7 +25,7 @@ a[class$='-button'], button,
 input[type="button"],
 input[type="reset"],
 input[type="submit"] {
-	line-height:normal;
+	line-height:1;
 	border-width: 1px;
 	border-style: solid;
 	box-shadow: /* button apperances */
@@ -34,6 +40,13 @@ input[type="submit"] {
 	font-size: .9em;
 	padding: .2rem 1rem;
 }
+
+a:hover { text-decoration: underline; }
+
+a[class$='-link'] { opacity: .8 }
+a[class$='-link']:before { content: "[ " }
+a[class$='-link']:after { content: " ]" }
+a[class$='-link']:hover { opacity: 1 }
 
 a[class$='-button']:hover,
 button:hover,
@@ -53,7 +66,7 @@ button:active,
 input:focus,
 input:active { outline-offset: 0; outline:none; }
 
-textarea {
+pre,textarea {
 	vertical-align:top;
 	min-width:98%; min-height: 10em;
 	display:block;
@@ -94,6 +107,13 @@ select {
 	border-style:solid;
 }
 
+body.admin-bar { margin-top:0 }
+img.avatar { border-width: 1px; border-style: solid; }
+pre {border-width: 1px; border-style: solid; padding: .5rem }
+pre code { display: block;  }
+
+main article { position: relative;  }
+
 /* The Wordpress Defaults
  * ----------------------
  * For documents-legacy flow only, and element-fix
@@ -112,6 +132,7 @@ select {
 .comment-form label { display:block; }
 .comment-form p.form-allowed-tags { font-size:.85em; }
 .comment-form { width:100%; }
+.comment-list { margin:0; padding-left: 1.5em }
 .comment-list .children li.comment .reply { top:0; margin-right:0; }
 .comment-list .children { margin-left:42px; padding-top:.5em; border-style:solid; border-width:1px; }
 .comment-list .depth-1 { border-radius:3px; border-style:solid; border-width:1px; margin:.5em 0; padding:.3em; }
@@ -128,7 +149,6 @@ select {
 .entry-content:after,.comment-content:after,.site-header:after,.site-content:after,.site-footer:after { clear:both; }
 .entry-content:before,.entry-content:after,.comment-content:before,.comment-content:after,.site-header:before,.site-header:after,.site-content:before,.site-content:after,.site-footer:before,.site-footer:after { content:''; display:table; }
 
-.page h1.entry-title,.single h1.entry-title { font-size:2em; line-height:1.5em; }
 .page-content img.wp-smiley,.entry-content img.wp-smiley,.comment-content img.wp-smiley { border:none; margin-bottom:0; margin-top:0; padding:0; }
 .page-content,.entry-content,.entry-summary { margin:1.5em 0 0; }
 .page-links { clear:both; margin:0 0 1.5em; }
@@ -154,30 +174,32 @@ text-align:center; font-size:.8em; height: 2em; line-height: 2em;}
 a.comment-reply-link,a.post-edit-link { text-decoration:none!important; line-height:normal; }
 article .entry-meta,.comments-area .reply,div.nav-links,.comment-meta { font-size:.9em; }
 aside a:hover { text-decoration:underline; }
-div.nav-links,div.comments-area { display:table; width:100%; margin:1em 0; }
+div.nav-links { margin:1em 0; }
 li.comment { position:relative; }
 
 img.alignleft { margin: 0 1% 1% 0; }
 img.alignright { margin: 0 0 1% 1%; }
 
-header.entry-header,
-footer.entry-meta { clear:both; }
+.left { text-align: left; }
+.right { text-align: right; }
+.last { margin-right: 0 }
 
-/* Jetpack, screen-reader
- * ----------------------
- * Mostly from _s which i don't know :D
- *
-**/
+/* css class is needed in theme-check */
 
-.infinite-scroll .paging-navigation,.infinite-scroll.neverending .site-footer { display:none; }
-.infinity-end.neverending .site-footer { display:block; }
-.screen-reader-text { clip:rect(1px,1px,1px,1px); position:absolute!important; }
-.screen-reader-text:hover,.screen-reader-text:active,.screen-reader-text:focus {
-	background-color:#f1f1f1; border-radius:3px; box-shadow:0 0 2px 2px rgba(0,0,0,0.6);
-	clip:auto!important; color:#21759b; display:block;
-	font-size:12px; font-weight:700; height:auto; left:5px; line-height:normal; text-decoration:none;
-	top:5px; width:auto; z-index:100000; padding:10px 20px;
- }
+.sticky  { }
+.gallery-caption  { }
+.bypostauthor { }
+.aligncenter { } 
+
+/* page title = single title = page list title */
+
+.single .entry-title,
+.page-header  .page-title,
+.page .entry-title { font-size: 2em; margin: 0; line-height:1.5em; text-decoration:none; text-transform: capitalize;}
+
+.single header,
+.page-header header,
+.page header { margin-bottom: 1.5em; }
 
 /* Consistence Styles 
  * --------------------------------------
@@ -208,3 +230,18 @@ article *[class$='-content'] ol li ol { font-size: .9em; }
 }
 
 
+/* Jetpack, screen-reader
+ * ----------------------
+ * Mostly from _s which i don't know :D
+ *
+**/
+
+.infinite-scroll .paging-navigation,.infinite-scroll.neverending .site-footer { display:none; }
+.infinity-end.neverending .site-footer { display:block; }
+.screen-reader-text { clip:rect(1px,1px,1px,1px); position:absolute!important; }
+.screen-reader-text:hover,.screen-reader-text:active,.screen-reader-text:focus {
+	background-color:#f1f1f1; border-radius:3px; box-shadow:0 0 2px 2px rgba(0,0,0,0.6);
+	clip:auto!important; color:#21759b; display:block;
+	font-size:12px; font-weight:700; height:auto; left:5px; line-height:normal; text-decoration:none;
+	top:5px; width:auto; z-index:100000; padding:10px 20px;
+}

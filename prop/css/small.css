@@ -2,11 +2,6 @@
 @media screen and (max-width: 540px) {
 */
 
-body.admin-bar .site-header { margin-top: 30px; }
-
-.site-content,
-.inside { padding: 8px; }
-
 /* base.css */
 
 .comment-list { padding-left: 0 }

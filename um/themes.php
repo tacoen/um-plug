@@ -109,9 +109,10 @@ function umplug_register_styles() {
 		) {
 
 		$um_static_css_already = true;
-
-		wp_register_style(get_template().'-style',get_stylesheet_directory_uri()."/static.css",$deps,um_ver(),'all');
+		
+		wp_register_style(get_template().'-style',get_stylesheet_directory_uri()."/static.css",false,um_ver(),'all');
 		wp_enqueue_style(get_template().'-style');
+		
 
 	} else {
 
@@ -137,20 +138,7 @@ function umplug_register_styles() {
 		if (!$theme_style_enqueue) {
 			
 			um_enqueue_style($deps);
-
-			$mq_m = um_getoption('dmqmed','umt');
-			$mq_s = um_getoption('dmqsml','umt');
-			
-			wp_enqueue_style( 'um-media-print',  um_tool_which('css/print.css'), $deps,  um_ver() ,"printer" );
-			
-			if ($mq_m) {
-				wp_enqueue_style( 'um-media-medium', um_tool_which('css/medium.css'), $deps, um_ver() ,"screen and (max-width: ".$mq_m."px)" );
-			}
-
-			if ($mq_s) {
-				wp_enqueue_style( 'um-media-small',  um_tool_which('css/small.css'),  $deps, um_ver() ,"screen and (max-width: ".$mq_s."px)" );
-			}
-			
+	
 		}
 
 		if (um_getoption('sfunc','umt')) {
@@ -166,6 +154,22 @@ function umplug_register_styles() {
 
 	}
 
+	if (!is_admin()) {	
+	
+	$mq_m = um_getoption('dmqmed','umt');
+	$mq_s = um_getoption('dmqsml','umt');
+			
+	wp_enqueue_style( get_template().'-print',  um_tool_which('css/print.css'), $deps,  um_ver() ,"print" );
+			
+	if ($mq_m) {
+		wp_enqueue_style( get_template().'-medium', um_tool_which('css/medium.css'), $deps, um_ver() ,"screen and (max-width: ".$mq_m."px)" );
+	}
+
+	if ($mq_s) {
+		wp_enqueue_style( get_template().'-small',  um_tool_which('css/small.css'),  $deps, um_ver() ,"screen and (max-width: ".$mq_s."px)" );
+	}
+
+	}
 }
 
 function umplug_register_scripts() {
@@ -217,7 +221,8 @@ if ((um_getoption('makes','umt')) && (!is_admin()) ) {
 	//dont create - condition: option checked, marked the static is used.
 	
 	if (um_getoption('cssstatic','umt')!=1) { add_filter('print_styles_array', 'um_style_makestatic'); }
-	if (um_getoption('jsstatic','umt')!=1) { add_filter('print_scripts_array', 'um_script_makestatic'); }
+	if (um_getoption('jsstatic','umt')!=1)  { add_filter('print_scripts_array', 'um_script_makestatic'); }
+	
 
 }
 

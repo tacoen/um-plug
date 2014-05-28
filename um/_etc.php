@@ -34,7 +34,7 @@ function umplug_readme() {
 function um_help($contextual_help, $screen_id) {
 
 	$um_help = UMPLUG_DIR."prop/doc/help/".$screen_id.".html";
-	echo "<!--- $screen_id --->";
+	// echo "<!--- $screen_id --->";
 
 	if (file_exists($um_help) ){
 		$debugres =
@@ -158,14 +158,6 @@ function umplug_init_slug() {
 	add_submenu_page('undressme','UM Readme','Readme','edit_theme_options','undressme','um_readme');
 }
 
-function print_them_globals() {
-
-	ksort( $GLOBALS );
-	echo '<ol>';
-	echo '<li>'. implode( '</li><li>', array_keys( $GLOBALS ) ) . '</li>';
-	echo '</ol>';
-}
-
 function stylesheet_directory_shorten_url() {
 	$a = str_replace(home_url()."/",'',get_stylesheet_directory_uri()."/");
 	$b = um_getoption('style')."/";
@@ -176,18 +168,12 @@ function stylesheet_directory_shorten_url() {
 function um_style_unique($u) {
 	global $UM; global $um_static_css_already;
 	$u = preg_replace("/(.+)\?ver=(.+)$/","\\1",$u); // versioning remover
-	
 	if (!$um_static_css_already) {
 		if (array_search($u,$UM['css'])<1) {
 			array_push($UM['css'],$u); return "$u"; // ?ver=".um_ver();
 		} else { return;}
 	} else {
-		if (preg_match("#".home_url()."#",$u)) {
-			if ( ( $u == get_stylesheet_directory()."static.css") || ( $u == stylesheet_directory_shorten_url()."static.css")) {
-					//return "$u?ver=".um_ver();
-					return "$u";
-				} else { return; }
-		} else { return $u; }
+		return $u;
 	}
 }
 
@@ -216,11 +202,18 @@ function um_script_unique($u) {
 function um_style_makestatic($handles) {
 
 	global $wp_styles; $static = array();
+	//print_r($wp_styles);
 	if (count($handles)>0) {
 		foreach ($handles as $handle) {
-			$src = $wp_styles->registered[$handle]->src; 
-			if (preg_match("#".home_url()."#",$src)) { array_push($static,$src); }		
+			$src = $wp_styles->registered[$handle]->src;
+			$media = $wp_styles->registered[$handle]->args;
+			if (preg_match("#".home_url()."#",$src)) {
+					if ($media == "all") { 
+						array_push($static,$src); 
+					}		
+			}
 		}
+		
 		if (count($static)>0) { um_makestatic($static,"css"); }
 	}
 	return $handles;

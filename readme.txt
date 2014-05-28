@@ -16,6 +16,7 @@ UM Themes core and tool kits, a Wordpress developer Toolkit for creating/ mainta
 
 = Features =
 
+  * CSS Media Queries for small/handheld, medium/tablet, and desktop
   * Minimize: Option to Dashboard Load, WP Header,
   * Option to disable:  WP Toolbar, Gravatar Loads, 
   * Alter CDN, if you don't like Google CDN or behind firewall

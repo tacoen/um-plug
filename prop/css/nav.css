@@ -3,25 +3,31 @@
  * 
 **/
 
+#site-navigation .menu-toggle * { font-size: 1em; line-height: 1.5em; }
+#site-navigation .menu-toggle { margin-left: -1% }
+#site-navigation .menu-toggle i { opacity: .6 }
+#site-navigation .menu-toggle span { padding-left: 4px; }
+
 .main-navigation,
 .main-navigation ul { background: #f0f0f0; }
 
 .main-navigation { 
-	position: fixed; top: 0; left; 0; width:100%;
+	position: fixed; top: 0; left: 0; width:100%;
 	font-size: 16px; box-shadow:0 3px 3px rgba(0,0,0,0.2); 
 	font-weight: 300;
 	padding: 0 1%; z-index:9990; 
 }
 
 body.admin-bar .main-navigation  {
-	position: fixed; top: 32px; left; 0; width:100%;
-
+	position: fixed;
+	top: 32px; /* wp-admin-bar fixed */
+	left; 0; width:100%;
 }
 
 .main-navigation  > ul,
-.main-navigation  li a { height: 32px; line-height: 32px; }
+.main-navigation li a { height: 32px; line-height: 32px; }
 .main-navigation ul { display:block; margin:0; padding:0; list-style:none; }
-.main-navigation  li { list-style-type:none; float:left; position:relative; }
+.main-navigation li { list-style-type:none; float:left; position:relative; }
 .main-navigation a { display:block; text-decoration: none; min-width: 180px; padding: 0 4px; overflow: hidden; }
 .main-navigation li ul { display:none; float:left; left:0; position:absolute; box-shadow:0 3px 3px rgba(0,0,0,0.2); top:32px; }
 .main-navigation  li:hover > ul { display: block; z-index:9991;  }
@@ -37,48 +43,19 @@ body.admin-bar .main-navigation  {
 
 .main-navigation .menu-item-has-children > a:after,
 .main-navigation .page_item_has_children > a:after {
-	font-family: "umui-fonts";
-	float:right; content: "k";
-	font-size: 80%; opacity: .9;
+	font-family: "umi-wp-font";
+	float:right; content: "H"; font-size: 70%;
+	opacity: .7; margin-right: .5rem;
 }
 .main-navigation .menu-item-has-children .menu-item-has-children > a:after,
 .main-navigation .page_item_has_children .page_item_has_children > a:after { 
-	font-family: "umui-fonts";
-	float:right; content: "a";
-	font-size: 80%; opacity: .9;
+	font-family: "umi-wp-font";
+	float:right; content: "D"; font-size: 70%;
+	opacity: .7; margin-right: .5rem;
 }
 
 .menu-toggle { cursor: pointer; display: none; }
 .menu-toggle:before { min-width: 17px; display:block; float: left; vertical-align: middle; }
-
-/* Tablet
- * ------------------------------------------
-**/
-
-@media screen and (max-width: 800px) {
-
-}
-
-@media screen and (max-width: 540px) {
-
-	.menu-toggle,
-	.main-navigation.toggled .nav-menu { display: block; }
-	.menu-toggle { padding: 1%;}
-	.menu-toggle  span:before { padding-right: 1% }
-
-	.menu-toggle { height: 32px; line-height: 32px; }
-	.main-navigation  > ul,
-	.main-navigation  li a { height: 48px; line-height: 48px; }
-	.main-navigation li ul { top: 48px; }
-	
-	.main-navigation  li { width: 100%; border-bottom: 1px solid rgba(0,0,0,0.2) }
-	.main-navigation  ul li ul li { width: 100%;}
-	.main-navigation a { width: 98%; }
-	.main-navigation ul ul ul { top: 48px; left:0; }
-	.main-navigation ul ul a { width: 98% }
-	.main-navigation ul { display: none; border-top: 1px solid rgba(0,0,0,0.2) }
-}
-
 
 /* Page navigations
  * ------------------------------------------
