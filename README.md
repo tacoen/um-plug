@@ -15,7 +15,7 @@ UM is base on **_s** [Underscores.me](http://underscores.me)
 
 ##Demo
 
-Thank your qSandbox.com! Demo avaliable at http://7htw4u3p0l.qsandbox.com/ -- Access-code: 0000
+Thank your qSandbox.com! Demo avaliable at http://umumum.qsandbox.com/ -- Access-code: 0000
 
 ##Features
 

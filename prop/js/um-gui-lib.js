@@ -1,3 +1,44 @@
+function init_ptab() {
+
+	$da = $('.entry-content');
+	$dc = $('.comments-area');
+	$dm = $('.entry-meta');
+
+	$da.show(); $dc.hide(); $dm.hide(); $('.ptab a.article').hide();
+
+	$cc = $('h2.comments-title').data('count');
+
+	if ($cc>0) { txt = "<span class='count'>"+$cc+"</span>" } else { txt = "" }
+
+	$('.ptab a.comments').html(txt);
+	
+	var on_m = 0;
+
+	$('.ptab a').click(function(e) {
+		e.preventDefault();
+		$d = $(this).attr('href');
+		
+		if( $(this).attr('class') == 'post-edit-link' ) { window.location.assign($d); }
+		
+		if ($d == "#c") { 
+			$da.hide(); $('.ptab a.article').show(); 
+			$dc.show(); $dm.hide(); on_m=0; 
+		} else if ($d == "#m") {  
+			if ( on_m == 0 ) { 
+				$dm.show(); on_m = 1; $(this).addClass('active'); 
+			} else { 
+				$(this).removeClass('active');
+				on_m=0; $dm.hide();
+			}
+		} else { 
+			$da.show(); $('.ptab a.article').hide();
+			$dc.hide(); $dm.hide(); on_m=0;  ; 
+		}
+
+	})
+}
+
+
 function um_toc(obj,ele,titleText) {
 	obj.prepend("<ol></ol>");
 	$toc = obj.children('ol');

@@ -16,6 +16,7 @@ umo_register(
 					'noopsf' => array ('check','OpenSans','Unload Open-Sans Webfont.','','',''),
 					'umcss'	=> array ('check','reset.css','Use reset.css (normalize)','','',''),
 					'sfunc' => array ('check','base.css','Load Wordpress Default-styles (base on _s)','','',''),
+					'umfont'=> array ('text','Webfont','<br/><small>Blank to unload</small>',um_tool_which('css/webfont.css'),'72',''),
 					'layout'=> array ('selectfile','Layout','.css as layout',get_stylesheet_directory()."/layouts",'default','sfunc'),
 					'schcss'=> array ('check','Colour Schemes','Enable/Load customable colour schemes','','',''),
 					'iehtml5'=> array ('check','IE html5','Include html5 hack for IE9 and IE8','','',''),
@@ -30,12 +31,14 @@ umo_register(
 					'ajredir'=> array ('text','Login Redirect','<br><small>Relative Path will be nice<small>','wp-admin/','30','ajaxwpl'),
 				)
 			),
-			'wpcus'=> array(
+			'wpvar'=> array(
 				'text'=> 'Custom',
 				'note'	=> '',
 				'field'	=> array(
 					'umchiw'=> array ('text','Width','Custom Header Image Width','1000','5',''),
 					'umchih'=> array ('text','Height','Custom Header Image Height','250','5',''),
+					'dmqmed'=> array ('text','Medium','Media Queries max-width for medium/tablet device','800','5',''),					
+					'dmqsml'=> array ('text','Small','Media Queries max-width for small device','540','5',''),
 				)
 			),
 			'devel'=> array(
@@ -123,13 +126,31 @@ function umplug_register_styles() {
 			wp_enqueue_style("base-nav",um_tool_which('css/nav.css'),$deps,um_ver(),'all');
 		}
 
+		if (um_getoption('umfont','umt')) {
+			wp_enqueue_style('um-font', um_getoption('umfont','umt'),$deps,um_ver(),'all');
+		}
+		
 		if (um_getoption('umgui','umt')) {
-			wp_enqueue_style('um-font', um_tool_which('css/webfont.css'),$deps,um_ver(),'all');
 			wp_enqueue_style('um-gui', um_tool_which('css/um-gui-lib.css'),$deps,um_ver(),'all');
 		}
 
 		if (!$theme_style_enqueue) {
+			
 			um_enqueue_style($deps);
+
+			$mq_m = um_getoption('dmqmed','umt');
+			$mq_s = um_getoption('dmqsml','umt');
+			
+			wp_enqueue_style( 'um-media-print',  um_tool_which('css/print.css'), $deps,  um_ver() ,"printer" );
+			
+			if ($mq_m) {
+				wp_enqueue_style( 'um-media-medium', um_tool_which('css/medium.css'), $deps, um_ver() ,"screen and (max-width: ".$mq_m."px)" );
+			}
+
+			if ($mq_s) {
+				wp_enqueue_style( 'um-media-small',  um_tool_which('css/small.css'),  $deps, um_ver() ,"screen and (max-width: ".$mq_s."px)" );
+			}
+			
 		}
 
 		if (um_getoption('sfunc','umt')) {

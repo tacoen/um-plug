@@ -117,26 +117,4 @@ div.um_login_div a { display: block; color: #fff; height: 24px; line-height: 24p
 .um-form .submit label { display: none; }
 .um-form .option { margin: 0 1%; font-size: .8em }
 
-@media screen and (max-width: 800px) {
 
-
-}
-
-@media screen and (max-width: 540px) {
-
-	.col2 div,
-	.col2 div.last { 
-		width: 100%; margin: 0; float: left; 
-	}
-	 
-	.col3 div,
-	.col3 div.last { 
-		width: 100%; margin-right: 0; float: left; 
-	}
-	 
-	.col5 div,
-	.col4 div { width: 48%; margin-right: 2%; float: left; }
-	.col5 div.last,
-	.col4 div.last { width: 50%; margin-right: 0 }
-
-}

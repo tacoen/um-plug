@@ -1,0 +1,13 @@
+body { font-size: 10pt; }
+
+a[class*='-link'],
+#site-navigation,
+#respond,
+#um-top,
+#um-bottom,
+.navigation,
+#secondary { display: none !important}
+
+footer a[rel=bookmark]:after { content: " (" attr(href) ")"; }
+
+#main { width: 100%; color: #000 !important; }

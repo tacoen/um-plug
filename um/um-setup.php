@@ -75,7 +75,7 @@ $checklist = array(
 		'note' => 'To connect your themes to UM-PLUG, besure there is <br/><code>require get_template_directory() . "/inc/umplug-setup.php";</code><br>in theme function.php',
 		'method' => 'parent'
 	),
-	'reset.css' => array(
+	'css/reset.css' => array(
 		'type' => 'style',
 		'check' => 'file',
 		'note' => 'Reset/normalize css',
