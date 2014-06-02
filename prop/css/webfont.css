@@ -1,41 +1,40 @@
 @font-face {
 	font-family: 'umi-wp-font';
-	src:url('fonts/umi-wp-font.eot?-thnnvf');
-	src:url('fonts/umi-wp-font.eot?#iefix-thnnvf') format('embedded-opentype'),
-		url('fonts/umi-wp-font.woff?-thnnvf') format('woff'),
-		url('fonts/umi-wp-font.ttf?-thnnvf') format('truetype'),
-		url('fonts/umi-wp-font.svg?-thnnvf#umi-wp-font') format('svg');
+	src:url('fonts/umi-wp-font.eot?-b70oo8');
+	src:url('fonts/umi-wp-font.eot?#iefix-b70oo8') format('embedded-opentype'),
+		url('fonts/umi-wp-font.woff?-b70oo8') format('woff'),
+		url('fonts/umi-wp-font.ttf?-b70oo8') format('truetype'),
+		url('fonts/umi-wp-font.svg?-b70oo8#umi-wp-font') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
-
-.umi, [class^="umi-"], [class*=" umi-"] {
+.umi,
+[class^="umi-"], [class*=" umi-"] {
+	font-family: 'umi-wp-font';
 	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
 	line-height: 1;
-	min-width: 16px;
-	font-family: "umi-wp-font" !important;
-	font-style: normal !important;
-	font-weight: normal !important;
-	font-variant: normal !important;
-	text-transform: none !important;
+
 	/* Better Font Rendering =========== */
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
 
-[data-icon]:before {
-  font-family: "umi-wp-font" !important;
-  content: attr(data-icon);
-  font-style: normal !important;
-  font-weight: normal !important;
-  font-variant: normal !important;
-  text-transform: none !important;
-  speak: none;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.umi-point-up:before {
+	content: "\261d";
 }
-
+.umi-point-right:before {
+	content: "\261e";
+}
+.umi-point-down:before {
+	content: "\261f";
+}
+.umi-point-left:before {
+	content: "\261c";
+}
 .umi-googleplus:before {
 	content: "\e612";
 }
@@ -81,6 +80,9 @@
 .umi-github2:before {
 	content: "\e620";
 }
+.umi-wordpress:before {
+	content: "\e63f";
+}
 .umi-tumblr:before {
 	content: "\e621";
 }
@@ -103,7 +105,7 @@
 	content: "\e627";
 }
 .umi-search:before {
-	content: "\2798";
+	content: "\27a0";
 }
 .umi-envelope-o:before {
 	content: "\2709";
@@ -118,7 +120,7 @@
 	content: "\2606";
 }
 .umi-th:before {
-	content: "\25fc";
+	content: "\2637";
 }
 .umi-check:before {
 	content: "\2713";
@@ -172,22 +174,22 @@
 	content: "\203a";
 }
 .umi-angle-up:before {
-	content: "\f106";
+	content: "\5e";
 }
 .umi-angle-down:before {
-	content: "\f107";
+	content: "\76";
 }
 .umi-desktop:before {
-	content: "\f108";
+	content: "\31";
 }
 .umi-laptop:before {
-	content: "\f109";
+	content: "\32";
 }
 .umi-tablet:before {
-	content: "\f10a";
+	content: "\33";
 }
 .umi-mobile-phone:before {
-	content: "\f10b";
+	content: "\34";
 }
 .umi-ellipsis-h:before {
 	content: "\22ef";
@@ -207,8 +209,20 @@
 .umi-location:before {
 	content: "\e603";
 }
+.umi-map:before {
+	content: "\e644";
+}
 .umi-chat:before {
 	content: "\e604";
+}
+.umi-comment:before {
+	content: "\e641";
+}
+.umi-house:before {
+	content: "\e640";
+}
+.umi-printer:before {
+	content: "\e645";
 }
 .umi-link:before {
 	content: "\e605";
@@ -231,6 +245,15 @@
 .umi-newspaper:before {
 	content: "\e609";
 }
+.umi-clock:before {
+	content: "\231a";
+}
+.umi-calendar:before {
+	content: "\e63c";
+}
+.umi-key:before {
+	content: "\26bf";
+}
 .umi-earth:before {
 	content: "\e60a";
 }
@@ -249,6 +272,12 @@
 .umi-lock-open:before {
 	content: "\e62c";
 }
+.umi-logout:before {
+	content: "\e63a";
+}
+.umi-login:before {
+	content: "\e63b";
+}
 .umi-minus:before {
 	content: "\e62d";
 }
@@ -256,7 +285,10 @@
 	content: "\e62e";
 }
 .umi-cross:before {
-	content: "\e62f";
+	content: "\22a0";
+}
+.umi-cross2:before {
+	content: "\2297";
 }
 .umi-help:before {
 	content: "\e630";
@@ -310,14 +342,14 @@
 	content: "\e639";
 }
 .umi-arrow-left2:before {
-	content: "\e63a";
+	content: "\21a4";
 }
 .umi-arrow-down2:before {
-	content: "\e63b";
+	content: "\21a7";
 }
 .umi-arrow-up2:before {
-	content: "\e63c";
+	content: "\21a5";
 }
 .umi-arrow-right2:before {
-	content: "\e63d";
+	content: "\21a6";
 }

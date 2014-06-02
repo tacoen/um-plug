@@ -1,14 +1,23 @@
-body { font-size: 16px; line-height: 1.5em; -webkit-font-smoothing:subpixel-antialiased; -webkit-text-size-adjust:none; }
+body {font-size: 16px; line-height: 1.5em; -webkit-font-smoothing:subpixel-antialiased; -webkit-text-size-adjust:none;}
+
+/* We are trying not-to reset content-area */
 
 nav *,
 header *,
 aside *,
-footer * { margin:0; padding: 0; text-decoration: none; font-size: 1em; list-style-type:none;}
+footer * {margin:0; padding: 0; text-decoration: none; font-size: 1em; list-style-type:none;}
 
-table,th,td {border-width:1px; border-style:solid; }
-th,td {padding: .1rem .2rem;  }
+nav p,
+header p,
+aside p,
+footer p {margin-bottom: 1em}
 
-i, cite, em, var, address, dfn { font-style:normal; }
+table,th,td {border-width:1px; border-style:solid;}
+th,td {padding: .1rem .2rem; }
+
+html i, /* made i hard to reset */
+cite, 
+em, var, address, dfn {font-style:normal;}
 
 select,
 input[type="text"], input[type="email"], input[type="url"], input[type="password"], input[type="search"],
@@ -41,12 +50,12 @@ input[type="submit"] {
 	padding: .2rem 1rem;
 }
 
-a:hover { text-decoration: underline; }
+a:hover {text-decoration: underline;}
 
-a[class$='-link'] { opacity: .8 }
-a[class$='-link']:before { content: "[ " }
-a[class$='-link']:after { content: " ]" }
-a[class$='-link']:hover { opacity: 1 }
+a[class$='-link'] {opacity: .8}
+a[class$='-link']:before {content: "[ "}
+a[class$='-link']:after {content: " ]"}
+a[class$='-link']:hover {opacity: 1}
 
 a[class$='-button']:hover,
 button:hover,
@@ -64,7 +73,7 @@ select:focus,
 button:focus,
 button:active,
 input:focus,
-input:active { outline-offset: 0; outline:none; }
+input:active {outline-offset: 0; outline:none;}
 
 pre,textarea {
 	vertical-align:top;
@@ -107,117 +116,120 @@ select {
 	border-style:solid;
 }
 
-body.admin-bar { margin-top:0 }
-img.avatar { border-width: 1px; border-style: solid; }
-pre {border-width: 1px; border-style: solid; padding: .5rem }
-pre code { display: block;  }
+body.admin-bar {margin-top:0}
+img.avatar {border-width: 1px; border-style: solid;}
+pre {border-width: 1px; border-style: solid; padding: .5rem}
+pre code {display: block; }
 
-main article { position: relative;  }
+main article {position: relative; }
 
 /* The Wordpress Defaults
  * ----------------------
  * For documents-legacy flow only, and element-fix
 **/
 
+.blog .format-aside .entry-title,.archive .format-aside .entry-title,.byline,.updated,.widget_search .search-submit {display:none;}
+.blog article,.search article,.archive article {padding-bottom:1em; margin:1em 0;}
+.blog h1.entry-title,.search h1.entry-title,.archive h1.entry-title {font-size:1.2em;}
 
-.blog .format-aside .entry-title,.archive .format-aside .entry-title,.byline,.updated,.widget_search .search-submit { display:none; }
-.blog article,.search article,.archive article { padding-bottom:1em; margin:1em 0; }
-.blog h1.entry-title,.search h1.entry-title,.archive h1.entry-title { font-size:1.2em; }
+.comment-author cite.fn {font-style:normal;}
+.comment-author img.avatar {float:left; margin-right:10px;}
+.comment-author {line-height:16px;}
+.comment-content a {word-wrap:break-word;}
+.comment-content {margin-left:42px;}
+.comment-form label {display:block;}
+.comment-form p.form-allowed-tags {font-size:.85em;}
+.comment-form {width:100%;}
+.comment-list {margin:0; padding-left: 1.5em}
+.comment-list .children li.comment .reply {top:0; margin-right:0;}
+.comment-list .children {margin-left:42px; padding-top:.5em; border-style:solid; border-width:1px;}
+.comment-list .depth-1 {border-radius:3px; border-style:solid; border-width:1px; margin:.5em 0; padding:.3em;}
+.comment-list .parent article {margin-bottom:.5em;}
+.comment-list > li.comment:hover {background:rgba(0,0,0,0.02);}
+.comment-list li.comment .reply {position:absolute; top:.3em; right:0; margin-right:.3em;}
+.comment-metadata {font-size:.8em;}
+.comments-area .comments-title {margin-bottom:1em;}
+.comments-area div:not(.comment-content) dd,.comments-area div:not(.comment-content) ul,.comments-area div:not(.comment-content) ol {margin-left:2em;}
+.comments-area div:not(.comment-content) p {margin:1em 0;}
+.comments-area ol {margin-left:0;}
 
-.comment-author cite.fn { font-style:normal; }
-.comment-author img.avatar { float:left; margin-right:10px; }
-.comment-author { line-height:16px; }
-.comment-content a { word-wrap:break-word; }
-.comment-content { margin-left:42px; }
-.comment-form label { display:block; }
-.comment-form p.form-allowed-tags { font-size:.85em; }
-.comment-form { width:100%; }
-.comment-list { margin:0; padding-left: 1.5em }
-.comment-list .children li.comment .reply { top:0; margin-right:0; }
-.comment-list .children { margin-left:42px; padding-top:.5em; border-style:solid; border-width:1px; }
-.comment-list .depth-1 { border-radius:3px; border-style:solid; border-width:1px; margin:.5em 0; padding:.3em; }
-.comment-list .parent article { margin-bottom:.5em; }
-.comment-list > li.comment:hover { background:rgba(0,0,0,0.02); }
-.comment-list li.comment .reply { position:absolute; top:.3em; right:0; margin-right:.3em; }
-.comment-metadata { font-size:.8em; }
-.comments-area .comments-title { margin-bottom:1em; }
-.comments-area div:not(.comment-content) dd,.comments-area div:not(.comment-content) ul,.comments-area div:not(.comment-content) ol { margin-left:2em; }
-.comments-area div:not(.comment-content) p { margin:1em 0; }
-.comments-area ol { margin-left:0; }
+.entry-meta .edit-link {float:right;}
+.entry-content:after,.comment-content:after,.site-header:after,.site-content:after,.site-footer:after {clear:both;}
+.entry-content:before,.entry-content:after,.comment-content:before,.comment-content:after,.site-header:before,.site-header:after,.site-content:before,.site-content:after,.site-footer:before,.site-footer:after {content:''; display:table;}
 
-.entry-meta .edit-link { float:right; }
-.entry-content:after,.comment-content:after,.site-header:after,.site-content:after,.site-footer:after { clear:both; }
-.entry-content:before,.entry-content:after,.comment-content:before,.comment-content:after,.site-header:before,.site-header:after,.site-content:before,.site-content:after,.site-footer:before,.site-footer:after { content:''; display:table; }
+.page-content img.wp-smiley,.entry-content img.wp-smiley,.comment-content img.wp-smiley {border:none; margin-bottom:0; margin-top:0; padding:0;}
+.page-content,.entry-content,.entry-summary {margin:1.5em 0 0;}
+.page-links {clear:both; margin:0 0 1.5em;}
+.recentcomments a {display:inline!important; margin:0!important; padding:0!important;}
 
-.page-content img.wp-smiley,.entry-content img.wp-smiley,.comment-content img.wp-smiley { border:none; margin-bottom:0; margin-top:0; padding:0; }
-.page-content,.entry-content,.entry-summary { margin:1.5em 0 0; }
-.page-links { clear:both; margin:0 0 1.5em; }
-.recentcomments a { display:inline!important; margin:0!important; padding:0!important; }
+.single .byline,.group-blog .byline {display:inline;}
 
-.single .byline,.group-blog .byline { display:inline; }
+.site-main .gallery a img {border:none; height:auto; max-width:90%;}
+.site-main .gallery dd {margin:0;}
+.site-main .gallery {margin-bottom:1.5em;}
 
-.site-main .gallery a img { border:none; height:auto; max-width:90%; }
-.site-main .gallery dd { margin:0; }
-.site-main .gallery { margin-bottom:1.5em; }
+.widget .search-field {min-width:96%;}
+.widget select {min-width:96%; max-width:96%;}
 
-.widget .search-field { min-width:96%; }
-.widget select { min-width:96%; max-width:96%; }
+.wp-caption img[class*="wp-image-"] {display:block; z-index: 5}
+.wp-caption {margin: 1% 1% 1.5em 1%; max-width:100%;  position: relative;}
+.wp-caption .wp-caption-text {
+	z-index: 6; position: absolute; bottom: 0; left: 0; 
+	border-top: 1px solid rgba(255,255,255,0.4);
+	background: #rgba(0,0,0,0.4); color: #fff; padding: .5%; width: 99%; margin:0;
+	text-align:center; font-size:.8em; height: 2em; line-height: 2em;
+}
 
-.wp-caption img[class*="wp-image-"] { display:block; z-index: 5}
-.wp-caption { margin: 1% 1% 1.5em 1%; max-width:100%;  position: relative; }
-.wp-caption .wp-caption-text { z-index: 6; position: absolute; bottom: 0; left: 0; 
-border-top: 1px solid rgba(255,255,255,0.4);
-background: #rgba(0,0,0,0.4); color: #fff; padding: .5%; width: 99%; margin:0;
-text-align:center; font-size:.8em; height: 2em; line-height: 2em;}
-.wp-caption .wp-caption-text a { color: #fff; }
+.wp-caption .wp-caption-text a {color: #fff;}
 
-a.comment-reply-link,a.post-edit-link { text-decoration:none!important; line-height:normal; }
-article .entry-meta,.comments-area .reply,div.nav-links,.comment-meta { font-size:.9em; }
-aside a:hover { text-decoration:underline; }
-div.nav-links { margin:1em 0; }
-li.comment { position:relative; }
+a.comment-reply-link,a.post-edit-link {text-decoration:none!important; line-height:normal;}
+article .entry-meta,.comments-area .reply,div.nav-links,.comment-meta {font-size:.9em;}
+aside a:hover {text-decoration:underline;}
+div.nav-links {margin:1em 0;}
+li.comment {position:relative;}
 
-img.alignleft { margin: 0 1% 1% 0; }
-img.alignright { margin: 0 0 1% 1%; }
+img.alignleft {margin: 0 1% 1% 0;}
+img.alignright {margin: 0 0 1% 1%;}
 
-.left { text-align: left; }
-.right { text-align: right; }
-.last { margin-right: 0 }
+.left {text-align: left;}
+.right {text-align: right;}
+.last {margin-right: 0}
 
 /* css class is needed in theme-check */
 
-.sticky  { }
-.gallery-caption  { }
-.bypostauthor { }
-.aligncenter { } 
+.sticky  {}
+.gallery-caption  {}
+.bypostauthor {}
+.aligncenter {} 
 
 /* page title = single title = page list title */
 
 .single .entry-title,
 .page-header  .page-title,
-.page .entry-title { font-size: 2em; margin: 0; line-height:1.5em; text-decoration:none; text-transform: capitalize;}
+.page .entry-title {font-size: 2em; margin: 0; line-height:1.5em; text-decoration:none; text-transform: capitalize;}
 
 .single header,
 .page-header header,
-.page header { margin-bottom: 1.5em; }
+.page header {margin-bottom: 1.5em;}
 
 /* Consistence Styles 
  * --------------------------------------
- *
 **/
 
-article *[class$='-content'] h1 { font-size: 2em; margin-bottom: 1em; }
-article *[class$='-content'] h2 { font-size: 1.5em; margin-bottom: 1em; }
-article *[class$='-content'] h3 { font-size: 1.25em; margin-bottom: 1em; }
-article *[class$='-content'] h4 { font-size: 1em; margin-bottom: 1em; }
-article *[class$='-content'] h5 { font-size: .9em; margin-bottom: .5em; }
-article *[class$='-content'] h6 { font-size: .8em; margin-bottom: 0 }
-article *[class$='-content'] a { text-decoration: underline; }
+article *[class$='-content'] h1 {font-size: 2em; margin-bottom: 1em;}
+article *[class$='-content'] h2 {font-size: 1.5em; margin-bottom: 1em;}
+article *[class$='-content'] h3 {font-size: 1.25em; margin-bottom: 1em;}
+article *[class$='-content'] h4 {font-size: 1em; margin-bottom: 1em;}
+article *[class$='-content'] h5 {font-size: .9em; margin-bottom: .5em;}
+article *[class$='-content'] h6 {font-size: .8em; margin-bottom: 0}
+article *[class$='-content'] a {text-decoration: underline;}
 
 article *[class$='-content'] ol,
-article *[class$='-content'] ul { padding-left: 1.5em }
+article *[class$='-content'] ul {padding-left: 1.5em}
 article *[class$='-content'] ul li ul,
-article *[class$='-content'] ol li ol { font-size: .9em; }
+article *[class$='-content'] ol li ol {font-size: .9em;}
+
+article hr { display: block; height: .1rem; border-style: solid; margin: 1.5em 0 1em 0}
 
 /* Content Width - Theme Support */
  
@@ -236,9 +248,9 @@ article *[class$='-content'] ol li ol { font-size: .9em; }
  *
 **/
 
-.infinite-scroll .paging-navigation,.infinite-scroll.neverending .site-footer { display:none; }
-.infinity-end.neverending .site-footer { display:block; }
-.screen-reader-text { clip:rect(1px,1px,1px,1px); position:absolute!important; }
+.infinite-scroll .paging-navigation,.infinite-scroll.neverending .site-footer {display:none;}
+.infinity-end.neverending .site-footer {display:block;}
+.screen-reader-text {clip:rect(1px,1px,1px,1px); position:absolute!important;}
 .screen-reader-text:hover,.screen-reader-text:active,.screen-reader-text:focus {
 	background-color:#f1f1f1; border-radius:3px; box-shadow:0 0 2px 2px rgba(0,0,0,0.6);
 	clip:auto!important; color:#21759b; display:block;

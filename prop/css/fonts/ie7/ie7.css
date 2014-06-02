@@ -1,3 +1,15 @@
+.umi-point-up {
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x261d;');
+}
+.umi-point-right {
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x261e;');
+}
+.umi-point-down {
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x261f;');
+}
+.umi-point-left {
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x261c;');
+}
 .umi-googleplus {
 	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe612;');
 }
@@ -43,6 +55,9 @@
 .umi-github2 {
 	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe620;');
 }
+.umi-wordpress {
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe63f;');
+}
 .umi-tumblr {
 	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe621;');
 }
@@ -65,7 +80,7 @@
 	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe627;');
 }
 .umi-search {
-	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x2798;');
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x27a0;');
 }
 .umi-envelope-o {
 	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x2709;');
@@ -80,7 +95,7 @@
 	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x2606;');
 }
 .umi-th {
-	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x25fc;');
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x2637;');
 }
 .umi-check {
 	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x2713;');
@@ -134,22 +149,22 @@
 	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x203a;');
 }
 .umi-angle-up {
-	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf106;');
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x5e;');
 }
 .umi-angle-down {
-	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf107;');
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x76;');
 }
 .umi-desktop {
-	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf108;');
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x31;');
 }
 .umi-laptop {
-	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf109;');
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x32;');
 }
 .umi-tablet {
-	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf10a;');
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x33;');
 }
 .umi-mobile-phone {
-	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf10b;');
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x34;');
 }
 .umi-ellipsis-h {
 	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x22ef;');
@@ -169,8 +184,20 @@
 .umi-location {
 	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe603;');
 }
+.umi-map {
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe644;');
+}
 .umi-chat {
 	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe604;');
+}
+.umi-comment {
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe641;');
+}
+.umi-house {
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe640;');
+}
+.umi-printer {
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe645;');
 }
 .umi-link {
 	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe605;');
@@ -193,6 +220,15 @@
 .umi-newspaper {
 	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe609;');
 }
+.umi-clock {
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x231a;');
+}
+.umi-calendar {
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe63c;');
+}
+.umi-key {
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x26bf;');
+}
 .umi-earth {
 	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe60a;');
 }
@@ -211,6 +247,12 @@
 .umi-lock-open {
 	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe62c;');
 }
+.umi-logout {
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe63a;');
+}
+.umi-login {
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe63b;');
+}
 .umi-minus {
 	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe62d;');
 }
@@ -218,7 +260,10 @@
 	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe62e;');
 }
 .umi-cross {
-	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe62f;');
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x22a0;');
+}
+.umi-cross2 {
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x2297;');
 }
 .umi-help {
 	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe630;');
@@ -272,14 +317,14 @@
 	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe639;');
 }
 .umi-arrow-left2 {
-	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe63a;');
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x21a4;');
 }
 .umi-arrow-down2 {
-	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe63b;');
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x21a7;');
 }
 .umi-arrow-up2 {
-	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe63c;');
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x21a5;');
 }
 .umi-arrow-right2 {
-	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe63d;');
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x21a6;');
 }

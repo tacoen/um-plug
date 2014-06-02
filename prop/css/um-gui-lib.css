@@ -18,11 +18,11 @@
 div.um_login_div {
 	position: fixed; top: 100%; margin-top: -25px; left: 100%; margin-left: -100px;
 	height: 24px; line-height: 24px;
-	background: #333; z-index: 9999;
+	background: #333; z-index: 991;
 	width: 80px; text-align: center;
 }
 
-div.um_login_div a { display: block; color: #fff; height: 24px; line-height: 24px; font-size: 12px; }
+div.um_login_div a { display: block; color: #fff; height: 24px; line-height: 24px; font-size: 12px; text-decoration:none; }
 
 #um-login{
 	display: none; background-color: #FFFFFF;
@@ -74,24 +74,34 @@ div.um_login_div a { display: block; color: #fff; height: 24px; line-height: 24p
 .rounded { border-radius: 5px;  }
 .small { font-size: .8em; line-height: 1.2em; }
 .rounded.inside { padding: 8px }
+.border-box { 
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;         /* Opera/IE 8+ */
+}
 
 [class^="umi-"]:before,
-[class*="umi-"]:before  { text-decoration: none; display: inline-block; padding: .25rem ; vertical-align: top }
+[class*=" umi-"]:before  { text-decoration: none; display: inline-block; padding: .25rem; vertical-align: top }
 
-#um-font-test div { float: left; min-width: 100px; margin: 0 1em 1em 0; }
-#um-font-test { clear: both; text-transform: capitalize; font-size: 1em; }
-
-#um-crumbs li { float: left; list-style-type:none;  }
-#um-crumbs li:before { content: "\203A"; padding: 0 .5em }
-#um-crumbs li:first-child:before { content: ""; padding: 0 0; }
+#umi-fontest div { float: left; margin: 0 2% 1em 0; width:31%; }
+#umi-fontest div code { float: right; }
+.square-umi { min-width: 16px; min-height: 16px; }
 
 .um-msg { padding: .5% 1%; font-size: .8em; color: #fff; cursor: pointer; margin-bottom: .5em; width: 96%; border-radius: 3px;  }
 .um-msg [class^="umi-"]:before,
 .um-msg [class*=" umi-"]:before  { float: right;  }
 
+/* um-crumbs */
+
+#um-crumbs li { float: left; list-style-type:none;  }
+#um-crumbs li:before { content: "\203A"; padding: 0 .5em }
+#um-crumbs li:first-child:before { content: ""; padding: 0 0; }
+
+/* great div grouping */
 
 .row:before, .row:after { content: ""; display: table; }
 .row:after  { clear: both; }
+
 .full-width { width: 100%; }
 .full { width: 100%; text-align: center; }
 .col2 div { width: 48%; margin-right: 2%; float: left; }
@@ -117,6 +127,8 @@ div.um_login_div a { display: block; color: #fff; height: 24px; line-height: 24p
 .grid > .g35 { width: 60%; }
 .grid > .g45 { width: 80%; }
 
+/* forms */
+
 .um-form label { text-transform: capitalize; }
 .um-form .compact label { display:block;  }
 .um-form .compact select,
@@ -126,4 +138,17 @@ div.um_login_div a { display: block; color: #fff; height: 24px; line-height: 24p
 .um-form .line select,
 .um-form .line input { width: 78% }
 .um-form .submit label { display: none; }
-.um-form .option { margin: 0 1%; font-size: .8em }
+.um-form .option { margin: 0 1%; font-size: .8em; }
+
+/* wp custome-header */
+
+.um-headimg {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-size: 100% 100%;
+}
+
+
+

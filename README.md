@@ -19,8 +19,26 @@ Thank your qSandbox.com! Demo avaliable at http://umumum.qsandbox.com/ -- Access
 
 ##Features
 
+###1.1.5
+  * Replace umi with umi-wp, Icomoon, using unicode char (as equals, e.g: raquo is &raquo;) <http://icomoon.io/>
+
+###1.1.4
+  * Media Queries in wp-head, <http://css3mediaqueries.com>
+  * Adjust-abale media max-width in Themes Options
+  
+###1.1.3
+  * Media Queries
+  * 3 Size Media Queries (Desktop,Tablet,Handheld) in Customize Options
+
+###1.1.1
+  * UM Themes Compability, All UM-Themes shall look nice even without UM-Plug Plugins 
+  
+###1.1.0
+  * Reorganized UM-Plug Options Menu
+  * Pulling back um-core to Plugins as backup-sets
+  
 ###1.0.5
-  * Added fontastic.me generated font style.css as umui(umi)
+  * Added fontastic.me <http://.fontastic.me> generated font style.css as umui(umi)
 
 ###1.0.4
   * Minified Theme related Javascripts (um-gui-lib.js)

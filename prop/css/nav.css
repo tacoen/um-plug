@@ -44,19 +44,34 @@ body.admin-bar .main-navigation  {
 .main-navigation .menu-item-has-children > a:after,
 .main-navigation .page_item_has_children > a:after {
 	font-family: "umi-wp-font";
-	float:right; content: "H"; font-size: 70%;
-	opacity: .7; margin-right: .5rem;
+	float:right; content: "\25bc"; font-size: 80%;
+	opacity: .8; margin-right: .5rem;
 }
 .main-navigation .menu-item-has-children .menu-item-has-children > a:after,
 .main-navigation .page_item_has_children .page_item_has_children > a:after { 
 	font-family: "umi-wp-font";
-	float:right; content: "D"; font-size: 70%;
-	opacity: .7; margin-right: .5rem;
+	float:right; content: "\22ef"; font-size: 80%;
+	opacity: .8; margin-right: .5rem;
+}
+
+.main-navigation .menu-item a[href="/wp-login"]:before { 
+	font-family: "umi-wp-font";
+	content: '\e63b'; padding: .25rem;
+	vertical-align: top
+}
+
+.main-navigation .menu-item a[href="#logout"]:before{ 
+	font-family: "umi-wp-font";
+	content: " \e63a";  padding: .25rem;
+	vertical-align: top	
 }
 
 .menu-toggle { cursor: pointer; display: none; }
 .menu-toggle:before { min-width: 17px; display:block; float: left; vertical-align: middle; }
 
+.main-navigation ul.nav-menu > li:last-child { float: right; }
+.main-navigation ul.nav-menu > li:first-child { float: left; }
+ 
 /* Page navigations
  * ------------------------------------------
 **/
