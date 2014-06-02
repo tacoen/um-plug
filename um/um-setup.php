@@ -127,6 +127,30 @@ $checklist = array(
 		'type' => 'script',
 		'check' => 'file',
 		'note' => 'Your Colours Scheme',
+		'method' => 'fallback'
+	),
+	'print.css' => array(
+		'type' => 'script',
+		'check' => 'file',
+		'note' => 'Printer Device Media Queries',
+		'method' => 'fallback'
+	),
+	'medium.css' => array(
+		'type' => 'script',
+		'check' => 'file',
+		'note' => 'Medium Device Media Queries',
+		'method' => 'fallback'
+	),
+	'small.css' => array(
+		'type' => 'script',
+		'check' => 'file',
+		'note' => 'Small Device Media Queries',
+		'method' => 'fallback'
+	),
+	'style.css' => array(
+		'type' => 'script',
+		'check' => 'file',
+		'note' => 'Theme Default Stylesheet',
 		'method' => 'theme'
 	),
 	'page-templates' => array(

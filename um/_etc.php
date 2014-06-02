@@ -62,7 +62,7 @@ function um_help($contextual_help, $screen_id) {
 		$icontextual_help .= __( umch_overview($screen_id) );
 		$icontextual_help .= '</p>';
 		
-		$webfont_ref = "<p><label>UM-GUI Icons</label><a href='".UMPLUG_URL."prop/css/icons-reference.html"."'>Icons References</a></p>";
+		$webfont_ref = "<p><label>UM-GUI Icons</label><a href='".UMPLUG_URL."prop/css/fonts/demo.html"."'>Icons References</a></p>";
 		$umref = "<h3>Links</h3><div class='um-debug'>" . 
 			join('',file( 	UMPLUG_DIR."prop/doc/feat.html" )) . 
 			$webfont_ref .

@@ -1,15 +1,26 @@
-@charset "UTF-8";
-
 @font-face {
-  font-family: "umi-wp-font";
-  src:url("fonts/umi-wp-font.eot");
-  src:url("fonts/umi-wp-font.eot?#iefix") format("embedded-opentype"),
-    url("fonts/umi-wp-font.woff") format("woff"),
-    url("fonts/umi-wp-font.ttf") format("truetype"),
-    url("fonts/umi-wp-font.svg#umi-wp-font") format("svg");
-  font-weight: normal;
-  font-style: normal;
+	font-family: 'umi-wp-font';
+	src:url('fonts/umi-wp-font.eot?-thnnvf');
+	src:url('fonts/umi-wp-font.eot?#iefix-thnnvf') format('embedded-opentype'),
+		url('fonts/umi-wp-font.woff?-thnnvf') format('woff'),
+		url('fonts/umi-wp-font.ttf?-thnnvf') format('truetype'),
+		url('fonts/umi-wp-font.svg?-thnnvf#umi-wp-font') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
 
+.umi, [class^="umi-"], [class*=" umi-"] {
+	speak: none;
+	line-height: 1;
+	min-width: 16px;
+	font-family: "umi-wp-font" !important;
+	font-style: normal !important;
+	font-weight: normal !important;
+	font-variant: normal !important;
+	text-transform: none !important;
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 [data-icon]:before {
@@ -25,271 +36,288 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-[class^="umi-"]:before,
-[class*=" umi-"]:before {
-  font-family: "umi-wp-font" !important;
-  font-style: normal !important;
-  font-weight: normal !important;
-  font-variant: normal !important;
-  text-transform: none !important;
-  speak: none;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.umi-googleplus:before {
+	content: "\e612";
 }
-
-.umi-pt-post:before {
-  content: "a";
+.umi-googleplus2:before {
+	content: "\e613";
 }
-.umi-pt-posts:before {
-  content: "b";
+.umi-googleplus3:before {
+	content: "\e614";
 }
-.umi-pt-page:before {
-  content: "c";
+.umi-facebook:before {
+	content: "\e615";
 }
-.umi-pt-pages:before {
-  content: "d";
+.umi-facebook2:before {
+	content: "\e616";
 }
-.umi-pt-photo:before {
-  content: "e";
+.umi-facebook3:before {
+	content: "\e617";
 }
-.umi-pt-slide:before {
-  content: "f";
+.umi-twitter:before {
+	content: "\e618";
 }
-.umi-pt-video:before {
-  content: "g";
+.umi-twitter2:before {
+	content: "\e619";
 }
-.umi-pt-audio:before {
-  content: "h";
+.umi-twitter3:before {
+	content: "\e61a";
 }
-.umi-pt-quote:before {
-  content: "i";
+.umi-feed:before {
+	content: "\e61b";
 }
-.umi-pt-feed:before {
-  content: "j";
+.umi-vimeo:before {
+	content: "\e61c";
 }
-.umi-pt-attachment:before {
-  content: "k";
+.umi-vimeo2:before {
+	content: "\e61d";
 }
-.umi-pt-any:before {
-  content: "m";
+.umi-vimeo3:before {
+	content: "\e61e";
 }
-.umi-pt-link:before {
-  content: "l";
+.umi-github:before {
+	content: "\e61f";
 }
-.umi-to-book:before {
-  content: "n";
+.umi-github2:before {
+	content: "\e620";
 }
-.umi-to-book-open:before {
-  content: "o";
+.umi-tumblr:before {
+	content: "\e621";
 }
-.umi-to-box:before {
-  content: "p";
+.umi-file-pdf:before {
+	content: "\e622";
 }
-.umi-to-lock:before {
-  content: "q";
+.umi-file-word:before {
+	content: "\e623";
 }
-.umi-to-unlock:before {
-  content: "r";
+.umi-file-excel:before {
+	content: "\e624";
 }
-.umi-to-chat:before {
-  content: "s";
+.umi-file-zip:before {
+	content: "\e625";
 }
-.umi-to-comment:before {
-  content: "t";
+.umi-file-powerpoint:before {
+	content: "\e626";
 }
-.umi-to-globe:before {
-  content: "u";
+.umi-file-css:before {
+	content: "\e627";
 }
-.umi-to-content:before {
-  content: "v";
+.umi-search:before {
+	content: "\2798";
 }
-.umi-to-vcard:before {
-  content: "w";
+.umi-envelope-o:before {
+	content: "\2709";
 }
-.umi-to-add-user:before {
-  content: "x";
+.umi-heart:before {
+	content: "\2665";
 }
-.umi-to-users:before {
-  content: "y";
+.umi-star:before {
+	content: "\2605";
 }
-.umi-to-user:before {
-  content: "z";
+.umi-star-o:before {
+	content: "\2606";
 }
-.umi-to-bookmark:before {
-  content: "A";
+.umi-th:before {
+	content: "\25fc";
 }
-.umi-to-bookmarks:before {
-  content: "B";
+.umi-check:before {
+	content: "\2713";
 }
-.umi-to-tags:before {
-  content: "C";
+.umi-times:before {
+	content: "\d7";
 }
-.umi-to-more:before {
-  content: "D";
+.umi-edit:before {
+	content: "\270f";
 }
-.umi-to-l:before {
-  content: "F";
+.umi-arrow-left:before {
+	content: "\2190";
 }
-.umi-to-u:before {
-  content: "G";
+.umi-arrow-right:before {
+	content: "\2192";
 }
-.umi-to-d:before {
-  content: "H";
+.umi-arrow-up:before {
+	content: "\2191";
 }
-.umi-to-r:before {
-  content: "E";
+.umi-arrow-down:before {
+	content: "\2193";
 }
-.umi-to-thumbs-up:before {
-  content: "J";
+.umi-caret-down:before {
+	content: "\25bc";
 }
-.umi-to-thumbs-down:before {
-  content: "K";
+.umi-caret-up:before {
+	content: "\25b2";
 }
-.umi-to-tools:before {
-  content: "L";
+.umi-caret-left:before {
+	content: "\25c0";
 }
-.umi-to-pencil:before {
-  content: "M";
+.umi-caret-right:before {
+	content: "\25b6";
 }
-.umi-to-cogs:before {
-  content: "I";
+.umi-angle-double-left:before {
+	content: "\ab";
 }
-.umi-to-cog:before {
-  content: "N";
+.umi-angle-double-right:before {
+	content: "\bb";
 }
-.umi-yes:before {
-  content: "O";
+.umi-angle-double-up:before {
+	content: "\f102";
 }
-.umi-fontawesome-webfont:before {
-  content: "O";
+.umi-angle-double-down:before {
+	content: "\f103";
 }
-.umi-no:before {
-  content: "P";
+.umi-angle-left:before {
+	content: "\2039";
 }
-.umi-cancle-s:before {
-  content: "Q";
+.umi-angle-right:before {
+	content: "\203a";
 }
-.umi-cancle-o:before {
-  content: "R";
+.umi-angle-up:before {
+	content: "\f106";
 }
-.umi-warn:before {
-  content: "S";
+.umi-angle-down:before {
+	content: "\f107";
 }
-.umi-info:before {
-  content: "T";
+.umi-desktop:before {
+	content: "\f108";
 }
-.umi-to-calendar:before {
-  content: "U";
+.umi-laptop:before {
+	content: "\f109";
 }
-.umi-to-clock:before {
-  content: "V";
+.umi-tablet:before {
+	content: "\f10a";
 }
-.umi-id-css3:before {
-  content: "W";
+.umi-mobile-phone:before {
+	content: "\f10b";
 }
-.umi-id-html5:before {
-  content: "X";
+.umi-ellipsis-h:before {
+	content: "\22ef";
 }
-.umi-id-github:before {
-  content: "Y";
+.umi-ellipsis-v:before {
+	content: "\22ee";
 }
-.umi-id-any:before {
-  content: "Z";
+.umi-paperclip:before {
+	content: "\e600";
 }
-.umi-magnifying-glass:before {
-  content: "0";
+.umi-user:before {
+	content: "\e601";
 }
-.umi-comment-quotes:before {
-  content: "1";
+.umi-vcard:before {
+	content: "\e602";
 }
-.umi-key:before {
-  content: "2";
+.umi-location:before {
+	content: "\e603";
 }
-.umi-telephone:before {
-  content: "3";
+.umi-chat:before {
+	content: "\e604";
 }
-.umi-arr-l:before {
-  content: "4";
+.umi-link:before {
+	content: "\e605";
 }
-.umi-arr-r:before {
-  content: "5";
+.umi-cog:before {
+	content: "\e628";
 }
-.umi-arr-u:before {
-  content: "6";
+.umi-tools:before {
+	content: "\e629";
 }
-.umi-arr-d:before {
-  content: "7";
+.umi-tag:before {
+	content: "\e606";
 }
-.umi-arr-gotop:before {
-  content: "8";
+.umi-camera:before {
+	content: "\e607";
 }
-.umi-arr-godown:before {
-  content: "9";
+.umi-book:before {
+	content: "\e608";
 }
-.umi-rev-r:before {
-  content: "!";
+.umi-newspaper:before {
+	content: "\e609";
 }
-.umi-rev-l:before {
-  content: "\"";
+.umi-earth:before {
+	content: "\e60a";
 }
-.umi-rev-down:before {
-  content: "#";
+.umi-code:before {
+	content: "\e63e";
 }
-.umi-rev-up:before {
-  content: "$";
+.umi-cart:before {
+	content: "\e62a";
 }
-.umi-canvas:before {
-  content: "%";
+.umi-rss:before {
+	content: "\e60b";
 }
-.umi-youtube:before {
-  content: "&";
+.umi-lock:before {
+	content: "\e62b";
 }
-.umi-wordpress-alt:before {
-  content: "'";
+.umi-lock-open:before {
+	content: "\e62c";
 }
-.umi-wordpress:before {
-  content: "(";
+.umi-minus:before {
+	content: "\e62d";
 }
-.umi-twitter-alt:before {
-  content: ")";
+.umi-plus:before {
+	content: "\e62e";
 }
-.umi-id-w3:before {
-  content: "*";
+.umi-cross:before {
+	content: "\e62f";
 }
-.umi-facebook-alt:before {
-  content: "+";
+.umi-help:before {
+	content: "\e630";
 }
-.umi-download:before {
-  content: ",";
+.umi-warning:before {
+	content: "\e631";
 }
-.umi-upload:before {
-  content: "-";
+.umi-list:before {
+	content: "\39e";
 }
-.umi-doc-text:before {
-  content: ".";
+.umi-pictures:before {
+	content: "\e60c";
 }
-.umi-docs:before {
-  content: "/";
+.umi-video:before {
+	content: "\e60d";
 }
-.umi-help-circled:before {
-  content: ":";
+.umi-music:before {
+	content: "\e60e";
 }
-.umi-id-rss:before {
-  content: ";";
+.umi-folder:before {
+	content: "\e60f";
 }
-.umi-aquo-r:before {
-  content: ">";
+.umi-bookmark:before {
+	content: "\e610";
 }
-.umi-aquo-l:before {
-  content: "<";
+.umi-bookmarks:before {
+	content: "\e611";
 }
-.umi-aquo-u:before {
-  content: "=";
+.umi-play:before {
+	content: "\e632";
 }
-.umi-aquo-d:before {
-  content: "?";
+.umi-pause:before {
+	content: "\e633";
 }
-.umi-bulb:before {
-  content: "@";
+.umi-record:before {
+	content: "\e634";
+}
+.umi-stop:before {
+	content: "\e635";
+}
+.umi-next:before {
+	content: "\e636";
+}
+.umi-previous:before {
+	content: "\e637";
+}
+.umi-first:before {
+	content: "\e638";
+}
+.umi-last:before {
+	content: "\e639";
+}
+.umi-arrow-left2:before {
+	content: "\e63a";
+}
+.umi-arrow-down2:before {
+	content: "\e63b";
+}
+.umi-arrow-up2:before {
+	content: "\e63c";
+}
+.umi-arrow-right2:before {
+	content: "\e63d";
 }

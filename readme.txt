@@ -3,7 +3,7 @@ Contributors: tacoen
 Donate link: 
 Tags: customization
 Requires at least: 3.8.1
-Tested up to: 3.8.1
+Tested up to: 3.9.1
 Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -24,17 +24,16 @@ UM Themes core and tool kits, a Wordpress developer Toolkit for creating/ mainta
   * Come with Handy jQuery Function for more controls on user view.
   * Ajax Login
   * Reduce load by use static generated-minimized stylesheet
-  * Reduce load by Minified UM-Theme related Javascripts (1.0.4)
+  * Reduce load by Minified Javascripts (1.0.4)
   * Develop your own reset.css, reset your own Wordpress style (Moved to themes, since 1.0.0)
   * Chunks for static contents, Chunks will avaliable as shortcode or widgets 
-  * Facebook, Twitter contact method
   * Pluggable template tag
   * Pluggable template part
   * Pluggable JS/CSS Addon for Page Template (since 1.0.0)
 
 = Links = 
 
-  * Demo avaliable at http://7htw4u3p0l.qsandbox.com/ -- Access-code: 0000 
+  * Demo avaliable at http://umumum.qsandbox.com/ -- Access-code: 0000 
   * [UM-Plug GitHub Repository](https://github.com/tacoen/um-plug)
   * [UM-Themes GitHub Repository](https://github.com/tacoen/um-theme)
   
