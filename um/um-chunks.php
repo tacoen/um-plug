@@ -16,9 +16,9 @@ if(is_admin() && (isset( $umo["um_chunk"])) ) { $my_settings_page=new um_set( "u
 function um_chunks() { um_adminpage_wrap("Chunks","um_chunks_html",array()); }
 
 
-Class um_chunks_widget extends WP_Widget {
+Class um_chunked extends WP_Widget {
 	function __construct() {
-		parent::__construct('um_chunks_widget',__('Chunks','um'),array('description'=> __('Chunks Widget','um'),));
+		parent::__construct('um_chunked',__('Chunks','um'),array('description'=> __('Chunks Widget','um'),));
 	}
 	public function widget($args,$instance) {
 		if (isset($instance['title'])) { $title=apply_filters('widget_title',$instance['title']); }
@@ -40,8 +40,8 @@ Class um_chunks_widget extends WP_Widget {
 		<?php
 		$chunks=glob(get_stylesheet_directory()."/chunks/*.txt");
 		foreach ($chunks as $c) {
-			if (( isset($chunk_selected)) && ($c==$chunk_selected)) { $str=" selected"; } else { $str=''; }
 			$fn=explode("/",$c); $fnc=$fn[count($fn)-1]; $fn=explode(".",$fnc);
+			if ($fn[0]==$chunk_selected) { $str=" selected"; } else {  $str='';  }
 			echo "<option $str value='".$fn[0]."'>$fn[0]</option>\n";
 		}?>
 		</select></p><?php
@@ -52,12 +52,12 @@ Class um_chunks_widget extends WP_Widget {
 		$instance['chunk']=(! empty($new_instance['chunk'])) ? strip_tags($new_instance['chunk']) : '';
 		return $instance;
 	}
-} // class um_chunks_Widget
+} // class um_chunked
 
-function register_um_chunks_widget() {
-	register_widget('um_chunks_widget');
+function register_um_chunked() {
+	register_widget('um_chunked');
 }
-add_action('widgets_init','register_um_chunks_widget');
+add_action('widgets_init','register_um_chunked');
 /* ------------------------------------------------------------------ */
 function um_textedit($title,$file) {
 	if (file_exists($file)) { $text = join('',file($file,FILE_SKIP_EMPTY_LINES)); } else { $text=''; } ?>
@@ -77,7 +77,7 @@ function um_chunk_insert($f) {
 	if (file_exists($file)) {
 		return join ('',file($file,FILE_SKIP_EMPTY_LINES));
 	} else {
-		return "Yep, but it's not there";
+		return "chunk, but it's not there";
 	}
 }
 

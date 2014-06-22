@@ -80,5 +80,5 @@ padding-left: 10px; height: 30px; z-index: 1000; border-radius: 3px;
 .um-feat h2 { font-size: 2em; text-align: center;letter-spacing: -1px; font-weight: 300; margin-bottom: 1em; }
 .um-feat .um-dashicons { width:100px; height:102px; font:400 100px/1 dashicons!important;  padding:0}	
 
-html .um-feat hr { border-top: 1px solid #ccc !important; width:100%; height: 1px; display:block; margin: 2em 0}
+html .um-feat hr { width:100%; display:block; clear: both;  }
 

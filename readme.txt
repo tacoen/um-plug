@@ -22,13 +22,12 @@ UM Themes core and tool kits, a Wordpress developer Toolkit for creating/ mainta
   * Come with Handy jQuery Function for more controls on user view.
   * Ajax Login
   * Reduce load by use static generated-minimized stylesheet
-  * Reduce load by Minified UM-Theme related Javascripts (1.0.4)
-  * Develop your own reset.css, reset your own Wordpress style (Moved to themes, since 1.0.0)
+  * Reduce load by Minified UM-Theme related Javascripts 
   * Chunks for static contents, Chunks will avaliable as shortcode or widgets 
   * Facebook, Twitter contact method
-  * Pluggable template tag
+  * Pluggable template tag (shortcod-ed where possible)
   * Pluggable template part
-  * Pluggable JS/CSS Addon for Page Template (since 1.0.0)
+  * Pluggable JS/CSS Addon for Page Template
   * Unicode webfonts
 
 = Links = 
@@ -55,11 +54,7 @@ UM Themes core and tool kits, a Wordpress developer Toolkit for creating/ mainta
 
 = A question that someone might have =
 
-An answer to that question.
-
-= What about foo bar? =
-
-Answer to foo bar dilemma.
+(https://github.com/tacoen/UM-Plug/wiki)
 
 == Screenshots ==
 
@@ -70,10 +65,13 @@ Answer to foo bar dilemma.
 
 = 1.1.5 = 
   * Replace umi with umi-wp, Icomoon, using unicode char (as equals, e.g: raquo is &raquo;) <http://icomoon.io/>
+  * Webfonts as options
 
 = 1.1.4 = 
   * Media Queries in wp-head, <http://css3mediaqueries.com> instead in .css files
   * Adjust-abale media max-width in Themes Options
+  * CSS base custome-Header features in UM-Themes ('um-headimg')
+  * Style filenaming Compability: reset.css and others rebuilding-styles were moved into css/ path, medium.css, and small.css moved into theme roots
   
 = 1.1.3 = 
   * Media Queries
@@ -83,9 +81,11 @@ Answer to foo bar dilemma.
   * Bug fix for minified css
   * Bug fix for private cdn links options
   * Split head, and foot minified javascripts
+  * Utilize WP-Admin Contextual Help
   
 = 1.1.1 = 
   * UM Themes Compability, All UM-Themes shall look nice even without UM-Plug Plugins 
+  * Style filenaming Compability (default.css are now base.css, um-reset are now reset.css)
   
 = 1.1.0 = 
   * Reorganized UM-Plug Options Menu

@@ -1,0 +1,13 @@
+/* Device media queries: medium.
+ * max-width for device can be set in wp-admin, using UM-Plug
+ */
+
+.micro { font-size: .8em; }
+
+
+ /* Layouts */
+ 
+#secondary { display:table; width:100%; }
+.site-side { width:100% }
+.site-main { width:100% }
+#secondary aside { float: left; width: 48%; margin:1%; }

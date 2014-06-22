@@ -1,12 +1,18 @@
-/* 
-@media screen and (max-width: 540px) {
-*/
+/* Device media queries: small.
+ * max-width for device can be set in wp-admin, using UM-Plug
+ */
+
+/* Layouts */
+ 
+body  { margin-top: 32px; }
+.site-side { width:100% }
+.site-main { width:100% }
+#secondary aside { float: left; width: 98%; margin: 1%; }
 
 /* base.css */
 
 .comment-list { padding-left: 0 }
 .comment-list li { list-style-type: none; }
-
 .form-allowed-tags { display: none; }
 
 /* nav.css */
@@ -51,9 +57,4 @@ body.admin-bar .main-navigation  {
 .col5 div.last,
 .col4 div.last { width: 50%; margin-right: 0 }
 
-
 #um-top { line-height: 24px; height: 48px; padding: 8px; }
-
-/*
-}
-*/

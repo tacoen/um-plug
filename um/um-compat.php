@@ -35,15 +35,15 @@ if ( ! function_exists('umtag')) {
 
 }
 
-if ( ! function_exists('um_getoption')) {
+if ( ! function_exists('um_getoption')) :
 
 	function um_getoption($w,$o="umo") {
+		$umo = new stdClass();
 		$umo->options=get_option($o);
-		if (isset($umo->options[$w])) {
-			return $umo->options[$w];
-		}
+		if (isset($umo->options[$w])) { return $umo->options[$w]; } else { return false; }
 	}
-}
+
+endif;
 
 if ( ! function_exists('um_tool_which')) {
 

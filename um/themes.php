@@ -32,8 +32,8 @@ umo_register(
 				)
 			),
 			'wpvar'=> array(
-				'text'=> 'Custom',
-				'note'	=> '',
+				'text'=> 'Variables',
+				'note'	=> 'Themes variables for custom options',
 				'field'	=> array(
 					'umchiw'=> array ('text','Width','Custom Header Image Width','1000','5',''),
 					'umchih'=> array ('text','Height','Custom Header Image Height','250','5',''),
@@ -185,12 +185,12 @@ function umplug_register_scripts() {
 	} else {
 
 		if (um_getoption('umgui','umt')) {
-			wp_enqueue_script('um-gui-lib',um_tool_which('js/um-gui-lib.js'),array('jquery'),um_ver(),false);
-			wp_enqueue_script('um-gui',um_tool_which('um-gui.js'),array('um-gui-lib'),um_ver(),true);
+			wp_enqueue_script(get_template().'-gui-lib',um_tool_which('js/um-gui-lib.js'),array('jquery'),um_ver(),false);
+			wp_enqueue_script(get_template().'-gui',um_tool_which('um-gui.js'),array('um-gui-lib'),um_ver(),true);
 		}
 
 		if (um_getoption('sfunc','umt')) {
-			wp_enqueue_script( '_s', um_tool_which('js/default.js'), array(), um_ver(), true );
+			wp_enqueue_script( get_template().'-base', um_tool_which('js/default.js'), array(), um_ver(), true );
 		}
 
 		if (is_singular() && comments_open() && get_option('thread_comments')) {

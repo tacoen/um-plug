@@ -145,6 +145,7 @@ function um_user_contactmethods($user_contactmethods){
 	//unset($user_contactmethods['jabber']);
 	$user_contactmethods['twitter'] = 'Twitter Username';
 	$user_contactmethods['facebook'] = 'Facebook Username';
+	$user_contactmethods['photo_url'] = 'Photo URL';
 	return $user_contactmethods;
 }
 
