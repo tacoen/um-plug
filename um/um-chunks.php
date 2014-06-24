@@ -38,7 +38,8 @@ Class um_chunked extends WP_Widget {
 		<p><label for="<?php echo $this->get_field_id('chunk'); ?>"><?php _e('Chunk:','um'); ?></label>
 		<select name="<?php echo $this->get_field_name('chunk'); ?>">
 		<?php
-		$chunks=glob(get_stylesheet_directory()."/chunks/*.txt");
+		$upload_dir = wp_upload_dir();
+		$chunks=glob($upload_dir['basedir']."/chunks/*.txt");
 		foreach ($chunks as $c) {
 			$fn=explode("/",$c); $fnc=$fn[count($fn)-1]; $fn=explode(".",$fnc);
 			if ($fn[0]==$chunk_selected) { $str=" selected"; } else {  $str='';  }
@@ -73,7 +74,8 @@ function um_textedit($title,$file) {
 <?php }
 
 function um_chunk_insert($f) {
-	$file=get_stylesheet_directory()."/chunks/".$f.".txt";
+	$upload_dir = wp_upload_dir();
+	$file=$upload_dir['basedir']."/chunks/".$f.".txt";
 	if (file_exists($file)) {
 		return join ('',file($file,FILE_SKIP_EMPTY_LINES));
 	} else {
@@ -96,7 +98,8 @@ function get_sniff($f) {
 }
 
 function um_chunks_html($div='',$js=0) {
-	$chunk_dir=get_stylesheet_directory()."/chunks";
+	$upload_dir = wp_upload_dir();
+	$chunk_dir=$upload_dir['basedir']."/chunks";
 	if (!file_exists($chunk_dir) and !is_dir($chunk_dir)) { mkdir($chunk_dir); }
 	echo "<div class='postbox'><h3 class='inside'>Chunks</h3><ul data-dir='chunk' class='um-list inside'>\n";
 	$chunks=glob($chunk_dir."/*.txt");

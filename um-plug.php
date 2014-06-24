@@ -5,7 +5,7 @@ Plugin URI: http://tacoen.github.io/um-plug/
 Description: Themes core and tool kits, a Wordpress developer Toolkit for creating/ maintaining/ optimizing a theme.
 Author: tacoen
 Author URI: http://github.com/tacoen
-Version: 1.1.6
+Version: 1.1.7
 Text Domain: um
 */
 
@@ -14,7 +14,7 @@ defined('ABSPATH') or die('um?');
 DEFINE ('UMPLUG_DIR', plugin_dir_path( __FILE__ ) );
 DEFINE ('UMPLUG_URL', plugin_dir_url(__FILE__) );
 
-function um_ver() { return '1.1.6'; }
+function um_ver() { return '1.1.7'; }
 
 $umo = array();
 

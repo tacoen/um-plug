@@ -66,7 +66,7 @@ function um_toucher_html($div='',$js=0) {
 		$ptf=glob($tdir."/page-templates/*.php");
 
 		foreach ($ptf as $f) {
-			$f=preg_replace("#$tdir/#",'',$f);
+			$f=preg_replace("#".preg_quote("$tdir/")."#",'',$f);
 			array_push($existed,$f);
 		}
 

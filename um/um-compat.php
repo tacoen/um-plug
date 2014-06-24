@@ -15,7 +15,7 @@ if ( ! function_exists('umtag')) {
 
 	function umtag($func,$args=array()) {
 		if (! function_exists($func)) {
-			$ttdir=get_template_directory()."/template-tags/";
+			$ttdir=get_template_directory()."/umtag/";
 			if (file_exists($ttdir.$func.".php")) {
 				require $ttdir.$func.".php"; call_user_func_array("umtag_".$func,array($args));
 			} else {
@@ -45,7 +45,7 @@ if ( ! function_exists('um_getoption')) :
 
 endif;
 
-if ( ! function_exists('um_tool_which')) {
+if ( ! function_exists('um_tool_which')) :
 
 function um_tool_which($file) {
 	if (file_exists(get_stylesheet_directory()."/".$file)) {
@@ -57,4 +57,12 @@ function um_tool_which($file) {
 	}
 }
 
-}
+endif;
+
+if ( ! function_exists('um_which_php')) :
+
+	function um_which_php($file) {
+		if ( file_exists( get_stylesheet_directory().$file )) { require get_stylesheet_directory().$file;} 
+		else { require get_template_directory().$file; }
+	}
+endif;

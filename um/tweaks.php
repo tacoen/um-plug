@@ -25,7 +25,7 @@ umo_register(
 				'text'=> 'Tag',
 				'note'	=> 'UM Template Tag',
 				'field'	=> array(
-					'umtag'	=> array ('check','um-tag','Enable dynamic UM Template-Tags for your themes','yes','',''),
+					'umtag'	=> array ('check','um-tag','Enable dynamic UMTag for your themes','yes','',''),
 				)
 			),
 */

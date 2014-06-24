@@ -50,9 +50,10 @@ function um_foda_callback() {
 	$foda=$_POST['v']; $txt='';
 
 	if ($foda['d']== 'chunk') {
-
-		$file=get_stylesheet_directory()."/chunks/".$foda['f'];
-		$dir=get_stylesheet_directory(). "/chunks";
+		$upload_dir = wp_upload_dir();
+		$file=$upload_dir['basedir']."/chunks/".$foda['f'];
+		$dir=$upload_dir['basedir']. "/chunks";
+		if (!file_exists($upload_dir['basedir']) and !is_dir($upload_dir['basedir'])) { mkdir($upload_dir['basedir']); }
 		if (!file_exists($dir) and !is_dir($dir)) { mkdir($dir); }
 
 	} else if ($foda['d']== 'page-templates') {
@@ -92,7 +93,7 @@ function um_foda_callback() {
 		if ($foda['f'] == "layouts")        { $txt .= um_newdir($foda['d'],"layouts"); }
 		if ($foda['f'] == "page-templates") { $txt .= um_newdir($foda['d'],"page-templates"); }
 		if ($foda['f'] == "template-part")  { $txt .= um_newdir($foda['d'],"template-part"); }
-		if ($foda['f'] == "template-tags")  { $txt .= um_newdir($foda['d'],"template-tags"); }
+		if ($foda['f'] == "umtag")  { $txt .= um_newdir($foda['d'],"umtag"); }
 
 	} else if ($foda['a']== 'del') {
 		unlink($file); $txt="$file &mdash; Deleted";

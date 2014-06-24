@@ -63,6 +63,11 @@ UM Themes core and tool kits, a Wordpress developer Toolkit for creating/ mainta
 
 == Changelog ==
 
+= 1.1.6 =
+  * Move chunks out of template directory to uploads
+  * Rename template-tags directory into umtag directory
+  * PHP 5.4+ PCRE Fix
+  
 = 1.1.5 = 
   * Replace umi with umi-wp, Icomoon, using unicode char (as equals, e.g: raquo is &raquo;) <http://icomoon.io/>
   * Webfonts as options

@@ -165,7 +165,7 @@ $checklist = array(
 		'method' => 'theme',
 		'note' => 'Template part breakdown (post-header.php, etc)'
 	),
-	'template-tags' => array(
+	'umtag' => array(
 		'type' => 'dir',
 		'check' => 'dir',
 		'method' => 'parent',

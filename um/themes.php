@@ -17,7 +17,7 @@ umo_register(
 					'umcss'	=> array ('check','reset.css','Use reset.css (normalize)','','',''),
 					'sfunc' => array ('check','base.css','Load Wordpress Default-styles (base on _s)','','',''),
 					'umfont'=> array ('text','Webfont','<br/><small>Blank to unload</small>',um_tool_which('css/webfont.css'),'72',''),
-					'layout'=> array ('selectfile','Layout','.css as layout',get_stylesheet_directory()."/layouts",'default','sfunc'),
+					'layout'=> array ('selectfile','Layout','.css as layout',get_stylesheet_directory()."/layouts",'default',''),
 					'schcss'=> array ('check','Colour Schemes','Enable/Load customable colour schemes','','',''),
 					'iehtml5'=> array ('check','IE html5','Include html5 hack for IE9 and IE8','','',''),
 				)
@@ -35,8 +35,6 @@ umo_register(
 				'text'=> 'Variables',
 				'note'	=> 'Themes variables for custom options',
 				'field'	=> array(
-					'umchiw'=> array ('text','Width','Custom Header Image Width','1000','5',''),
-					'umchih'=> array ('text','Height','Custom Header Image Height','250','5',''),
 					'dmqmed'=> array ('text','Medium','Media Queries max-width for medium/tablet device','800','5',''),					
 					'dmqsml'=> array ('text','Small','Media Queries max-width for small device','540','5',''),
 				)
@@ -72,6 +70,7 @@ function um_instant() {
 	if (file_exists(get_stylesheet_directory().'/css/reset.css')) { um_option_update('umt','umcss',1); }
 	if (file_exists(get_stylesheet_directory().'/css/base.css')) { um_option_update('umt','sfunc',1);}
 	if (file_exists(get_stylesheet_directory().'/um-scheme.css')) {um_option_update('umt','schcss',1); }
+	if (file_exists(get_stylesheet_directory().'/layouts/default.css')) { um_option_update('umt','layout','default.css'); }
 	if (file_exists(get_stylesheet_directory().'/um-gui.js')) { um_option_update('umt','umgui',1); }
 	unlink( get_stylesheet_directory().'/no-umplug.txt'); // needed for run-once
 }
