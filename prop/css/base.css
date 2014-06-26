@@ -1,7 +1,22 @@
+/* id hierachy, don't sort */
+
+#page,
+#masthead,
+#content,
+#primary,
+#main,
+#secondary,
+#colophon 
+	{ display:block; }
+			
+meta-nav { font-family: "umi-font"; }
+
 body {font-size: 16px; line-height: 1.5em; -webkit-font-smoothing:subpixel-antialiased; -webkit-text-size-adjust:none;}
 
 /* We are trying not-to reset content-area */
 
+.um-top *,
+.um-bottom *,
 nav *,
 header *,
 aside *,
@@ -126,6 +141,7 @@ main article {position: relative; }
 /* The Wordpress Defaults
  * ----------------------
  * For documents-legacy flow only, and element-fix
+ * Mostly Copied from underscores(_s)
 **/
 
 .blog .format-aside .entry-title,.archive .format-aside .entry-title,.byline,.updated,.widget_search .search-submit {display:none;}
@@ -154,8 +170,18 @@ main article {position: relative; }
 .comments-area ol {margin-left:0;}
 
 .entry-meta .edit-link {float:right;}
-.entry-content:after,.comment-content:after,.site-header:after,.site-content:after,.site-footer:after {clear:both;}
-.entry-content:before,.entry-content:after,.comment-content:before,.comment-content:after,.site-header:before,.site-header:after,.site-content:before,.site-content:after,.site-footer:before,.site-footer:after {content:''; display:table;}
+
+#um-bottom:after,
+#um-top:after,
+.comment-content:after,.entry-content:after,.site-content:after, .site-footer:after,.site-header:after {clear:both;}
+
+#um-bottom:before,
+#um-top:before,
+.comment-content:after,.comment-content:before,
+.entry-content:after,.entry-content:before,
+.site-content:after,.site-content:before,
+.site-footer:after,.site-footer:before,
+.site-header:after,.site-header:before {content:''; display:table;}
 
 .page-content img.wp-smiley,.entry-content img.wp-smiley,.comment-content img.wp-smiley {border:none; margin-bottom:0; margin-top:0; padding:0;}
 .page-content {margin:1.5em 0 0;}
@@ -258,3 +284,40 @@ article hr { display: block; height: .1rem; border-style: solid; margin: 1.5em 0
 	font-size:12px; font-weight:700; height:auto; left:5px; line-height:normal; text-decoration:none;
 	top:5px; width:auto; z-index:100000; padding:10px 20px;
 }
+
+/* Galleries */
+
+.gallery {
+	margin-bottom: 1.5em;
+}
+.gallery-item {
+	display: inline-block;
+	text-align: center;
+	vertical-align: top;
+	width: 100%;
+}
+.gallery-columns-2 .gallery-item {
+	max-width: 50%;
+}
+.gallery-columns-3 .gallery-item {
+	max-width: 33.33%;
+}
+.gallery-columns-4 .gallery-item {
+	max-width: 25%;
+}
+.gallery-columns-5 .gallery-item {
+	max-width: 20%;
+}
+.gallery-columns-6 .gallery-item {
+	max-width: 16.66%;
+}
+.gallery-columns-7 .gallery-item {
+	max-width: 14.28%;
+}
+.gallery-columns-8 .gallery-item {
+	max-width: 12.5%;
+}
+.gallery-columns-9 .gallery-item {
+	max-width: 11.11%;
+}
+.gallery-caption { font-size: .8em;}

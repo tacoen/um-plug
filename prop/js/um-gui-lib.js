@@ -1,43 +1,52 @@
-function init_ptab() {
+var $ =jQuery.noConflict();
 
-	$da = $('.entry-content');
-	$dc = $('.comments-area');
-	$dm = $('.entry-meta');
+// Launch fullscreen for browsers that support it!
+// launchFullScreen(document.documentElement); // the whole page
+// launchFullScreen(document.getElementById("videoElement")); // any individual element
 
-	$da.show(); $dc.hide(); $dm.hide(); $('.ptab a.article').hide();
-
-	$cc = $('h2.comments-title').data('count');
-
-	if ($cc>0) { txt = "<span class='count'>"+$cc+"</span>" } else { txt = "" }
-
-	$('.ptab a.comments').html(txt);
-	
-	var on_m = 0;
-
-	$('.ptab a').click(function(e) {
-		e.preventDefault();
-		$d = $(this).attr('href');
-		
-		if( $(this).attr('class') == 'post-edit-link' ) { window.location.assign($d); }
-		
-		if ($d == "#c") { 
-			$da.hide(); $('.ptab a.article').show(); 
-			$dc.show(); $dm.hide(); on_m=0; 
-		} else if ($d == "#m") {  
-			if ( on_m == 0 ) { 
-				$dm.show(); on_m = 1; $(this).addClass('active'); 
-			} else { 
-				$(this).removeClass('active');
-				on_m=0; $dm.hide();
-			}
-		} else { 
-			$da.show(); $('.ptab a.article').hide();
-			$dc.hide(); $dm.hide(); on_m=0;  ; 
-		}
-
-	})
+function launchFullScreen(element) {
+	// Find the right method, call on correct element
+	if(element.requestFullScreen) {
+		element.requestFullScreen();
+	} else if(element.mozRequestFullScreen) {
+		element.mozRequestFullScreen();
+	} else if(element.webkitRequestFullScreen) {
+		element.webkitRequestFullScreen();
+	}
 }
 
+//$('[id]').each(function () { console.log(this.id); });
+
+function um_vpToBody() {
+	var w = $(window).width();
+
+	var $class='';
+	
+	$('body').removeClass('vp_medium');
+	$('body').removeClass('vp_small');
+	
+	if (w <= umvp_medium) { $class = 'vp_medium' };
+	if (w <= umvp_small)  { $class = 'vp_small' };
+	
+	$('body').addClass($class);
+	
+}
+
+function umi_navhover_click() {
+	$('body[class*="vp_"] #site-navigation li[class*="_has_children"] > a').click( function(e) {
+		$el = $(this).parent();
+		if ($el.data('clicked') == 1 ) {
+			//e.preventDefault();
+			$el.removeClass('clicked');
+			$el.data('clicked',0);
+		} else {
+			e.preventDefault();
+			$el.addClass('clicked');
+			$el.data('clicked',1);
+	}
+	
+	});
+}
 
 function um_toc(obj,ele,titleText) {
 	obj.prepend("<ol></ol>");
@@ -82,10 +91,10 @@ function um_content_height(target,min) {
 	target.css('min-height',h+'px');
 }
 
-function um_fx_init() {
+function um_msg() {
 	jQuery('.um-msg').each( function(e) {
 		$this = jQuery(this);
-		$this.append('<i class="close umi-no"></i>');
+		$this.append('<i class="close umi-times"></i>');
 		$this.click(function(e) { jQuery(this).remove(); });
 	});
 }
@@ -101,21 +110,23 @@ function um_fit_img(target) {
 function um_onscroll_fixed(target,dockto,adjustment) {
 	// Make target stop scoll at its dock position
 	var w = jQuery(window);
+	w.scrollTop(0);
+	
+	if (dockto.length <= 0) { dockto = jQuery('#site-navigation');  }
+
+	var y = dockto.offset(); 
+	var docktoY = dockto.outerHeight() + y.top;
+	var fix = adjustment+docktoY;
+
 	if (target.length > 0) {
-		console.log('ready');
 		var offset = target.offset();
 		var top = offset.top; target.data('original-y',top);
+		var margin = top + adjustment -30;
 		var o_width = target.width();
-		var margin = jQuery('.site-header').outerHeight();
-		if (dockto) {
-			var docktoY = dockto.outerHeight();
-		} else {
-			var docktoY = jQuery('.main-navigation').outerHeight();
-		}
+
 		w.on( "scroll", function(e) {
 			var scroll = w.scrollTop();
-			if (scroll > margin) { 
-				var fix = adjustment+docktoY;
+			if (scroll >= margin) { 
 				target.css('position','fixed'); 
 				target.css('top',fix+"px"); 
 				target.css('z-index',9900);
@@ -131,48 +142,9 @@ function um_onscroll_fixed(target,dockto,adjustment) {
 	
 }
 
-/* ---------------------------------------------------------------------------- 
- *
- */
-
-function um_overlay_badge_fx() {
-	jQuery('.um-badge').each(function(e) {
-		w = jQuery(this).width(); if (w<40) { w = 40;jQuery(this).width(w) }
-		x = jQuery(this).parent().outerWidth()-w-5;
-		y = -42;
-
-		jQuery(this).css({
-			'margin' : 0,
-			'padding' : 0,
-			'top' : y,
-			'left': x,
-			'position':'absolute'
-		})
-	});
-}
-
-function um_loginoverlay(obj) {
-	jQuery('body').prepend('<div class="um-dark-overlay"></div>');
-	um_overlay_badge_fx();
-	obj.fadeIn(250);
-	jQuery('div.login_overlay, form#um-login a.close').on('click', function(){
-		jQuery('div.login_overlay').remove(); obj.hide();
-	});
-
-	title = obj.children('h1'); $title = title.html();
-	//title.remove();
-	title.toggleClass("um-overlay-fx");
-	title.css({
-		'margin' : 0,
-		'padding' : 0,
-		'top' : -42,
-		'left': 0,
-		'position':'absolute'
-	});
-}
 
 /* ---------------------------------------------------------------------------- 
- * css colours manipulations 
+ * css (um-schemes) colours manipulations 
  *
  */
 
@@ -230,3 +202,42 @@ function um_getmodcolor (id,what,v) {
 	return um_rgbToHex(rgb);
 }
 
+/* ---------------------------------------------------------------------------- 
+ * for ajax login
+ */
+
+function um_overlay_badge_fx() {
+	jQuery('.um-badge').each(function(e) {
+		w = jQuery(this).width(); if (w<40) { w = 40;jQuery(this).width(w) }
+		x = jQuery(this).parent().outerWidth()-w-5;
+		y = -42;
+
+		jQuery(this).css({
+			'margin' : 0,
+			'padding' : 0,
+			'top' : y,
+			'left': x,
+			'position':'absolute'
+		})
+	});
+}
+
+function um_loginoverlay(obj) {
+	jQuery('body').prepend('<div class="um-dark-overlay"></div>');
+	um_overlay_badge_fx();
+	obj.fadeIn(250);
+	jQuery('div.login_overlay, form#um-login a.close').on('click', function(){
+		jQuery('div.login_overlay').remove(); obj.hide();
+	});
+
+	title = obj.children('h1'); $title = title.html();
+	//title.remove();
+	title.toggleClass("um-overlay-fx");
+	title.css({
+		'margin' : 0,
+		'padding' : 0,
+		'top' : -42,
+		'left': 0,
+		'position':'absolute'
+	});
+}

@@ -2,6 +2,9 @@
  * UM FX CSS
  */
 
+#um-top, 
+#um-bottom { margin: 0; padding: 0; clear:both;  }
+
 .um-dark-overlay{ height: 100%; width: 100%; background-color: rgba(0,0,0,.9); position: fixed; top:0; z-index: 990; }
 .um-overlay-fx { color: #fff; font-size: 1.5em; }
 
@@ -94,8 +97,8 @@ div.um_login_div a { display: block; color: #fff; height: 24px; line-height: 24p
 /* um-crumbs */
 
 #um-crumbs li { float: left; list-style-type:none;  }
-#um-crumbs li:before { content: "\203A"; padding: 0 .5em }
-#um-crumbs li:first-child:before { content: ""; padding: 0 0; }
+#um-crumbs li:before { content: "\203A"; padding: 0 .5em 0 .5em;  }
+#um-crumbs li:first-child:before { content: "\e640"; padding: 0 0; }
 
 /* great div grouping */
 
