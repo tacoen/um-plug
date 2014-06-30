@@ -25,6 +25,7 @@ require UMPLUG_DIR . 'um/ajax-adminpage.php';
 
 require UMPLUG_DIR . 'um/um-setup.php';
 require UMPLUG_DIR . 'um/tweaks.php';
+require UMPLUG_DIR . 'um/min.php';
 require UMPLUG_DIR . 'um/themes.php';
 
 require UMPLUG_DIR . 'um/apply.php';

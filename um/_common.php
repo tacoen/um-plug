@@ -127,7 +127,8 @@ function css_compress($buffer,$readable=0) {
 	if ($readable==1) $buffer = preg_replace('/}/', "}\n", $buffer);
 	$buffer = str_replace("UM_TT", "\\", $buffer);
 	$buffer = str_replace('UM_QOUTE', '\"\'\"', $buffer);
-	return $buffer;}
+	return $buffer;
+}
 
 function safe_str($str) { return preg_replace('#\W|\s#','',strtolower($str)); }
 
