@@ -38,34 +38,6 @@ function um_layouts_register($wp_customize){
 		'type' => 'select',
 		'choices' => $c,
 	));
-
-	/* preview width */
-/*	
-	$wp_customize->add_section('um_lview', array(
-		'title' => __('Live preview', 'um'),
-		'priority' => 220,
-		'description' => 'Test your layout againts Media Queries max-width'
-	));
-	
-	$wp_customize->add_setting('um-preview-width', array(
-		'default' => '100%',
-		'capability' => 'edit_theme_options',
-		'transport' => 'postMessage'
-	));	
-	
-	$wp_customize->add_control( 'width_select', array(
-		'section' => 'um_lview',
-		'settings' => 'um-preview-width',
-		'label' => "Media Queries",
-		'type' => 'radio',
-		'choices' => array(
-			"100%" => "fluid-width (100%)",
-			"1024px" => "medium desktop (1024)",
-			"800px" => "tablet",
-			"540px" => "handheld",
-		),
-	));
-*/
 }
 
 function um_layouts_saveoption() {
@@ -76,7 +48,7 @@ function um_layouts_saveoption() {
 }
 
 function um_layouts_init() {
-	wp_enqueue_script('um-layout-view',UMPLUG_URL . 'prop/js/um-layout.js',array('customize-preview'),time(),true);
+	wp_enqueue_script('um-layout-view', UMPLUG_URL . 'prop/js/um-layout.js',array('customize-preview'),time(),true);
 }
 
 add_action('customize_register', 'um_layouts_register');

@@ -13,11 +13,12 @@ umo_register(
 					// id => array (type,label,text,defaults,mods);
 					'nodash' => array ('check','Minimize Dashboard Load','Remove NewsFeed and other stuff from WP-Admin Dashboard','','',''),
 					'nowphead'=> array ('check','Minimize WP Header','Remove unnecessary code from header','','',''),
-					'nowpabar'=> array ('check','WP Toolbar',"Disable WP Toolbar for all",'','',''),
+					'nowpabar'=> array ('check','No WP Toolbar',"Disable WP Toolbar for all",'','',''),
+					'nofeed' => array ('check','No Feed','Disable RSS/Atom Feed','','',''),
 					'pback'	 => array ('check','Pingback','Allow Pingback','','',''),
 					'noavatar'=> array ('check','No Gravatar','Disable Gravatar for faster development process','','',''),
-					'wdtma'	 => array ('number','Widget','','1','',''),
 					'novers' => array ('check','No Version','Remove styles and scripts versioning','','',''),
+					'wpzlib' => array ('check','ZLib','Enable GZIP output compression, Disable if already used.','','',''),
 
 				)
 			),
@@ -30,17 +31,16 @@ umo_register(
 				)
 			),
 */
-			'cdnopt'=> array(
-				'text'=> 'CDN',
-				'note'	=> 'Use your prefered cdn',
+			'wpvar'=> array(
+				'text'=> 'Variables',
+				'note'	=> 'Custom options Variables',
 				'field'	=> array(
-					// id => array (type,label,text,defaults,mods,required);
-					'owncdn'=> array ('check','Alter CDN','Use your own CDN resources','','',''),
-					'opsfcdn' => array ('text','Open Sans','<br/><small>Webfont used by Wordpress 3.8.1<br>Blank it to use Wordpress default</small>','','60','owncdn'),
-					'jqcdn'	=> array ('text','Jquery','<br/><small>um-gui-lib using Jquery 2.0</small>','http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js','60','owncdn'),
-					'gamirr'=> array ('text','Google Apis Mirror','<br/><small>ajax.googleapis.com mirror, address only do not add http://,<br/>Blank it to disable</small>','','60','owncdn'),
+					'wdtma'	 => array ('number-small','Widget','Item(s)','0','',''),
+					'exclen' => array ('number-big','Post Excerpt','Word(s)','55','',''),
+					'dmqmed'=> array ('text','Medium Device Width','px &mdash; Media Queries max-width for medium/tablet device (medium.css)','800','5',''),					
+					'dmqsml'=> array ('text','Small Device Width','px &mdash; Media Queries max-width for small device (small.css)','540','5',''),
 				)
-			),
+			),			
 			'umrw'=> array(
 				'text'=> 'URL Rewrites',
 				'note'	=> 'Please <a href="options-permalink.php">revise your permalink</a> after you make changes',
@@ -52,6 +52,17 @@ umo_register(
 					'wplug'	=> array ('text','Plugins','','g','8','urlrw'),
 					'templ'	=> array ('text','Template(Parent)','','t','8','urlrw'),
 					'style'	=> array ('text','Stylesheet(Child)','','s','8','urlrw'),
+				)
+			),
+			'cdnopt'=> array(
+				'text'=> 'CDN',
+				'note'	=> 'Use your prefered cdn',
+				'field'	=> array(
+					// id => array (type,label,text,defaults,mods,required);
+					'owncdn'=> array ('check','Alter CDN','Use your own CDN resources','','',''),
+					'opsfcdn' => array ('text','Open Sans','<br/><small>Webfont used by Wordpress 3.8.1<br>Blank it to use Wordpress default</small>','','60','owncdn'),
+					'jqcdn'	=> array ('text','Jquery','<br/><small>um-gui-lib using Jquery 2.0</small>','http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js','60','owncdn'),
+					'gamirr'=> array ('text','Google Apis Mirror','<br/><small>ajax.googleapis.com mirror, address only do not add http://,<br/>Blank it to disable</small>','','60','owncdn'),
 				)
 			),
 		))

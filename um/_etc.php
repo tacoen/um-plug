@@ -53,9 +53,9 @@ function um_help($contextual_help, $screen_id) {
 		
 		$umch_credit = "<h4>UM PLUG - ".um_ver()."</h4>".
 			"<p><a href='//github.com/tacoen/um-plug'>Plugins Site</a></p>".
-			"<p><a href='//github.com/tacoen/um-theme/'>UM Themes</a></p>".
 			"<p><a href='//github.com/tacoen/um-plug/wiki'>Wiki</a></p>".
 			"<p><a href='//github.com/tacoen/um-plug/issues'>Issues</a></p>".
+			"<p><a href='//github.com/tacoen/um-theme-core'>UM Core Themes</a></p>".
 			"<p>&nbsp;</p>";
 
 		$icontextual_help = '<p>';
@@ -178,3 +178,8 @@ function um_script_nover($u) {
 
 add_action('admin_print_styles','um_register_admin_scripts');
 add_action('admin_menu','umplug_init_slug');
+
+function um_disable_feed() {
+	wp_die( __('No feed available,please visit our <a href="'. get_bloginfo('url') .'">homepage</a>!') );
+}
+

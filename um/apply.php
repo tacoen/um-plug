@@ -32,9 +32,11 @@ if ( (um_getoption('schcss','umt')) && (file_exists(get_stylesheet_directory()."
 	require UMPLUG_DIR . 'um/custom-scheme.php';
 }
 
-if ( file_exists(get_stylesheet_directory()."/layouts")) {
-	require UMPLUG_DIR . 'um/custom-layout.php';
+function new_excerpt_length($length) { 
+    if (um_getoption('exclen','umo')) { return um_getoption('exclen','umo'); } else { return $length; }
 }
+
+add_filter('excerpt_length', 'new_excerpt_length');
 
 if  ( (!is_admin()) && (um_getoption('novers','umo')) ) {
 	//remove duplicated script and styles, cause themes and plugins.
@@ -43,3 +45,17 @@ if  ( (!is_admin()) && (um_getoption('novers','umo')) ) {
 }
 
 add_filter('user_contactmethods', 'um_user_contactmethods'); // echo get_user_meta(1, 'twitter', true);
+
+if (um_getoption('wpzlib','umo')) {
+	if(extension_loaded("zlib") && (ini_get("output_handler") != "ob_gzhandler")) {
+		add_action('wp', create_function('', '@ob_end_clean();@ini_set("zlib.output_compression", 1);'));
+	}
+}
+
+if (um_getoption('nofeed','umo')) {
+	add_action('do_feed', 'fb_disable_feed', 1);
+	add_action('do_feed_rdf', 'fb_disable_feed', 1);
+	add_action('do_feed_rss', 'fb_disable_feed', 1);
+	add_action('do_feed_rss2', 'fb_disable_feed', 1);
+	add_action('do_feed_atom', 'fb_disable_feed', 1);
+}

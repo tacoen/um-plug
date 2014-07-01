@@ -1,8 +1,7 @@
-
 var fluid_width = "100%";
 var tablet_width = "800px";
 var hand_width = "540px";
-
+var $ =jQuery.noConflict();
 (function($) {
 
 function set_preview_frame(w) {
@@ -33,6 +32,7 @@ function um_layout_pane() {
 
 $(document).ready(function(){
 	um_layout_pane();
+	console.log('dynamic!');
 });
 
 

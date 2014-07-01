@@ -1,5 +1,38 @@
 <?php
 
+umo_register(
+	array( 'umr'
+		=> array(
+		'func' => "um_optionpages",
+		'title' => "Minified Options",
+		'option' => array (
+			'devel'=> array(
+				'text'=> 'Minify',
+				'note'	=> 'Minified your style and javascripts, and make them static',
+				'field'	=> array(
+					// id => array (type,label,text,defaults,mods,required);
+					'makes'	=> array ('check', 'Minify', 'Generated static-minified-unpretty css and js.','','',''),
+					'zlevel'	=> array ('number-small', 'CSS Compress level', 'Level, <small>0 - unreadable, >1 - readable</small>','0','','makes'),
+					'cssstatic'	=> array (
+						'check', 'CSS', 'Static file &mdash;Last Generated: '.
+						get_mtime( get_stylesheet_directory()."/static.css") .
+						" [<a href='".get_stylesheet_directory_uri()."/static.css'>View</a>]"
+						,'','','makes'),
+					'jsstatic'	=> array ('check','JS','Static file &mdash;Last Generated: '.
+						get_mtime( get_stylesheet_directory()."/static.js") .
+						" [<a href='".get_stylesheet_directory_uri()."/static.js'>View</a>]" .
+						" and [<a href='".get_stylesheet_directory_uri()."/static-footer.js'>View</a>]"
+						,'','','makes'),
+				)
+			),
+		))
+));
+
+if(is_admin() && (isset( $umo["umr"])) ) { 
+
+	$my_settings_page=new um_set( "umr", $umo["umr"] ); 
+
+}
 
 /* Will create the static file, unless option is unchecked */
 
@@ -11,6 +44,10 @@ function um_minify_js_notice() {
 }
 function um_minify_css_notice() {
 	echo "\n<!-- um_minify_css is running --!>\n";
+}
+
+function um_minify_disable_notice() {
+	echo "\n<!-- um_minify disabled in this referer --!>\n";
 }
 
 function um_minify_js() {
@@ -39,7 +76,7 @@ function um_register_static_js() {
 
 function um_static_query_js($handles) {
 
-	$level= um_getoption('zlevel','umt'); if ($level=='') { $level=0; }
+	$level= um_getoption('zlevel','umr'); if ($level=='') { $level=0; }
 
 
 	global $wp_scripts; 
@@ -52,6 +89,8 @@ function um_static_query_js($handles) {
 
 		$url = $wp_scripts->registered[$handle]->src;
 
+		//echo "<pre>"; print_r($wp_scripts->registered[$handle]); echo "</pre>";
+		
 		if  (preg_match("#static.js$#",$url)) { continue; }
 		if  (preg_match("#static-footer.js$#",$url)) { continue; }
 
@@ -85,7 +124,7 @@ function um_static_query_js($handles) {
 		}
 	}
 
-	if ( (!um_getoption('jsstatic','umt')) || (!file_exists(get_stylesheet_directory()."/static-footer.js")) ) { 
+	if ( (!um_getoption('jsstatic','umr')) || (!file_exists(get_stylesheet_directory()."/static-footer.js")) ) { 
 
 		if (!empty($js[0])) { $header_static_js = um_makestatic_js($js[0],$level); } else { $header_static_js=""; }
 		if (!empty($js[1])) { $footer_static_js = um_makestatic_js($js[1],$level); } else { $footer_static_js=""; }
@@ -201,7 +240,7 @@ function um_register_static_css() {
 
 function um_static_query_css($handles) {
 
-	$level= um_getoption('zlevel','umt'); if ($level=='') { $level=0; }
+	$level= um_getoption('zlevel','umr'); if ($level=='') { $level=0; }
 
 	global $wp_styles; 
 	
@@ -230,7 +269,7 @@ function um_static_query_css($handles) {
 		}
 	}
 	
-	if ( (!um_getoption('cssstatic','umt')) || (!file_exists(get_stylesheet_directory()."/static.css")) ) { 
+	if ( (!um_getoption('cssstatic','umr')) || (!file_exists(get_stylesheet_directory()."/static.css")) ) { 
 	
 		if (!empty($css[0])) { $header_static_css = um_makestatic_css($css[0],$level); } else { $header_static_css=""; }
 		if (!empty($css[1])) { $footer_static_css = um_makestatic_css($css[1],$level); } else { $footer_static_css=""; }
@@ -332,3 +371,19 @@ function um_load_css($filename,$level=1) {
 	endif;
 	return $text;
 }
+
+
+/* ------------------- */
+
+if (!is_admin()) :
+
+	if (um_getoption('makes','umr')) {
+		if (um_check_referer($_SERVER['HTTP_REFERER']) < 2) {
+			um_minify_js();
+			um_minify_css();
+		} else {
+			add_action('wp_head','um_minify_disable_notice');
+		}
+	}
+
+endif;

@@ -16,7 +16,6 @@ umo_register(
 					'noopsf' => array ('check','OpenSans','Unload Open-Sans Webfont.','','',''),
 					'umcss'	=> array ('check','reset.css','Use reset.css (normalize)','','',''),
 					'sfunc' => array ('check','base.css','Load Wordpress Default-styles (base on _s)','','',''),
-					'umfont'=> array ('text','Webfont','<br/><small>Blank to unload</small>',um_tool_which('css/webfont.css'),'72',''),
 					'layout'=> array ('selectfile','Layout','.css as layout',get_stylesheet_directory()."/layouts",'default',''),
 					'schcss'=> array ('check','Colour Schemes','Enable/Load customable colour schemes','','',''),
 					'iehtml5'=> array ('check','IE html5','Include html5 hack for IE9 and IE8','','',''),
@@ -26,37 +25,13 @@ umo_register(
 				'text'=> 'um-gui',
 				'note'	=> 'um-gui Framework for Wordpress, Require um-gui',
 				'field'	=> array(
+					'umfont'=> array ('text','UM-GUI Webfont','<br/><small>Blank to unload</small>',um_tool_which('css/webfont.css'),'72',''),
 					'umgui'	=> array ('check','um-gui','load UM-GUI-framework for WP(js + css)','','',''),
 					'ajaxwpl'=> array ('check','um-login.js','Use Ajax WP-Login','','','umgui'),
 					'ajredir'=> array ('text','Login Redirect','<br><small>Relative Path will be nice<small>','wp-admin/','30','ajaxwpl'),
 				)
 			),
-			'wpvar'=> array(
-				'text'=> 'Variables',
-				'note'	=> 'Themes variables for custom options',
-				'field'	=> array(
-					'dmqmed'=> array ('text','Medium','Media Queries max-width for medium/tablet device','800','5',''),					
-					'dmqsml'=> array ('text','Small','Media Queries max-width for small device','540','5',''),
-				)
-			),
-			'devel'=> array(
-				'text'=> 'Min',
-				'note'	=> 'Minified your style and javascripts, and make them static',
-				'field'	=> array(
-					// id => array (type,label,text,defaults,mods,required);
-					'makes'	=> array ('check', 'Makes', 'Generated static-minified-unpretty css and js.','','','umcss'),
-					'zlevel'	=> array ('number', 'compress level', 'CSS Compress level, <small>0 - unreadable, 1 - readable</small>','0','','makes'),
-					'cssstatic'	=> array (
-						'check', 'use static.css', 'Last Generated: '.
-						get_mtime( get_stylesheet_directory()."/static.css") .
-						" [<a href='".get_stylesheet_directory_uri()."/static.css'>View</a>]",'','','makes'),
-					'jsstatic'	=> array ('check','use static.js','Last Generated: '.
-						get_mtime( get_stylesheet_directory()."/static.js") .
-						" [<a href='".get_stylesheet_directory_uri()."/static.js'>View</a>]" .
-						" and [<a href='".get_stylesheet_directory_uri()."/static-footer.js'>View</a>]"
-						,'','','makes'),
-				)
-			),
+
 		))
 ));
 
@@ -132,8 +107,8 @@ function umplug_register_styles() {
 		wp_enqueue_style(get_template().'-scheme',um_tool_which('um-scheme.css'),$deps,um_ver(),'all');
 	}
 
-	$mq_m = um_getoption('dmqmed','umt');
-	$mq_s = um_getoption('dmqsml','umt');
+	$mq_m = um_getoption('dmqmed','umo');
+	$mq_s = um_getoption('dmqsml','umo');
 			
 	wp_enqueue_style( get_template().'-print',  um_tool_which('print.css'), $deps,  um_ver() ,"print" );
 			
@@ -170,8 +145,3 @@ add_action('wp_enqueue_scripts','umplug_register_styles');
 
 if (um_getoption('iehtml5','umt')) { add_action('wp_head','um_iehtml5'); }
 if (um_getoption('ajaxwpl','umt')) { require(UMPLUG_DIR.'um/ajax-wplogin.php'); }
-
-if ((um_getoption('makes','umt')) && (!is_admin()) ) {
-	um_minify_js();
-	um_minify_css();
-}
