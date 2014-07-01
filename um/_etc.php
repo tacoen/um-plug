@@ -180,6 +180,6 @@ add_action('admin_print_styles','um_register_admin_scripts');
 add_action('admin_menu','umplug_init_slug');
 
 function um_disable_feed() {
-	wp_die( __('No feed available,please visit our <a href="'. get_bloginfo('url') .'">homepage</a>!') );
+	wp_die( __('Goto: <a href="'. get_bloginfo('url') .'">'.get_bloginfo('url').'</a>!','um') );
 }
 

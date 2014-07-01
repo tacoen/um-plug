@@ -13,13 +13,13 @@ umo_register(
 					// id => array (type,label,text,defaults,mods);
 					'nodash' => array ('check','Minimize Dashboard Load','Remove NewsFeed and other stuff from WP-Admin Dashboard','','',''),
 					'nowphead'=> array ('check','Minimize WP Header','Remove unnecessary code from header','','',''),
-					'nowpabar'=> array ('check','No WP Toolbar',"Disable WP Toolbar for all",'','',''),
 					'nofeed' => array ('check','No Feed','Disable RSS/Atom Feed','','',''),
-					'pback'	 => array ('check','Pingback','Allow Pingback','','',''),
+					'noxmlrpc' => array ('check','No XMLRPC','Disable XMLRPC Functions','','',''),
 					'noavatar'=> array ('check','No Gravatar','Disable Gravatar for faster development process','','',''),
 					'novers' => array ('check','No Version','Remove styles and scripts versioning','','',''),
+					'nowpabar'=> array ('check','No WP Toolbar',"Disable WP Toolbar for all",'','',''),
 					'wpzlib' => array ('check','ZLib','Enable GZIP output compression, Disable if already used.','','',''),
-
+					'pback'	 => array ('check','Pingback','Allow Pingback','','',''),
 				)
 			),
 /*
