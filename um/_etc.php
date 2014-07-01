@@ -166,129 +166,14 @@ function stylesheet_directory_shorten_url() {
 	return $str;
 }
 
-function um_style_unique($u) {
-	global $UM; global $um_static_css_already;
+function um_style_nover($u) {
 	$u = preg_replace("/(.+)\?ver=(.+)$/","\\1",$u); // versioning remover
-	if (!$um_static_css_already) {
-		if (array_search($u,$UM['css'])<1) {
-			array_push($UM['css'],$u); return "$u"; // ?ver=".um_ver();
-		} else { return;}
-	} else {
-		return $u;
-	}
+	return $u;
 }
 
-function um_script_unique($u) {
-	global $UM; global $um_static_js_already;
+function um_script_nover($u) {
 	$u = preg_replace("/(.+)\?ver=(.+)$/","\\1",$u); // versioning remover
-	
-	if (!$um_static_js_already) {
-		if (array_search($u,$UM['js'])<1) {
-			array_push($UM['js'],$u); return "$u"; // ?ver=".um_ver();
-		} else { return;}
-	} else {
-		if (preg_match("#".home_url()."#",$u)) {
-			if ( ( $u == get_stylesheet_directory()."static.js") ||
-				 ( $u == get_stylesheet_directory()."static-foot.js") ||			
-				 ( $u == stylesheet_directory_shorten_url()."static-foot.js") ||			
-			 ( $u == stylesheet_directory_shorten_url()."static.js")
-			 ) {
-					//return "$u?ver=".um_ver();
-					return "$u";
-				} else { return; }
-		} else { return $u; }
-	}
-}
-
-function um_style_makestatic($handles) {
-
-	global $wp_styles; $static = array();
-	//print_r($wp_styles);
-	if (count($handles)>0) {
-		foreach ($handles as $handle) {
-			$src = $wp_styles->registered[$handle]->src;
-			$media = $wp_styles->registered[$handle]->args;
-			if (preg_match("#".home_url()."#",$src)) {
-					if ($media == "all") { 
-						array_push($static,$src); 
-					}		
-			}
-		}
-		
-		if (count($static)>0) { um_makestatic($static,"css"); }
-	}
-	return $handles;
-}
-
-function um_script_makestatic($handles) {
-	global $wp_scripts; $static_foot = array(); $static_head = array(); $moved = array();
-	$pre_head = ""; $pre_foot = "";
-	
-	if (count($wp_scripts->done) < 1) {
-
-		//print_r($wp_scripts); 
-		$group = $wp_scripts->groups;
-	
-		foreach($handles as $handle) {
-			$src = $wp_scripts->registered[$handle]->src;
-		
-			if ( $group[$handle] == 0 ) { 
-				if (preg_match("#".home_url()."#",$src)) { 
-					array_push($static_head,$src);
-					if ($wp_scripts->registered[$handle]->extra) {
-					if ($wp_scripts->registered[$handle]->extra['data']) { $pre_head .= $wp_scripts->registered[$handle]->extra['data'] . "\n"; }
-					}
-				} 
-			}
-		
-			if ( $group[$handle] == 1 ) { 
-				if (preg_match("#".home_url()."#",$src)) { 
-					array_push($static_foot,$src); 
-					if ($wp_scripts->registered[$handle]->extra) {
-					if (isset($wp_scripts->registered[$handle]->extra['data'])) { $pre_foot .= $wp_scripts->registered[$handle]->extra['data'] . "\n"; }
-					}
-				}
-			}
-		}
-
-		if (count($static_head)>0) { um_makestatic($static_head,"js","",$pre_head); }
-		if (count($static_foot)>0) { um_makestatic($static_foot,"js","foot",$pre_foot); }
-
-	}
-	
-	return $handles;
-
-}
-
-function um_makestatic($files,$type="js",$ext="",$pre="") {
-
-	require_once(ABSPATH . 'wp-admin/includes/file.php');
-	$level = um_getoption('zlevel','umt');
-	$static =''; $files = array_unique($files);
-	$head="/*\n"; $res ="/*begin*/";
-	foreach ($files as $f) {
-		$fn = preg_replace("#".site_url()."/#",'',$f);
-		$head .=" * $type - /$fn\n";
-		if ($type == "css") {
-			$static .= css_url_care( css_include(ABSPATH.$fn,1), $f);
-		} else {
-			$static .= js_include(ABSPATH.$fn,1);
-		}
-	}
-
-	$head .=" */\n\n";
-
-	if ($level == 0) {
-		if ($type == "css") { $res = css_compress($static,0); $res = $pre.$res;} 
-		else { $res = js_compress($static,0); $res = $pre.$res; }
-	} else {
-		$res = $head.$pre.$static;
-	}
-	if ($ext!="") { $ext = "-".$ext; }
-	$target = get_stylesheet_directory()."/static$ext.$type";
-	
-	um_file_putcontents_nos($target,$res);
-
+	return $u;
 }
 
 add_action('admin_print_styles','um_register_admin_scripts');

@@ -17,6 +17,7 @@ umo_register(
 					'pback'	 => array ('check','Pingback','Allow Pingback','','',''),
 					'noavatar'=> array ('check','No Gravatar','Disable Gravatar for faster development process','','',''),
 					'wdtma'	 => array ('number','Widget','','1','',''),
+					'novers' => array ('check','No Version','Remove styles and scripts versioning','','',''),
 
 				)
 			),

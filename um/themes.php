@@ -53,7 +53,7 @@ umo_register(
 					'jsstatic'	=> array ('check','use static.js','Last Generated: '.
 						get_mtime( get_stylesheet_directory()."/static.js") .
 						" [<a href='".get_stylesheet_directory_uri()."/static.js'>View</a>]" .
-						" and [<a href='".get_stylesheet_directory_uri()."/static-foot.js'>View</a>]"
+						" and [<a href='".get_stylesheet_directory_uri()."/static-footer.js'>View</a>]"
 						,'','','makes'),
 				)
 			),

@@ -36,11 +36,10 @@ if ( file_exists(get_stylesheet_directory()."/layouts")) {
 	require UMPLUG_DIR . 'um/custom-layout.php';
 }
 
-if (!is_admin()) {
+if  ( (!is_admin()) && (um_getoption('novers','umo')) ) {
 	//remove duplicated script and styles, cause themes and plugins.
-	$UM=array();$UM['css']=array();$UM['js']=array();
-	add_filter('script_loader_src','um_script_unique');
-	add_filter('style_loader_src','um_style_unique');
+	add_filter('script_loader_src','um_script_nover');
+	add_filter('style_loader_src','um_style_nover');
 }
 
 add_filter('user_contactmethods', 'um_user_contactmethods'); // echo get_user_meta(1, 'twitter', true);

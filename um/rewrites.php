@@ -47,8 +47,8 @@ function um_rewrites() {
 	$wp_rewrite->non_wp_rules=array_merge($wp_rewrite->non_wp_rules,$um_rwrule);
 
 	if (!is_admin()) {
-		add_filter('print_styles_array', 'um_short_styles');
-		add_filter('print_scripts_array', 'um_short_scripts');
+		add_filter('print_styles_array', 'um_short_styles', PHP_INT_MAX);
+		add_filter('print_scripts_array', 'um_short_scripts', PHP_INT_MAX);
 	}
 }
 
@@ -84,5 +84,5 @@ function um_short_scripts($handles) {
 }
 
 if (get_option('permalink_structure')) {
-	add_action('after_setup_theme','um_rewrites');
+	add_action('after_setup_theme','um_rewrites',PHP_INT_MAX);
 }

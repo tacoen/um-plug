@@ -10,18 +10,18 @@ function um_minify_js_notice() {
 	echo "<!-- um_minify_js is running --!>\n";
 }
 function um_minify_css_notice() {
-	echo "<!-- um_minify_css is running --!>\n";
+	echo "\n<!-- um_minify_css is running --!>\n";
 }
 
 function um_minify_js() {
 	add_action('wp_enqueue_scripts', 'um_register_static_js');
-	add_filter('print_scripts_array', 'um_wpscripts_unique',98);  // remove dupes, if any
-	add_filter('print_scripts_array', 'um_static_query_js',99);
+	add_filter('print_scripts_array', 'um_wpscripts_unique', PHP_INT_MAX/2);  // remove dupes, if any
+	add_filter('print_scripts_array', 'um_static_query_js', PHP_INT_MAX/2);
 }
 function um_minify_css() {
 	add_action('wp_enqueue_scripts', 'um_register_static_css');
-	add_filter('print_styles_array', 'um_wpstyles_unique',98);  // remove dupes, if any
-	add_filter('print_styles_array', 'um_static_query_css',99);
+	add_filter('print_styles_array', 'um_wpstyles_unique', PHP_INT_MAX/2);  // remove dupes, if any
+	add_filter('print_styles_array', 'um_static_query_css', PHP_INT_MAX/2);
 }
 
 function um_register_static_js() {
@@ -39,7 +39,8 @@ function um_register_static_js() {
 
 function um_static_query_js($handles) {
 
-	$level=2; // get_option
+	$level= um_getoption('zlevel','umt'); if ($level=='') { $level=0; }
+
 
 	global $wp_scripts; 
 	
@@ -85,7 +86,7 @@ function um_static_query_js($handles) {
 	}
 
 	if ( (!um_getoption('jsstatic','umt')) || (!file_exists(get_stylesheet_directory()."/static-footer.js")) ) { 
-	
+
 		if (!empty($js[0])) { $header_static_js = um_makestatic_js($js[0],$level); } else { $header_static_js=""; }
 		if (!empty($js[1])) { $footer_static_js = um_makestatic_js($js[1],$level); } else { $footer_static_js=""; }
 		if (strlen($pre_head)>1) { $pre_head = $pre_head."\n"; }
@@ -200,7 +201,7 @@ function um_register_static_css() {
 
 function um_static_query_css($handles) {
 
-	$level=0; // get_option
+	$level= um_getoption('zlevel','umt'); if ($level=='') { $level=0; }
 
 	global $wp_styles; 
 	
@@ -210,7 +211,7 @@ function um_static_query_css($handles) {
 	foreach($handles as $handle) {
 
 		$url = $wp_styles->registered[$handle]->src;
-
+		
 		if  (preg_match("#static.css$#",$url)) { continue; }
 		if  (preg_match("#static-footer.css$#",$url)) { continue; }
 

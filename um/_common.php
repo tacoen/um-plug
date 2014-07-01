@@ -86,49 +86,6 @@ function js_include($f,$c=1) {
 	}
 }
 
-// Simple minification WITHOUT filter or plugin configuration
-
-
-function css_compress_doh($output,$cl=0) {
-	require_once(UMPLUG_DIR."min/lib/CSSmin.php"); $output = CSSmin::minify($output);
-	return $output;
-}
-
-function js_compress($output,$cl=0) {
-	require_once(UMPLUG_DIR."min/lib/JSMin.php"); $output = JSMin::minify($output);
-	return $output;
-}
-
-function js_compress_def($buffer,$cl=0) {
-
-	$buffer = preg_replace("/\/\/(.+)\s/",'', $buffer);
-	$buffer = preg_replace('!/\*[^*]*\*+([^/][^*]*\*+)*/!', '', $buffer);
-	$buffer = preg_replace('/^\s+|\t/', '', $buffer);
-	$buffer = preg_replace('/(\s+)(\W)/', '\\2', $buffer);
-	$buffer = preg_replace('/(,|;|{|\()\n/', '\\1', $buffer);
-	$buffer = preg_replace("/(\s+)?(=|:|,|;|>|<|\{|\)|\(|\+)(\s+)?/", '\\2', $buffer);
-	$buffer = preg_replace('/var/', ';var', $buffer);
-	$buffer = preg_replace('#;;#', ';', $buffer);
-	$buffer = preg_replace('#\{;#','{', $buffer);
-	$buffer = preg_replace('#;\}#','}', $buffer);
-	return $buffer;
-}
-
-function css_compress($buffer,$readable=0) {
-	if ($readable != 1) { $readable = 0; }	
-	$buffer = str_replace("\\", 'UM_TT', $buffer);
-	$buffer = preg_replace('!/\*[^*]*\*+([^/][^*]*\*+)*/!', '', $buffer);
-	$buffer = preg_replace('#\s\s+#','', $buffer);
-	$buffer = preg_replace('#([>|:|;|\{|\}|=|\(|\)|\,])\s#', '\\1', $buffer);
-	$buffer = preg_replace('#\s([>|:|;|\{|\}|=|\(|\)|\,|\'])#', '\\1', $buffer);
-	$buffer = preg_replace('#;\}#','}', $buffer);
-	$buffer = preg_replace('#^\s+#','', $buffer);
-	//$buffer = preg_replace('#\@media#',"\n@media", $buffer);
-	if ($readable==1) $buffer = preg_replace('/}/', "}\n", $buffer);
-	$buffer = str_replace("UM_TT", "\\", $buffer);
-	$buffer = str_replace('UM_QOUTE', '\"\'\"', $buffer);
-	return $buffer;
-}
 
 function safe_str($str) { return preg_replace('#\W|\s#','',strtolower($str)); }
 
@@ -194,16 +151,6 @@ function umoos_text($args,$saved) {
 	);
 }
 
-function css_url_care($txt,$f) {
-	$txt = preg_replace('/(\s|,|:)url/',"\n".'\\1url',$txt);
-	$url = preg_replace('/(.+\/).+/','\\1',$f);
-	$dot_url = preg_replace('/(.+\/).+/','\\1',$url);
-	$txt = preg_replace('/\.\.\//',$dot_url,$txt);
-	$txt = preg_replace('/(\s|,|:)url(.+)http/','\\1--void--url\\2http',$txt);
-	$txt = preg_replace('/(\s|,|:)url(\W+)/','\\1url\\2'.$url,$txt);
-	$txt = preg_replace('/--void--/','',$txt);
-	return $txt;
-}
 
 /* ---------------------------------------- um_set ------------------ */
 
