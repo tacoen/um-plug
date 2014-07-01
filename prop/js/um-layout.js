@@ -5,7 +5,6 @@ var $ =jQuery.noConflict();
 (function($) {
 
 function set_preview_frame(w) {
-	//console.log(w);
 	var d  = $(window.parent.document).find('#customize-preview'); var i = d.children('iframe');
 	i.css('width',w);
 }
@@ -21,7 +20,6 @@ function um_layout_pane() {
 			+"<i class='dashicons dashicons-smartphone'></i></a></div>"
 		+"</div>";
 	d.append($pane);
-	//console.log('um-layout ready');
 	var p = d.find('#um_layout_pane');
 	p.find('a').click( function(e) {
 		e.preventDefault();
@@ -32,7 +30,6 @@ function um_layout_pane() {
 
 $(document).ready(function(){
 	um_layout_pane();
-	console.log('dynamic!');
 });
 
 
