@@ -378,7 +378,8 @@ function um_load_css($filename,$level=1) {
 if (!is_admin()) :
 
 	if (um_getoption('makes','umr')) {
-		if (um_check_referer($_SERVER['HTTP_REFERER']) < 2) {
+		if (isset($_SERVER['HTTP_REFERER'])) { $ref = $_SERVER['HTTP_REFERER']; } else { $ref =""; }
+		if (um_check_referer($ref) < 2) {
 			um_minify_js();
 			um_minify_css();
 		} else {

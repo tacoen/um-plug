@@ -49,6 +49,11 @@ function um_layouts_saveoption() {
 
 function um_layouts_init() {
 	wp_enqueue_script('um-layout-view', UMPLUG_URL . 'prop/js/um-layout.js',array('customize-preview'),time(),true);
+	wp_localize_script('um-layout-view','um_layout_viewobject',array(
+			'dmqsml'=> um_getoption('dmqsml'),
+			'dmqmed'=> um_getoption('dmqmed'),
+	));
+
 }
 
 add_action('customize_register', 'um_layouts_register');

@@ -1,7 +1,7 @@
 var fluid_width = "100%";
-var tablet_width = "800px";
-var hand_width = "540px";
-var $ =jQuery.noConflict();
+var tablet_width = um_layout_viewobject['dmqmed']+"px";
+var hand_width = um_layout_viewobject['dmqsml']+"px";
+
 (function($) {
 
 function set_preview_frame(w) {
@@ -16,7 +16,7 @@ function um_layout_pane() {
 			+ "<i class='dashicons dashicons-desktop'></i></a></div>"
 		+"<div><a href='#' data-width='"+tablet_width+"' title='Max: "+tablet_width+"'>"
 			+ "<i class='dashicons dashicons-tablet'></i></a></div>"
-		+"<div><a href='#' data-width='"+hand_width+"'   title='"+hand_width+"'>"
+		+"<div><a href='#' data-width='"+hand_width+"'   title='Max: "+hand_width+"'>"
 			+"<i class='dashicons dashicons-smartphone'></i></a></div>"
 		+"</div>";
 	d.append($pane);
@@ -30,6 +30,7 @@ function um_layout_pane() {
 
 $(document).ready(function(){
 	um_layout_pane();
+	console.log(um_layout_viewobject);
 });
 
 

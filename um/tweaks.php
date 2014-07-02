@@ -18,7 +18,7 @@ umo_register(
 					'noavatar'=> array ('check','No Gravatar','Disable Gravatar for faster development process','','',''),
 					'novers' => array ('check','No Version','Remove styles and scripts versioning','','',''),
 					'nowpabar'=> array ('check','No WP Toolbar',"Disable WP Toolbar for all",'','',''),
-					'wpzlib' => array ('check','ZLib','Enable GZIP output compression, Disable if already used.','','',''),
+					'wpzlib' => array ('check','ZLib','Enable GZIP output compression, only if your host hasn\'t','','',''),
 					'pback'	 => array ('check','Pingback','Allow Pingback','','',''),
 				)
 			),

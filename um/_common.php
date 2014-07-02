@@ -168,9 +168,9 @@ function umoos_textarea($args,$saved) {
 }
 
 function um_check_referer($ref) {
-	$n = 0;
+	$n = 0; 
 	if  (preg_match("#".site_url()."#",$ref)) { $n=$n+1; }
-	if  (preg_match("#wp-admin/customize.php$#",$ref)) { $n=$n+2; }
+	if  (preg_match("#wp-admin/customize.php#",$ref)) { $n=$n+2; }
 	return $n;
 }
 

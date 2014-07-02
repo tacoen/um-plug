@@ -7,10 +7,9 @@ umo_register(
 		'func' => "um_optionpages",
 		'title' => "Theme Options",
 		'option' => array (
-			'feat'=> array(
-				'text'=> 'Features',
-				'note'	=> 'Optional Theme Features',
-
+			'base'=> array(
+				'text'=> 'WP Base',
+				'note'	=> 'Base on underscore.me(_s)',
 				'field'	=> array(
 					// id => array (type,label,text,defaults,mods,required);
 					'noopsf' => array ('check','OpenSans','Unload Open-Sans Webfont.','','',''),
@@ -19,8 +18,6 @@ umo_register(
 					'sfuncjs' => array ('check','base.js','Load Wordpress _s scripts','','',''),
 					'snav' => array ('check','nav.css','Load Wordpress _s navigations styles','','',''),
 					'layout'=> array ('selectfile','Layout','.css as layout',get_stylesheet_directory()."/layouts",'default',''),
-					'schcss'=> array ('check','Colour Schemes','Enable/Load customable colour schemes','','',''),
-					'iehtml5'=> array ('check','IE html5','Include html5 hack for IE9 and IE8','','',''),
 				)
 			),
 			'umgui'=> array(
@@ -31,6 +28,8 @@ umo_register(
 					'umgui'	=> array ('check','um-gui','load UM-GUI-framework for WP(js + css)','','',''),
 					'ajaxwpl'=> array ('check','um-login.js','Use Ajax WP-Login','','','umgui'),
 					'ajredir'=> array ('text','Login Redirect','<br><small>Relative Path will be nice<small>','wp-admin/','30','ajaxwpl'),
+					'schcss'=> array ('check','Colour Schemes','Enable/Load customable colour schemes','','',''),
+					'iehtml5'=> array ('check','IE html5','Include html5 hack for IE9 and IE8','','',''),
 				)
 			),
 
