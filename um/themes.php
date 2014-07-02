@@ -9,13 +9,15 @@ umo_register(
 		'option' => array (
 			'feat'=> array(
 				'text'=> 'Features',
-				'note'	=> 'Theme Features',
+				'note'	=> 'Optional Theme Features',
 
 				'field'	=> array(
 					// id => array (type,label,text,defaults,mods,required);
 					'noopsf' => array ('check','OpenSans','Unload Open-Sans Webfont.','','',''),
 					'umcss'	=> array ('check','reset.css','Use reset.css (normalize)','','',''),
-					'sfunc' => array ('check','base.css','Load Wordpress Default-styles (base on _s)','','',''),
+					'sfunc' => array ('check','base.css','Load Wordpress _s styles','','',''),
+					'sfuncjs' => array ('check','base.js','Load Wordpress _s scripts','','',''),
+					'snav' => array ('check','nav.css','Load Wordpress _s navigations styles','','',''),
 					'layout'=> array ('selectfile','Layout','.css as layout',get_stylesheet_directory()."/layouts",'default',''),
 					'schcss'=> array ('check','Colour Schemes','Enable/Load customable colour schemes','','',''),
 					'iehtml5'=> array ('check','IE html5','Include html5 hack for IE9 and IE8','','',''),
@@ -23,7 +25,7 @@ umo_register(
 			),
 			'umgui'=> array(
 				'text'=> 'um-gui',
-				'note'	=> 'um-gui Framework for Wordpress, Require um-gui',
+				'note'	=> 'um-gui Framework for Wordpress Templates',
 				'field'	=> array(
 					'umfont'=> array ('text','UM-GUI Webfont','<br/><small>Blank to unload</small>',um_tool_which('css/webfont.css'),'72',''),
 					'umgui'	=> array ('check','um-gui','load UM-GUI-framework for WP(js + css)','','',''),
@@ -44,7 +46,9 @@ if(is_admin() && (isset( $umo["umt"])) ) {
 function um_instant() {
 	if (file_exists(get_stylesheet_directory().'/css/reset.css')) { um_option_update('umt','umcss',1); }
 	if (file_exists(get_stylesheet_directory().'/css/base.css')) { um_option_update('umt','sfunc',1);}
+	if (file_exists(get_stylesheet_directory().'/css/nav.css')) { um_option_update('umt','snav',1);}
 	if (file_exists(get_stylesheet_directory().'/um-scheme.css')) {um_option_update('umt','schcss',1); }
+	if (file_exists(get_stylesheet_directory().'/js/base.js')) { um_option_update('umt','sfuncjs',1);}
 	if (file_exists(get_stylesheet_directory().'/layouts/default.css')) { um_option_update('umt','layout','default.css'); }
 	if (file_exists(get_stylesheet_directory().'/um-gui.js')) { um_option_update('umt','umgui',1); }
 	unlink( get_stylesheet_directory().'/no-umplug.txt'); // needed for run-once
@@ -83,6 +87,9 @@ function umplug_register_styles() {
 
 	if (um_getoption('sfunc','umt')) {
 		wp_enqueue_style("base",um_tool_which('css/base.css'),$deps,um_ver(),'all');
+	}
+
+	if (um_getoption('snav','umt')) {
 		wp_enqueue_style("base-nav",um_tool_which('css/nav.css'),$deps,um_ver(),'all');
 	}
 
@@ -129,8 +136,8 @@ function umplug_register_scripts() {
 		wp_enqueue_script(get_template().'-gui',um_tool_which('um-gui.js'),array('um-gui-lib'),um_ver(),true);
 	}
 
-	if (um_getoption('sfunc','umt')) {
-		wp_enqueue_script( get_template().'-base', um_tool_which('js/default.js'), array(), um_ver(), true );
+	if (um_getoption('sfuncjs','umt')) {
+		wp_enqueue_script( get_template().'-base', um_tool_which('js/base.js'), array(), um_ver(), true );
 	}
 
 	if (is_singular() && comments_open() && get_option('thread_comments')) {

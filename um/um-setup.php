@@ -84,19 +84,19 @@ $checklist = array(
 	'css/base.css' => array(
 		'type' => 'style',
 		'check' => 'file',
-		'note' => 'Wordpress Standard Styles',
+		'note' => 'Wordpress _s Standard Styles',
 		'method' => 'fallback'
 	),
 	'css/nav.css' => array(
 		'type' => 'style',
 		'check' => 'file',
-		'note' => 'Wordpress Basic Navigation',
+		'note' => 'Wordpress _s Basic Navigation',
 		'method' => 'fallback'
 	),
-	'js/default.js' => array(
+	'js/base.js' => array(
 		'type' => 'style',
 		'check' => 'file',
-		'note' => 'Wordpress Standard Scripts',
+		'note' => 'Wordpress _s Standard Scripts',
 		'method' => 'fallback'
 	),
 	'layouts' => array(
@@ -219,7 +219,7 @@ if ( get_stylesheet_directory() != get_template_directory() ) {
 	<?php echo $tr_script; ?>
 	<tr class='sep'><th colspan="5"><strong>Directories</strong></th></tr>
 	<?php echo $tr_dir; ?>
-	<tr class='sep'><th colspan="5"><strong>Wordpress defaults (Base)</strong></th></tr>
+	<tr class='sep'><th colspan="5"><strong>Wordpress defaults (Base on _s)</strong></th></tr>
 	<?php echo $tr_style; ?>
 	
 </tbody>
