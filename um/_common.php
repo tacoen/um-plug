@@ -161,7 +161,7 @@ function umoos_text($args,$saved) {
 
 function umoos_textarea($args,$saved) {
 	printf(
-		'<textarea name="%6$s[%2$s]" data-check="%5$s" cols="60" rows="%4$s"/>%1$s</textarea><br/>%3$s',
+		'<textarea name="%6$s[%2$s]" data-check="%5$s" cols="90" rows="%4$s"/>%1$s</textarea><br/>%3$s',
 		($saved!='') ? $saved : $args[4],
 		$args[0],$args[3],$args[5],$args[6],$args[7]
 	);
@@ -169,8 +169,8 @@ function umoos_textarea($args,$saved) {
 
 function um_check_referer($ref) {
 	$n = 0; 
-	if  (preg_match("#".site_url()."#",$ref)) { $n=$n+1; }
-	if  (preg_match("#wp-admin/customize.php#",$ref)) { $n=$n+2; }
+	if (preg_match("#".site_url()."#",$ref)) { $n=$n+1; }
+	if (preg_match("#wp-admin/customize.php#",$ref)) { $n=$n+2; }
 	return $n;
 }
 

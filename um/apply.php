@@ -33,12 +33,12 @@ if ( (um_getoption('schcss','umt')) && (file_exists(get_stylesheet_directory()."
 }
 
 function new_excerpt_length($length) { 
-    if (um_getoption('exclen','umo')) { return um_getoption('exclen','umo'); } else { return $length; }
+ if (um_getoption('exclen','umo')) { return um_getoption('exclen','umo'); } else { return $length; }
 }
 
 add_filter('excerpt_length', 'new_excerpt_length');
 
-if  ( (!is_admin()) && (um_getoption('novers','umo')) ) {
+if ( (!is_admin()) && (um_getoption('novers','umo')) ) {
 	//remove duplicated script and styles, cause themes and plugins.
 	add_filter('script_loader_src','um_script_nover');
 	add_filter('style_loader_src','um_style_nover');

@@ -17,17 +17,6 @@ function umplug_readme() {
 	echo '<div class="um-feat">';
 	echo join('',file(UMPLUG_DIR."prop/doc/readme.html"));
 	$readme = get_stylesheet_directory()."/readme.txt";
-/*
-	$htmlfile = glob_recursive(	UMPLUG_DIR."prop/doc/help/*.html");
-	arsort($htmlfile);
-	
-	foreach ($htmlfile as $html) { echo "<div>".join('',file($html))."</div>"; }
-	if (file_exists($readme)) { 
-		echo '<div><h3>Theme Readme</h3><div class="postbox inside"><pre>';
-		echo join('',file($readme)); 
-		echo '</div></div>';
-	}
-	*/
 	echo "</div>\n";
 }
 
@@ -68,9 +57,9 @@ function um_help($contextual_help, $screen_id) {
 			$webfont_ref .
 			"</div>";
 
-		$umch_help  = array('id'=> 'umch-help','title'=> __('Overview' ),'content'=> __($icontextual_help));
+		$umch_help = array('id'=> 'umch-help','title'=> __('Overview' ),'content'=> __($icontextual_help));
 		$umch_debug = array('id'=> 'umch-debug','title'=> __('Site Info' ),'content'=> __($debugres));
-		$umch_ref   = array('id'=> 'umch-ref','title'=> __('Links' ),'content'=> __($umref));
+		$umch_ref = array('id'=> 'umch-ref','title'=> __('Links' ),'content'=> __($umref));
 		
 		get_current_screen()->set_help_sidebar(__($umch_credit));
 		get_current_screen()->add_help_tab($umch_help);
@@ -183,3 +172,20 @@ function um_disable_feed() {
 	wp_die( __('Goto: <a href="'. get_bloginfo('url') .'">'.get_bloginfo('url').'</a>!','um') );
 }
 
+function um_login_logo_url() {
+    return home_url()."?tick=".time();
+}
+add_filter( 'login_headerurl', 'um_login_logo_url' );
+
+function um_login_logo_url_title() {
+    return get_option('blogname');
+}
+add_filter( 'login_headertitle', 'um_login_logo_url_title' );
+
+function um_login_logo() { ?>
+<style type="text/css"><?php echo um_getoption('logincss')?></style>
+<?php }
+
+if (um_getoption('logincss')) {
+	add_action( 'login_enqueue_scripts', 'um_login_logo' );
+}

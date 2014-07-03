@@ -52,12 +52,12 @@ function um_minify_disable_notice() {
 
 function um_minify_js() {
 	add_action('wp_enqueue_scripts', 'um_register_static_js');
-	add_filter('print_scripts_array', 'um_wpscripts_unique', PHP_INT_MAX/2);  // remove dupes, if any
+	add_filter('print_scripts_array', 'um_wpscripts_unique', PHP_INT_MAX/2); // remove dupes, if any
 	add_filter('print_scripts_array', 'um_static_query_js', PHP_INT_MAX/2);
 }
 function um_minify_css() {
 	add_action('wp_enqueue_scripts', 'um_register_static_css');
-	add_filter('print_styles_array', 'um_wpstyles_unique', PHP_INT_MAX/2);  // remove dupes, if any
+	add_filter('print_styles_array', 'um_wpstyles_unique', PHP_INT_MAX/2); // remove dupes, if any
 	add_filter('print_styles_array', 'um_static_query_css', PHP_INT_MAX/2);
 }
 
@@ -91,8 +91,8 @@ function um_static_query_js($handles) {
 
 		//echo "<pre>"; print_r($wp_scripts->registered[$handle]); echo "</pre>";
 		
-		if  (preg_match("#static.js$#",$url)) { continue; }
-		if  (preg_match("#static-footer.js$#",$url)) { continue; }
+		if (preg_match("#static.js$#",$url)) { continue; }
+		if (preg_match("#static-footer.js$#",$url)) { continue; }
 
 		if ( $wp_scripts->groups[$handle] == 0) {
 
@@ -102,7 +102,7 @@ function um_static_query_js($handles) {
 				}
 			}
 			
-			if  (preg_match("#".home_url()."#",$url)) {
+			if (preg_match("#".home_url()."#",$url)) {
 				if (!empty($url)) { array_push($js[0],$handle); } // header
 				
 			} else {
@@ -116,7 +116,7 @@ function um_static_query_js($handles) {
 				}
 			}
 
-			if  (preg_match("#".home_url()."#",$url)) {
+			if (preg_match("#".home_url()."#",$url)) {
 				if (!empty($url)) { array_push($js[1],$handle); } // footer
 			} else {
 				array_push($ojs[1],$handle);
@@ -161,7 +161,7 @@ function um_static_query_js($handles) {
 			return $ojs[1];
 		}
 		
-	}  else { 
+	} else { 
 		return $handles; 
 	}
 	
@@ -177,7 +177,7 @@ function um_makestatic_js($js,$level=1) {
 		$static_js .= "\n";
 	}
 
-	if ($level< 1) { return  um_js_compress( $static_js, $level); } 
+	if ($level< 1) { return um_js_compress( $static_js, $level); } 
 	else { return $static_js; }
 	
 }
@@ -251,17 +251,17 @@ function um_static_query_css($handles) {
 
 		$url = $wp_styles->registered[$handle]->src;
 		
-		if  (preg_match("#static.css$#",$url)) { continue; }
-		if  (preg_match("#static-footer.css$#",$url)) { continue; }
+		if (preg_match("#static.css$#",$url)) { continue; }
+		if (preg_match("#static-footer.css$#",$url)) { continue; }
 
 		if ( $wp_styles->groups[$handle] == 0) {
-			if  (preg_match("#".home_url()."#",$url)) {
+			if (preg_match("#".home_url()."#",$url)) {
 				if (!empty($url)) { array_push($css[0],$handle); } // header
 			} else {
 				array_push($ocss[0],$handle);
 			}
 		} else {	
-			if  (preg_match("#".home_url()."#",$url)) {
+			if (preg_match("#".home_url()."#",$url)) {
 				if (!empty($url)) { array_push($css[1],$handle); } // footer
 			} else {
 				array_push($ocss[1],$handle);
@@ -293,7 +293,7 @@ function um_static_query_css($handles) {
 			array_push($ocss[1],get_stylesheet().'-fgen');
 		}
 		return array_merge($ocss[0],$ocss[1]); // Style doesn't had head or foot
-	}  else { 
+	} else { 
 		return $handles; 
 	}
 	
@@ -322,7 +322,7 @@ function um_makestatic_css($css,$level=1) {
 		}
 	}
 
-	if ($level< 1) { return  um_css_compress( $static_css, $level); } 
+	if ($level< 1) { return um_css_compress( $static_css, $level); } 
 	else { return $static_css; }
 	
 }

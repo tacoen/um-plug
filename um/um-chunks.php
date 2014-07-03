@@ -42,7 +42,7 @@ Class um_chunked extends WP_Widget {
 		$chunks=glob($upload_dir['basedir']."/chunks/*.txt");
 		foreach ($chunks as $c) {
 			$fn=explode("/",$c); $fnc=$fn[count($fn)-1]; $fn=explode(".",$fnc);
-			if ($fn[0]==$chunk_selected) { $str=" selected"; } else {  $str='';  }
+			if ($fn[0]==$chunk_selected) { $str=" selected"; } else { $str=''; }
 			echo "<option $str value='".$fn[0]."'>$fn[0]</option>\n";
 		}?>
 		</select></p><?php

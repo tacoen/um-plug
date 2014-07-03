@@ -116,14 +116,14 @@ function umplug_register_styles() {
 	$mq_m = um_getoption('dmqmed','umo');
 	$mq_s = um_getoption('dmqsml','umo');
 			
-	wp_enqueue_style( get_template().'-print',  um_tool_which('print.css'), $deps,  um_ver() ,"print" );
+	wp_enqueue_style( get_template().'-print', um_tool_which('print.css'), $deps, um_ver() ,"print" );
 			
 	if ($mq_m) {
 		wp_enqueue_style( get_template().'-medium', um_tool_which('medium.css'), $deps, um_ver() ,"screen and (max-width: ".$mq_m."px)" );
 	}
 
 	if ($mq_s) {
-		wp_enqueue_style( get_template().'-small',  um_tool_which('small.css'),  $deps, um_ver() ,"screen and (max-width: ".$mq_s."px)" );
+		wp_enqueue_style( get_template().'-small', um_tool_which('small.css'), $deps, um_ver() ,"screen and (max-width: ".$mq_s."px)" );
 	}
 
 }

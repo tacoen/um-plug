@@ -90,10 +90,10 @@ function um_foda_callback() {
 
 	} else if ($foda['a']== 'ums-dir') {
 
-		if ($foda['f'] == "layouts")        { $txt .= um_newdir($foda['d'],"layouts"); }
+		if ($foda['f'] == "layouts") { $txt .= um_newdir($foda['d'],"layouts"); }
 		if ($foda['f'] == "page-templates") { $txt .= um_newdir($foda['d'],"page-templates"); }
-		if ($foda['f'] == "template-part")  { $txt .= um_newdir($foda['d'],"template-part"); }
-		if ($foda['f'] == "umtag")  { $txt .= um_newdir($foda['d'],"umtag"); }
+		if ($foda['f'] == "template-part") { $txt .= um_newdir($foda['d'],"template-part"); }
+		if ($foda['f'] == "umtag") { $txt .= um_newdir($foda['d'],"umtag"); }
 
 	} else if ($foda['a']== 'del') {
 		unlink($file); $txt="$file &mdash; Deleted";

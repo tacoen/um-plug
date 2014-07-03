@@ -1,5 +1,10 @@
 <?php
 
+$um_login_css = 
+	"body { background: #124; }\n".
+	"body.login div#login h1 a { background: none; text-indent:0; width: 64px; line-height: 64px; height: 64px; }\n".
+	"body.login div#login h1 a:before { font-weight: 400;content:'\\f120'; font-family: 'dashicons'; font-size: 64px; }\n";
+
 umo_register(
 	array( 'umo'
 		=> array(
@@ -39,6 +44,7 @@ umo_register(
 					'exclen' => array ('number-big','Post Excerpt','Word(s)','55','',''),
 					'dmqmed'=> array ('text','Medium Device Width','px &mdash; Media Queries max-width for medium/tablet device (medium.css)','800','5',''),					
 					'dmqsml'=> array ('text','Small Device Width','px &mdash; Media Queries max-width for small device (small.css)','540','5',''),
+					'logincss'=> array ('textarea','WP-Login Page CSS','',$um_login_css,'8',''),					
 				)
 			),			
 			'umrw'=> array(
