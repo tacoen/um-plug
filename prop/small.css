@@ -8,53 +8,39 @@ body  { margin-top: 32px; }
 .site-side { width:100% }
 .site-main { width:100% }
 #secondary aside { float: left; width: 98%; margin: 1%; }
-
+http://wp.local.net/
 /* base.css */
+
+.micro { font-size: .7em; }
 
 .comment-list { padding-left: 0 }
 .comment-list li { list-style-type: none; }
 .form-allowed-tags { display: none; }
 
-/* nav.css */
-
-body .main-navigation  {
-	left; 0; width:100%;
-	position: fixed; top: 0px; 
-}
 
 body.admin-bar .main-navigation  {
 	position: absolute; top: 46px; /* wp-admin-bar fixed */
 }
 
-.menu-toggle,
-.main-navigation.toggled .nav-menu { display: block; }
-.menu-toggle { padding: 1%;}
-.menu-toggle span:before { padding-right: 1% }
-
-.main-navigation > ul,
-.main-navigation li a { height: 48px; line-height: 48px; }
-.main-navigation li ul { top: 48px; }
-.main-navigation li { width: 100%; border-bottom: 1px solid rgba(0,0,0,0.2) }
-.main-navigation ul li ul li { width: 100%;}
-.main-navigation ul ul ul { top: 48px; left:0; }
-.main-navigation ul ul a { min-width: 100%}
-.main-navigation ul { display: none; border-top: 1px solid rgba(0,0,0,0.2) }
-
 /* um-gui-lib */
 
 .col2 div,
 .col2 div.last { 
+
 	width: 100%; margin: 0; float: left; 
+
 }
-	 
+
 .col3 div,
 .col3 div.last { 
 	width: 100%; margin-right: 0; float: left; 
 }
-	 
+
 .col5 div,
 .col4 div { width: 48%; margin-right: 2%; float: left; }
 .col5 div.last,
 .col4 div.last { width: 50%; margin-right: 0 }
-
 #um-top { line-height: 24px; height: 48px; padding: 8px; }
+.um-desktop,
+.um-medium { display: none; }
+div.right { text-align: left; }

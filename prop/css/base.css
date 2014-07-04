@@ -203,7 +203,7 @@ main article {position: relative; }
 .wp-caption .wp-caption-text {
 	z-index: 6; position: absolute; bottom: 0; left: 0; 
 	border-top: 1px solid rgba(255,255,255,0.4);
-	background: #rgba(0,0,0,0.4); color: #fff; padding: .5%; width: 99%; margin:0;
+	background: rgba( 0, 0, 0, .4); color: #fff; padding: .5%; width: 99%; margin:0;
 	text-align:center; font-size:.8em; height: 2em; line-height: 2em;
 }
 
@@ -233,11 +233,7 @@ img.alignright {margin: 0 0 1% 1%;}
 
 .single .entry-title,
 .page-header  .page-title,
-.page .entry-title {font-size: 2em; margin: 0; line-height:1.5em; text-decoration:none; text-transform: capitalize;}
-
-.single article header,
-.page-header header,
-.page header {margin-bottom: 1.5em;}
+.page .entry-title {font-size: 2em; margin: 0; text-decoration:none; text-transform: capitalize;}
 
 /* Consistence Styles 
  * --------------------------------------

@@ -1,9 +1,22 @@
+div.menu { padding: 0 }
+
+#site-navigation { font-size: 1.2em }
+
+#site-navigation .menu-toggle { display: block;}
+#site-navigation .nav-menu { display: none; height: 0; }
+#site-navigation.toggled .nav-menu { display: block; height: auto; }
+
+.main-navigation ul,
+.main-navigation li { width: 100%; }
+.main-navigation ul ul { left:0; top: 2em; }
+.main-navigation a { padding-left: 1%; }
+.main-navigation ul.childern { margin-top: -1px; }
+
 /* Device media queries: medium.
  * max-width for device can be set in wp-admin, using UM-Plug
  */
 
 .micro { font-size: .8em; }
-
 
  /* Layouts */
  
@@ -11,3 +24,25 @@
 .site-side { width:100% }
 .site-main { width:100% }
 #secondary aside { float: left; width: 48%; margin:1%; }
+
+/* for small device tweaks */
+
+/* um-gui-lib */
+
+.col2 > div,
+.col2 > div.last { 
+	width: 100%; margin: 0; float: left; 
+}
+	 
+.col3 > div,
+.col3 > div.last { 
+	width: 100%; margin-right: 0; float: left; 
+}
+	 
+.col5 >div,
+.col4 >div { width: 48%; margin-right: 2%; float: left; }
+.col5 >div.last,
+.col4 >div.last { width: 50%; margin-right: 0 }
+
+.um-desktop { display: none; }
+

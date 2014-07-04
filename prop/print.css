@@ -1,3 +1,5 @@
+#wpadminbar { display:none; }
+
 body { font-size: 10pt; }
 
 a[class*='-link'],

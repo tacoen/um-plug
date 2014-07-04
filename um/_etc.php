@@ -172,15 +172,16 @@ function um_disable_feed() {
 	wp_die( __('Goto: <a href="'. get_bloginfo('url') .'">'.get_bloginfo('url').'</a>!','um') );
 }
 
+/* wp-login tweaks */
+
 function um_login_logo_url() {
     return home_url()."?tick=".time();
 }
-add_filter( 'login_headerurl', 'um_login_logo_url' );
+
 
 function um_login_logo_url_title() {
     return get_option('blogname');
 }
-add_filter( 'login_headertitle', 'um_login_logo_url_title' );
 
 function um_login_logo() { ?>
 <style type="text/css"><?php echo um_getoption('logincss')?></style>
@@ -189,3 +190,6 @@ function um_login_logo() { ?>
 if (um_getoption('logincss')) {
 	add_action( 'login_enqueue_scripts', 'um_login_logo' );
 }
+
+add_filter( 'login_headertitle', 'um_login_logo_url_title' );
+add_filter( 'login_headerurl', 'um_login_logo_url' );

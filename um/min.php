@@ -305,11 +305,11 @@ function um_makestatic_css($css,$level=1) {
 		$url = $wp_styles->registered[$handle]->src;
 		$src = preg_replace("#".home_url()."/#",ABSPATH,$url);
 		if ($handle == "um-medium") {
-			$static_css .= "@media screen and (max-width: 800px) {\n";
+			$static_css .= "@media (max-width: 800px) {\n";
 			$static_css .= um_load_css($src,$level);
 			$static_css .= "\n}\n";
 		} else if ($handle == "um-small") { 
-			$static_css .= "@media screen and (max-width: 540px) {\n";
+			$static_css .= "@media (max-width: 540px) {\n";
 			$static_css .= um_load_css($src,$level);
 			$static_css .= "\n}\n";
 		} else if ($handle == "um-print") { 
