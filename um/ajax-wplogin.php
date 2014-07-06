@@ -24,17 +24,16 @@ function um_loginbox() {
 	<script type="text/javascript">/* <![CDATA[ */ var UM_GUI_WPUSER=1; /* ]]> */</script>
 <?php }
 }
+
 function um_ajaxlogin_scripts() {
-	global $um_static_js_already;
-	if (!$um_static_js_already) {
 	wp_enqueue_script('um-login',um_tool_which('js/um-login.js'),array(),um_ver(),true);
 	wp_localize_script('um-login','um_login_object',array(
 			'ajaxurl'=> admin_url('admin-ajax.php'),
 			'redirecturl'=> um_getoption('ajredir','umt'),
 			'loadingmessage'=> __('Please wait...','um')
 	));
-	}
 }
+
 function um_ajaxlogin() {
 	check_ajax_referer('um_ajaxlogin-nonce','security');
 	$info=array();

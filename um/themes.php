@@ -113,10 +113,11 @@ function umplug_register_styles() {
 		wp_enqueue_style(get_template().'-scheme',um_tool_which('um-scheme.css'),$deps,um_ver(),'all');
 	}
 
-	$mq_m = um_getoption('dmqmed','umo');
-	$mq_s = um_getoption('dmqsml','umo');
+	$mq_m = um_getoption('dmqmed');
+	$mq_s = um_getoption('dmqsml');
 			
-	wp_enqueue_style( get_template().'-print', um_tool_which('print.css'), $deps, um_ver() ,"print" );
+	if (um_getoption('dmqmed')) { $mq_m = um_getoption('dmqmed'); } else { $mq_m = "800"; }
+	if (um_getoption('dmqsml')) { $mq_s = um_getoption('dmqsml'); } else { $mq_s = "540"; }
 			
 	if ($mq_m) {
 		wp_enqueue_style( get_template().'-medium', um_tool_which('medium.css'), $deps, um_ver() ,"screen and (max-width: ".$mq_m."px)" );
@@ -133,6 +134,14 @@ function umplug_register_scripts() {
 	if (um_getoption('umgui','umt')) {
 		wp_enqueue_script(get_template().'-gui-lib',um_tool_which('js/um-gui-lib.js'),array('jquery'),um_ver(),false);
 		wp_enqueue_script(get_template().'-gui',um_tool_which('um-gui.js'),array('um-gui-lib'),um_ver(),true);
+
+		if (um_getoption('dmqmed')) { $mq_m = um_getoption('dmqmed'); } else { $mq_m = "800"; }
+		if (um_getoption('dmqsml')) { $mq_s = um_getoption('dmqsml'); } else { $mq_s = "540"; }
+
+		wp_localize_script(get_template().'-gui-lib','umgui_var',array(
+			'small'=> $mq_s,
+			'medium'=> $mq_m,
+		));
 	}
 
 	if (um_getoption('sfuncjs','umt')) {

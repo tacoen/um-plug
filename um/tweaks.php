@@ -15,36 +15,38 @@ umo_register(
 				'text'=> 'Custom Options',
 				'note'	=> 'Because sometimes we hate being default',
 				'field'	=> array(
-					// id => array (type,label,text,defaults,mods);
-					'nodash' => array ('check','Minimize Dashboard Load','Remove NewsFeed and other stuff from WP-Admin Dashboard','','',''),
-					'nowphead'=> array ('check','Minimize WP Header','Remove unnecessary code from header','','',''),
-					'nofeed' => array ('check','No Feed','Disable RSS/Atom Feed','','',''),
-					'noxmlrpc' => array ('check','No XMLRPC','Disable XMLRPC Functions','','',''),
+					// id => array (type,label,text,defaults,@mods,required);
+					'noautosave'=> array ('check','No AutoSave',"Disable Wordpress Autosave",'','',''),
 					'noavatar'=> array ('check','No Gravatar','Disable Gravatar for faster development process','','',''),
+					'nodash' => array ('check','Minimize Dashboard Load','Remove NewsFeed and other stuff from WP-Admin Dashboard','','',''),
+					'nofeed' => array ('check','No Feed','Disable RSS/Atom Feed','','',''),
 					'novers' => array ('check','No Version','Remove styles and scripts versioning','','',''),
 					'nowpabar'=> array ('check','No WP Toolbar',"Disable WP Toolbar for all",'','',''),
-					'wpzlib' => array ('check','ZLib','Enable GZIP output compression, only if your host hasn\'t','','',''),
+					'nowphead'=> array ('check','Minimize WP Header','Remove unnecessary code from header','','',''),
+					'noxmlrpc' => array ('check','No XMLRPC','Disable XMLRPC Functions','','',''),
 					'pback'	 => array ('check','Pingback','Allow Pingback','','',''),
+					'wpzlib' => array ('check','ZLib','Enable GZIP output compression, only if your host hasn\'t','','',''),
 				)
 			),
-/*
-			'tagopt'=> array(
-				'text'=> 'Tag',
-				'note'	=> 'UM Template Tag',
-				'field'	=> array(
-					'umtag'	=> array ('check','um-tag','Enable dynamic UMTag for your themes','yes','',''),
-				)
-			),
-*/
 			'wpvar'=> array(
 				'text'=> 'Variables',
 				'note'	=> 'Custom options Variables',
 				'field'	=> array(
-					'wdtma'	 => array ('number-small','Widget','Item(s)','0','',''),
-					'exclen' => array ('number-big','Post Excerpt','Word(s)','55','',''),
-					'dmqmed'=> array ('text','Medium Device Width','px &mdash; Media Queries max-width for medium/tablet device (medium.css)','800','5',''),					
-					'dmqsml'=> array ('text','Small Device Width','px &mdash; Media Queries max-width for small device (small.css)','540','5',''),
-					'logincss'=> array ('textarea','WP-Login Page CSS','',$um_login_css,'8',''),					
+					'wdtma'	 => array ('number','Widget','Item(s)','0',
+										array( 'min'=>0,'max'=>9),
+										''),
+					'exclen' => array ('number','Post Excerpt','Word(s)','55',
+										array( 'min'=>0,'max'=>99),
+										''),
+					'dmqmed'=> array ('text','Medium Device Width','px &mdash; Media Queries max-width for medium/tablet device (medium.css)','800',
+										array( 'pattern'=>'[0-9]{1,5}','size'=>5),
+										''),
+					'dmqsml'=> array ('text','Small Device Width','px &mdash; Media Queries max-width for small device (small.css)','540',
+										array( 'pattern'=>'[0-9]{1,5}','size'=>5),
+										''),
+					'logincss'=> array ('textarea','WP-Login Page CSS','',$um_login_css,
+										array( 'cols'=>90,'rows'=>5),					
+										''),					
 				)
 			),			
 			'umrw'=> array(
@@ -95,6 +97,8 @@ function um_elwidgets_init() {
 	}
 }
 
+function disableAutoSave(){ wp_deregister_script('autosave'); }
+
 if (um_getoption('owncdn')) { require(UMPLUG_DIR.'um/cdn.php'); }
 if (um_getoption('urlrw')) { require(UMPLUG_DIR.'um/rewrites.php'); }
 if (um_getoption('nowpabar')) { show_admin_bar(false); }
@@ -103,4 +107,7 @@ if (um_getoption('nowphead')) { add_action('after_setup_theme' ,'um_wpheadtrim')
 if (um_getoption('nodash')) { add_action('wp_dashboard_setup','um_nodashboard_widgets'); }
 if (um_getoption('pback')) { add_action('wp_head','um_pingback'); }
 if (um_getoption('noavatar')) { add_filter('get_avatar', 'remove_gravatar', 1, 5); }
+if (um_getoption('noautosave')) { add_action( 'wp_print_scripts', 'disableAutoSave' ); }
+
+
 

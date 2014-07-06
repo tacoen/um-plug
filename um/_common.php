@@ -1,6 +1,13 @@
 <?php
 defined('ABSPATH') or die('Huh?');
 
+function um_check_referer($ref) {
+	$n = 0; 
+	if (preg_match("#".site_url()."#",$ref)) { $n=$n+1; }
+	if (preg_match("#wp-admin/customize.php#",$ref)) { $n=$n+2; }
+	return $n;
+}
+
 function DebugArray($args) { echo "<pre>"; print_r($args); echo "</pre>"; }
 
 require_once(ABSPATH . 'wp-admin/includes/file.php');
@@ -115,7 +122,20 @@ function um_get_layout_option($where) {
  * 0 - id,type,label,text,defaults,mods - 5
  */
 
- function umoos_selectfile($args,$saved) {
+function umoos_rule($args) {
+	if (is_array($args)) {
+		$str = "";
+		foreach ( array_keys($args) as $k) {
+			if (isset($args[$k])) {  $str .= " $k='".$args[$k]."'"; }
+		}
+		return $str;
+	} else {
+		$str = " size='".$args."'";
+		return $str;
+	}
+}
+
+function umoos_selectfile($args,$saved) {
  			$sotxt='';
 			foreach(um_get_layout_option($args[4]) as $label=> $value) {
 				$sotxt .="<option value='$value' ";
@@ -135,43 +155,29 @@ function umoos_check($args,$saved) {
 		$args[0],$args[3],$args[5],$args[6],$args[7]
 	);
 }
-function umoos_num_big($args,$saved) {
-	printf(
-		'<input type="number" min="0" max="99" data-check="%5$s" name="%6$s[%2$s]" value="%1$s" /> %3$s',
-		($saved!='') ? $saved : $args[4],
-		$args[0],$args[3],$args[5],$args[6],$args[7]
-	);
-}
 
-function umoos_num_small($args,$saved) {
+function umoos_num($args,$saved) {
 	printf(
-		'<input type="number" min="0" max="9" data-check="%5$s" name="%6$s[%2$s]" value="%1$s" /> %3$s',
+		'<input type="number" name="%6$s[%2$s]" %4$s value="%1$s" data-check="%5$s" /> %3$s',
 		($saved!='') ? $saved : $args[4],
-		$args[0],$args[3],$args[5],$args[6],$args[7]
+		$args[0],$args[3],umoos_rule($args[5]),$args[6],$args[7]
 	);
 }
 
 function umoos_text($args,$saved) {
 	printf(
-		'<input type="text" name="%6$s[%2$s]" data-check="%5$s" size="%4$s" value="%1$s" /> %3$s',
+		'<input type="text" name="%6$s[%2$s]" %4$s value="%1$s" data-check="%5$s" /> %3$s',
 		($saved!='') ? $saved : $args[4],
-		$args[0],$args[3],$args[5],$args[6],$args[7]
+		$args[0],$args[3],umoos_rule($args[5]),$args[6],$args[7]
 	);
 }
 
 function umoos_textarea($args,$saved) {
 	printf(
-		'<textarea name="%6$s[%2$s]" data-check="%5$s" cols="90" rows="%4$s"/>%1$s</textarea><br/>%3$s',
+		'<textarea name="%6$s[%2$s]" %4$s  data-check="%5$s" />%1$s</textarea><br/>%3$s',
 		($saved!='') ? $saved : $args[4],
-		$args[0],$args[3],$args[5],$args[6],$args[7]
+		$args[0],$args[3],umoos_rule($args[5]),$args[6],$args[7]
 	);
-}
-
-function um_check_referer($ref) {
-	$n = 0; 
-	if (preg_match("#".site_url()."#",$ref)) { $n=$n+1; }
-	if (preg_match("#wp-admin/customize.php#",$ref)) { $n=$n+2; }
-	return $n;
 }
 
 /* ---------------------------------------- um_set ------------------ */
@@ -245,8 +251,8 @@ class um_set {
 
 		switch ($args[1]) {
 
-			case "number-small":
-				umoos_num_small($args,$saved); break;
+			case "number":
+				umoos_num($args,$saved); break;
 			case "number-big":
 				umoos_num_big($args,$saved); break;
 			case "text":
