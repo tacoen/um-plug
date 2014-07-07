@@ -68,9 +68,9 @@ umo_register(
 				'field'	=> array(
 					// id => array (type,label,text,defaults,mods,required);
 					'owncdn'=> array ('check','Alter CDN','Use your own CDN resources','','',''),
-					'opsfcdn' => array ('text','Open Sans','<br/><small>Webfont used by Wordpress 3.8.1<br>Blank it to use Wordpress default</small>','','60','owncdn'),
-					'jqcdn'	=> array ('text','Jquery','<br/><small>um-gui-lib using Jquery 2.0</small>','http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js','60','owncdn'),
-					'gamirr'=> array ('text','Google Apis Mirror','<br/><small>ajax.googleapis.com mirror, address only do not add http://,<br/>Blank it to disable</small>','','60','owncdn'),
+					'opsfcdn' => array ('text','Open Sans','<br/><small>Webfont used by Wordpress 3.8.1 (Blank it to use Wordpress default)</small>','http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700','70','owncdn'),
+					'jqcdn'	=> array ('text','Jquery','<br/>','http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js','70','owncdn'),
+					'gamirr'=> array ('text','Google Apis Mirror','<br/><small>ajax.googleapis.com mirror, address only do not add http://,<br/>(Blank it to disable)</small>','','70','owncdn'),
 				)
 			),
 		))
@@ -97,7 +97,7 @@ function um_elwidgets_init() {
 	}
 }
 
-function disableAutoSave(){ wp_deregister_script('autosave'); }
+function um_disableAutoSave(){ wp_deregister_script('autosave'); }
 
 if (um_getoption('owncdn')) { require(UMPLUG_DIR.'um/cdn.php'); }
 if (um_getoption('urlrw')) { require(UMPLUG_DIR.'um/rewrites.php'); }
@@ -107,7 +107,7 @@ if (um_getoption('nowphead')) { add_action('after_setup_theme' ,'um_wpheadtrim')
 if (um_getoption('nodash')) { add_action('wp_dashboard_setup','um_nodashboard_widgets'); }
 if (um_getoption('pback')) { add_action('wp_head','um_pingback'); }
 if (um_getoption('noavatar')) { add_filter('get_avatar', 'remove_gravatar', 1, 5); }
-if (um_getoption('noautosave')) { add_action( 'wp_print_scripts', 'disableAutoSave' ); }
+if (um_getoption('noautosave')) {  add_action( 'admin_init', 'um_disableAutoSave' ); }
 
 
 

@@ -26,14 +26,14 @@ if ( ! function_exists('umtag')) {
 		}
 	}
 
-	// [umtag func="bar"], umtag as shortcode
 	function umtag_func( $atts ) {
-		umtag( $atts['func'], $atts['args'] );
+		if (isset($atts)) { umtag( $atts['func'], $atts['args'] ); }
 	}
 
-	add_shortcode('umtag', 'umtag_func');
 
 }
+// [umtag func="bar"], umtag as shortcode
+add_shortcode('umtag', 'umtag_func');
 
 if ( ! function_exists('um_getoption')) :
 

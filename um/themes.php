@@ -76,7 +76,11 @@ function umplug_register_styles() {
 
 	$deps = array();
 	
-	if ( (!is_admin()) && (um_getoption('noopsf','umt')) ) { wp_deregister_style('open-sans'); }
+	if ( (!is_admin()) && ( um_getoption('noopsf','umt')) ) { 
+		wp_deregister_style('open-sans'); 
+	} else {
+		wp_enqueue_style("open-sans"); 
+	}
 
 	if (um_getoption('umcss','umt')) {
 		$deps = array('reset');
