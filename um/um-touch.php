@@ -9,7 +9,7 @@ umo_register(
 		),
 ));
 
-if(is_admin() && (isset( $umo["um_touch"])) ) { $my_settings_page=new um_set( "um_touch", $umo["um_touch"] ); }
+if(is_admin() && (isset( $umo["um_touch"])) ) { $um_settings_page=new um_set( "um_touch", $umo["um_touch"] ); }
 
 function um_postformat_args() {
 	$a = array('aside','gallery','link','image','quote','status','video','audio','chat');

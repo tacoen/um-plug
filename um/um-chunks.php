@@ -9,7 +9,7 @@ umo_register(
 		),
 ));
 
-if(is_admin() && (isset( $umo["um_chunk"])) ) { $my_settings_page=new um_set( "um_chunk", $umo["um_chunk"] ); }
+if(is_admin() && (isset( $umo["um_chunk"])) ) { $um_settings_page=new um_set( "um_chunk", $umo["um_chunk"] ); }
 
 /* --------------------------------------------------------------------- */
 

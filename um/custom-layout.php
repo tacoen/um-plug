@@ -42,9 +42,9 @@ function um_layouts_register($wp_customize){
 
 function um_layouts_saveoption() {
 	$value=get_option('um_layouts_set');
-	$my_options = get_option('umt');
-	$my_options['layout'] = $value;
-	update_option('umt', $my_options);
+	$um_options = get_option('umt');
+	$um_options['layout'] = $value;
+	update_option('umt', $um_options);
 }
 
 function um_layouts_init() {

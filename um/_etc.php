@@ -3,9 +3,9 @@ defined('ABSPATH') or die('Huh?');
 
 function um_option_update($where="umo",$what="key",$val) {
 	if (isset($val)) { 
-		$my_options = get_option($where);
-		$my_options[$what] = $val;
-		update_option($where, $my_options);
+		$um_options = get_option($where);
+		$um_options[$what] = $val;
+		update_option($where, $um_options);
 	}
 }
 

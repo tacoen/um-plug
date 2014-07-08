@@ -9,7 +9,7 @@ umo_register(
 		),
 ));
 
-if(is_admin() && (isset( $umo["um_setup"])) ) { $my_settings_page=new um_set( "um_setup", $umo["um_setup"] ); }
+if(is_admin() && (isset( $umo["um_setup"])) ) { $um_settings_page=new um_set( "um_setup", $umo["um_setup"] ); }
 
 function um_themesetup() {
 	um_adminpage_wrap("UM Theme Setup","umplug_theme_checklist",array()); 

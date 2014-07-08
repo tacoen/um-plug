@@ -30,7 +30,7 @@ umo_register(
 
 if(is_admin() && (isset( $umo["umr"])) ) { 
 
-	$my_settings_page=new um_set( "umr", $umo["umr"] ); 
+	$um_settings_page=new um_set( "umr", $umo["umr"] ); 
 
 }
 

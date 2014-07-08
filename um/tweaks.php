@@ -77,7 +77,7 @@ umo_register(
 	)
 );
 
-if(is_admin() && (isset( $umo["umo"])) ) { $my_settings_page=new um_set( "umo", $umo["umo"] ); }
+if(is_admin() && (isset( $umo["umo"])) ) { $um_settings_page=new um_set( "umo", $umo["umo"] ); }
 
 function um_elwidgets_init() {
 

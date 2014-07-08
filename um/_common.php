@@ -93,7 +93,6 @@ function js_include($f,$c=1) {
 	}
 }
 
-
 function safe_str($str) { return preg_replace('#\W|\s#','',strtolower($str)); }
 
 function umplug_role_check() {
