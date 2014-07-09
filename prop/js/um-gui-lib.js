@@ -18,16 +18,14 @@ function launchFullScreen(element) {
 //$('[id]').each(function () { console.log(this.id); });
 
 function um_vpToBody() {
+	if (umgui_var['small'].length <= 0) { var umvp_small = 540; } else { var umvp_small = umgui_var['small']; }
+	if (umgui_var['medium'].length <= 0) { var umvp_medium = 800; } else { var umvp_medium = umgui_var['medium']; }
 	var w = $(window).width();
-
 	var $class='';
-	
 	$('body').removeClass('vp_medium');
 	$('body').removeClass('vp_small');
-	
 	if (w <= umvp_medium) { $class = 'vp_medium' };
-	if (w <= umvp_small)  { $class = 'vp_small' };
-	
+	if (w <= umvp_small) { $class = 'vp_small' };
 	$('body').addClass($class);
 	
 }
@@ -62,13 +60,13 @@ function um_toc(obj,ele,titleText) {
 }
 
 function um_tab_init(obj) {
-		obj.find('a.tabmenu').click(function(e) {
-			e.preventDefault();
-			jQuery(this).addClass('active');
-			target = jQuery(this).attr('href'); 
-			tab = jQuery(target); tab.show();
-			tab.siblings('.um_tab_content').hide();
-			jQuery(this).parent().siblings().children('a').removeClass('active');
+	obj.find('a.tabmenu').click(function(e) {
+		e.preventDefault();
+		jQuery(this).addClass('active');
+		target = jQuery(this).attr('href'); 
+		tab = jQuery(target); tab.show();
+		tab.siblings('.um_tab_content').hide();
+		jQuery(this).parent().siblings().children('a').removeClass('active');
 	});
 }
 
@@ -112,7 +110,7 @@ function um_onscroll_fixed(target,dockto,adjustment) {
 	var w = jQuery(window);
 	w.scrollTop(0);
 	
-	if (dockto.length <= 0) { dockto = jQuery('#site-navigation');  }
+	if (dockto.length <= 0) { dockto = jQuery('#site-navigation'); }
 
 	var y = dockto.offset(); 
 	var docktoY = dockto.outerHeight() + y.top;
@@ -192,6 +190,7 @@ function get_elementColor(id,what) {
 
 function um_getrgbof(id,what,alpha) {
 	var rgb = get_elementColor(id,what);
+	console.log(rgb);
 	var a = "rgba("+rgb['r']+","+rgb['g']+","+rgb['b']+","+alpha+")";
 	return a;
 }
