@@ -15,7 +15,7 @@ function um_layouts_register($wp_customize){
 	
 	$wp_customize->add_setting('um_layouts_set', array(
 		'default' => $layout,
-		'capability' => 'edit_theme_options',
+		'capability' => um_req_role(),
 		'type' => 'option',
 		'transport' => 'postMessage'
 	));	

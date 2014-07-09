@@ -12,19 +12,6 @@ function um_propcopy($f) {
 	return "$f copied from UM-PLUG";
 }
 
-/*
-function um_new_umguijs() {
-	um_file_putcontents(get_stylesheet_directory()."/um-gui.js", "(function($) {\n\n})(jQuery);");
-	return get_stylesheet_directory()."/um-gui.js";
-}
-
-function um_blankcss($w) {
-	$css = um_file_getcontents(UMPLUG_DIR."prop/$w");
-	um_file_putcontents(get_stylesheet_directory()."/$w",$css);
-	return get_stylesheet_directory()."/$w.css";
-}
-*/
-
 function um_newdir($d,$path) {
 	if ($d == "parent") { $dir = get_template_directory(); }
 	else { $dir = get_stylesheet_directory(); }
@@ -46,6 +33,10 @@ function um_fodalink($type, $where, $f) {
 }
 
 function um_foda_callback() {
+
+}
+
+function um_foda_callback_dd() {
 	global $wpdb;
 	$foda=$_POST['v']; $txt='';
 
@@ -152,5 +143,7 @@ function um_foda_callback() {
 
 	die(); // ajax call ended
 }
+
 add_action('wp_ajax_foda','um_foda_callback');
+
 ?>

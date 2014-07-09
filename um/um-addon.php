@@ -11,7 +11,7 @@ umo_register(
 		),
 ));
 
-if(is_admin() && (isset( $umo["um_paddon"])) ) { $um_settings_page=new um_set( "um_paddon", $umo["um_paddon"] ); }
+if(is_admin() && (isset( $umo["um_paddon"])) ) { $um_settings_page=new umplug_set( "um_paddon", $umo["um_paddon"] ); }
 
 $um_addons = array();
 $addons = glob_recursive(UMPLUG_DIR."addons/*.php");

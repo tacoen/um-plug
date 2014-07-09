@@ -1,6 +1,15 @@
 <?php
 defined('ABSPATH') or die('Huh?');
 
+require_once(ABSPATH . 'wp-admin/includes/file.php');
+
+if (!function_exists("umo_register")) :
+	function umo_register(array $args) {
+		global $umo; if (!isset($umo)) { $umo = array(); }
+		$umo = array_merge($umo,$args);
+	}
+endif;
+
 function um_check_referer($ref) {
 	$n = 0; 
 	if (preg_match("#".site_url()."#",$ref)) { $n=$n+1; }
@@ -9,13 +18,6 @@ function um_check_referer($ref) {
 }
 
 function DebugArray($args) { echo "<pre>"; print_r($args); echo "</pre>"; }
-
-require_once(ABSPATH . 'wp-admin/includes/file.php');
-
-function umo_register(array $args) {
-	global $umo; if (!isset($umo)) { $umo = array(); }
-	$umo = array_merge($umo,$args);
-}
 
 function um_theme_dircheck($w) {
 	$res = false;
@@ -34,10 +36,10 @@ function um_adminpage_wrap($title,$func='',$args=array()) {
 
 function get_mtime($fn) {
 	if (file_exists($fn)) { 
-		//$fmtime = gmdate ( 'D, d M Y H:i:s', filemtime ( $fn ) ) );
 		return date("Y-M-d H:i:s",filemtime($fn)); 
 	} else { return "n/a"; }
 }
+
 
 function filesystem_init($key='um_textedit') {
 	global $wp_filesystem;
@@ -49,23 +51,18 @@ function filesystem_init($key='um_textedit') {
 		$creds=request_filesystem_credentials($url,'',false,false,null);
 	}
 	return $creds;
-//	if (false===($creds=request_filesystem_credentials($url,'',false,false,null))) { return; }
-//	echo $creds;
-//	var_dump($wp_filesystem);
-//	die();
 }
+
 function um_file_putcontents($filename,$txt) {
 	global $wp_filesystem;
 	filesystem_init();
 	$wp_filesystem->put_contents($filename,stripslashes($txt),FS_CHMOD_FILE);
-	// file_put_contents($filename,$txt);
 }
 
 function um_file_putcontents_nos($filename,$stxt) {
 	global $wp_filesystem; 
 	filesystem_init();
 	$wp_filesystem->put_contents($filename,$stxt,FS_CHMOD_FILE);
-	//file_put_contents($filename,$txt);
 }
 
 function um_file_getcontents($filename,$nonce='') {
@@ -79,30 +76,9 @@ function um_file_getcontents($filename,$nonce='') {
 	return stripslashes($txt);
 }
 
-function css_include($f,$c=1) {
-	if (file_exists($f)) {
-		$fnice = preg_replace("/(.+)\/(.+)/","\\2",$f);
-		return "/* $fnice */\n\n".css_compress(join('',file($f)),$c)."\n";
-	}
-}
-
-function js_include($f,$c=1) {
-	if (file_exists($f)) {
-		$fnice = preg_replace("/(.+)\/(.+)/","\\2",$f);
-		return "\n/* $fnice */\n".js_compress(join('',file($f)),$c)."\n";
-	}
-}
-
 function safe_str($str) { return preg_replace('#\W|\s#','',strtolower($str)); }
 
-function umplug_role_check() {
-	if ( !current_user_can( 'manage_options' ) ) {
-		wp_die( __( 'Sorry, has no options ', 'um' ) );
-	}
-}
-
 function umplug_headers($title='UM: Untitled',$txt='') {
-	umplug_role_check();
 	echo "<div class='um-header'><h2>$title</h2><div>$txt</div></div>";
 }
 
@@ -181,7 +157,7 @@ function umoos_textarea($args,$saved) {
 
 /* ---------------------------------------- um_set ------------------ */
 
-class um_set {
+class umplug_set {
 
 	protected $stub;
 	protected $umo = array();
@@ -196,9 +172,9 @@ class um_set {
 	public function um_add_pages() {
 		$umo = $this->umo;
 		if (isset($umo['option'])) {
-			add_submenu_page('undressme',$umo['title'],$umo['title'],'edit_theme_options',$umo['stub'],array($this,$umo['func']) );
+			add_submenu_page('um_plug',$umo['title'],$umo['title'],um_req_role(),$umo['stub'],array($this,$umo['func']) );
 		} else {
-			add_submenu_page('undressme',$umo['title'],$umo['title'],'edit_theme_options',$umo['stub'],$umo['func'] );
+			add_submenu_page('um_plug',$umo['title'],$umo['title'],um_req_role(),$umo['stub'],$umo['func'] );
 		}
 	}
 
@@ -275,8 +251,6 @@ class um_set {
 
 	public function umo_sanitize($input) {
 		$new_input=array();
-		//DebugArray($input);die();
-		//$sections = array_keys( $umo['option'] );
 		foreach (array_keys($input) as $item) {
 			if (is_numeric($input[$item])) {
 				$new_input[$item]=absint($input[$item]);
@@ -289,4 +263,4 @@ class um_set {
 		return $new_input;
 	}
 
-} // -- um_set -------------------------------- //
+} // -- umplug_set -------------------------------- //

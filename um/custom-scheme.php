@@ -80,7 +80,7 @@ function um_scheme_register($wp_customize) {
 	// create if not exist
 	if (! file_exists(get_stylesheet_directory()."/um-scheme.css")) { um_make_schemecss($um_scheme); }
 	foreach (array_keys($um_scheme) as $color) {
-		$wp_customize->add_setting('umto['.$color.']',array('default'=>$um_scheme[$color]['value'],'sanitize_callback'=> 'sanitize_hex_color','capability'=> 'edit_theme_options','transport'=> 'postMessage'));
+		$wp_customize->add_setting('umto['.$color.']',array('default'=>$um_scheme[$color]['value'],'sanitize_callback'=> 'sanitize_hex_color','capability'=> um_req_role(),'transport'=> 'postMessage'));
 		$wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,$color,array('label'=>ucfirst($um_scheme[$color]['name']),'section'=> 'um_scheme','settings'=> 'umto['.$color.']')));
 	}
 	//remove default colour sections

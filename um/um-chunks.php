@@ -9,7 +9,7 @@ umo_register(
 		),
 ));
 
-if(is_admin() && (isset( $umo["um_chunk"])) ) { $um_settings_page=new um_set( "um_chunk", $umo["um_chunk"] ); }
+if(is_admin() && (isset( $umo["um_chunk"])) ) { $um_settings_page=new umplug_set( "um_chunk", $umo["um_chunk"] ); }
 
 /* --------------------------------------------------------------------- */
 
@@ -83,10 +83,10 @@ function um_chunk_insert($f) {
 	}
 }
 
-function undressme_insert_chunk_func($atts) {
+function um_plug_insert_chunk_func($atts) {
 	return um_chunk_insert($atts['file']);
 }
-add_shortcode('chunk','undressme_insert_chunk_func');
+add_shortcode('chunk','um_plug_insert_chunk_func');
 
 function um_chunk($w) {
 	echo do_shortcode('[chunk file='.$w.']');

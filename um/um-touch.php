@@ -1,4 +1,5 @@
 <?php
+
 defined('ABSPATH') or die('Huh?');
 
 umo_register(
@@ -9,7 +10,7 @@ umo_register(
 		),
 ));
 
-if(is_admin() && (isset( $umo["um_touch"])) ) { $um_settings_page=new um_set( "um_touch", $umo["um_touch"] ); }
+if(is_admin() && (isset( $umo["um_touch"])) ) { $um_settings_page=new umplug_set( "um_touch", $umo["um_touch"] ); }
 
 function um_postformat_args() {
 	$a = array('aside','gallery','link','image','quote','status','video','audio','chat');
@@ -73,7 +74,7 @@ function um_toucher_html($div='',$js=0) {
 		?><div class="um-col2">
 
 		<div class='umdd'>
-		<h4>Post Format Template</h4><p><select name='tf-file' id='undressme-tf-file' data-d=''><?php
+		<h4>Post Format Template</h4><p><select name='tf-file' id='um_plug-tf-file' data-d=''><?php
 		foreach ($notexisted as $g) {
 			echo "<option value='$g'>$g</option>\n";
 		}
@@ -81,7 +82,7 @@ function um_toucher_html($div='',$js=0) {
 
 		<div class='umdd'>
 		<h4>Template Part</h4><p>
-		<select name='tp-file' id='undressme-tp-file' data-d='template-part'><?php
+		<select name='tp-file' id='um_plug-tp-file' data-d='template-part'><?php
 		foreach ($tp_notexisted as $tg) {
 			echo "<option value='$tg'>$tg</option>\n";
 		}
