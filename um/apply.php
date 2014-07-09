@@ -40,13 +40,11 @@ if ( (!is_admin()) && (um_getoption('novers','umo')) ) {
 
 add_filter('user_contactmethods', 'um_user_contactmethods'); // echo get_user_meta(1, 'twitter', true);
 
-/*
 if (um_getoption('wpzlib','umo')) {
 	if(extension_loaded("zlib") && (ini_get("output_handler") != "ob_gzhandler")) {
 		add_action('wp', create_function('', '@ob_end_clean();@ini_set("zlib.output_compression", 1);'));
 	}
 }
-*/
 
 if (um_getoption('nofeed','umo')) {
 	add_action('do_feed', 'um_disable_feed', 1);
