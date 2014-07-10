@@ -59,10 +59,17 @@ function register_um_chunked() {
 	register_widget('um_chunked');
 }
 add_action('widgets_init','register_um_chunked');
+
 /* ------------------------------------------------------------------ */
+
 function um_textedit($title,$file) {
-	if (file_exists($file)) { $text = join('',file($file,FILE_SKIP_EMPTY_LINES)); } else { $text=''; } ?>
-	<form id="template" class="um-editor">
+	if (file_exists($file)) { $text = join('',file($file,FILE_SKIP_EMPTY_LINES)); } else { $text=''; }
+
+	$text = preg_replace("#<#","&lt;",$text);
+	$text = preg_replace("#>#","&gt;",$text);
+	$text = preg_replace("#\#","&bsol;",$text);
+
+	?><form id="template" class="um-editor">
 	<h3><hr/>Chunk: <?php echo $title; ?></h3>
 	<?php wp_nonce_field('um_textedit'); ?>
 	<textarea data-file="<?php echo $title; ?>" data-dir="chunk" ><?php echo $text ?></textarea>

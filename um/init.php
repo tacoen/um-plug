@@ -78,7 +78,7 @@ function umplug_help($contextual_help, $screen_id) {
 function umch_overview($id) {
 	$text = "--N/A--"; $str = "";
 	$um_help= UMPLUG_DIR."prop/doc/help/".$id.".html";
-	$text = join('',file($um_help));
+	if (file_exists($um_help)) { $text = join('',file($um_help)); }
 	$str .="<div>$text</div>";
 	return $str;
 }
@@ -86,6 +86,8 @@ function umch_overview($id) {
 
 add_action('admin_init','umplug_i18n');
 add_action('admin_menu','umplug_init_slug');
+add_filter( 'login_headertitle', 'um_login_logo_url_title' );
+add_filter( 'login_headerurl', 'um_login_logo_url' );
 add_filter('admin_footer_text','um_footeradmin');
 add_action('admin_print_styles','umplug_register_admin_scripts');
 add_filter('contextual_help', 'umplug_help', 10, 2);

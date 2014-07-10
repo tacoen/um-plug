@@ -97,13 +97,11 @@ function um_login_logo_url_title() {
     return get_option('blogname');
 }
 
-function um_login_logo() { ?>
+function um_login_css() { ?>
 <style type="text/css"><?php echo um_getoption('logincss')?></style>
 <?php }
 
 if (um_getoption('logincss')) {
-	add_action( 'login_enqueue_scripts', 'um_login_logo' );
+	add_action( 'login_enqueue_scripts', 'um_login_css' );
 }
 
-add_filter( 'login_headertitle', 'um_login_logo_url_title' );
-add_filter( 'login_headerurl', 'um_login_logo_url' );

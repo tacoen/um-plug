@@ -5,6 +5,7 @@ $template = get_template_directory();
 $files = array(
 	"css/reset.css",
 	"css/base.css",
+	"css/nav.css",
 	"print.css",
 	"small.css",
 	"medium.css",

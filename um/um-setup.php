@@ -228,7 +228,7 @@ if ( get_stylesheet_directory() != get_template_directory() ) {
 <?php 
 
 //---- Enable this to copy props from parent/core back to plugins props.
-// require_once(UMPLUG_DIR."um/prop-sync.php");
+//require_once(UMPLUG_DIR."um/prop-sync.php");
 
 if ($js== 1) { ?><script type="text/javascript">umlist_function_init('.umplugs')</script><?php }
 

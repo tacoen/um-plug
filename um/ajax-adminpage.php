@@ -33,10 +33,6 @@ function um_fodalink($type, $where, $f) {
 }
 
 function um_foda_callback() {
-
-}
-
-function um_foda_callback_dd() {
 	global $wpdb;
 	$foda=$_POST['v']; $txt='';
 
