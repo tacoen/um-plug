@@ -46,6 +46,7 @@ function um_instant() {
 	if (file_exists(get_stylesheet_directory().'/css/reset.css')) { um_option_update('umt','umcss',1); }
 	if (file_exists(get_stylesheet_directory().'/css/base.css')) { um_option_update('umt','sfunc',1);}
 	if (file_exists(get_stylesheet_directory().'/css/nav.css')) { um_option_update('umt','snav',1);}
+	if (file_exists(get_stylesheet_directory().'/css/webfont.css')) { um_option_update('umt','umfont',get_stylesheet_directory_uri().'/css/webfont.css');}
 	if (file_exists(get_stylesheet_directory().'/um-scheme.css')) {um_option_update('umt','schcss',1); }
 	if (file_exists(get_stylesheet_directory().'/js/base.js')) { um_option_update('umt','sfuncjs',1);}
 	if (file_exists(get_stylesheet_directory().'/layouts/default.css')) { um_option_update('umt','layout','default.css'); }
