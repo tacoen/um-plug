@@ -67,7 +67,6 @@ function um_textedit($title,$file) {
 
 	$text = preg_replace("#<#","&lt;",$text);
 	$text = preg_replace("#>#","&gt;",$text);
-	$text = preg_replace("#\#","&bsol;",$text);
 
 	?><form id="template" class="um-editor">
 	<h3><hr/>Chunk: <?php echo $title; ?></h3>

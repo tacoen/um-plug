@@ -3,6 +3,13 @@ defined('ABSPATH') or die('Huh?');
 
 require_once(ABSPATH . 'wp-admin/includes/file.php');
 
+if (!function_exists("um_hp_register")) :
+	function um_hp_register($args) {
+		global $um_hp; if (!isset($um_hp)) { $um_hp = array(); }
+		$um_hp[]=$args;
+	}
+endif;
+
 if (!function_exists("umo_register")) :
 	function umo_register(array $args) {
 		global $umo; if (!isset($umo)) { $umo = array(); }
@@ -133,7 +140,7 @@ function umoos_check($args,$saved) {
 
 function umoos_num($args,$saved) {
 	printf(
-		'<input type="number" name="%6$s[%2$s]" %4$s value="%1$s" data-check="%5$s" /> %3$s',
+		'<input type="number" size="2" name="%6$s[%2$s]" %4$s value="%1$s" data-check="%5$s" /> %3$s',
 		($saved!='') ? $saved : $args[4],
 		$args[0],$args[3],umoos_rule($args[5]),$args[6],$args[7]
 	);
@@ -228,8 +235,6 @@ class umplug_set {
 
 			case "number":
 				umoos_num($args,$saved); break;
-			case "number-big":
-				umoos_num_big($args,$saved); break;
 			case "text":
 				umoos_text($args,$saved); break;
 			case "textarea":

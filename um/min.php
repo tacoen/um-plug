@@ -12,7 +12,9 @@ umo_register(
 				'field'	=> array(
 					// id => array (type,label,text,defaults,mods,required);
 					'makes'	=> array ('check', 'Minify', 'Generated static-minified-unpretty css and js.','','',''),
-					'zlevel'	=> array ('number-small', 'CSS Compress level', 'Level, <small>0 - unreadable, >1 - readable</small>','0','','makes'),
+					'zlevel'    => array ('number','CSS Compress level','Level, <small>0 - unreadable, >1 - readable</small>','0',
+										array( 'min'=>0,'max'=>3),
+										'makes'),					
 					'cssstatic'	=> array (
 						'check', 'CSS', 'Static file &mdash;Last Generated: '.
 						get_mtime( get_stylesheet_directory()."/static.css") .

@@ -59,3 +59,9 @@ if (um_getoption('nofeed','umo')) {
 if (um_getoption('noxmlrpc','umo')) {
 	add_filter( 'xmlrpc_enabled', '__return_false' );
 }
+
+if (um_getoption('logincss')) {
+	add_action( 'login_enqueue_scripts', 'um_login_css' );
+}
+
+add_action('admin_menu', 'um_hp_init');

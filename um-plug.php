@@ -12,6 +12,8 @@ Text Domain: um
 defined('ABSPATH') or die('um?');
 DEFINE ('UMPLUG_DIR', plugin_dir_path( __FILE__ ) );
 DEFINE ('UMPLUG_URL', plugin_dir_url(__FILE__) );
+$umo = array();
+$um_hp = array();
 function um_ver() { return '1.1.8'; }
 function um_req_role() { return 'edit_theme_options'; }
 
@@ -27,4 +29,9 @@ require_once(UMPLUG_DIR . 'um/tweaks.php');
 require_once(UMPLUG_DIR . 'um/themes.php');
 require_once(UMPLUG_DIR . 'um/min.php');
 require_once(UMPLUG_DIR . 'um/custom-layout.php');
+
+//---- Enable this to copy props from parent/core back to plugins props.
+require_once(UMPLUG_DIR."um/um-prop-sync.php");
+
+// -- apply them all
 require_once(UMPLUG_DIR . 'um/apply.php');

@@ -27,20 +27,24 @@ function um_vpToBody() {
 	if (w <= umvp_medium) { $class = 'vp_medium' };
 	if (w <= umvp_small) { $class = 'vp_small' };
 	$('body').addClass($class);
-	
 }
 
 function umi_navhover_click() {
 	$('body[class*="vp_"] #site-navigation li[class*="_has_children"] > a').click( function(e) {
 		$el = $(this).parent();
+		$elul = $el.children('ul');
 		if ($el.data('clicked') == 1 ) {
-			//e.preventDefault();
+			e.preventDefault();
+			$elul.children('li.navh_added').remove();
 			$el.removeClass('clicked');
 			$el.data('clicked',0);
 		} else {
 			e.preventDefault();
+			$href = $el.children('a').attr('href');
+			$text = $el.children('a').text();
 			$el.addClass('clicked');
 			$el.data('clicked',1);
+			$elul.prepend('<li class="navh_added"><a href="'+$href+'"><i class="umi-angle-double-right"></i>'+$text+'</a></li>');
 	}
 	
 	});
@@ -128,10 +132,13 @@ function um_onscroll_fixed(target,dockto,adjustment) {
 				target.css('position','fixed'); 
 				target.css('top',fix+"px"); 
 				target.css('z-index',9900);
-				target.css('width',o_width);
+				target.css('width','100%');
+				target.addClass('docked')
 			} else {
 				target.css('position','static');
 				target.css('top',target.data('original-y')+"px");
+				target.removeClass('docked')
+				
 			}
 		});
 	} else {
@@ -190,7 +197,6 @@ function get_elementColor(id,what) {
 
 function um_getrgbof(id,what,alpha) {
 	var rgb = get_elementColor(id,what);
-	console.log(rgb);
 	var a = "rgba("+rgb['r']+","+rgb['g']+","+rgb['b']+","+alpha+")";
 	return a;
 }
@@ -230,7 +236,6 @@ function um_loginoverlay(obj) {
 	});
 
 	title = obj.children('h1'); $title = title.html();
-	//title.remove();
 	title.toggleClass("um-overlay-fx");
 	title.css({
 		'margin' : 0,

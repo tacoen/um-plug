@@ -2,6 +2,20 @@ function toucher_collector(obj) { return { a : obj.data('a'), f : obj.data('f'),
 function safephpNameof(name) { name.replace(/\.php/g, ''); name.replace(/\W/g, ''); return name+".php"; }
 function safetxtNameof(name) { name.replace(/\.txt/g, ''); name.replace(/\W/g, ''); return name+".txt"; }
 
+function um_confirm() {
+	jQuery('a.um_confirm').click(function(e) {
+		e.preventDefault();	
+		$this = jQuery(this);
+		$href = $this.attr('href')
+		$text = $this.text();
+		var r = confirm("Confirm to : "+$text);
+		if (r == true) {
+			window.location.assign($href)
+		}
+	});
+
+}
+
 function umtab () {
 	jQuery('.maketab > div > h3').each(function(i) {
 		$this = jQuery(this);
@@ -141,4 +155,5 @@ function umlist_function_init(obj) {
 jQuery(document).ready(function($) {
 	umlist_function_init('.umplugs');
 	umtab();
+	um_confirm();
 });

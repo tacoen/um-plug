@@ -101,7 +101,14 @@ function um_login_css() { ?>
 <style type="text/css"><?php echo um_getoption('logincss')?></style>
 <?php }
 
-if (um_getoption('logincss')) {
-	add_action( 'login_enqueue_scripts', 'um_login_css' );
+function um_hp_init() {
+	global $um_hp;
+	global $_registered_pages; 
+	foreach ($um_hp as $hook) {
+		// This WordPress variable is essential: it stores which admin pages are registered to WordPress
+		$hookname = get_plugin_page_hookname($hook, 'admin.php');
+		if (!empty($hookname)) { add_action($hookname, $hook); }
+		$_registered_pages[$hookname] = true;
+	}
 }
 

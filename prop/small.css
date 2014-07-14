@@ -1,46 +1,15 @@
-/* Device media queries: small.
- * max-width for device can be set in wp-admin, using UM-Plug
- */
+/* layout/default.css */
 
-/* Layouts */
- 
-body  { margin-top: 32px; }
-.site-side { width:100% }
-.site-main { width:100% }
-#secondary aside { float: left; width: 98%; margin: 1%; }
+html { overflow-x: hidden; }
 
-/* base.css */
+.site-side { float: none; width: 100%; overflow:hidden; position: relative; right: 0;}
+.site-main { float: none; width: 100%; overflow:hidden; }
+.site-side:hover,
+.site-side.clicked { width: 100%; background: none; right:0; padding: 0; }
 
-.micro { font-size: .7em; }
+div[class*="col"] > div {margin-right:0;width:100%; margin-bottom: 1em; }
+div[class*="col"] > div .last {margin-right:0;width:100%}
 
-.comment-list { padding-left: 0 }
-.comment-list li { list-style-type: none; }
-.form-allowed-tags { display: none; }
+.grid > div[class*="g"] { width: 50%; }
 
-
-body.admin-bar .main-navigation  {
-	position: absolute; top: 46px; /* wp-admin-bar fixed */
-}
-
-/* um-gui-lib */
-
-.col2 div,
-.col2 div.last { 
-
-	width: 100%; margin: 0; float: left; 
-
-}
-
-.col3 div,
-.col3 div.last { 
-	width: 100%; margin-right: 0; float: left; 
-}
-
-.col5 div,
-.col4 div { width: 48%; margin-right: 2%; float: left; }
-.col5 div.last,
-.col4 div.last { width: 50%; margin-right: 0 }
-#um-top { line-height: 24px; height: 48px; padding: 8px; }
-.um-desktop,
-.um-medium { display: none; }
-div.right { text-align: left; }
+#colophon  .right { float: left; text-align:left }
