@@ -14,7 +14,7 @@ DEFINE ('UMPLUG_DIR', plugin_dir_path( __FILE__ ) );
 DEFINE ('UMPLUG_URL', plugin_dir_url(__FILE__) );
 $umo = array();
 $um_hp = array();
-function um_ver() { return '1.1.8'; }
+function um_ver() { return '1.1.9'; }
 function um_req_role() { return 'edit_theme_options'; }
 
 require(UMPLUG_DIR . 'um/_common.php');

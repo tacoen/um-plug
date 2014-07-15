@@ -2,10 +2,10 @@
 
 html { overflow-x: hidden; }
 
-.site-side { float: none; width: 100%; overflow:hidden; position: relative; right: 0;}
+.site-side { float: none; width: 98%; overflow:hidden; position: relative; right: 0; margin-left: 1%}
 .site-main { float: none; width: 100%; overflow:hidden; }
 .site-side:hover,
-.site-side.clicked { width: 100%; background: none; right:0; padding: 0; }
+.site-side.clicked { width: 98%; background: none; right:0; padding: 0; }
 
 div[class*="col"] > div {margin-right:0;width:100%; margin-bottom: 1em; }
 div[class*="col"] > div .last {margin-right:0;width:100%}
@@ -13,3 +13,21 @@ div[class*="col"] > div .last {margin-right:0;width:100%}
 .grid > div[class*="g"] { width: 50%; }
 
 #colophon  .right { float: left; text-align:left }
+
+.page-title,
+body.page .entry-title,
+.entry-content h1,
+.entry-content h2,
+.entry-content h3,
+body.single .entry-title {
+	text-align: center;
+}
+
+textarea,
+.entry-content pre { min-width: 94%;  width: 94%}
+
+.site-side { margin-top: 2em; }
+
+#colophon p { margin: .5em 0; }
+#colophon .col2 > div { width: 100%; margin-bottom: .6em; }
+#colophon * { text-align: center; }

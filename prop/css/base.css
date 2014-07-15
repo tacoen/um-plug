@@ -442,20 +442,12 @@ input[type="submit"]:hover {
 	opacity: 1;
 	}
 
-a[class$='-link']:after {
-	content: " ]";
-	}
-
-a[class$='-link']:before {
-	content: "[ ";
-	}
-
 a[class$='-link']:hover {
 	opacity: 1;
 	}
 
 a[class$='-link'] {
-	opacity: .8;
+	opacity: .75;
 	}
 
 article *[class$='-content'] a {

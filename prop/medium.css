@@ -11,7 +11,24 @@
 /* base.css */
 
 html #wpadminbar { position: fixed; }
+textarea,
 .entry-content pre { min-width: 96%; }
+
+
+.comment-navigation .nav-next,
+.paging-navigation .nav-next,
+.post-navigation .nav-next {
+	float:none;
+	text-align: right;
+	width: 100%;
+}
+.comment-navigation .nav-previous,
+.paging-navigation .nav-previous,
+.post-navigation .nav-previous {
+	float:none;
+	text-align: left;
+	width: 100%;
+}
 
 /* layout/default.css */
 
@@ -30,3 +47,4 @@ html { overflow-x: hidden; }
 .col4>div.last{margin-right:0;width:25%}
 .col5>div,
 .col4>div{float:left;margin-right:2%;width:23%}
+
