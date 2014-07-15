@@ -1,6 +1,7 @@
 <?php
 
-$um_login_css = 
+$um_login_css =
+	"html { overflow: none; }\n".
 	"body { background: #124; }\n".
 	"body.login div#login h1 a { background: none; text-indent:0; width: 64px; line-height: 64px; height: 64px; }\n".
 	"body.login div#login h1 a:before { font-weight: 400;content:'\\f120'; font-family: 'dashicons'; font-size: 64px; }\n";
