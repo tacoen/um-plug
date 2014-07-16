@@ -88,27 +88,21 @@ function um_disable_feed() {
 
 /* wp-login tweaks */
 
-function um_login_logo_url() {
-    return home_url()."?tick=".time();
-}
+function um_login_logo_url() { return home_url()."?tick=".time(); }
+function um_login_logo_url_title() { return get_option('blogname'); }
+function um_login_css() { ?><style type="text/css"><?php echo um_getoption('logincss')?></style><?php }
 
-
-function um_login_logo_url_title() {
-    return get_option('blogname');
-}
-
-function um_login_css() { ?>
-<style type="text/css"><?php echo um_getoption('logincss')?></style>
-<?php }
+/* hp = hidden page */
 
 function um_hp_init() {
 	global $um_hp;
 	global $_registered_pages; 
+	if (!empty($um_hp)) :
 	foreach ($um_hp as $hook) {
 		// This WordPress variable is essential: it stores which admin pages are registered to WordPress
 		$hookname = get_plugin_page_hookname($hook, 'admin.php');
 		if (!empty($hookname)) { add_action($hookname, $hook); }
 		$_registered_pages[$hookname] = true;
 	}
+	endif;
 }
-

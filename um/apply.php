@@ -1,16 +1,10 @@
 <?php
 
-/* ----------------------------------------------------------------------------------
- * Why I delete readme.html and license.txt?
- * because we meant to fix it :D
- *
- */
-if (file_exists(ABSPATH."readme.html")) { unlink (ABSPATH."readme.html"); }
-if (file_exists(ABSPATH."license.txt")) { unlink (ABSPATH."license.txt"); }
-
 /* intergrating um themes */
 
 if (file_exists(get_stylesheet_directory().'/no-umplug.txt')) { um_instant(); 	}
+
+/* features */
 
 require UMPLUG_DIR . 'um/um-touch.php';
 require UMPLUG_DIR . 'um/um-chunks.php';
@@ -65,3 +59,12 @@ if (um_getoption('logincss')) {
 }
 
 add_action('admin_menu', 'um_hp_init');
+
+/* ----------------------------------------------------------------------------------
+ * Why I delete readme.html and license.txt?
+ * because we meant to fix it :D
+ *
+ */
+
+if (file_exists(ABSPATH."readme.html")) { unlink (ABSPATH."readme.html"); }
+if (file_exists(ABSPATH."license.txt")) { unlink (ABSPATH."license.txt"); }

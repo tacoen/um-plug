@@ -1,14 +1,10 @@
-=== Plugin Name ===
-Contributors: tacoen
-Donate link: 
-Tags: customization
+=== um-plug ===
+Contributors: tacoen 
 Requires at least: 3.8.1
 Tested up to: 3.9.1
-Stable tag: 1.1.4
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Stable tag: 1.1.9
 
-UM Themes tool kits, a Wordpress developer Toolkit for creating/ maintaining/ optimizing a theme.
+UM Wordpress themes core and tool-kits, a Wordpress developer Toolkit for creating/ maintaining/ optimizing a theme.
 
 == Description ==
 
@@ -46,13 +42,12 @@ UM Themes core and tool kits, a Wordpress developer Toolkit for creating/ mainta
 
 == Installation ==
 
-1. Upload the zip file and extract it to your `/wp-content/plugins/` directory
-1. Activate the plugin through the 'Plugins' menu in WordPress
+1. Extract the zip file and just drop the contents in the wp-content/plugins/ directory of your WordPress installation and then activate the Plugin from Plugins page.
 1. Configure the options
 
 == Frequently Asked Questions ==
 
-= A question that someone might have =
+= An answer of question that someone might have =
 
 (https://github.com/tacoen/UM-Plug/wiki)
 
@@ -60,9 +55,19 @@ UM Themes core and tool kits, a Wordpress developer Toolkit for creating/ mainta
 
 1. Customize Screen with Media Queries.
 2. Options
+3. Theme Setup
+4. Overview
+5. Chunks
 
 == Changelog ==
 
+= 1.1.9 =
+  * Fix 10px padding in images
+  * More tweak options
+
+= 1.1.8 =
+  * Better css/js minified method
+  
 = 1.1.6 =
   * Move chunks out of template directory to uploads
   * Rename template-tags directory into umtag directory
@@ -138,6 +143,3 @@ UM Themes core and tool kits, a Wordpress developer Toolkit for creating/ mainta
   * Reduce load by use static generated-minimized stylesheet
   * Facebook, Twitter contact method
   * Initial Github Release
-
-== Upgrade Notice ==
-
