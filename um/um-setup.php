@@ -227,5 +227,4 @@ if ( get_stylesheet_directory() != get_template_directory() ) {
 <div id="toucher" style="margin-bottom: .5em"><?php echo $div; ?>&nbsp; </div>
 <?php  if ($js== 1) { ?><script type="text/javascript">umlist_function_init('.umplugs')</script><?php } ?>
 <p><a class='um_confirm' href='<?php echo admin_url()."admin.php?page=um_sync"; ?>'>Sync Theme prop to UM-Plug</a></p>
-<?php } ?>
-
+<?php } 

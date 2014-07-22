@@ -3,6 +3,11 @@ defined('ABSPATH') or die('Huh?');
 
 require_once(ABSPATH . 'wp-admin/includes/file.php');
 
+function get_sniff($f) {
+	$sniff=strip_tags(join('',file($f,FILE_SKIP_EMPTY_LINES)));
+	if (strlen($sniff)>96) { return substr($sniff,0,96)." ..."; } else { return $sniff; }
+}
+
 if (!function_exists("um_hp_register")) :
 	function um_hp_register($args) {
 		global $um_hp; if (!isset($um_hp)) { $um_hp = array(); }

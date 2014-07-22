@@ -11,7 +11,7 @@ function um_footeradmin () {
 		'This <a href="http://www.wordpress.org">WordPress</a> with <a href="http://tacoen.github.io/um_plug">UM</a>',
 		'There were <a href="http://www.wordpress.org">WordPress</a> programmer whom <a href="http://tacoen.github.io/um_plug">UM</a>',
 	);
-	shuffle($credit); echo $credit[0];
+	shuffle($credit); echo $credit[0]."&nbsp;";
 }
 
 function umplug_i18n() { load_plugin_textdomain( 'um', false, 'lang' ); }

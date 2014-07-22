@@ -106,8 +106,10 @@ function um_toucher_html($div='',$js=0) {
 			echo "<li class='noicon' data-file='$g'><a data-act='wpedit' href='".admin_url()."theme-editor.php?file=$g&theme=".$safe_tdir,"'>$g</a>$dl</li>\n";
 		}
 		?></ul></div></div>
-		<div id="toucher"><?php echo $div; ?>&nbsp; </div><?php
-		if ($js== 1) { ?><script type="text/javascript">umlist_function_init('.umplugs')</script><?php }
-
+		<div class="clear"></div>
+<!--		<p><a href="?page=um_ptemplate">Page Template</a></p>-->
+<div id="toucher"><?php echo $div; ?>&nbsp; </div><?php
+		if ($js== 1) { ?><script type="text/javascript">umlist_function_init('.umplugs')</script>
+		<?php }
 
 }

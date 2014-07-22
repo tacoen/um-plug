@@ -47,14 +47,13 @@ function um_wpheadtrim() {
 	remove_action('wp_head','adjacent_posts_rel_link');
 }
 
-function remove_gravatar ($avatar, $id_or_email, $size, $default, $alt) {
+function um_remove_gravatar ($avatar, $id_or_email, $size, $default, $alt) {
 	if ( file_exists( get_template_directory_uri() .'/noavatar.png')) {
 		$default = get_template_directory_uri() .'/noavatar.png?junk=';
 	} else {
 		$default = UMPLUG_URL .'prop/noavatar.png?junk=';
 	}
-
-	return "<img alt='{$alt}' src='{$default}' class='avatar avatar-{$size} photo avatar-default' height='{$size}' width='{$size}' />";
+	return "<img alt='{$alt}' data-ini='bisa' src='{$default}' class='avatar avatar-{$size} photo avatar-default' height='{$size}' width='{$size}' />";
 }
 
 function um_user_contactmethods($user_contactmethods){

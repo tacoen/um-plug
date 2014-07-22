@@ -98,11 +98,6 @@ function um_chunk($w) {
 	echo do_shortcode('[chunk file='.$w.']');
 }
 
-function get_sniff($f) {
-	$sniff=strip_tags(join('',file($f,FILE_SKIP_EMPTY_LINES)));
-	if (strlen($sniff)>96) { return substr($sniff,0,96)." ..."; } else { return $sniff; }
-}
-
 function um_chunks_html($div='',$js=0) {
 	$upload_dir = wp_upload_dir();
 	$chunk_dir=$upload_dir['basedir']."/chunks";

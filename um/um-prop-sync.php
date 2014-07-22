@@ -36,5 +36,4 @@ function umplug_theme_sync() {
 
 	echo "</pre>";
 }
-
 ?>

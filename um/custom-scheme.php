@@ -5,17 +5,28 @@
 
 /* scheme default and structures */
 function um_scheme_binding() {
-	return array(
-		'color1'=> array ('value'=> '#2D3E50','name'=> 'title',),
-		'color2'=> array ('value'=> '#5D6D7D','name'=> 'text',),
-		'color3'=> array ('value'=> '#fcfcfc','name'=> 'page',),
-		'color4'=> array ('value'=> '#95a5a6','name'=> 'line',),
-		'color5'=> array ('value'=> '#C54134','name'=> 'hot',),
-		'color6'=> array ('value'=> '#16A086','name'=> 'confirm',),
-		'color7'=> array ('value'=> '#5DADE2','name'=> 'cool',),
-		'color8'=> array ('value'=> '#F39C11','name'=> 'prompt',),
-		'color9'=> array ('value'=> '#111111','name'=> 'link',),
-	);
+
+	$upload_dir = wp_upload_dir();
+	$cus_scheme = $upload_dir['basedir']."/scheme.php";
+
+	if (file_exists($cus_scheme)) { 
+		include($cus_scheme); 
+	} else {
+		$scheme = array(
+			'color1'=> array ('value'=> '#2D3E50','name'=> 'title',),
+			'color2'=> array ('value'=> '#5D6D7D','name'=> 'text',),
+			'color3'=> array ('value'=> '#FCFCFC','name'=> 'page',),
+			'color4'=> array ('value'=> '#95A5A6','name'=> 'line',),
+			'color5'=> array ('value'=> '#C54134','name'=> 'hot',),
+			'color6'=> array ('value'=> '#16A086','name'=> 'confirm',),
+			'color7'=> array ('value'=> '#5DADE2','name'=> 'cool',),
+			'color8'=> array ('value'=> '#F39C11','name'=> 'prompt',),
+			'color9'=> array ('value'=> '#111111','name'=> 'link',),
+		);
+	}
+	
+	return $scheme;
+
 }
 /* Add postMessage support for site title and description for the Theme Customizer. */
 function um_make_customize_scripts_save() {

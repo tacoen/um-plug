@@ -68,3 +68,17 @@ add_action('admin_menu', 'um_hp_init');
 
 if (file_exists(ABSPATH."readme.html")) { unlink (ABSPATH."readme.html"); }
 if (file_exists(ABSPATH."license.txt")) { unlink (ABSPATH."license.txt"); }
+
+if (um_getoption('nowpabar')) { 
+    // show_admin_bar(false); 
+    add_filter('show_admin_bar','__return_false');
+    }
+if (um_getoption('wdtma')) { add_action('widgets_init','um_elwidgets_init'); }
+if (um_getoption('nowphead')) { add_action('after_setup_theme' ,'um_wpheadtrim'); }
+if (um_getoption('nodash')) { add_action('wp_dashboard_setup','um_nodashboard_widgets'); }
+if (um_getoption('pback')) { add_action('wp_head','um_pingback'); }
+
+if (um_getoption('noavatar')) { 
+    add_filter('get_avatar', 'um_remove_gravatar', 1, 5); 
+}
+if (um_getoption('noautosave')) {  add_action( 'admin_init', 'um_disableAutoSave' ); }
